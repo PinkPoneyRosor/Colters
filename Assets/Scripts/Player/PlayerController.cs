@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	float horizontal = 0.0f;
 	float vertical = 0.0f;
-	float lookH =0;
+	float lookH = 0;
     float localDeltaTime;
 	float animSpeed = 0.0f;
 	Vector3 moveDirection = Vector3.zero;
@@ -91,9 +91,9 @@ public class PlayerController : MonoBehaviour {
 		//Ces lignes permettent de visualiser la façon dont sont gérés les vecteurs dans la fonction StickToWorldSpace (Debug)
 		
 		/*Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), moveDirection, Color.green);
-		//Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), axisSign, Color.red);
+		Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), axisSign, Color.red);
 		Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), rootDirection, Color.magenta);
-		//Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), stickDirection, Color.blue);*/
+		Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), stickDirection, Color.blue);*/
 		#endregion
 		
 		//Donne l'angle entre la direction du model et la direction du mouvement qu'on lui donne.
