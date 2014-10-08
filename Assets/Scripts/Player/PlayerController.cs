@@ -5,9 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	float horizontal = 0.0f;
 	float vertical = 0.0f;
-	float lookH = 0;
     float localDeltaTime;
-	float animSpeed = 0.0f;
 	Vector3 moveDirection = Vector3.zero;
 	Vector3 faceDirection = Vector3.zero;
 
@@ -35,15 +33,11 @@ public class PlayerController : MonoBehaviour {
 		//Recuperation des axes des input (Clavier, stick...)
 		horizontal = Input.GetAxis ("Horizontal");
 		vertical = Input.GetAxis ("Vertical");
-		lookH = Input.GetAxis ("LookH");
 		#endregion
 
 		#region setting essential variables each frame
 		//localDeltaTime permet au script de ne pas etre influencé par le changement de TimeScale.
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
-		
-		//Variable determinant la vitesse de déplacement du personnage pour le blending d'animation
-		animSpeed = new Vector2(horizontal,vertical).sqrMagnitude;
 		
 		//Appel de la fonction transformant les coordonnées données par le stick en coordonnées spatiales
 		stickToWorldSpace(transform, mainCameraScript.transform, ref direction, ref floatDir, ref speed, false);
