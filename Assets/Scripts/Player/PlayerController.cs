@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour {
 	Vector3 tempMoveDir;
 	public float maxSpeed = 5;
 
+	[HideInInspector]
+	public bool aimingMode = false;
+
 	// Use this for initialization
 	void Start () {
 		controller = GetComponent<CharacterController>();
@@ -35,6 +38,16 @@ public class PlayerController : MonoBehaviour {
 		vertical = Input.GetAxis ("Vertical");
 		#endregion
 
+		if (!aimingMode)
+						DefaultControls ();
+				else
+						AimingControls ();
+	
+	}
+
+	void DefaultControls()
+	{
+		#region default Controls
 		#region setting essential variables each frame
 		//localDeltaTime permet au script de ne pas etre influencé par le changement de TimeScale.
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
@@ -42,27 +55,33 @@ public class PlayerController : MonoBehaviour {
 		//Appel de la fonction transformant les coordonnées données par le stick en coordonnées spatiales
 		stickToWorldSpace(transform, mainCameraScript.transform, ref direction, ref floatDir, ref speed, false);
 		#endregion
-
+		
 		Quaternion target = Quaternion.Euler(0, floatDir, 0);
 		tempMoveDir = target * Vector3.forward * speed;
 		tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed); 
 		moveDirection.x = tempMoveDir.x;
 		moveDirection.z = tempMoveDir.z;
-
+		
 		#region apply movements & gravity
 		//Cette section finale permet d'appliquer les déplacements et la gravité en mode Body
-				
+		
 		if(!controller.isGrounded)
 			moveDirection.y -= gravity * Time.deltaTime;
-
-			controller.Move(moveDirection * Time.deltaTime);
-			
-			faceDirection = transform.position + moveDirection;
-			faceDirection.y = transform.position.y;
-				
-			transform.LookAt (faceDirection);
+		
+		controller.Move(moveDirection * Time.deltaTime);
+		
+		faceDirection = transform.position + moveDirection;
+		faceDirection.y = transform.position.y;
+		
+		transform.LookAt (faceDirection);
+		#endregion
 		#endregion
 	}
+
+	void AimingControls ()
+	{
+		controller.Move ((transform.right * horizontal + transform.forward * vertical) * Time.deltaTime);
+		}
 
 	//Cette fonction permet de traduire les coordonnées du stick en coordonnées spatiales (liées au monde)
 	public void stickToWorldSpace(Transform root, Transform camera, ref Vector3 directionOut, ref float floatDirOut, ref float speedOut, bool outForAnim)
