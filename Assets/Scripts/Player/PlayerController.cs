@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour {
 	void AimingControls ()
 	{
 		controller.Move ((transform.right * horizontal + transform.forward * vertical) * Time.deltaTime);
+		transform.Rotate (new Vector3 (0, Input.GetAxis ("LookH")*50, 0) * Time.deltaTime);
 		}
 
 	//Cette fonction permet de traduire les coordonnées du stick en coordonnées spatiales (liées au monde)

@@ -29,6 +29,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	float y = 50f;
 	private Vector3 targetToCamDir; //Direction from the camera to the player, only for x and z coordinates.
 	public Vector3 aimOffset;
+	Vector3 setPosition = Vector3.zero;
 	#endregion
 
 	#region Misc. Variables
@@ -36,11 +37,13 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public bool invertedVerticalAxis;
 	public LayerMask CompensateLayer;
 	private bool aimingMode = false;
+	bool resetCameraPosition = false;
 	#endregion
 
 	#endregion
 
-	void Start () {
+	void Start () 
+	{
 		player = GameObject.FindWithTag ("Player");
 		playerController = player.GetComponent<PlayerController> ();
 		camTarget = player.transform;
@@ -75,27 +78,21 @@ public class ThirdPersonCamera : MonoBehaviour {
 		else 
 		{
 			aimingCameraMode();
+			ManualMode = false; //This is to ensure that next time we get back to Default Camera Mode, the behaviour will be in automatic mode.
 		}
-
 	}
 
+	//Default camera mode
 	void DefaultCamera()
 	{
-		Vector3 setPosition;
-		bool resetCameraPosition = false;
-		
+
+		//If the secondary stick is being moved, we switch to manual mode.
 		if (Input.GetAxisRaw ("LookH") != 0 || Input.GetAxisRaw ("LookV") != 0)
 			ManualMode = true;
 		else if (Input.GetButtonDown ("AutoCam")) 
 		{
 			ManualMode = false;
 			resetCameraPosition = true;
-		}
-		
-		if (resetCameraPosition) 
-		{
-			setPosition = camTarget.position + new Vector3 (0, cameraHeight, 0) - camTarget.forward * distance;
-			resetCameraPosition = false;
 		}
 
 		#region Input for the second stick's manual camera controls.
@@ -108,45 +105,78 @@ public class ThirdPersonCamera : MonoBehaviour {
 			else
 				y += Input.GetAxis ("LookV") * ySpeed * 0.02f;
 			
-			y = ClampAngle (y, yMinLimit, yMaxLimit); //The vertical angle is clamped to avoid undesired behaviours.
-			Quaternion rotationAroundTarget = Quaternion.Euler (y, x, 0f);
-			setPosition = rotationAroundTarget * new Vector3 (0.0f, 0.0f, -distance) + camTarget.position;
-		} else
+			y = Mathf.Clamp (y, camTarget.transform.position.y + yMinLimit, camTarget.transform.position.y + yMaxLimit); //The vertical angle is clamped to the camera getting to high or to low.
+			Quaternion rotationAroundTarget = Quaternion.Euler (0, x, 0f);
+			setPosition = rotationAroundTarget * new Vector3 (0.0f, y, -distance) + camTarget.position;
+		}
+		else
 			#endregion 
 		{
+
 			targetToCamDir = camTarget.transform.position - this.transform.position;
 			targetToCamDir.y = 0f; //We don't want to use the height, it is controlled by another variable.
-			targetToCamDir.Normalize ();
-			
-			setPosition = camTarget.position + new Vector3 (0, cameraHeight, 0) - targetToCamDir * distance;
-			
-			y = this.transform.eulerAngles.x; //Setting y to the current camera height, so the manual mode can use this to set up next time.
+			targetToCamDir.Normalize (); //We just need the direction, so we normalize it, in order to multiply the vector later.
+
+			if (resetCameraPosition) 
+			{
+				Vector3 tempSetPosition = -camTarget.transform.forward * distance + camTarget.transform.up * cameraHeight;
+				tempSetPosition += camTarget.transform.position;
+
+				Vector3 distFromSetPosToCurrentPos = tempSetPosition - transform.position;
+				float sqrDistFromSetPosToCurrentPos = distFromSetPosToCurrentPos.sqrMagnitude;
+
+				//If the distance between the camera's position and the hypothetical target position is too small..
+				if(sqrDistFromSetPosToCurrentPos < 1)
+				{
+					//We just switch back to camera mode, without repositioning the camera.
+					resetCameraPosition = false;
+				}
+				else
+				{
+					//But if the distance is more than 1 unit long, we use the position calculated before to get the camera in Phalene's back.
+					setPosition = tempSetPosition;
+				}
+			}
+			else
+			{
+				//Once the camera has been resetted correctly, we get back to its automatic positioning.
+				setPosition = camTarget.position + new Vector3 (0, cameraHeight, 0) - targetToCamDir * distance;
+			}
+
+			x = this.transform.eulerAngles.y;	//Setting y & x to the current camera roation values, so the manual mode can use this to start next time.
+			y = this.transform.eulerAngles.x; 
 		}
-		Debug.DrawLine (this.transform.position, player.transform.forward);
-		
 		#region Getting camera to target position
 		CompensateForWalls (camTarget.localPosition, ref setPosition);
 		transform.position = Vector3.Lerp (transform.position, setPosition, localDeltaTime * TranslationSmooth);
+		//At this point, the camera is at the right place.
 		#endregion
 		
 		#region look at camera target
 		Quaternion selfRotation = Quaternion.LookRotation (camTarget.position - transform.position);
 		selfRotation *= rotationOffset;
 		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * RotationSmooth); //selfRotation;
+		//At this point, the camera is at the right place AND is looking at the right point.
 		#endregion
 		}
 
+	//This functions is enabled when the 3rd Person Camera switches to aiming mode.
 	void aimingCameraMode ()
 	{
+		//Those two lines make sure the camera get to the right place.
 		Vector3 setAimOffset = camTarget.transform.forward * aimOffset.z + camTarget.transform.up * aimOffset.y + camTarget.transform.right * aimOffset.x;
 		this.transform.position = Vector3.Lerp (transform.position, camTarget.position + setAimOffset, localDeltaTime * 60);
 
-		#region Replace this by manual aiming
-		transform.rotation = camTarget.transform.rotation;
+		#region Manual aiming
+		Vector3 currentCamTargetRotation = this.transform.eulerAngles;
+		currentCamTargetRotation.y = camTarget.transform.eulerAngles.y;
+		//When aiming, the camera must look in the same exact vertical direction than the player model.
+		transform.eulerAngles = currentCamTargetRotation; //Change this to set it to a neutral angle when just entered aiming mode
+		transform.Rotate  (new Vector3 (Input.GetAxis ("LookV")*50, 0,0) * Time.deltaTime);
 		#endregion
 	}
 
-	//This method clamps the camera's manual vertical movement to avoid undesired behaviours.
+	//This method can clamp different angles.
 	static float ClampAngle (float angle,float min,float max) {
 		if (angle < -360)
 			angle += 360;
