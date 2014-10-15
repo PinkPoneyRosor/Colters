@@ -15,6 +15,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	private GameObject player;
 	private PlayerController playerController;
 	private bool ManualMode = false;
+	BirdsEyeCam BirdsEyeScript;
 	#endregion
 
 	#region position and orientation
@@ -36,6 +37,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	float localDeltaTime;
 	public bool invertedVerticalAxis;
 	public LayerMask CompensateLayer;
+	public bool birdsEyeActivated;
 	private bool aimingMode = false;
 	bool resetCameraPosition = false;
 	#endregion
@@ -47,6 +49,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 		player = GameObject.FindWithTag ("Player");
 		playerController = player.GetComponent<PlayerController> ();
 		camTarget = player.transform;
+
+		BirdsEyeScript = this.GetComponent<BirdsEyeCam> ();
 	}
 
 	void Update()
@@ -54,23 +58,28 @@ public class ThirdPersonCamera : MonoBehaviour {
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
-		#region Aim Mode Trigger
-		if(Input.GetAxisRaw("Triggers") > 0)
+		if (!birdsEyeActivated) 
 		{
-			playerController.aimingMode = true;
-			aimingMode = true;
+			BirdsEyeScript.enabled = false;
+			#region Aim Mode Trigger
+			if (Input.GetAxisRaw ("Triggers") > 0) {
+					playerController.aimingMode = true;
+					aimingMode = true;
+			} else {
+					playerController.aimingMode = false;
+					aimingMode = false;
+			}
+			#endregion
 		}
 		else
-		{
-			playerController.aimingMode = false;
-			aimingMode = false;
-		}
-		#endregion
+		BirdsEyeScript.enabled = true;
 	}
 
 	//LateUpdate is called right after all of the update functions.
 	void LateUpdate()
 	{
+			if (!birdsEyeActivated) 
+			{
 		if (!aimingMode) 
 		{
 			DefaultCamera ();
@@ -80,6 +89,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 			aimingCameraMode();
 			ManualMode = false; //This is to ensure that next time we get back to Default Camera Mode, the behaviour will be in automatic mode.
 		}
+			}
 	}
 
 	//Default camera mode
@@ -99,7 +109,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		if (ManualMode) 
 		{
 			x += Input.GetAxis ("LookH") * xSpeed * 0.02f;
-			
+
 			if (!invertedVerticalAxis)
 				y -= Input.GetAxis ("LookV") * ySpeed * 0.02f;
 			else
@@ -170,6 +180,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		#region Manual aiming
 		Vector3 currentCamTargetRotation = this.transform.eulerAngles;
 		currentCamTargetRotation.y = camTarget.transform.eulerAngles.y;
+
 		//When aiming, the camera must look in the same exact vertical direction than the player model.
 		transform.eulerAngles = currentCamTargetRotation; //Change this to set it to a neutral angle when just entered aiming mode
 		transform.Rotate  (new Vector3 (Input.GetAxis ("LookV")*50, 0,0) * Time.deltaTime);
