@@ -10,7 +10,6 @@ public class RockThrow : MonoBehaviour {
 	public LayerMask otherLayers;
 	public int selectedRockCount = 0;
 	Transform[] selectedRocks;
-	bool justHitInactiveRock = false;
 
 	// Use this for initialization
 	void Start () {

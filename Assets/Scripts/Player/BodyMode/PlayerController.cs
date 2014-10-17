@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour {
 	public GameObject Soul;
 
 	//Other variables
-	float localDeltaTime;
 	CharacterController controller;
 	[HideInInspector]
 	public bool aimingMode = false;
@@ -37,9 +36,6 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		//localDeltaTime allows the script to not be influenced by the time scale change.
-		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
 		#region Get Axises
 		//Get input from the main axis (Keyboard and stick)
@@ -92,9 +88,9 @@ public class PlayerController : MonoBehaviour {
 
 	void AimingControls ()
 	{
-		controller.Move ((transform.right * horizontal + transform.forward * vertical) * Time.deltaTime);
-		transform.Rotate (new Vector3 (0, Input.GetAxis ("LookH")*50, 0) * Time.deltaTime);
-		}
+		controller.Move ((transform.right * horizontal + transform.forward * vertical) * maxSpeed * Time.deltaTime);
+		transform.Rotate (new Vector3 (0, Input.GetAxis ("LookH")*50, 0) * mainCameraScript.lookSpeed * Time.deltaTime);
+	}
 
 	public void stickToWorldSpace(Transform root, Transform camera, ref Vector3 directionOut, ref float floatDirOut, ref float speedOut, bool outForAnim)
 	{
@@ -113,7 +109,7 @@ public class PlayerController : MonoBehaviour {
 		Vector3 axisSign = Vector3.Cross(moveDirection, rootDirection);
 		
 		#region debug draw rays
-		//Ces lignes permettent de visualiser la façon dont sont gérés les vecteurs dans la fonction StickToWorldSpace (Debug)
+		//These lines allow us to see how the vectors are handled for debug.
 		
 		/*Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), moveDirection, Color.green);
 		Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), axisSign, Color.red);
@@ -130,7 +126,7 @@ public class PlayerController : MonoBehaviour {
 
 	void SwitchToSoulMode()
 	{
-		//Décalage du point de spawn de l'ame par rapport à Phalene...
+		//Offset for spawn point based on the player's position.
 		Vector3 soulSpawnOffset = new Vector3(0,2,-2);
 		Vector3 soulSpawnPoint = transform.position + soulSpawnOffset;
 		Transform spawnedSoul;

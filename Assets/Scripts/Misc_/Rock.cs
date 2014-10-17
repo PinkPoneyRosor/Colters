@@ -6,13 +6,8 @@ public class Rock : MonoBehaviour {
 	public bool isSelected = false;
 	public bool getUp = false;
 
-	RockThrow RockThrowScript;
-	Transform player;
-
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindWithTag ("Player").transform;
-		RockThrowScript = player.GetComponent<RockThrow> ();
 	}
 	
 	// Update is called once per frame

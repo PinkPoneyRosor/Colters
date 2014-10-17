@@ -31,6 +31,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	private Vector3 targetToCamDir; //Direction from the camera to the player, only for x and z coordinates.
 	public Vector3 aimOffset;
 	Vector3 setPosition = Vector3.zero;
+	public float lookSpeed = 5;
 	#endregion
 
 	#region Misc. Variables
@@ -60,16 +61,23 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 		if (!birdsEyeActivated) 
 		{
+
 			BirdsEyeScript.enabled = false;
+			BirdsEyeScript.followBody = false;
+
 			#region Aim Mode Trigger
-			if (Input.GetAxisRaw ("Triggers") > 0) {
-					playerController.aimingMode = true;
-					aimingMode = true;
-			} else {
-					playerController.aimingMode = false;
-					aimingMode = false;
+			if (Input.GetAxisRaw ("Triggers") > 0) 
+			{
+				playerController.aimingMode = true;
+				aimingMode = true;
+			} 
+			else 
+			{
+				playerController.aimingMode = false;
+				aimingMode = false;
 			}
 			#endregion
+
 		}
 		else
 		BirdsEyeScript.enabled = true;
@@ -78,24 +86,21 @@ public class ThirdPersonCamera : MonoBehaviour {
 	//LateUpdate is called right after all of the update functions.
 	void LateUpdate()
 	{
-			if (!birdsEyeActivated) 
+		if (!birdsEyeActivated) 
+		{
+			if (!aimingMode) 
+				DefaultCamera ();
+			else 
 			{
-		if (!aimingMode) 
-		{
-			DefaultCamera ();
-		} 
-		else 
-		{
 			aimingCameraMode();
 			ManualMode = false; //This is to ensure that next time we get back to Default Camera Mode, the behaviour will be in automatic mode.
-		}
 			}
+		}
 	}
 
 	//Default camera mode
 	void DefaultCamera()
 	{
-
 		//If the secondary stick is being moved, we switch to manual mode.
 		if (Input.GetAxisRaw ("LookH") != 0 || Input.GetAxisRaw ("LookV") != 0)
 			ManualMode = true;
@@ -120,7 +125,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 			setPosition = rotationAroundTarget * new Vector3 (0.0f, y, -distance) + camTarget.position;
 		}
 		else
-			#endregion 
+		#endregion 
 		{
 
 			targetToCamDir = camTarget.transform.position - this.transform.position;
@@ -161,14 +166,14 @@ public class ThirdPersonCamera : MonoBehaviour {
 		transform.position = Vector3.Lerp (transform.position, setPosition, localDeltaTime * TranslationSmooth);
 		//At this point, the camera is at the right place.
 		#endregion
-		
+			
 		#region look at camera target
 		Quaternion selfRotation = Quaternion.LookRotation (camTarget.position - transform.position);
 		selfRotation *= rotationOffset;
 		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * RotationSmooth); //selfRotation;
 		//At this point, the camera is at the right place AND is looking at the right point.
 		#endregion
-		}
+	}
 
 	//This functions is enabled when the 3rd Person Camera switches to aiming mode.
 	void aimingCameraMode ()
@@ -183,7 +188,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 		//When aiming, the camera must look in the same exact vertical direction than the player model.
 		transform.eulerAngles = currentCamTargetRotation; //Change this to set it to a neutral angle when just entered aiming mode
-		transform.Rotate  (new Vector3 (Input.GetAxis ("LookV")*50, 0,0) * Time.deltaTime);
+		transform.Rotate  (new Vector3 (Input.GetAxis ("LookV")*50, 0,0) * lookSpeed * Time.deltaTime);
 		#endregion
 	}
 
