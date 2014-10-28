@@ -74,11 +74,10 @@ public class ghostFollow : MonoBehaviour {
 	void OnTriggerEnter(Collider collider)
 	{
 		//And that this something is a ghost...
-		if (collider.CompareTag ("Action Ghost")) 
-		{
-			//Stop right there and call our coroutine.
-			canGoToNext = false;
-			StartCoroutine (waitBeforeNextGhost(collider));
+		if (collider.gameObject == currentTargetedGhost) {
+				//Stop right there and call our coroutine.
+				canGoToNext = false;
+				StartCoroutine (waitBeforeNextGhost (collider));
 		}
 	}
 

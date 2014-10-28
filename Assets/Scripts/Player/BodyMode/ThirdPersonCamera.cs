@@ -38,9 +38,12 @@ public class ThirdPersonCamera : MonoBehaviour {
 	float localDeltaTime;
 	public bool invertedVerticalAxis;
 	public LayerMask CompensateLayer;
+	[HideInInspector]
 	public bool birdsEyeActivated;
 	private bool aimingMode = false;
 	bool resetCameraPosition = false;
+	private bool mustResetAimAngle = true;
+	private bool resetManualModeValues = false;
 	#endregion
 
 	#endregion
@@ -56,6 +59,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	void Update()
 	{
+
+
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
@@ -68,6 +73,9 @@ public class ThirdPersonCamera : MonoBehaviour {
 			#region Aim Mode Trigger
 			if (Input.GetAxisRaw ("Triggers") > 0) 
 			{
+				if(mustResetAimAngle)
+					this.transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,transform.eulerAngles.z);
+				mustResetAimAngle = false;
 				playerController.aimingMode = true;
 				aimingMode = true;
 			} 
@@ -75,6 +83,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 			{
 				playerController.aimingMode = false;
 				aimingMode = false;
+				mustResetAimAngle = true;
 			}
 			#endregion
 
@@ -113,6 +122,12 @@ public class ThirdPersonCamera : MonoBehaviour {
 		#region Input for the second stick's manual camera controls.
 		if (ManualMode) 
 		{
+			if (resetManualModeValues)
+			{
+				resetManualModeValues = false;
+				y = transform.position.y; //BUG HERE ! CORRECT IT !
+			}
+
 			x += Input.GetAxis ("LookH") * xSpeed * 0.02f;
 
 			if (!invertedVerticalAxis)
@@ -120,7 +135,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 			else
 				y += Input.GetAxis ("LookV") * ySpeed * 0.02f;
 			
-			y = Mathf.Clamp (y, camTarget.transform.position.y + yMinLimit, camTarget.transform.position.y + yMaxLimit); //The vertical angle is clamped to the camera getting to high or to low.
+			y = Mathf.Clamp (y, camTarget.transform.position.y + yMinLimit, camTarget.transform.position.y + yMaxLimit); //The vertical angle is clamped to the camera getting too high or too low.
 			Quaternion rotationAroundTarget = Quaternion.Euler (0, x, 0f);
 			setPosition = rotationAroundTarget * new Vector3 (0.0f, y, -distance) + camTarget.position;
 		}
@@ -128,10 +143,13 @@ public class ThirdPersonCamera : MonoBehaviour {
 		#endregion 
 		{
 
+			resetManualModeValues = true;
+
 			targetToCamDir = camTarget.transform.position - this.transform.position;
 			targetToCamDir.y = 0f; //We don't want to use the height, it is controlled by another variable.
 			targetToCamDir.Normalize (); //We just need the direction, so we normalize it, in order to multiply the vector later.
 
+			#region reset position button
 			if (resetCameraPosition) 
 			{
 				Vector3 tempSetPosition = -camTarget.transform.forward * distance + camTarget.transform.up * cameraHeight;
@@ -157,6 +175,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 				//Once the camera has been resetted correctly, we get back to its automatic positioning.
 				setPosition = camTarget.position + new Vector3 (0, cameraHeight, 0) - targetToCamDir * distance;
 			}
+			#endregion
 
 			x = this.transform.eulerAngles.y;	//Setting y & x to the current camera roation values, so the manual mode can use this to start next time.
 			y = this.transform.eulerAngles.x; 
