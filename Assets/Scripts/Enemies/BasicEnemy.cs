@@ -19,8 +19,6 @@ public class BasicEnemy : MonoBehaviour {
 	public float heightOfJump = 8;
 	public float gravity = 20;
 	Vector3 moveDirection = Vector3.zero;
-	bool activateNavMesh = false;
-	bool pushed = false;
 	bool justJumped = false;
 
 	// Use this for initialization

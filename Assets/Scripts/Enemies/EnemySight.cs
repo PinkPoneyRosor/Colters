@@ -35,7 +35,7 @@ public class EnemySight : MonoBehaviour {
 			
 			// Create a vector from the enemy to the player and store the angle between it and forward.
 			Vector3 direction = other.transform.position - transform.position;
-			float angle = Vector3.Angle(direction, transform.forward);
+			float angle = Vector3.Angle(direction, transform.forward); //This will be used later in order to implement the FOV
 
 			RaycastHit hit;
 				

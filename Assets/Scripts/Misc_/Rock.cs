@@ -44,8 +44,11 @@ public class Rock : MonoBehaviour {
 	//To avoid the rock to be difficult to aim, we reactivate gravity only after the first hit, when it's not selected anymore.
 	void OnCollisionEnter (Collision collider)
 	{
-		if (!isSelected)
+		if (!isSelected) 
+		{
 			rigidbody.useGravity = true;
+			constantForce.force = Vector3.zero; // BUG ! FIX IT !!!
+		}
 	}
 
 	//Letting time to the rock to be in levitation before being considered selected.

@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class ThirdPersonCamera : MonoBehaviour {
-
 	#region variables
 	#region smoothing
 	public float TranslationSmooth;	//Camera translation movement smoothing multiplier
@@ -40,8 +39,10 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public LayerMask CompensateLayer;
 	[HideInInspector]
 	public bool birdsEyeActivated;
-	private bool aimingMode = false;
-	bool resetCameraPosition = false;
+	[HideInInspector]
+	public bool aimingMode = false;
+	[HideInInspector]
+	public bool resetCameraPosition = false;
 	private bool mustResetAimAngle = true;
 	private bool resetManualModeValues = false;
 	#endregion
@@ -71,10 +72,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 			BirdsEyeScript.followBody = false;
 
 			#region Aim Mode Trigger
-			if (Input.GetAxisRaw ("Triggers") > 0) 
+			if (Input.GetAxisRaw ("LT") > 0) 
 			{
 				if(mustResetAimAngle)
 					this.transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,transform.eulerAngles.z);
+
 				mustResetAimAngle = false;
 				playerController.aimingMode = true;
 				aimingMode = true;
@@ -125,7 +127,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 			if (resetManualModeValues)
 			{
 				resetManualModeValues = false;
-				y = transform.position.y; //BUG HERE ! CORRECT IT !
+				y = transform.position.y - camTarget.position.y;
 			}
 
 			x += Input.GetAxis ("LookH") * xSpeed * 0.02f;
@@ -158,8 +160,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 				Vector3 distFromSetPosToCurrentPos = tempSetPosition - transform.position;
 				float sqrDistFromSetPosToCurrentPos = distFromSetPosToCurrentPos.sqrMagnitude;
 
-				//If the distance between the camera's position and the hypothetical target position is too small..
-				if(sqrDistFromSetPosToCurrentPos < 1)
+				//If the distance between the camera's position and the hypothetical target position is small enough..
+				if (sqrDistFromSetPosToCurrentPos < .5f)
 				{
 					//We just switch back to camera mode, without repositioning the camera.
 					resetCameraPosition = false;

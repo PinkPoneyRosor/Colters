@@ -4,7 +4,7 @@ using System.Linq;
 
 public class RockThrow : MonoBehaviour {
 
-	public Transform Camera;
+	Transform mainCamera;
 	GameObject SelectedRock;
 	public LayerMask RockLayer;
 	public LayerMask otherLayers;
@@ -13,7 +13,7 @@ public class RockThrow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		mainCamera = Camera.main.transform;
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class RockThrow : MonoBehaviour {
 		{
 			//First, we check with a sphereCast (in order to allow the player to be less precise) if the player is looking at a rock.
 			RaycastHit HitObject;
-			if(Physics.SphereCast(Camera.position, .5f, Camera.forward, out HitObject , Mathf.Infinity, RockLayer))
+			if(Physics.SphereCast(mainCamera.position, .5f, mainCamera.forward, out HitObject , Mathf.Infinity, RockLayer))
 			{
 				Rock hitObjectScript;
 				hitObjectScript = HitObject.transform.GetComponent<Rock>();
@@ -36,7 +36,7 @@ public class RockThrow : MonoBehaviour {
 				}
 			}
 			//Then, if the player is looking at anything that is not a selectable rock...
-			else if(Physics.Raycast(Camera.position, Camera.forward, out HitObject , Mathf.Infinity, otherLayers))
+			else if(Physics.Raycast(mainCamera.position, mainCamera.forward, out HitObject , Mathf.Infinity, otherLayers))
 			{
 				//While at least a rock is selected....
 				if(selectedRockCount > 0)
@@ -59,7 +59,7 @@ public class RockThrow : MonoBehaviour {
 						//This line is just to make absolutely sure there is no more constraints so that we can throw the rock.
 						rockScript.rigidbody.constraints = RigidbodyConstraints.None;
 
-						rock.rigidbody.AddForce (throwDirection * 1000);
+						rock.rigidbody.constantForce.force = throwDirection * 100; // BUG !!!! FIX IT!!!!!
 					}
 				}
 			}

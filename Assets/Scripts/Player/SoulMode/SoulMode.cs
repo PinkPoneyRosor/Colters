@@ -65,8 +65,8 @@ public class SoulMode : MonoBehaviour {
 		//The rest of the update function is for the controls, which are exactly the same as in body mode.
 		#region Get Axises
 		//Get input from the main axis (Keyboard and stick)
-		horizontal = Input.GetAxis ("Horizontal");
-		vertical = Input.GetAxis ("Vertical");
+		horizontal = Input.GetAxisRaw ("Horizontal");
+		vertical = Input.GetAxisRaw ("Vertical");
 		#endregion
 
 		//This method will translate axis input into world coordinates, according to the camera's point of view.

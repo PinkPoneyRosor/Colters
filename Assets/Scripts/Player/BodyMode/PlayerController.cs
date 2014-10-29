@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 	public bool aimingMode = false;
 	[HideInInspector]
 	public bool soulMode = false;
+	private bool continueResetControls = false;
 
 
 	// Use this for initialization
@@ -39,8 +40,8 @@ public class PlayerController : MonoBehaviour {
 
 		#region Get Axises
 		//Get input from the main axis (Keyboard and stick)
-		horizontal = Input.GetAxis ("Horizontal");
-		vertical = Input.GetAxis ("Vertical");
+		horizontal = Input.GetAxisRaw ("Horizontal");
+		vertical = Input.GetAxisRaw ("Vertical");
 		#endregion
 
 		if(Input.GetButtonDown("SwitchMode") && !soulMode)
@@ -49,9 +50,11 @@ public class PlayerController : MonoBehaviour {
 		//Make the controls adapted to the current camera mode.
 		if (!soulMode) 
 		{
-			if (!aimingMode)
+			if (Input.GetButtonDown ("AutoCam") || continueResetControls) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
+				ResettingCameraControls();
+			else if (!aimingMode) //Else, and if we're in normal camera mode
 				DefaultControls ();
-			else
+			else if (aimingMode) //Else, and if we're in aiming camera mode
 				AimingControls ();
 		}
 	}
@@ -88,8 +91,40 @@ public class PlayerController : MonoBehaviour {
 
 	void AimingControls ()
 	{
-		controller.Move ((transform.right * horizontal + transform.forward * vertical) * maxSpeed * Time.deltaTime);
-		transform.Rotate (new Vector3 (0, Input.GetAxis ("LookH")*50, 0) * mainCameraScript.lookSpeed * Time.deltaTime);
+		tempMoveDir = (transform.right * horizontal + transform.forward * vertical) * maxSpeed;
+		moveDirection.x = tempMoveDir.x;
+		moveDirection.z = tempMoveDir.z;
+
+		if(!controller.isGrounded)
+			moveDirection.y -= gravity * Time.deltaTime;
+
+		controller.Move (moveDirection * Time.deltaTime);
+		transform.Rotate (new Vector3 (0, Input.GetAxisRaw ("LookH")*50, 0) * mainCameraScript.lookSpeed * Time.deltaTime);
+	}
+
+	void ResettingCameraControls()
+	{
+		if (Input.GetAxisRaw ("Horizontal") != 0 || Input.GetAxisRaw ("Vertical") != 0) 
+		{
+			Debug.Log ("Everyday I'm resettin'");
+			continueResetControls = true;
+
+			Vector3 stickDirection = new Vector3 (horizontal, 0, vertical);
+			float speedOut = stickDirection.sqrMagnitude;
+
+			Quaternion target = Quaternion.Euler(0, floatDir, 0);
+			tempMoveDir = target * Vector3.forward * speed;
+			tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed);
+			moveDirection.x = tempMoveDir.x;
+			moveDirection.z = tempMoveDir.z;
+
+			if (!controller.isGrounded)
+					moveDirection.y -= gravity * Time.deltaTime;
+
+			controller.Move (moveDirection * speedOut * Time.deltaTime);
+		} 
+		else //Once the stick has been released, we get back to the standard controls
+			continueResetControls = false;
 	}
 
 	public void stickToWorldSpace(Transform root, Transform camera, ref Vector3 directionOut, ref float floatDirOut, ref float speedOut, bool outForAnim)
