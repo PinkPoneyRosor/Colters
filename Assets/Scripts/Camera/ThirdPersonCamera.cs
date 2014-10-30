@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class ThirdPersonCamera : MonoBehaviour {
-	#region variables
+#region variables
+
 	#region smoothing
 	public float TranslationSmooth;	//Camera translation movement smoothing multiplier
 	public float RotationSmooth = 6.0f;	//Camera rotation movement smoothing multiplier
@@ -11,10 +12,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 	#region External scripts & gameObjects
 	[HideInInspector]
 	public Transform camTarget; //What the camera follows
+
 	private GameObject player;
 	private PlayerController playerController;
 	private bool ManualMode = false;
-	BirdsEyeCam BirdsEyeScript;
+	private BirdsEyeCam BirdsEyeScript;
 	#endregion
 
 	#region position and orientation
@@ -25,29 +27,32 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public float ySpeed = 120.0f;
 	public float yMinLimit = -20f;
 	public float yMaxLimit = 80f;
-	float x = 0.0f;
-	float y = 50f;
-	private Vector3 targetToCamDir; //Direction from the camera to the player, only for x and z coordinates.
 	public Vector3 aimOffset;
-	Vector3 setPosition = Vector3.zero;
 	public float lookSpeed = 5;
+
+	private Vector3 setPosition = Vector3.zero;
+	private float x = 0.0f;
+	private float y = 50f;
+	private Vector3 targetToCamDir; //Direction from the camera to the player, only for x and z coordinates.
 	#endregion
 
 	#region Misc. Variables
-	float localDeltaTime;
 	public bool invertedVerticalAxis;
 	public LayerMask CompensateLayer;
+
+	private float localDeltaTime;
+	private bool mustResetAimAngle = true;
+	private bool resetManualModeValues = false;
+
 	[HideInInspector]
 	public bool birdsEyeActivated;
 	[HideInInspector]
 	public bool aimingMode = false;
 	[HideInInspector]
 	public bool resetCameraPosition = false;
-	private bool mustResetAimAngle = true;
-	private bool resetManualModeValues = false;
 	#endregion
 
-	#endregion
+#endregion
 
 	void Start () 
 	{
@@ -61,13 +66,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 	void Update()
 	{
 
-
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
-		if (!birdsEyeActivated) 
+		if (!birdsEyeActivated) //If we're not in bird's eye, let's notify the birdseye script.
 		{
-
 			BirdsEyeScript.enabled = false;
 			BirdsEyeScript.followBody = false;
 
@@ -99,7 +102,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	{
 		if (!birdsEyeActivated) 
 		{
-			if (!aimingMode) 
+			if (!aimingMode) //The aiming mode can only be activated while in normal camera mode.
 				DefaultCamera ();
 			else 
 			{
@@ -143,8 +146,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		}
 		else
 		#endregion 
-		{
-
+		{ //From here, the camera is not in manual mode, so we make sure the camera will position itself automatically.
 			resetManualModeValues = true;
 
 			targetToCamDir = camTarget.transform.position - this.transform.position;
@@ -226,7 +228,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	private void CompensateForWalls (Vector3 fromObject, ref Vector3 toTarget)
 	{
 		RaycastHit wallHit = new RaycastHit ();
-		//Debug.DrawLine (fromObject, toTarget);
+		//Debug.DrawLine (fromObject, toTarget); //Debug line to make the line visually appear.
 		if (Physics.Linecast(fromObject, toTarget, out wallHit, CompensateLayer))
 		{
 			Vector3 hitWallNormal = wallHit.normal.normalized;

@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour {
 		#endregion
 	}
 
-	void AimingControls ()
+	void AimingControls () //When aiming, the controls are not the same.
 	{
 		tempMoveDir = (transform.right * horizontal + transform.forward * vertical) * maxSpeed;
 		moveDirection.x = tempMoveDir.x;
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour {
 		transform.Rotate (new Vector3 (0, Input.GetAxisRaw ("LookH")*50, 0) * mainCameraScript.lookSpeed * Time.deltaTime);
 	}
 
-	void ResettingCameraControls()
+	void ResettingCameraControls() //If the player is still moving when he's resetting the camera, the character's move are different, else there's a risk to see undesired behaviours.
 	{
 		if (Input.GetAxisRaw ("Horizontal") != 0 || Input.GetAxisRaw ("Vertical") != 0) 
 		{
@@ -127,6 +127,7 @@ public class PlayerController : MonoBehaviour {
 			continueResetControls = false;
 	}
 
+	//This is where the magic happens, this method translate the left stick coordinates into world space coordinates, according to the camera's point of view!
 	public void stickToWorldSpace(Transform root, Transform camera, ref Vector3 directionOut, ref float floatDirOut, ref float speedOut, bool outForAnim)
 	{
 		//We take the model's direction, the stick's direction, then we put in the square magnitude.
@@ -159,6 +160,7 @@ public class PlayerController : MonoBehaviour {
 		floatDirOut = angleRootToMove;
 	}
 
+	//Setting everything in order to engage soul mode.
 	void SwitchToSoulMode()
 	{
 		//Offset for spawn point based on the player's position.

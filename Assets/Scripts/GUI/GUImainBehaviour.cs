@@ -11,20 +11,24 @@ public class GUImainBehaviour : MonoBehaviour {
 	Image crossHairPic;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		mainCamera = Camera.main.gameObject;
-		mainCameraScript = mainCamera.GetComponent<ThirdPersonCamera> ();
 		crossHair = GameObject.Find ("CrossHair");
+
+		mainCameraScript = mainCamera.GetComponent<ThirdPersonCamera> ();
 		crossHairPic = crossHair.GetComponent<Image> ();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		#region Show crosshair in aim mode
 		if (!mainCameraScript.birdsEyeActivated && mainCameraScript.aimingMode) 
 			crossHairPic.enabled = true;
 		else
 			crossHairPic.enabled = false;
+		#endregion
 	}
 
 }

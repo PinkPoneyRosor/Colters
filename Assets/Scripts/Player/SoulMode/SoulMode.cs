@@ -73,8 +73,10 @@ public class SoulMode : MonoBehaviour {
 		stickToWorldSpace(transform, mainCameraScript.transform, ref direction, ref floatDir, ref speed, false);
 
 		Quaternion target = Quaternion.Euler(0, floatDir, 0);
+
 		tempMoveDir = target * Vector3.forward * speed;
-		tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed); 
+		tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed);
+
 		moveDirection.x = tempMoveDir.x;
 		moveDirection.z = tempMoveDir.z;
 

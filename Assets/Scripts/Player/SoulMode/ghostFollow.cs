@@ -24,6 +24,8 @@ public class ghostFollow : MonoBehaviour {
 	public float speed = 10f;
 	#endregion
 
+	public bool cameraInPlace = false;
+
 
 	// Use this for initialization
 	void Start () 
@@ -37,37 +39,34 @@ public class ghostFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		//localDeltaTime allows the script to not be influenced by the time scale change.
-		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
+		if (cameraInPlace) {
+						//localDeltaTime allows the script to not be influenced by the time scale change.
+						localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
-		//First, if there's at least one ghost, let's target it.
-		if (GameObject.FindGameObjectWithTag ("Action Ghost") != null) 
-		{
-			IgnoreCollisions(true); //Let's ignore the collisions with the rocks, so they won't block the player during this mode.
+						//First, if there's at least one ghost, let's target it.
+						if (GameObject.FindGameObjectWithTag ("Action Ghost") != null) {
+								IgnoreCollisions (true); //Let's ignore the collisions with the rocks, so they won't block the player during this mode.
 
-			//If this script just got activated, we have to find the first action ghost vefore we go on.
-			if (justGotActivated) 
-			{
-				currentTargetedGhost = GameObject.Find ("actionGhost_" + currentTargetedGhostNumber);
-				sphereCollider.enabled = true;
-				justGotActivated = false;
-			}
+								//If this script just got activated, we have to find the first action ghost vefore we go on.
+								if (justGotActivated) {
+										currentTargetedGhost = GameObject.Find ("actionGhost_" + currentTargetedGhostNumber);
+										sphereCollider.enabled = true;
+										justGotActivated = false;
+								}
 
-			//If we are allowed to get to the next ghost...
-			if (canGoToNext) 
-			{
-				//Let's cache the next ghost's position.
-				Vector3 GhostPos = currentTargetedGhost.transform.position;
-				//Then, let's make Phalene look into it's direction, now.
-				transform.LookAt (new Vector3 (GhostPos.x, transform.position.y, GhostPos.z));
-				//And let's go forward into that direction, speed of light, to infinity and beyond !
-				controller.Move (transform.forward * speed * localDeltaTime); 
-			}
-		} 
-		else //If there's no more ghosts, let's reset everything before exiting ghost follow mode.
-		{
-			resetAndExitMode();
-		}
+								//If we are allowed to get to the next ghost...
+								if (canGoToNext) {
+										//Let's cache the next ghost's position.
+										Vector3 GhostPos = currentTargetedGhost.transform.position;
+										//Then, let's make Phalene look into it's direction, now.
+										transform.LookAt (new Vector3 (GhostPos.x, transform.position.y, GhostPos.z));
+										//And let's go forward into that direction, speed of light, to infinity and beyond !
+										controller.Move (transform.forward * speed * localDeltaTime); 
+								}
+						} else { //If there's no more ghosts, let's reset everything before exiting ghost follow mode.
+								resetAndExitMode ();
+						}
+				}
 	}
 
 	//If we encounter somehting...
@@ -100,7 +99,7 @@ public class ghostFollow : MonoBehaviour {
 		Physics.IgnoreLayerCollision(12, 16, ignoreBool);
 	}
 
-	void resetAndExitMode()
+	void resetAndExitMode() //This contains everything needed to revert back to standard mode.
 	{
 		IgnoreCollisions(false);
 		controllerScript.soulMode = false;

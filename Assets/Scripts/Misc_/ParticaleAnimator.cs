@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class ParticaleAnimator : MonoBehaviour {
+	//This script let the particles to be simulated at full speed, regardless of the current TimeScale.
 	private void Awake()
 	{
 		particle = GetComponent<ParticleSystem>();
