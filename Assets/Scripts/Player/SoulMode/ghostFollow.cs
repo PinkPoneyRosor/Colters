@@ -39,7 +39,8 @@ public class ghostFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (cameraInPlace) {
+		//This script won't do anything until the camera is in place (See BirdseyeCam script).
+		if (cameraInPlace) { 
 						//localDeltaTime allows the script to not be influenced by the time scale change.
 						localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
@@ -58,15 +59,16 @@ public class ghostFollow : MonoBehaviour {
 								if (canGoToNext) {
 										//Let's cache the next ghost's position.
 										Vector3 GhostPos = currentTargetedGhost.transform.position;
-										//Then, let's make Phalene look into it's direction, now.
+										//Then, let's make Phalene look into its direction, now.
 										transform.LookAt (new Vector3 (GhostPos.x, transform.position.y, GhostPos.z));
 										//And let's go forward into that direction, speed of light, to infinity and beyond !
-										controller.Move (transform.forward * speed * localDeltaTime); 
+										transform.position = Vector3.Lerp (transform.position, GhostPos, speed * localDeltaTime); 
 								}
-						} else { //If there's no more ghosts, let's reset everything before exiting ghost follow mode.
-								resetAndExitMode ();
 						}
 				}
+
+		if(GameObject.FindGameObjectWithTag("Action Ghost") == null) //If there's no more ghosts, let's reset everything before exiting ghost follow mode.
+			resetAndExitMode ();
 	}
 
 	//If we encounter somehting...

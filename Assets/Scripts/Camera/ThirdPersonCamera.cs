@@ -127,6 +127,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 		#region Input for the second stick's manual camera controls.
 		if (ManualMode) 
 		{
+			RotationSmooth = 60;
+
 			if (resetManualModeValues)
 			{
 				resetManualModeValues = false;
@@ -146,7 +148,10 @@ public class ThirdPersonCamera : MonoBehaviour {
 		}
 		else
 		#endregion 
-		{ //From here, the camera is not in manual mode, so we make sure the camera will position itself automatically.
+		{ 
+			RotationSmooth = 6;
+
+			//From here, the camera is not in manual mode, so we make sure the camera will position itself automatically.
 			resetManualModeValues = true;
 
 			targetToCamDir = camTarget.transform.position - this.transform.position;

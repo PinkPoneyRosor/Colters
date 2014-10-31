@@ -44,7 +44,7 @@ public class BirdsEyeCam : MonoBehaviour {
 			TranslationSmooth = 5;
 
 			soul = GameObject.Find ("Soul").transform;
-			targetPosition = soul.position + new Vector3 (0, 10, 0) + Vector3.forward * -5 + Vector3.right * 2;
+			targetPosition = soul.position + new Vector3 (0, player.position.y + 10, 0) + Vector3.forward * -5 + Vector3.right * 2;
 			transform.position = Vector3.Lerp (transform.position, targetPosition, localDeltaTime * TranslationSmooth);
 
 
@@ -58,18 +58,30 @@ public class BirdsEyeCam : MonoBehaviour {
 
 	void followingBody()
 	{
-		targetPosition = player.position + new Vector3 (0, 3, 0) + Vector3.forward * -3 + Vector3.right * 1;
-		float distBetweenCamAndBody = (targetPosition - transform.position).sqrMagnitude;
+		float distBetweenCamAndBody = (player.position - transform.position).sqrMagnitude;
 
+		if (distBetweenCamAndBody > 15 * 15) 
+		{
+			targetPosition = player.position + new Vector3 (0, player.position.y + 10, 0) + player.forward * -3 + Vector3.right * 1;
+		} 
+		else 
+		{
+			targetPosition = player.position + new Vector3(0,.5f,0) + player.forward * -3;
+		}
 
-		
+		Vector3 playerForwardDir = (player.position - player.forward);
+
+		Quaternion selfRotation = Quaternion.LookRotation (player.forward); //player.rotation; //Ameliore ça, il faut que la caméra regarde déjà dans la meme direction que le joueur.
+		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * RotationSmooth);
+
 		transform.position = Vector3.Lerp (transform.position, targetPosition, localDeltaTime * TranslationSmooth);
-		
-		Quaternion selfRotation = Quaternion.LookRotation (player.position - transform.position);
-		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * RotationSmooth); //selfRotation;
-		if (distBetweenCamAndBody < 1) 
+
+		float distBetweenCamAndTargetPos = (transform.position - targetPosition).sqrMagnitude;
+
+		if (distBetweenCamAndTargetPos < .5f * .5f) 
 		{
 			TranslationSmooth = 500;
+			RotationSmooth = 60;
 			ghostFollowScript.cameraInPlace = true;
 			Debug.Log("I'm in place, brah!");
 		}
