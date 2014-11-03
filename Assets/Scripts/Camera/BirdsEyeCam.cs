@@ -49,7 +49,7 @@ public class BirdsEyeCam : MonoBehaviour {
 
 
 			Quaternion selfRotation = Quaternion.LookRotation (soul.position - transform.position);
-			transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * RotationSmooth); //selfRotation;
+			transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * RotationSmooth);
 		} 
 		else 
 			followingBody();
@@ -71,14 +71,14 @@ public class BirdsEyeCam : MonoBehaviour {
 
 		Vector3 playerForwardDir = (player.position - player.forward);
 
-		Quaternion selfRotation = Quaternion.LookRotation (player.forward); //player.rotation; //Ameliore ça, il faut que la caméra regarde déjà dans la meme direction que le joueur.
+		Quaternion selfRotation = Quaternion.LookRotation (player.forward);
 		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * RotationSmooth);
 
 		transform.position = Vector3.Lerp (transform.position, targetPosition, localDeltaTime * TranslationSmooth);
 
 		float distBetweenCamAndTargetPos = (transform.position - targetPosition).sqrMagnitude;
 
-		if (distBetweenCamAndTargetPos < .5f * .5f) 
+		if (distBetweenCamAndTargetPos < .5f * .5f && GameObject.FindGameObjectWithTag("Action Ghost") != null) 
 		{
 			TranslationSmooth = 500;
 			RotationSmooth = 60;
