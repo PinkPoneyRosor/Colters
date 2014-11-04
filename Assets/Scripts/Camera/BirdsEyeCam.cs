@@ -8,6 +8,10 @@ public class BirdsEyeCam : MonoBehaviour {
 	Transform soul;
 	Transform player;
 	ghostFollow ghostFollowScript;
+	GameObject[] allGhosts;
+	bool notAllGhostsVisible = false;
+	Vector3 finalBodyCameraPoint;
+	Quaternion selfRotation;
 
 	[HideInInspector]
 	public bool followBody = false;
@@ -18,6 +22,8 @@ public class BirdsEyeCam : MonoBehaviour {
 	public float RotationSmooth = 6.0f;	//Camera rotation movement smoothing multiplier
 
 	Vector3 targetPosition;
+
+	bool stopPlacingFollowingBody = false;
 
 	// Use this for initialization
 	void Start () 
@@ -48,7 +54,7 @@ public class BirdsEyeCam : MonoBehaviour {
 			transform.position = Vector3.Lerp (transform.position, targetPosition, localDeltaTime * TranslationSmooth);
 
 
-			Quaternion selfRotation = Quaternion.LookRotation (soul.position - transform.position);
+			selfRotation = Quaternion.LookRotation (soul.position - transform.position);
 			transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * RotationSmooth);
 		} 
 		else 
@@ -58,32 +64,32 @@ public class BirdsEyeCam : MonoBehaviour {
 
 	void followingBody()
 	{
-		float distBetweenCamAndBody = (player.position - transform.position).sqrMagnitude;
-
-		if (distBetweenCamAndBody > 15 * 15) 
+		if (GameObject.FindWithTag ("Action Ghost") != null) 
 		{
-			targetPosition = player.position + new Vector3 (0, player.position.y + 10, 0) + player.forward * -3 + Vector3.right * 1;
-		} 
-		else 
-		{
-			targetPosition = player.position + new Vector3(0,.5f,0) + player.forward * -3;
-		}
+			allGhosts = GameObject.FindGameObjectsWithTag ("Action Ghost");
 
-		Vector3 playerForwardDir = (player.position - player.forward);
+			Vector3 ghostsCentroid = Vector3.zero;
+			int ghostCount = 0;
 
-		Quaternion selfRotation = Quaternion.LookRotation (player.forward);
-		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * RotationSmooth);
+			foreach (GameObject ghost in allGhosts) 
+			{
+				ghostCount ++;
+				ghostsCentroid += ghost.transform.position;
+			}
 
-		transform.position = Vector3.Lerp (transform.position, targetPosition, localDeltaTime * TranslationSmooth);
+			ghostsCentroid /= ghostCount;
 
-		float distBetweenCamAndTargetPos = (transform.position - targetPosition).sqrMagnitude;
+			targetPosition = ghostsCentroid + new Vector3 (0, player.position.y + 10);
 
-		if (distBetweenCamAndTargetPos < .5f * .5f && GameObject.FindGameObjectWithTag("Action Ghost") != null) 
-		{
-			TranslationSmooth = 500;
-			RotationSmooth = 60;
-			ghostFollowScript.cameraInPlace = true;
-			Debug.Log("I'm in place, brah!");
+			TranslationSmooth = 1;
+
+			transform.position = Vector3.Lerp (transform.position, targetPosition, localDeltaTime * TranslationSmooth);
+			selfRotation = Quaternion.LookRotation (player.transform.position - transform.position);
+			transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * RotationSmooth);
+
+			if ((this.transform.position - targetPosition).sqrMagnitude < 1) //Wait for the camera to get to the first point before commencing ghost follow mode.
+					ghostFollowScript.cameraInPlace = true;
 		}
 	}
+
 }

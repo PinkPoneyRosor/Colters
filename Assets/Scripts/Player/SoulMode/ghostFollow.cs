@@ -39,7 +39,6 @@ public class ghostFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		Debug.Log (cameraInPlace);
 		//This script won't do anything until the camera is in place (See BirdseyeCam script).
 		if (cameraInPlace) { 
 						//localDeltaTime allows the script to not be influenced by the time scale change.
@@ -104,13 +103,13 @@ public class ghostFollow : MonoBehaviour {
 
 	void resetAndExitMode() //This contains everything needed to revert back to standard mode.
 	{
+		mainCameraScript.birdsEyeActivated = false;
 		cameraInPlace = false;
 		IgnoreCollisions(false);
 		controllerScript.soulMode = false;
 		currentTargetedGhostNumber = 0;
 		Time.timeScale = 1;
 		Time.fixedDeltaTime = .02f;
-		mainCameraScript.birdsEyeActivated = false;
 		sphereCollider.enabled = false;
 		this.GetComponent<ghostFollow> ().enabled = false;
 	}
