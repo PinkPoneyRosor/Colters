@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour {
 	void SwitchToSoulMode()
 	{
 		//Offset for spawn point based on the player's position.
-		Vector3 soulSpawnOffset = new Vector3(0,2,-2);
+		Vector3 soulSpawnOffset = new Vector3(0,.5f,0);
 		Vector3 soulSpawnPoint = transform.position + soulSpawnOffset;
 		Transform spawnedSoul;
 		

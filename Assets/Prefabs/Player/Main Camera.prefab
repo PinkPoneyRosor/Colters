@@ -102,7 +102,7 @@ MonoBehaviour:
   yMaxLimit: 5
   aimOffset: {x: .5, y: .699999988, z: -.5}
   lookSpeed: 3
-  invertedVerticalAxis: 0
+  invertedVerticalAxis: 1
   CompensateLayer:
     serializedVersion: 2
     m_Bits: 32768
