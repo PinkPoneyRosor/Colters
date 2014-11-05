@@ -13,7 +13,6 @@ GameObject:
   - 124: {fileID: 12400000}
   - 81: {fileID: 8100000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -93,6 +92,7 @@ MonoBehaviour:
   TranslationSmooth: 5
   RotationSmooth: 6
   camTarget: {fileID: 0}
+  soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
   cameraHeight: 1
   rotationOffset: {x: 0, y: 0, z: 0, w: 1}
   distance: 4
@@ -106,23 +106,8 @@ MonoBehaviour:
   CompensateLayer:
     serializedVersion: 2
     m_Bits: 32768
-  birdsEyeActivated: 0
   aimingMode: 0
   resetCameraPosition: 0
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60d288dabbb795d44b82c06cdf2eee80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  followBody: 0
-  TranslationSmooth: 5
-  RotationSmooth: 3
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

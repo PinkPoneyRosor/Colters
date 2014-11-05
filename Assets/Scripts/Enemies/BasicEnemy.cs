@@ -31,10 +31,12 @@ public class BasicEnemy : MonoBehaviour {
 	CharacterController controller;
 	Transform sightSphere;
 	NavMeshAgent navMeshAgent;
+	public LayerMask ignoredLayersWhenHit;
 	#endregion
 
 	#region External scripts and objects
 	GameObject player;
+	public GameObject soul;
 	#endregion
 	
 #endregion
@@ -141,15 +143,17 @@ public class BasicEnemy : MonoBehaviour {
 
 	void OnTriggerEnter(Collider hit)
 	{
-		if (hit.CompareTag ("Player") && canGetHit) //As this is in the OnTrigger Method, it'll be triggered only if the player is dashing in body mode.
+		if (hit.CompareTag ("PlayerSoul") && canGetHit) //As this is in the OnTrigger Method, it'll be triggered only if the player is dashing in body mode.
 		{
+			if(hit.GetComponent<SoulMode>().isDashing)
 			gotHit (1);
 		}
 	}
 
 	void OnCollisionEnter(Collision hit)
 	{
-		if (hit.collider.CompareTag ("ThrowableRock")) { //Rocks are rigidBody, so we have to check this in OnCollision Method.
+		if (hit.collider.CompareTag ("ThrowableRock")) 
+		{ //Rocks are rigidBody, so we have to check this in OnCollision Method.
 			if(hit.rigidbody.velocity.sqrMagnitude > 10 * 10)
 			gotHit (2);		
 		}
@@ -157,12 +161,13 @@ public class BasicEnemy : MonoBehaviour {
 
 	void gotHit (float damageAmount) //Managing all the damage the enemy is taking. Ouch.
 	{
-		if (canGetHit) {
-						currentHealthPoint -= damageAmount;
-						renderer.material.color = Color.white;
+		if (canGetHit) 
+		{
+			currentHealthPoint -= damageAmount;
+			renderer.material.color = Color.white;
 
-						StartCoroutine (temporaryIntangible ());
-				}
+			StartCoroutine (temporaryIntangible ());
+		}
 	}
 
 	void Die () //DIE MOTHERFUCKER DIE
@@ -172,13 +177,13 @@ public class BasicEnemy : MonoBehaviour {
 
 	IEnumerator temporaryIntangible() //Right after being hit, the enemy is stunned and Intangible. Consider this as a small recovery time for the enemy.
 	{
-		Physics.IgnoreCollision(this.collider, player.collider, true);
+		gameObject.layer = 17;
 		canGetHit = false; //This prevents the ennemy to get hurt twice with a single attack and deactivate all of its NavMesh agent's behaviours.
 		Jump (true);
 
 		yield return new WaitForSeconds(recoveryTime);
 
 		canGetHit = true;
-		Physics.IgnoreCollision(this.collider, player.collider, false);
+		gameObject.layer = 10;
 	}
 }

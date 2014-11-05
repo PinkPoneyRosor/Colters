@@ -24,7 +24,7 @@ public class GUImainBehaviour : MonoBehaviour {
 	void Update () 
 	{
 		#region Show crosshair in aim mode
-		if (!mainCameraScript.birdsEyeActivated && mainCameraScript.aimingMode) 
+		if (mainCameraScript.aimingMode) 
 			crossHairPic.enabled = true;
 		else
 			crossHairPic.enabled = false;

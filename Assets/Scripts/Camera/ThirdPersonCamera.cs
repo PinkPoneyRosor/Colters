@@ -16,7 +16,9 @@ public class ThirdPersonCamera : MonoBehaviour {
 	private GameObject player;
 	private PlayerController playerController;
 	private bool ManualMode = false;
-	private BirdsEyeCam BirdsEyeScript;
+	public GameObject soul;
+	[HideInInspector]
+	public bool soulMode = false;
 	#endregion
 
 	#region position and orientation
@@ -45,8 +47,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	private bool resetManualModeValues = false;
 
 	[HideInInspector]
-	public bool birdsEyeActivated;
-	[HideInInspector]
 	public bool aimingMode = false;
 	[HideInInspector]
 	public bool resetCameraPosition = false;
@@ -58,9 +58,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	{
 		player = GameObject.FindWithTag ("Player");
 		playerController = player.GetComponent<PlayerController> ();
-		camTarget = player.transform;
-
-		BirdsEyeScript = this.GetComponent<BirdsEyeCam> ();
 	}
 
 	void Update()
@@ -69,13 +66,13 @@ public class ThirdPersonCamera : MonoBehaviour {
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
-		if (!birdsEyeActivated) //If we're not in bird's eye, let's notify the birdseye script.
-		{
-			BirdsEyeScript.enabled = false;
-			BirdsEyeScript.followBody = false;
-
+		if (!soulMode)
+			camTarget = player.transform;
+		else
+			camTarget = GameObject.Find ("Soul").transform;
+	
 			#region Aim Mode Trigger
-			if (Input.GetAxisRaw ("LT") > 0) 
+		if (Input.GetAxisRaw ("LT") > 0 && !playerController.soulMode) 
 			{
 				if(mustResetAimAngle)
 					this.transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,transform.eulerAngles.z);
@@ -91,23 +88,18 @@ public class ThirdPersonCamera : MonoBehaviour {
 				mustResetAimAngle = true;
 			}
 			#endregion
-
-		}
-		else
-		BirdsEyeScript.enabled = true;
 	}
 
 	//LateUpdate is called right after all of the update functions.
 	void LateUpdate()
 	{
-		if (!birdsEyeActivated) 
+		if (camTarget != null) 
 		{
 			if (!aimingMode) //The aiming mode can only be activated while in normal camera mode.
-				DefaultCamera ();
-			else 
-			{
-			aimingCameraMode();
-			ManualMode = false; //This is to ensure that next time we get back to Default Camera Mode, the behaviour will be in automatic mode.
+					DefaultCamera ();
+			else {
+					aimingCameraMode ();
+					ManualMode = false; //This is to ensure that next time we get back to Default Camera Mode, the behaviour will be in automatic mode.
 			}
 		}
 	}

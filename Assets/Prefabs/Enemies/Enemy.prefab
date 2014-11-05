@@ -121,6 +121,7 @@ MonoBehaviour:
   gravity: 20
   recoveryTime: 3
   CurrentMode: 0
+  soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
