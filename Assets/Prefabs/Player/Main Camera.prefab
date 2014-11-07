@@ -93,11 +93,12 @@ MonoBehaviour:
   RotationSmooth: 6
   camTarget: {fileID: 0}
   soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
+  soulMode: 0
+  dashingSoul: 0
   cameraHeight: 1
   rotationOffset: {x: 0, y: 0, z: 0, w: 1}
   distance: 4
-  xSpeed: 250
-  ySpeed: 10
+  manualVerticalSpeed: 10
   yMinLimit: -2
   yMaxLimit: 5
   aimOffset: {x: .5, y: .699999988, z: -.5}
@@ -108,6 +109,7 @@ MonoBehaviour:
     m_Bits: 32768
   aimingMode: 0
   resetCameraPosition: 0
+  justStartedDashing: 0
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

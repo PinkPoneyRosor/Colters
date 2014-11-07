@@ -60,14 +60,19 @@ public class SoulMode : MonoBehaviour {
 		if (Input.GetButtonDown ("Action") && !isDashing) 
 		{
 			isDashing = true;
+			mainCameraScript.justStartedDashing = true;
 			dashTarget = transform.position + transform.forward * dashingDistance;
 		}
 
-		if (isDashing)
-			Dash();
+		if (isDashing) 
+		{
+			Dash ();
+			mainCameraScript.dashingSoul = true;
+		}
 		else
 		{
 			move ();
+			mainCameraScript.dashingSoul = false;
 		}
 	}
 

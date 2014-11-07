@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour {
 	float vertical = 0.0f;
 	float floatDir = 0f;
 	float speed = 3f;
-	float gravity = 20;
-	float heightOfJump = 8;
+	public float gravity = 20;
+	public float heightOfJump = 8;
 	Vector3 moveDirection = Vector3.zero;
 	Vector3 faceDirection = Vector3.zero;
 	Vector3 direction = Vector3.zero;
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour {
 			moveDirection.y -= gravity * Time.deltaTime;
 
 		controller.Move (moveDirection * Time.deltaTime);
-		transform.Rotate (new Vector3 (0, Input.GetAxisRaw ("LookH")*50, 0) * mainCameraScript.lookSpeed * Time.deltaTime);
+		transform.Rotate (new Vector3 (0, Input.GetAxisRaw ("LookH")*50, 0) * mainCameraScript.aimLookSpeed * Time.deltaTime);
 	}
 
 	void ResettingCameraControls() //If the player is still moving when he's resetting the camera, the character's move are different, else there's a risk to see undesired behaviours.

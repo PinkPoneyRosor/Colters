@@ -31,7 +31,6 @@ public class BasicEnemy : MonoBehaviour {
 	CharacterController controller;
 	Transform sightSphere;
 	NavMeshAgent navMeshAgent;
-	public LayerMask ignoredLayersWhenHit;
 	#endregion
 
 	#region External scripts and objects
