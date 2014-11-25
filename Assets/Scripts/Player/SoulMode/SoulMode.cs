@@ -61,14 +61,14 @@ public class SoulMode : MonoBehaviour {
 		if (Input.GetButtonDown ("Action") && !isDashing) 
 		{
 			isDashing = true;
-			mainCameraScript.justStartedDashing = true;
+			mainCameraScript.justTriggeredDashing = true;
 			dashTarget = transform.position + transform.forward * dashingDistance;
 		}
 
 		if (isDashing) 
 		{
-			Dash ();
 			mainCameraScript.dashingSoul = true;
+			Dash ();
 		}
 		else
 		{
@@ -88,10 +88,10 @@ public class SoulMode : MonoBehaviour {
 
 			float distance = (transform.position - dashTarget).sqrMagnitude;
 
-			if (distance < .5f * 2)
+			if (distance < .5f * 2) //If the soul got to its target point, let's leave dash mode.
 			{
-					isDashing = false;
-					dashNow = false;
+				dashNow = false;
+				isDashing = false;
 			}
 		}
 	}

@@ -61,7 +61,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	#region testing
 	float tParam = 0;
 	[HideInInspector]
-	public bool justStartedDashing = false;
+	public bool justTriggeredDashing = false;
 	Vector3 camDirFromTarget = Vector3.zero;
 	#endregion
 
@@ -78,7 +78,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	}
 
-	void Update()
+	void LateUpdate()
 	{
 
 		//Setting this object's local delta time...
@@ -94,12 +94,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 		{
 			currentRotationSmooth = 100;
 			currentTranslationSmooth = 100;
-			camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, 110, localDeltaTime * 50);
-
-			if(camera.fieldOfView >= 105)
-				GameObject.Find ("Soul").GetComponent<SoulMode>().dashNow = true;
-
-
+			//camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, 110, localDeltaTime * 50);
+			//OKAY MOFO, PICK UP WHERE YOU LEFT OK ?
 		} 
 		else 
 		{
@@ -144,12 +140,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 				cameraWhileDashing();
 			}
 		}
-
-	}
-
-	//LateUpdate is called right after all of the update functions.
-	void LateUpdate()
-	{
 
 	}
 
@@ -268,10 +258,12 @@ public class ThirdPersonCamera : MonoBehaviour {
 	//While dashing, the camera must behave differently, or else, the camera movements will kinda suck...
 	void cameraWhileDashing ()
 	{
-		if (justStartedDashing) 
+		
+		if (justTriggeredDashing) 
 		{
 			camDirFromTarget = transform.position - camTarget.position;
-			justStartedDashing = false;
+			justTriggeredDashing = false;
+			GameObject.Find ("Soul").GetComponent<SoulMode>().dashNow = true; //Actually, the soul won't dash until we took the distance between the camera and the soul.
 		}
 		
 		this.transform.position = camTarget.position + camDirFromTarget;
