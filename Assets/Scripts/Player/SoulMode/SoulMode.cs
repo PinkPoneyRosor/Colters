@@ -14,28 +14,34 @@ public class SoulMode : MonoBehaviour {
 	Vector3 faceDirection = Vector3.zero;
 	float floatDir = 0f;
 	public float maxSpeed = 5;
+	Vector3 dashTarget;
+	float dashingDistance = 10;
+	public float heightOfJump = 8;
+	public float gravity = 20;
 	#endregion
 
 	#region external scripts and object
 	public GameObject ghostPrefab;
 	CharacterController controller;
 	GameObject player;
+	PlayerController playerScript;
 	ThirdPersonCamera mainCameraScript;
-	BirdsEyeCam birdsEyeScript;
 	#endregion
 
 	#region other behaviour variables
 	int currentGhostNumber = 0;
+	[HideInInspector]
+	public bool isDashing = false;
+	public bool dashNow = false;
 	#endregion
 	
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		this.name = "Soul";
 		mainCameraScript = Camera.main.GetComponent<ThirdPersonCamera> ();
-		birdsEyeScript = Camera.main.GetComponent<BirdsEyeCam> ();
-		mainCameraScript.birdsEyeActivated = true;
-		birdsEyeScript.followBody = false;
 		player = GameObject.FindWithTag ("Player");
+		playerScript = player.GetComponent<PlayerController> ();
 		controller = this.GetComponent<CharacterController> ();
 	}
 	
@@ -49,55 +55,44 @@ public class SoulMode : MonoBehaviour {
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
 		//Resetting back to body mode when pushing swith button...
-		if (Input.GetButtonDown ("SwitchMode")) 
-		{
-			player.GetComponent<ghostFollow>().enabled = true;
-			player.GetComponent<ghostFollow>().justGotActivated = true;
-			birdsEyeScript.followBody = true;
-			currentGhostNumber = 0;
+		if (Input.GetButtonDown ("SwitchMode"))
+			revertBack();
 
-			Destroy (this.gameObject);
+		if (Input.GetButtonDown ("Action") && !isDashing) 
+		{
+			isDashing = true;
+			mainCameraScript.justStartedDashing = true;
+			dashTarget = transform.position + transform.forward * dashingDistance;
 		}
 
-		if(Input.GetButtonDown("Action"))
-			placeGhost();
-
-		//The rest of the update function is for the controls, which are exactly the same as in body mode.
-		#region Get Axises
-		//Get input from the main axis (Keyboard and stick)
-		horizontal = Input.GetAxisRaw ("Horizontal");
-		vertical = Input.GetAxisRaw ("Vertical");
-		#endregion
-
-		//This method will translate axis input into world coordinates, according to the camera's point of view.
-		stickToWorldSpace(transform, mainCameraScript.transform, ref direction, ref floatDir, ref speed, false);
-
-		Quaternion target = Quaternion.Euler(0, floatDir, 0);
-
-		tempMoveDir = target * Vector3.forward * speed;
-		tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed);
-
-		moveDirection.x = tempMoveDir.x;
-		moveDirection.z = tempMoveDir.z;
-
-		controller.Move(moveDirection * localDeltaTime);
-		
-		faceDirection = transform.position + moveDirection;
-		faceDirection.y = transform.position.y;
-		
-		transform.LookAt (faceDirection);
+		if (isDashing) 
+		{
+			Dash ();
+			mainCameraScript.dashingSoul = true;
+		}
+		else
+		{
+			move ();
+			mainCameraScript.dashingSoul = false;
+		}
 	}
 
-	//This will place a ghost right under the soul cursor.
-	//We also check if the environment allows us to place a ghost that won't glitch the game's behaviour.
-	void placeGhost()
+	//Toot toot Sonic Warrior, deeep in space and time. Toot toot Sonic Warrior, foreeever in your mind.
+	//Nothing can surviiiive the wiiiiill to stay aliiive, cause if you tryyyyyy,
+	//You can do anythiiiiing!
+	void Dash()
 	{
-		RaycastHit pointHit;
-		if (Physics.Raycast (transform.position, -transform.up,out pointHit, 50)) 
+		if (dashNow) 
 		{
-			GameObject placedGhost = Instantiate (ghostPrefab, pointHit.point + new Vector3(0,1,0), this.transform.rotation) as GameObject;
-			placedGhost.name = "actionGhost_"+currentGhostNumber;
-			currentGhostNumber++;
+			transform.position = Vector3.Lerp (transform.position, dashTarget, 10 * localDeltaTime);
+
+			float distance = (transform.position - dashTarget).sqrMagnitude;
+
+			if (distance < .5f * 2)
+			{
+					isDashing = false;
+					dashNow = false;
+			}
 		}
 	}
 
@@ -131,6 +126,50 @@ public class SoulMode : MonoBehaviour {
 		
 		//DirectionOut will be useful to give the direction where the character have to go to the animator.
 		floatDirOut = angleRootToMove;
+	}
+
+	void move ()
+	{
+		//The rest of the update function is for the controls, which are exactly the same as in body mode.
+		#region Get Axises
+		//Get input from the main axis (Keyboard and stick)
+		horizontal = Input.GetAxisRaw ("Horizontal");
+		vertical = Input.GetAxisRaw ("Vertical");
+		#endregion
+		
+		//This method will translate axis input into world coordinates, according to the camera's point of view.
+		stickToWorldSpace (transform, mainCameraScript.transform, ref direction, ref floatDir, ref speed, false);
+		
+		Quaternion target = Quaternion.Euler (0, floatDir, 0);
+		
+		tempMoveDir = target * Vector3.forward * speed;
+		tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed);
+		
+		moveDirection.x = tempMoveDir.x;
+		moveDirection.z = tempMoveDir.z;
+		
+		if (Input.GetButton ("Jump") && controller.isGrounded)
+			moveDirection.y = this.heightOfJump;
+		
+		if(!controller.isGrounded)
+			moveDirection.y -= gravity * localDeltaTime;
+		
+		controller.Move (moveDirection * localDeltaTime);
+		
+		faceDirection = transform.position + moveDirection;
+		faceDirection.y = transform.position.y;
+		
+		transform.LookAt (faceDirection);
+	}
+
+	void revertBack () //Revert Back to normal mode.
+	{
+		player.transform.position = transform.position;
+		Time.timeScale = 1;
+		Time.fixedDeltaTime = .02f;
+		playerScript.soulMode = false;
+		mainCameraScript.soulMode = false;
+		Destroy (this.gameObject);
 	}
 
 }

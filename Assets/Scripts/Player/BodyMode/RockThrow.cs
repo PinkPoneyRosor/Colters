@@ -73,7 +73,7 @@ public class RockThrow : MonoBehaviour {
 
 								rock.rigidbody.constantForce.force = throwDirection * rockScript.throwForce;
 							}
-							else //But if it's an enemy, let's do a homing attack
+							else if (HitObject.transform.GetComponent<BasicEnemy>().canGetHit) //But if it's an enemy and that it's not knocked out, let's do a homing attack
 							{
 								rockScript.aimHoming = HitObject.transform;
 								rockScript.homingAttackBool = true;

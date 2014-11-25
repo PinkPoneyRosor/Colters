@@ -1033,7 +1033,6 @@ GameObject:
   - 114: {fileID: 11400000}
   - 143: {fileID: 14300000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
   - 135: {fileID: 13500000}
   m_Layer: 12
   m_Name: Player
@@ -1891,7 +1890,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100130}
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .968629062, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 14.9631634, y: 14.9631634, z: 14.9631634}
   m_Children: []
   m_Father: {fileID: 400136}
@@ -1986,21 +1985,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294901759
   selectedRockCount: 0
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100136}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b21257d6b59de941a70f12899b635df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  justGotActivated: 0
-  dashDamage: 1
-  speed: 7
-  cameraInPlace: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

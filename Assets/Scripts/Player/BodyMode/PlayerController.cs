@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour {
 	float vertical = 0.0f;
 	float floatDir = 0f;
 	float speed = 3f;
-	float gravity = 20;
+	public float gravity = 20;
+	public float heightOfJump = 8;
 	Vector3 moveDirection = Vector3.zero;
 	Vector3 faceDirection = Vector3.zero;
 	Vector3 direction = Vector3.zero;
@@ -73,6 +74,9 @@ public class PlayerController : MonoBehaviour {
 		tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed); 
 		moveDirection.x = tempMoveDir.x;
 		moveDirection.z = tempMoveDir.z;
+
+		if (Input.GetButton ("Jump") && controller.isGrounded)
+			moveDirection.y = this.heightOfJump;
 		
 		#region apply movements & gravity
 		//This final section will appy movements and gravity.
@@ -95,18 +99,20 @@ public class PlayerController : MonoBehaviour {
 		moveDirection.x = tempMoveDir.x;
 		moveDirection.z = tempMoveDir.z;
 
+		if (Input.GetButton ("Jump") && controller.isGrounded)
+						moveDirection.y = this.heightOfJump;
+
 		if(!controller.isGrounded)
 			moveDirection.y -= gravity * Time.deltaTime;
 
 		controller.Move (moveDirection * Time.deltaTime);
-		transform.Rotate (new Vector3 (0, Input.GetAxisRaw ("LookH")*50, 0) * mainCameraScript.lookSpeed * Time.deltaTime);
+		transform.Rotate (new Vector3 (0, Input.GetAxisRaw ("LookH")*50, 0) * mainCameraScript.aimLookSpeed * Time.deltaTime);
 	}
 
 	void ResettingCameraControls() //If the player is still moving when he's resetting the camera, the character's move are different, else there's a risk to see undesired behaviours.
 	{
 		if (Input.GetAxisRaw ("Horizontal") != 0 || Input.GetAxisRaw ("Vertical") != 0) 
 		{
-			Debug.Log ("Everyday I'm resettin'");
 			continueResetControls = true;
 
 			Vector3 stickDirection = new Vector3 (horizontal, 0, vertical);
@@ -164,11 +170,12 @@ public class PlayerController : MonoBehaviour {
 	void SwitchToSoulMode()
 	{
 		//Offset for spawn point based on the player's position.
-		Vector3 soulSpawnOffset = new Vector3(0,2,-2);
+		Vector3 soulSpawnOffset = new Vector3(0,.5f,0);
 		Vector3 soulSpawnPoint = transform.position + soulSpawnOffset;
 		Transform spawnedSoul;
 		
 		spawnedSoul = Instantiate(Soul, soulSpawnPoint , transform.rotation) as Transform;
 		soulMode = true;
+		mainCameraScript.soulMode = true;
 	}
 }

@@ -7,6 +7,9 @@ public class ThirdPersonCamera : MonoBehaviour {
 	#region smoothing
 	public float TranslationSmooth;	//Camera translation movement smoothing multiplier
 	public float RotationSmooth = 6.0f;	//Camera rotation movement smoothing multiplier
+
+	private float currentTranslationSmooth;
+	private float currentRotationSmooth;
 	#endregion
 
 	#region External scripts & gameObjects
@@ -16,19 +19,23 @@ public class ThirdPersonCamera : MonoBehaviour {
 	private GameObject player;
 	private PlayerController playerController;
 	private bool ManualMode = false;
-	private BirdsEyeCam BirdsEyeScript;
+	public GameObject soul;
+	[HideInInspector]
+	public bool soulMode = false;
+	[HideInInspector]
+	public bool dashingSoul = false;
 	#endregion
 
 	#region position and orientation
 	public float cameraHeight = 6;
 	public Quaternion rotationOffset = Quaternion.identity;
 	public float distance = 10.0f; //Set the distance between the camera and the player
-	public float xSpeed = 250.0f;
-	public float ySpeed = 120.0f;
-	public float yMinLimit = -20f;
-	public float yMaxLimit = 80f;
+	private float manualHorizontalSpeed = 250.0f;
+	public float manualCameraSpeed = 10;
+	public float manualCameraHeightMinLimit = -20f;
+	public float manualCameraHeightMaxLimit = 80f;
 	public Vector3 aimOffset;
-	public float lookSpeed = 5;
+	public float aimLookSpeed = 5;
 
 	private Vector3 setPosition = Vector3.zero;
 	private float x = 0.0f;
@@ -38,18 +45,24 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	#region Misc. Variables
 	public bool invertedVerticalAxis;
-	public LayerMask CompensateLayer;
+	public bool aimInvertedVerticalAxis;
+	LayerMask CompensateLayer;
 
 	private float localDeltaTime;
 	private bool mustResetAimAngle = true;
 	private bool resetManualModeValues = false;
 
 	[HideInInspector]
-	public bool birdsEyeActivated;
-	[HideInInspector]
 	public bool aimingMode = false;
 	[HideInInspector]
 	public bool resetCameraPosition = false;
+	#endregion
+
+	#region testing
+	float tParam = 0;
+	[HideInInspector]
+	public bool justStartedDashing = false;
+	Vector3 camDirFromTarget = Vector3.zero;
 	#endregion
 
 #endregion
@@ -58,9 +71,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 	{
 		player = GameObject.FindWithTag ("Player");
 		playerController = player.GetComponent<PlayerController> ();
-		camTarget = player.transform;
 
-		BirdsEyeScript = this.GetComponent<BirdsEyeCam> ();
+		currentRotationSmooth = RotationSmooth;
+		currentTranslationSmooth = TranslationSmooth;
+		CompensateLayer = LayerMask.GetMask("CameraCollider");
+
 	}
 
 	void Update()
@@ -69,13 +84,34 @@ public class ThirdPersonCamera : MonoBehaviour {
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
-		if (!birdsEyeActivated) //If we're not in bird's eye, let's notify the birdseye script.
-		{
-			BirdsEyeScript.enabled = false;
-			BirdsEyeScript.followBody = false;
+		if (!soulMode)
+			camTarget = player.transform;
+		else
+			camTarget = GameObject.Find ("Soul").transform;
 
+		#region smoothing according to player's actions
+		if (soulMode && dashingSoul) 
+		{
+			currentRotationSmooth = 100;
+			currentTranslationSmooth = 100;
+			camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, 110, localDeltaTime * 50);
+
+			if(camera.fieldOfView >= 105)
+				GameObject.Find ("Soul").GetComponent<SoulMode>().dashNow = true;
+
+
+		} 
+		else 
+		{
+			currentRotationSmooth = RotationSmooth;
+			currentTranslationSmooth = TranslationSmooth;
+
+			camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, 60, localDeltaTime * 500);
+		}
+		#endregion
+	
 			#region Aim Mode Trigger
-			if (Input.GetAxisRaw ("LT") > 0) 
+		if (Input.GetAxisRaw ("LT") > 0 && !playerController.soulMode) 
 			{
 				if(mustResetAimAngle)
 					this.transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,transform.eulerAngles.z);
@@ -92,24 +128,29 @@ public class ThirdPersonCamera : MonoBehaviour {
 			}
 			#endregion
 
+		if (camTarget != null) 
+		{
+			if (!aimingMode && !dashingSoul) //The aiming mode can only be activated while in normal camera mode.
+			{
+				DefaultCamera ();
+			}
+			else if (aimingMode)
+			{
+				aimingCameraMode ();
+				ManualMode = false; //This is to ensure that next time we get back to Default Camera Mode, the behaviour will be in automatic mode.
+			} 
+			else if (dashingSoul)
+			{
+				cameraWhileDashing();
+			}
 		}
-		else
-		BirdsEyeScript.enabled = true;
+
 	}
 
 	//LateUpdate is called right after all of the update functions.
 	void LateUpdate()
 	{
-		if (!birdsEyeActivated) 
-		{
-			if (!aimingMode) //The aiming mode can only be activated while in normal camera mode.
-				DefaultCamera ();
-			else 
-			{
-			aimingCameraMode();
-			ManualMode = false; //This is to ensure that next time we get back to Default Camera Mode, the behaviour will be in automatic mode.
-			}
-		}
+
 	}
 
 	//Default camera mode
@@ -127,7 +168,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		#region Input for the second stick's manual camera controls.
 		if (ManualMode) 
 		{
-			RotationSmooth = 60;
+			currentRotationSmooth = 60;
 
 			if (resetManualModeValues)
 			{
@@ -135,21 +176,21 @@ public class ThirdPersonCamera : MonoBehaviour {
 				y = transform.position.y - camTarget.position.y;
 			}
 
-			x += Input.GetAxis ("LookH") * xSpeed * 0.02f;
+				x += Input.GetAxis ("LookH") * (manualCameraSpeed * 25) * 0.02f;
 
 			if (!invertedVerticalAxis)
-				y -= Input.GetAxis ("LookV") * ySpeed * 0.02f;
+				y -= Input.GetAxis ("LookV") * manualCameraSpeed * 0.02f;
 			else
-				y += Input.GetAxis ("LookV") * ySpeed * 0.02f;
+				y += Input.GetAxis ("LookV") * manualCameraSpeed * 0.02f;
 			
-			y = Mathf.Clamp (y, camTarget.transform.position.y + yMinLimit, camTarget.transform.position.y + yMaxLimit); //The vertical angle is clamped to the camera getting too high or too low.
+			y = Mathf.Clamp (y, camTarget.transform.position.y + manualCameraHeightMinLimit, camTarget.transform.position.y + manualCameraHeightMaxLimit); //The vertical angle is clamped to the camera getting too high or too low.
 			Quaternion rotationAroundTarget = Quaternion.Euler (0, x, 0f);
 			setPosition = rotationAroundTarget * new Vector3 (0.0f, y, -distance) + camTarget.position;
 		}
 		else
 		#endregion 
 		{ 
-			RotationSmooth = 6;
+			currentRotationSmooth = 6;
 
 			//From here, the camera is not in manual mode, so we make sure the camera will position itself automatically.
 			resetManualModeValues = true;
@@ -191,14 +232,14 @@ public class ThirdPersonCamera : MonoBehaviour {
 		}
 		#region Getting camera to target position
 		CompensateForWalls (camTarget.localPosition, ref setPosition);
-		transform.position = Vector3.Lerp (transform.position, setPosition, localDeltaTime * TranslationSmooth);
+		transform.position = Vector3.Lerp (transform.position, setPosition, localDeltaTime * currentTranslationSmooth);
 		//At this point, the camera is at the right place.
 		#endregion
 			
 		#region look at camera target
 		Quaternion selfRotation = Quaternion.LookRotation (camTarget.position - transform.position);
 		selfRotation *= rotationOffset;
-		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * RotationSmooth); //selfRotation;
+		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * currentRotationSmooth); //selfRotation;
 		//At this point, the camera is at the right place AND is looking at the right point.
 		#endregion
 	}
@@ -216,8 +257,25 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 		//When aiming, the camera must look in the same exact vertical direction than the player model.
 		transform.eulerAngles = currentCamTargetRotation; //Change this to set it to a neutral angle when just entered aiming mode
-		transform.Rotate  (new Vector3 (Input.GetAxis ("LookV")*50, 0,0) * lookSpeed * Time.deltaTime);
+
+		if(!aimInvertedVerticalAxis)
+			transform.Rotate  (new Vector3 (Input.GetAxis ("LookV")*50, 0,0) * aimLookSpeed * Time.deltaTime);
+		else
+			transform.Rotate  (new Vector3 (Input.GetAxis ("LookV")*-50, 0,0) * aimLookSpeed * Time.deltaTime);
 		#endregion
+	}
+
+	//While dashing, the camera must behave differently, or else, the camera movements will kinda suck...
+	void cameraWhileDashing ()
+	{
+		if (justStartedDashing) 
+		{
+			camDirFromTarget = transform.position - camTarget.position;
+			justStartedDashing = false;
+		}
+		
+		this.transform.position = camTarget.position + camDirFromTarget;
+		//transform.position = Vector3.Lerp (transform.position, camTarget.position + camDirFromTarget, localDeltaTime * 10);
 	}
 
 	//This method can clamp different angles.
