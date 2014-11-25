@@ -94,7 +94,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 		{
 			currentRotationSmooth = 100;
 			currentTranslationSmooth = 100;
-			camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, 110, localDeltaTime * 500);
+			camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, 110, localDeltaTime * 50);
+
+			if(camera.fieldOfView >= 105)
+				GameObject.Find ("Soul").GetComponent<SoulMode>().dashNow = true;
+
 
 		} 
 		else 

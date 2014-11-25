@@ -21,7 +21,8 @@ public class BasicEnemy : MonoBehaviour {
 	Vector3 newEnGardePosition;
 	Vector3 moveDirection = Vector3.zero;
 	float randomizeTimer = 0f;
-	bool canGetHit = true;
+	[HideInInspector]
+	public bool canGetHit = true;
 	bool justJumped = false;
 	#endregion
 

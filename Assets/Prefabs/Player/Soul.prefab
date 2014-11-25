@@ -1950,6 +1950,7 @@ MonoBehaviour:
   gravity: 20
   ghostPrefab: {fileID: 100000, guid: c94ae3272a3d8da41a5d8edda0437a8b, type: 2}
   isDashing: 0
+  dashNow: 0
 --- !u!137 &13700002
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1962,7 +1963,7 @@ SkinnedMeshRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 416d9f2806a4e844d81b718085e7a6d2, type: 2}
+  - {fileID: 2100000, guid: de632db7e805f6940bf199f2ff4de9a9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
