@@ -32,7 +32,6 @@ public class SoulMode : MonoBehaviour {
 	int currentGhostNumber = 0;
 	[HideInInspector]
 	public bool isDashing = false;
-	public bool dashNow = false;
 	#endregion
 	
 	// Use this for initialization
@@ -60,8 +59,9 @@ public class SoulMode : MonoBehaviour {
 
 		if (Input.GetButtonDown ("Action") && !isDashing) 
 		{
+			mainCameraScript.camDirFromTarget = Camera.main.transform.position - this.transform.position; 
 			isDashing = true;
-			mainCameraScript.justTriggeredDashing = true;
+
 			dashTarget = transform.position + transform.forward * dashingDistance;
 		}
 
@@ -82,18 +82,14 @@ public class SoulMode : MonoBehaviour {
 	//You can do anythiiiiing!
 	void Dash()
 	{
-		if (dashNow) 
-		{
 			transform.position = Vector3.Lerp (transform.position, dashTarget, 10 * localDeltaTime);
 
 			float distance = (transform.position - dashTarget).sqrMagnitude;
 
 			if (distance < .5f * 2) //If the soul got to its target point, let's leave dash mode.
 			{
-				dashNow = false;
 				isDashing = false;
 			}
-		}
 	}
 
 	public void stickToWorldSpace(Transform root, Transform camera, ref Vector3 directionOut, ref float floatDirOut, ref float speedOut, bool outForAnim)

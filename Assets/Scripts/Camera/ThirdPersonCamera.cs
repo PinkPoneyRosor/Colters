@@ -61,8 +61,10 @@ public class ThirdPersonCamera : MonoBehaviour {
 	#region testing
 	float tParam = 0;
 	[HideInInspector]
-	public bool justTriggeredDashing = false;
-	Vector3 camDirFromTarget = Vector3.zero;
+	public Vector3 camDirFromTarget = Vector3.zero;
+	float xAim;
+	public float AimMinVerticalAngle = 0;
+	public float AimMaxVerticalAngle = 0;
 	#endregion
 
 #endregion
@@ -89,19 +91,17 @@ public class ThirdPersonCamera : MonoBehaviour {
 		else
 			camTarget = GameObject.Find ("Soul").transform;
 
-		#region smoothing according to player's actions
+		#region smoothing & FOV according to player's actions
 		if (soulMode && dashingSoul) 
 		{
 			currentRotationSmooth = 100;
 			currentTranslationSmooth = 100;
-			//camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, 110, localDeltaTime * 50);
-			//OKAY MOFO, PICK UP WHERE YOU LEFT OK ?
+			camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, 110, localDeltaTime * 500);
 		} 
 		else 
 		{
 			currentRotationSmooth = RotationSmooth;
 			currentTranslationSmooth = TranslationSmooth;
-
 			camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, 60, localDeltaTime * 500);
 		}
 		#endregion
@@ -110,7 +110,10 @@ public class ThirdPersonCamera : MonoBehaviour {
 		if (Input.GetAxisRaw ("LT") > 0 && !playerController.soulMode) 
 			{
 				if(mustResetAimAngle)
+					{
+					xAim = 0;
 					this.transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,transform.eulerAngles.z);
+					}
 
 				mustResetAimAngle = false;
 				playerController.aimingMode = true;
@@ -217,7 +220,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 			}
 			#endregion
 
-			x = this.transform.eulerAngles.y;	//Setting y & x to the current camera roation values, so the manual mode can use this to start next time.
+			x = this.transform.eulerAngles.y;	//Setting y & x to the current camera rotation values, so the manual mode can use this to start next time.
 			y = this.transform.eulerAngles.x; 
 		}
 		#region Getting camera to target position
@@ -248,30 +251,31 @@ public class ThirdPersonCamera : MonoBehaviour {
 		//When aiming, the camera must look in the same exact vertical direction than the player model.
 		transform.eulerAngles = currentCamTargetRotation; //Change this to set it to a neutral angle when just entered aiming mode
 
-		if(!aimInvertedVerticalAxis)
-			transform.Rotate  (new Vector3 (Input.GetAxis ("LookV")*50, 0,0) * aimLookSpeed * Time.deltaTime);
+		xAim += Input.GetAxis ("LookV") * 50 * aimLookSpeed * Time.deltaTime;
+		xAim = ClampAngle(xAim, AimMinVerticalAngle, AimMaxVerticalAngle);
+
+
+		Quaternion rotation = Quaternion.Euler(xAim, currentCamTargetRotation.y, 0);
+
+		transform.rotation = rotation;
+
+		/*if(!aimInvertedVerticalAxis)
+			transform.Rotate  (new Vector3 (Input.GetAxis ("LookV") * 50, 0, 0) * aimLookSpeed * Time.deltaTime);
 		else
-			transform.Rotate  (new Vector3 (Input.GetAxis ("LookV")*-50, 0,0) * aimLookSpeed * Time.deltaTime);
+			transform.Rotate  (new Vector3 (Input.GetAxis ("LookV") * -50, 0,0) * aimLookSpeed * Time.deltaTime);
+
+		transform.eulerAngles = new Vector3 (ClampAngle(transform.eulerAngles.x, 5, 250), transform.eulerAngles.y, transform.eulerAngles.z);*/
 		#endregion
 	}
 
 	//While dashing, the camera must behave differently, or else, the camera movements will kinda suck...
 	void cameraWhileDashing ()
-	{
-		
-		if (justTriggeredDashing) 
-		{
-			camDirFromTarget = transform.position - camTarget.position;
-			justTriggeredDashing = false;
-			GameObject.Find ("Soul").GetComponent<SoulMode>().dashNow = true; //Actually, the soul won't dash until we took the distance between the camera and the soul.
-		}
-		
+	{	
 		this.transform.position = camTarget.position + camDirFromTarget;
-		//transform.position = Vector3.Lerp (transform.position, camTarget.position + camDirFromTarget, localDeltaTime * 10);
 	}
 
 	//This method can clamp different angles.
-	static float ClampAngle (float angle,float min,float max) {
+	static float ClampAngle (float angle, float min, float max) {
 		if (angle < -360)
 			angle += 360;
 		if (angle > 360)
