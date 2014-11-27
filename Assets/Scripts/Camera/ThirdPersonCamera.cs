@@ -110,10 +110,10 @@ public class ThirdPersonCamera : MonoBehaviour {
 		if (Input.GetAxisRaw ("LT") > 0 && !playerController.soulMode) 
 			{
 				if(mustResetAimAngle)
-					{
+				{
 					xAim = 0;
 					this.transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,transform.eulerAngles.z);
-					}
+				}
 
 				mustResetAimAngle = false;
 				playerController.aimingMode = true;
@@ -122,6 +122,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 			else 
 			{
 				playerController.aimingMode = false;
+				playerController.setAimMode = true;
 				aimingMode = false;
 				mustResetAimAngle = true;
 			}
@@ -240,32 +241,27 @@ public class ThirdPersonCamera : MonoBehaviour {
 	//This functions is enabled when the 3rd Person Camera switches to aiming mode.
 	void aimingCameraMode ()
 	{
-		//Those two lines make sure the camera get to the right place.
-		Vector3 setAimOffset = camTarget.transform.forward * aimOffset.z + camTarget.transform.up * aimOffset.y + camTarget.transform.right * aimOffset.x;
-		this.transform.position = Vector3.Lerp (transform.position, camTarget.position + setAimOffset, localDeltaTime * 60);
+		if ( ! playerController.setAimMode) 
+		{
+			//Those two lines make sure the camera get to the right place.
+			Vector3 setAimOffset = camTarget.transform.forward * aimOffset.z + camTarget.transform.up * aimOffset.y + camTarget.transform.right * aimOffset.x;
+			this.transform.position = Vector3.Lerp (transform.position, camTarget.position + setAimOffset, localDeltaTime * 60);
 
-		#region Manual aiming
-		Vector3 currentCamTargetRotation = this.transform.eulerAngles;
-		currentCamTargetRotation.y = camTarget.transform.eulerAngles.y;
+			#region Manual aiming
+			Vector3 currentCamTargetRotation = this.transform.eulerAngles;
+			currentCamTargetRotation.y = camTarget.transform.eulerAngles.y;
 
-		//When aiming, the camera must look in the same exact vertical direction than the player model.
-		transform.eulerAngles = currentCamTargetRotation; //Change this to set it to a neutral angle when just entered aiming mode
+			//When aiming, the camera must look in the same exact vertical direction than the player model.
+			transform.eulerAngles = currentCamTargetRotation;
 
-		xAim += Input.GetAxis ("LookV") * 50 * aimLookSpeed * Time.deltaTime;
-		xAim = ClampAngle(xAim, AimMinVerticalAngle, AimMaxVerticalAngle);
+			xAim += Input.GetAxis ("LookV") * 50 * aimLookSpeed * Time.deltaTime;
+			xAim = ClampAngle (xAim, AimMinVerticalAngle, AimMaxVerticalAngle);
 
+			Quaternion rotation = Quaternion.Euler (xAim, currentCamTargetRotation.y, 0);
 
-		Quaternion rotation = Quaternion.Euler(xAim, currentCamTargetRotation.y, 0);
-
-		transform.rotation = rotation;
-
-		/*if(!aimInvertedVerticalAxis)
-			transform.Rotate  (new Vector3 (Input.GetAxis ("LookV") * 50, 0, 0) * aimLookSpeed * Time.deltaTime);
-		else
-			transform.Rotate  (new Vector3 (Input.GetAxis ("LookV") * -50, 0,0) * aimLookSpeed * Time.deltaTime);
-
-		transform.eulerAngles = new Vector3 (ClampAngle(transform.eulerAngles.x, 5, 250), transform.eulerAngles.y, transform.eulerAngles.z);*/
-		#endregion
+			transform.rotation = rotation;
+			#endregion
+		}
 	}
 
 	//While dashing, the camera must behave differently, or else, the camera movements will kinda suck...

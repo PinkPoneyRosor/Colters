@@ -84,14 +84,19 @@ public class Rock : MonoBehaviour {
 	//With this method, we make sure that if the player throwed the rock toward an enemy, he can be almost sure he will hit it.
 	void homingAttack ()
 	{
-		Vector3 throwDir = aimHoming.position - this.transform.position;
-		throwDir.Normalize ();
+		if (aimHoming.GetComponent<BasicEnemy> ().canGetHit) 
+		{
+			Vector3 throwDir = aimHoming.position - this.transform.position;
+			throwDir.Normalize ();
 
-		isSelected = false;
+			isSelected = false;
 
-		this.rigidbody.constraints = RigidbodyConstraints.None;
+			this.rigidbody.constraints = RigidbodyConstraints.None;
 
-		constantForce.force = throwDir * throwForce;
+			constantForce.force = throwDir * throwForce;
+		} 
+		else
+			homingAttackBool = false;
 	}
 
 }

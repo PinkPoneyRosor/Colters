@@ -1057,6 +1057,7 @@ MonoBehaviour:
   Soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
   aimingMode: 0
   soulMode: 0
+  setAimMode: 1
 --- !u!114 &267335507
 MonoBehaviour:
   m_ObjectHideFlags: 0

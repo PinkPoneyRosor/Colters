@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour {
 	public bool soulMode = false;
 	private bool continueResetControls = false;
 
+	//EXPERIMENTAL
+	[HideInInspector]
+	public bool setAimMode = true;
+
 
 	// Use this for initialization
 	void Start () {
@@ -56,7 +60,9 @@ public class PlayerController : MonoBehaviour {
 			else if (!aimingMode) //Else, and if we're in normal camera mode
 				DefaultControls ();
 			else if (aimingMode) //Else, and if we're in aiming camera mode
+			{
 				AimingControls ();
+			}
 		}
 	}
 
@@ -95,6 +101,13 @@ public class PlayerController : MonoBehaviour {
 
 	void AimingControls () //When aiming, the controls are not the same.
 	{
+
+		if (setAimMode) 
+		{
+			this.transform.eulerAngles = new Vector3 (transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
+			setAimMode = false;
+		}
+
 		tempMoveDir = (transform.right * horizontal + transform.forward * vertical) * maxSpeed;
 		moveDirection.x = tempMoveDir.x;
 		moveDirection.z = tempMoveDir.z;
@@ -111,7 +124,7 @@ public class PlayerController : MonoBehaviour {
 
 	void ResettingCameraControls() //If the player is still moving when he's resetting the camera, the character's move are different, else there's a risk to see undesired behaviours.
 	{
-		if (Input.GetAxisRaw ("Horizontal") != 0 || Input.GetAxisRaw ("Vertical") != 0) 
+		if (Input.GetAxisRaw ("Horizontal") != 0 || Input.GetAxisRaw ("Vertical") <= 0) 
 		{
 			continueResetControls = true;
 
