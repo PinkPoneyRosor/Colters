@@ -47,16 +47,21 @@ public class TerrainCheck : MonoBehaviour {
 	
 	void Update()
 	{
-		if(coolingDown){
+		if(!coolingDown){
 		Vector3 p = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width/2, Screen.height/2, mainCamera.nearClipPlane));
 
-		if(Input.GetButtonDown ("RockSpawn")){
-				StartCoroutine(coolDown());
+		if(Input.GetButtonDown ("RockSpawn"))
+		{
+			Debug.Log ("Button Down");
+			StartCoroutine(coolDown());
 			RaycastHit hit = new RaycastHit();
 			Ray ray = new Ray(p, mainCamera.transform.forward);
+				Debug.Log(hit);
 
-			if (terrain.collider.Raycast(ray, out hit, Mathf.Infinity)) {
+			if (terrain.collider.Raycast(ray, out hit, Mathf.Infinity)) 
+			{
 				surfaceIndex = GetMainTexture( hit.point );
+				Debug.Log ("surface Index at hit point = "+surfaceIndex);
 			}
 
 			if(surfaceIndex == rockSpawnableSurface){
