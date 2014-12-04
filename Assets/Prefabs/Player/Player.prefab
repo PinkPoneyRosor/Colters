@@ -1037,6 +1037,7 @@ GameObject:
   - 81: {fileID: 8100000}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
+  - 114: {fileID: 11400008}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -2006,9 +2007,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733a6ebcf6009e849920795b1d6924ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 85c45cef79d6f324da4c2618eec48f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoulBarSpeedRate: .100000001
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2022,9 +2024,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   surfaceIndex: 0
   rockSpawnableSurface: 0
-  spawnableRock: {fileID: 100000, guid: af640e056ad49ed43bf71a8297e3d818, type: 2}
   maxSpawnableRocks: 3
   spawnOffset: {x: 0, y: .5, z: 0}
+  spawnableRock: {fileID: 100000, guid: 394163ad6e7cf1f459225ef6ea8c2402, type: 2}
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fae2bc17986894ba125b98b5654514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldRock: {fileID: 100000, guid: b370c37addb344442870cc8313b078b1, type: 2}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SoulMode : MonoBehaviour {
 
@@ -26,6 +27,8 @@ public class SoulMode : MonoBehaviour {
 	GameObject player;
 	PlayerController playerScript;
 	ThirdPersonCamera mainCameraScript;
+	GameObject soulBar;
+	Slider soulBarSlide;
 	#endregion
 
 	#region other behaviour variables
@@ -42,6 +45,9 @@ public class SoulMode : MonoBehaviour {
 		player = GameObject.FindWithTag ("Player");
 		playerScript = player.GetComponent<PlayerController> ();
 		controller = this.GetComponent<CharacterController> ();
+
+		soulBar = GameObject.Find ("SoulBar");
+		soulBarSlide = soulBar.GetComponent<Slider> ();
 	}
 	
 	// Update is called once per frame
@@ -53,8 +59,8 @@ public class SoulMode : MonoBehaviour {
 		//localDeltaTime allows the script to not be influenced by the time scale change.
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
-		//Resetting back to body mode when pushing swith button...
-		if (Input.GetButtonDown ("SwitchMode"))
+		//Resetting back to body mode when pushing swith button or Soul Bar depleted.
+		if (Input.GetButtonDown ("SwitchMode") || soulBarSlide.value <= 0)
 			revertBack();
 
 		if (Input.GetButtonDown ("Action") && !isDashing) 
