@@ -177,7 +177,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 			else
 				y += Input.GetAxis ("LookV") * manualCameraSpeed * 0.02f;
 			
-			y = Mathf.Clamp (y, camTarget.transform.position.y + manualCameraHeightMinLimit, camTarget.transform.position.y + manualCameraHeightMaxLimit); //The vertical angle is clamped to the camera getting too high or too low.
+			y = Mathf.Clamp (y, manualCameraHeightMinLimit, manualCameraHeightMaxLimit); //The vertical angle is clamped to the camera getting too high or too low.
 			Quaternion rotationAroundTarget = Quaternion.Euler (0, x, 0f);
 			setPosition = rotationAroundTarget * new Vector3 (0.0f, y, -distance) + camTarget.position;
 		}
