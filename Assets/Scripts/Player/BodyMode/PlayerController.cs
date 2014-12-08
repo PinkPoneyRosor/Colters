@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour {
 	[HideInInspector]
 	public bool setAimMode = true;
 
+	public GameObject EarthQuakeParticles;
+
 
 	// Use this for initialization
 	void Start () {
@@ -41,7 +43,9 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
+		Transform EarthQuakeParticlesInstance;
 
 		#region Get Axises
 		//Get input from the main axis (Keyboard and stick)
@@ -51,6 +55,9 @@ public class PlayerController : MonoBehaviour {
 
 		if(Input.GetButtonDown("SwitchMode") && !soulMode)
 			SwitchToSoulMode();
+
+		if(Input.GetButtonDown("EarthQuake") && !soulMode)
+			EarthQuakeParticlesInstance = Instantiate(EarthQuakeParticles, transform.position , Quaternion.Euler(90,0,0) ) as Transform;
 
 		//Make the controls adapted to the current camera mode.
 		if (!soulMode) 

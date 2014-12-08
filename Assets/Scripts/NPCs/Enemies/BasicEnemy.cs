@@ -176,6 +176,12 @@ public class BasicEnemy : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 
+	void OnParticleCollision(GameObject other)
+	{
+		if (other.CompareTag ("EarthQuake"))
+			gotHit (1);
+		}
+
 	IEnumerator temporaryIntangible() //Right after being hit, the enemy is stunned and Intangible. Consider this as a small recovery time for the enemy.
 	{
 		gameObject.layer = 17;
