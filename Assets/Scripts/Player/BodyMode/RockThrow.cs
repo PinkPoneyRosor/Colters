@@ -32,7 +32,7 @@ public class RockThrow : MonoBehaviour {
 			{
 				//First, we check with a sphereCast (in order to allow the player to be less precise) if the player is looking at a rock.
 				RaycastHit HitObject;
-				if(Physics.SphereCast(mainCamera.position, .5f, mainCamera.forward, out HitObject , Mathf.Infinity, RockLayer))
+				if(Physics.SphereCast(transform.position, .5f, mainCamera.forward, out HitObject , Mathf.Infinity, RockLayer))
 				{
 					Rock hitObjectScript;
 					hitObjectScript = HitObject.transform.GetComponent<Rock>();
@@ -44,7 +44,7 @@ public class RockThrow : MonoBehaviour {
 					}
 				}
 				//Then, if the player is looking at anything that is not a selectable rock...
-				else if(Physics.Raycast(mainCamera.position, mainCamera.forward, out HitObject , Mathf.Infinity, otherLayers))
+				else if(Physics.Raycast(transform.position, mainCamera.forward, out HitObject , Mathf.Infinity, otherLayers))
 				{
 					//While at least a rock is selected....
 					if(selectedRockCount > 0)
