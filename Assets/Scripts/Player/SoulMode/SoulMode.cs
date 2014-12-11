@@ -19,6 +19,9 @@ public class SoulMode : MonoBehaviour {
 	float dashingDistance = 10;
 	public float heightOfJump = 8;
 	public float gravity = 20;
+	bool canDash = true;
+	bool startDashCoolDown = false;
+	public float dashCoolDown = 2;
 	#endregion
 
 	#region external scripts and object
@@ -35,6 +38,7 @@ public class SoulMode : MonoBehaviour {
 	int currentGhostNumber = 0;
 	[HideInInspector]
 	public bool isDashing = false;
+	float timer = 0;
 	#endregion
 	
 	// Use this for initialization
@@ -63,7 +67,7 @@ public class SoulMode : MonoBehaviour {
 		if (Input.GetButtonDown ("SwitchMode") || soulBarSlide.value <= 0)
 			revertBack();
 
-		if (Input.GetButtonDown ("Action") && !isDashing) 
+		if (Input.GetButtonDown ("Action") && !isDashing && canDash) 
 		{
 			mainCameraScript.camDirFromTarget = Camera.main.transform.position - this.transform.position; 
 			isDashing = true;
@@ -81,6 +85,31 @@ public class SoulMode : MonoBehaviour {
 			move ();
 			mainCameraScript.dashingSoul = false;
 		}
+
+
+		if (startDashCoolDown && controller.isGrounded) 
+		{
+			Timer ();
+		}
+
+		if (timer >= dashCoolDown) 
+		{
+			startDashCoolDown = false;
+			timer = 0;
+			canDash = true;
+		}
+
+		if (canDash)
+			Debug.Log ("DASH");
+		else
+			Debug.Log ("NO DASH NO");
+
+		Debug.Log("Timer = " +timer);
+	}
+
+	void Timer ()
+	{
+		timer += localDeltaTime;
 	}
 
 	//Toot toot Sonic Warrior, deeep in space and time. Toot toot Sonic Warrior, foreeever in your mind.
@@ -95,6 +124,8 @@ public class SoulMode : MonoBehaviour {
 			if (distance < .5f * 2) //If the soul got to its target point, let's leave dash mode.
 			{
 				isDashing = false;
+				canDash = false;
+				startDashCoolDown = true;
 			}
 	}
 

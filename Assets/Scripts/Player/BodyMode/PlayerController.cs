@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour {
 	public GameObject Soul;
 
 	//Other variables
-	CharacterController controller;
+	[HideInInspector]
+	public CharacterController controller;
 	[HideInInspector]
 	public bool aimingMode = false;
 	[HideInInspector]

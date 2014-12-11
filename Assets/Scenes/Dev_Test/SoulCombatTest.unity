@@ -1004,6 +1004,7 @@ MonoBehaviour:
   heightOfJump: 8
   maxSpeed: 3
   Soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
+  controller: {fileID: 0}
   aimingMode: 0
   soulMode: 0
   setAimMode: 1
