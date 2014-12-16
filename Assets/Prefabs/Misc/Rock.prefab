@@ -9,12 +9,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
-  - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
+  - 64: {fileID: 6400000}
   - 54: {fileID: 5400000}
-  - 114: {fileID: 11400000}
-  - 208: {fileID: 20800000}
   - 75: {fileID: 7500000}
+  - 208: {fileID: 20800000}
+  - 114: {fileID: 11400000}
   m_Layer: 16
   m_Name: Rock
   m_TagString: ThrowableRock
@@ -28,9 +28,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.47749996, y: 4.28359985, z: 5.6717}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.81299996, y: 4.15999985, z: 19.9669991}
+  m_LocalScale: {x: .0225114096, y: .0225114245, z: .0225114245}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,7 +46,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 51b94cccb60546f479a4547b960a598a, type: 2}
+  - {fileID: 2100000, guid: 9e96a08ed60245f42a03176169a7ae4a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -60,7 +60,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: 93c37bf59b390a9408f1f2e7db753b39, type: 3}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -76,8 +76,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6500000
-BoxCollider:
+--- !u!64 &6400000
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -86,8 +86,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_SmoothSphereCollisions: 1
+  m_Convex: 1
+  m_Mesh: {fileID: 4300004, guid: 93c37bf59b390a9408f1f2e7db753b39, type: 3}
 --- !u!75 &7500000
 ConstantForce:
   m_ObjectHideFlags: 1
@@ -112,9 +113,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   getUp: 0
-  maxSpeed: 35
-  getUpForce: 500
-  getUpRotateForce: 10
+  maxSpeed: 50
+  getUpForce: 600
+  getUpRotateForce: 100
   throwForce: 1000
   homingAttackBool: 0
   aimHoming: {fileID: 0}
@@ -125,8 +126,8 @@ NavMeshObstacle:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Radius: .5
-  m_Height: 1
+  m_Radius: 27.2926254
+  m_Height: 48.3969002
   m_MoveThreshold: 0
   m_Carve: 0
 --- !u!1001 &100100000

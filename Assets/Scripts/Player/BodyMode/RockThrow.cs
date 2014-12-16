@@ -18,7 +18,7 @@ public class RockThrow : MonoBehaviour {
 	[HideInInspector]
 	public int selectedRockCount = 0;
 
-
+	public Vector3 currentHitPoint;
 	// Use this for initialization
 	void Start () {
 		mainCamera = Camera.main.transform;
@@ -44,8 +44,9 @@ public class RockThrow : MonoBehaviour {
 					}
 				}
 				//Then, if the player is looking at anything that is not a selectable rock...
-				else if(Physics.Raycast(transform.position, mainCamera.forward, out HitObject , Mathf.Infinity, otherLayers))
+				else if(Physics.Raycast(mainCamera.position, mainCamera.forward, out HitObject , Mathf.Infinity, otherLayers))
 				{
+				currentHitPoint = HitObject.point;
 					//While at least a rock is selected....
 					if(selectedRockCount > 0)
 					{
