@@ -12,6 +12,7 @@ public class TerrainCheck : MonoBehaviour {
 	public int rockSpawnableSurface = 0;
 	public int maxSpawnableRocks = 3;
 	public Vector3 spawnOffset = new Vector3(0,.5f,0);
+	public Material[] spawnableMaterials;
 
 	//External scripts and objects
 	GameObject spawnedRock;
@@ -30,13 +31,11 @@ public class TerrainCheck : MonoBehaviour {
 	int rockNumberToDestroy = 0;
 	int spawnedRockAmount = 0;
 	bool coolingDown = false;
+	bool aimingAtTerrain;
+	Vector3 slope = Vector3.zero;
 	
 void Start()
 {
-	terrain = Terrain.activeTerrain;
-	terrainData = terrain.terrainData;
-	terrainPos = terrain.transform.position;
-
 	mainCamera = Camera.main;
 	
 	player = GameObject.FindWithTag ("Player");
@@ -46,46 +45,112 @@ void Start()
 	
 void Update()
 {
-	if(!coolingDown)
+	if(!coolingDown) //If the spawn power isn't cooling down.
 	{
 		Vector3 p = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width/2, Screen.height/2, mainCamera.nearClipPlane));
 
 		if(Input.GetButtonDown ("RockSpawn"))
 		{
-			StartCoroutine(coolDown());
+			StartCoroutine(coolDown()); //Let's start the cooldown right now.
+
+			//Those two lines below set the rayCast coordinates used further in the script.
 			RaycastHit hit = new RaycastHit();
 			Ray ray = new Ray(p, mainCamera.transform.forward);
 
-			if (terrain.collider.Raycast(ray, out hit, Mathf.Infinity)) 
-				surfaceIndex = GetMainTexture( hit.point );
-
-			if(surfaceIndex == rockSpawnableSurface)
+			//Let's check if what we hit was a terrain
+			if(Physics.Raycast(ray, out hit, Mathf.Infinity))
 			{
-				float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
-				Vector3 rockSpawnPoint = new Vector3(transform.position.x, terrainHeight,transform.position.z);
-				
+				if(hit.collider.GetComponent<Terrain>()!= null)
+				{ //If it's really a terrain, let's gather all the datas we need for later
+					aimingAtTerrain = true;
+					terrain = hit.collider.GetComponent<Terrain>();
+					terrainData = terrain.terrainData;
+					terrainPos = terrain.transform.position;
+				}
+				else
+					aimingAtTerrain = false;
+			}
 
-				Vector3 slope = Vector3.zero;
+#region Terrain Check
+			if(aimingAtTerrain)
+			{
+				//Let's get the hit point's dominant texture.
 				if (terrain.collider.Raycast(ray, out hit, Mathf.Infinity)) 
+					surfaceIndex = GetMainTexture(hit.point );
+
+				//If the dominant texture's is the same as the rock spawnable surface...
+				if(surfaceIndex == rockSpawnableSurface)
 				{
-					slope = hit.normal;
-					rockSpawnPoint = hit.point;
+					//Let's set the rock spawn point's coordinates right now.
+					float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
+					Vector3 rockSpawnPoint = new Vector3(transform.position.x, terrainHeight,transform.position.z);
+					
+					if (terrain.collider.Raycast(ray, out hit, Mathf.Infinity)) 
+					{ //Now, let's get the real amount of the slope we hit, so we can rotate the rock properly.
+						slope = hit.normal;
+						rockSpawnPoint = hit.point;
+						rockSpawnPoint -=spawnOffset;
+						spawnedRock = Instantiate(spawnableRock, rockSpawnPoint , Quaternion.identity) as GameObject;
+						spawnedRock.transform.rotation = Quaternion.FromToRotation(spawnedRock.transform.up, slope) * spawnedRock.transform.rotation;
+						spawnedRock.gameObject.name = "spawnedRock_"+rockNumber;
+						spawnedRockAmount++;
+
+						if(spawnedRockAmount>maxSpawnableRocks) //If there's more than the maximum amount of rock, let's destroy the first we spawned.
+						{
+							GameObject firstSpawnedRock = GameObject.Find ("spawnedRock_"+rockNumberToDestroy);
+							Destroy (firstSpawnedRock.gameObject);
+							rockNumberToDestroy++;
+							spawnedRockAmount--;
+						}
+							rockNumber++;
+					}
+				}
+			}
+#endregion
+
+#region GameObject check
+		if(!aimingAtTerrain)
+		{
+			//Let's check if we can spawn on this material
+			if(Physics.Raycast(ray, out hit, Mathf.Infinity))
+			{
+				Renderer hitRenderer = hit.collider.GetComponent<Renderer>();
+				bool materialIsCompatible = false;
+				
+				foreach (Material material in spawnableMaterials)
+				{
+							if(hitRenderer.material.mainTexture != null && hitRenderer.material != null)
+					{
+						if (material.mainTexture.name == hitRenderer.material.mainTexture.name)
+							materialIsCompatible = true;
+							Debug.Log ("Material was "+hitRenderer.material.mainTexture.name);
+					}
+						else
+							Debug.Log ("No material or texture attached to aimed object");
+				}
+			
+				if(materialIsCompatible)
+				{
+					Vector3 rockSpawnPoint = hit.point;
+					Vector3 slope = hit.normal;
 					rockSpawnPoint -=spawnOffset;
 					spawnedRock = Instantiate(spawnableRock, rockSpawnPoint , Quaternion.identity) as GameObject;
 					spawnedRock.transform.rotation = Quaternion.FromToRotation(spawnedRock.transform.up, slope) * spawnedRock.transform.rotation;
 					spawnedRock.gameObject.name = "spawnedRock_"+rockNumber;
 					spawnedRockAmount++;
 
-					if(spawnedRockAmount>maxSpawnableRocks)
+					if(spawnedRockAmount>maxSpawnableRocks) //If there's more than the maximum amount of rock, let's destroy the first we spawned.
 					{
 						GameObject firstSpawnedRock = GameObject.Find ("spawnedRock_"+rockNumberToDestroy);
 						Destroy (firstSpawnedRock.gameObject);
 						rockNumberToDestroy++;
 						spawnedRockAmount--;
 					}
-						rockNumber++;
+					rockNumber++;
 				}
-			}
+			}		
+		}
+#endregion
 		}
 	}
 }

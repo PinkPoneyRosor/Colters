@@ -1559,7 +1559,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100078}
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.0999999, y: 0, z: 19.5900002}
   m_LocalScale: {x: 14.9631634, y: 14.9631634, z: 14.9631634}
   m_Children: []
   m_Father: {fileID: 400136}
@@ -1932,9 +1932,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100136}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 1.55700004, z: 5.61639977}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: .268059373, z: 0, w: .96340245}
+  m_LocalPosition: {x: -24.8999996, y: 26.7000008, z: 109.400002}
+  m_LocalScale: {x: .99999994, y: 1, z: .99999994}
   m_Children:
   - {fileID: 400004}
   - {fileID: 400086}
@@ -1976,7 +1976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 20
   heightOfJump: 8
-  maxSpeed: 3
+  maxSpeed: 7
   Soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
   controller: {fileID: 0}
   aimingMode: 0
@@ -1999,8 +1999,9 @@ MonoBehaviour:
     m_Bits: 65536
   otherLayers:
     serializedVersion: 2
-    m_Bits: 4294881247
+    m_Bits: 33793
   selectedRockCount: 0
+  currentHitPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2028,6 +2029,8 @@ MonoBehaviour:
   rockSpawnableSurface: 0
   maxSpawnableRocks: 3
   spawnOffset: {x: 0, y: .5, z: 0}
+  spawnableMaterials:
+  - {fileID: 2100000, guid: 51b94cccb60546f479a4547b960a598a, type: 2}
   spawnableRock: {fileID: 100000, guid: 394163ad6e7cf1f459225ef6ea8c2402, type: 2}
 --- !u!114 &11400008
 MonoBehaviour:
@@ -2135,8 +2138,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 400004}
   m_AABB:
-    m_Center: {x: .00768566132, y: -.0683743656, z: -.00959128141}
-    m_Extent: {x: .511424601, y: .953968763, z: .50029403}
+    m_Center: {x: .00768566132, y: -.0683743954, z: .0295958817}
+    m_Extent: {x: .511424601, y: .953968763, z: .539481163}
   m_DirtyAABB: 0
 --- !u!143 &14300000
 CharacterController:
@@ -2147,7 +2150,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: .5
-  m_SlopeLimit: 15
+  m_SlopeLimit: 45
   m_StepOffset: .300000012
   m_SkinWidth: .0799999982
   m_MinMoveDistance: 0
