@@ -5,10 +5,10 @@ using System.Collections;
  * Under certain conditions, it can spawn a rock
  */
 
-public class TerrainCheck : MonoBehaviour {
+public class RockSpawn : MonoBehaviour {
 
 	//Set up & inspector vars
-	public int surfaceIndex = 0;
+	int surfaceIndex = 0;
 	public int rockSpawnableSurface = 0;
 	public int maxSpawnableRocks = 3;
 	public Vector3 spawnOffset = new Vector3(0,.5f,0);
@@ -87,22 +87,7 @@ void Update()
 					
 					if (terrain.collider.Raycast(ray, out hit, Mathf.Infinity)) 
 					{ //Now, let's get the real amount of the slope we hit, so we can rotate the rock properly.
-						slope = hit.normal;
-						rockSpawnPoint = hit.point;
-						rockSpawnPoint -=spawnOffset;
-						spawnedRock = Instantiate(spawnableRock, rockSpawnPoint , Quaternion.identity) as GameObject;
-						spawnedRock.transform.rotation = Quaternion.FromToRotation(spawnedRock.transform.up, slope) * spawnedRock.transform.rotation;
-						spawnedRock.gameObject.name = "spawnedRock_"+rockNumber;
-						spawnedRockAmount++;
-
-						if(spawnedRockAmount>maxSpawnableRocks) //If there's more than the maximum amount of rock, let's destroy the first we spawned.
-						{
-							GameObject firstSpawnedRock = GameObject.Find ("spawnedRock_"+rockNumberToDestroy);
-							Destroy (firstSpawnedRock.gameObject);
-							rockNumberToDestroy++;
-							spawnedRockAmount--;
-						}
-							rockNumber++;
+						spawning (hit);
 					}
 				}
 			}
@@ -131,22 +116,7 @@ void Update()
 			
 				if(materialIsCompatible)
 				{
-					Vector3 rockSpawnPoint = hit.point;
-					Vector3 slope = hit.normal;
-					rockSpawnPoint -=spawnOffset;
-					spawnedRock = Instantiate(spawnableRock, rockSpawnPoint , Quaternion.identity) as GameObject;
-					spawnedRock.transform.rotation = Quaternion.FromToRotation(spawnedRock.transform.up, slope) * spawnedRock.transform.rotation;
-					spawnedRock.gameObject.name = "spawnedRock_"+rockNumber;
-					spawnedRockAmount++;
-
-					if(spawnedRockAmount>maxSpawnableRocks) //If there's more than the maximum amount of rock, let's destroy the first we spawned.
-					{
-						GameObject firstSpawnedRock = GameObject.Find ("spawnedRock_"+rockNumberToDestroy);
-						Destroy (firstSpawnedRock.gameObject);
-						rockNumberToDestroy++;
-						spawnedRockAmount--;
-					}
-					rockNumber++;
+					spawning (hit);
 				}
 			}		
 		}
@@ -154,6 +124,28 @@ void Update()
 		}
 	}
 }
+
+void spawning(RaycastHit hit)
+	{
+		Vector3 rockSpawnPoint = hit.point;
+		Vector3 slope = hit.normal;
+		rockSpawnPoint -=spawnOffset;
+		spawnedRock = Instantiate(spawnableRock, rockSpawnPoint , Quaternion.identity) as GameObject;
+		Debug.Log(spawnedRock.transform.rotation.eulerAngles);
+		spawnedRock.transform.rotation = Quaternion.FromToRotation(spawnedRock.transform.up, slope) * spawnedRock.transform.rotation;
+		Debug.Log(spawnedRock.transform.rotation.eulerAngles);
+		spawnedRock.gameObject.name = "spawnedRock_"+rockNumber;
+		spawnedRockAmount++;
+		
+		if(spawnedRockAmount>maxSpawnableRocks) //If there's more than the maximum amount of rock, let's destroy the first we spawned.
+		{
+			GameObject firstSpawnedRock = GameObject.Find ("spawnedRock_"+rockNumberToDestroy);
+			Destroy (firstSpawnedRock.gameObject);
+			rockNumberToDestroy++;
+			spawnedRockAmount--;
+		}
+		rockNumber++;
+	}
 	
 float[] GetTextureMix( Vector3 worldPos )
 {

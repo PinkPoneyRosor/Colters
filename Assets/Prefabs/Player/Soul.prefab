@@ -1949,9 +1949,14 @@ MonoBehaviour:
   maxSpeed: 10
   heightOfJump: 8
   gravity: 20
+  dashCoolDown: 2
   ghostPrefab: {fileID: 100000, guid: c94ae3272a3d8da41a5d8edda0437a8b, type: 2}
   isDashing: 0
-  dashNow: 0
+  dashGetThrough:
+    serializedVersion: 2
+    m_Bits: 524288
+  dashSpeed: 50
+  dashDistance: 7
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

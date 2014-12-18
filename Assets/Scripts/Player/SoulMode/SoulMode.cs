@@ -15,7 +15,7 @@ public class SoulMode : MonoBehaviour {
 	Vector3 faceDirection = Vector3.zero;
 	float floatDir = 0f;
 	public float maxSpeed = 5;
-	Vector3 dashTarget;
+	Vector3 dashTarget = Vector3.zero;
 	float dashingDistance = 10;
 	public float heightOfJump = 8;
 	public float gravity = 20;
@@ -39,6 +39,14 @@ public class SoulMode : MonoBehaviour {
 	[HideInInspector]
 	public bool isDashing = false;
 	float timer = 0;
+	public LayerMask dashGetThrough;
+	#endregion
+
+	#region Dash Vars
+	public float dashSpeed = 10;
+	public float dashDistance = 10;
+	float dashTimer;
+	Vector3 dashDirection;
 	#endregion
 	
 	// Use this for initialization
@@ -52,6 +60,8 @@ public class SoulMode : MonoBehaviour {
 
 		soulBar = GameObject.Find ("SoulBar");
 		soulBarSlide = soulBar.GetComponent<Slider> ();
+
+		dashTimer = dashDistance / dashSpeed;
 	}
 	
 	// Update is called once per frame
@@ -73,6 +83,7 @@ public class SoulMode : MonoBehaviour {
 			isDashing = true;
 
 			dashTarget = transform.position + transform.forward * dashingDistance;
+			dashDirection = dashTarget - transform.position;
 		}
 
 		if (isDashing) 
@@ -98,13 +109,6 @@ public class SoulMode : MonoBehaviour {
 			timer = 0;
 			canDash = true;
 		}
-
-		if (canDash)
-			Debug.Log ("DASH");
-		else
-			Debug.Log ("NO DASH NO");
-
-		Debug.Log("Timer = " +timer);
 	}
 
 	void Timer ()
@@ -117,16 +121,16 @@ public class SoulMode : MonoBehaviour {
 	//You can do anythiiiiing!
 	void Dash()
 	{
-			transform.position = Vector3.Lerp (transform.position, dashTarget, 10 * localDeltaTime);
-
-			float distance = (transform.position - dashTarget).sqrMagnitude;
-
-			if (distance < .5f * 2) //If the soul got to its target point, let's leave dash mode.
-			{
-				isDashing = false;
-				canDash = false;
-				startDashCoolDown = true;
-			}
+		if (dashTimer > 0) 
+		{
+			dashTimer -= localDeltaTime;
+			controller.Move (dashDirection.normalized * localDeltaTime * dashSpeed);
+		} else {
+			isDashing = false;
+			canDash = false;
+			startDashCoolDown = true;
+			dashTimer = dashDistance / dashSpeed;
+		}
 	}
 
 	public void stickToWorldSpace(Transform root, Transform camera, ref Vector3 directionOut, ref float floatDirOut, ref float speedOut, bool outForAnim)

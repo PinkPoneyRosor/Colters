@@ -15,6 +15,8 @@ TagManager:
   - ThrowableRock
   - PlayerSoul
   - 
+  - EarthQuake
+  - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
   Builtin Layer 2: Ignore Raycast
@@ -34,7 +36,7 @@ TagManager:
   User Layer 16: Rock
   User Layer 17: IntangibleEnnemy
   User Layer 18: EnemySight
-  User Layer 19: 
+  User Layer 19: DashGetThrough
   User Layer 20: 
   User Layer 21: 
   User Layer 22: 

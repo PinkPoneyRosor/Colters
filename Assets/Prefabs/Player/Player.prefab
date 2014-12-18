@@ -2025,12 +2025,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7268c63b55415304c9db2d24577c5078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surfaceIndex: 0
   rockSpawnableSurface: 0
   maxSpawnableRocks: 3
   spawnOffset: {x: 0, y: .5, z: 0}
   spawnableMaterials:
   - {fileID: 2100000, guid: 51b94cccb60546f479a4547b960a598a, type: 2}
+  - {fileID: 2100000, guid: 6160648c09813f24e9fec46a72cd5b87, type: 2}
   spawnableRock: {fileID: 100000, guid: 394163ad6e7cf1f459225ef6ea8c2402, type: 2}
 --- !u!114 &11400008
 MonoBehaviour:
