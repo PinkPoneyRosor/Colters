@@ -1030,14 +1030,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 400136}
   - 95: {fileID: 9500000}
-  - 114: {fileID: 11400000}
   - 143: {fileID: 14300000}
-  - 114: {fileID: 11400002}
   - 135: {fileID: 13500000}
   - 81: {fileID: 8100000}
+  - 114: {fileID: 11400000}
   - 114: {fileID: 11400004}
-  - 114: {fileID: 11400006}
-  - 114: {fileID: 11400008}
+  - 114: {fileID: 11400002}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -1971,12 +1969,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e01a46393a95a9442b9e25e5b7f36694, type: 3}
+  m_Script: {fileID: 11500000, guid: 53ae3671b76ef9d4baae0f45836eb3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 20
   heightOfJump: 8
-  maxSpeed: 7
+  maxSpeed: 5
   Soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
   controller: {fileID: 0}
   aimingMode: 0
@@ -1999,22 +1997,10 @@ MonoBehaviour:
     m_Bits: 65536
   otherLayers:
     serializedVersion: 2
-    m_Bits: 33793
+    m_Bits: 4294901759
   selectedRockCount: 0
   currentHitPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85c45cef79d6f324da4c2618eec48f12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SoulBarSpeedRate: .100000001
---- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2028,23 +2014,8 @@ MonoBehaviour:
   rockSpawnableSurface: 0
   maxSpawnableRocks: 3
   spawnOffset: {x: 0, y: .5, z: 0}
-  spawnableMaterials:
-  - {fileID: 2100000, guid: 51b94cccb60546f479a4547b960a598a, type: 2}
-  - {fileID: 2100000, guid: 6160648c09813f24e9fec46a72cd5b87, type: 2}
+  spawnableMaterials: []
   spawnableRock: {fileID: 100000, guid: 394163ad6e7cf1f459225ef6ea8c2402, type: 2}
---- !u!114 &11400008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29fae2bc17986894ba125b98b5654514, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldRock: {fileID: 100000, guid: b370c37addb344442870cc8313b078b1, type: 2}
-  shieldUp: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

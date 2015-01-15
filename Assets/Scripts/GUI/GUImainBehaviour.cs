@@ -50,7 +50,7 @@ public class GUImainBehaviour : MonoBehaviour {
 		#endregion
 
 		#region Soul Bar
-		if(playerScript.soulMode)
+ 		if(playerScript.soulMode)
 		{
 			soulBarSlide.value -= SoulBarSpeedRate * localDeltaTime;
 		}

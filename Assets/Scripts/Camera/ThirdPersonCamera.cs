@@ -107,7 +107,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		#endregion
 	
 			#region Aim Mode Trigger
-		if (Input.GetAxisRaw ("LT") > 0 && !playerController.soulMode) 
+		if ((Input.GetAxisRaw ("LT") > 0 && !playerController.soulMode) || (Input.GetButton("Aim") && !playerController.soulMode)) 
 			{
 				if(mustResetAimAngle)
 				{

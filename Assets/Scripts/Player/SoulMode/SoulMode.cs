@@ -2,23 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class SoulMode : MonoBehaviour {
+public class SoulMode : CommonControls {
 
 	#region movement variables
-	float localDeltaTime;
-	float horizontal;
-	float vertical;
-	float speed = 4;
-	Vector3 direction = Vector3.zero;
-	Vector3 tempMoveDir;
-	Vector3 moveDirection = Vector3.zero;
-	Vector3 faceDirection = Vector3.zero;
-	float floatDir = 0f;
-	public float maxSpeed = 5;
+	[SerializeField]
+	private float setMaximumSpeed = 5;
 	Vector3 dashTarget = Vector3.zero;
 	float dashingDistance = 10;
 	public float heightOfJump = 8;
-	public float gravity = 20;
 	bool canDash = true;
 	bool startDashCoolDown = false;
 	public float dashCoolDown = 2;
@@ -26,10 +17,8 @@ public class SoulMode : MonoBehaviour {
 
 	#region external scripts and object
 	public GameObject ghostPrefab;
-	CharacterController controller;
 	GameObject player;
 	PlayerController playerScript;
-	ThirdPersonCamera mainCameraScript;
 	GameObject soulBar;
 	Slider soulBarSlide;
 	#endregion
@@ -62,6 +51,8 @@ public class SoulMode : MonoBehaviour {
 		soulBarSlide = soulBar.GetComponent<Slider> ();
 
 		dashTimer = dashDistance / dashSpeed;
+
+		maxSpeed = setMaximumSpeed;
 	}
 	
 	// Update is called once per frame
@@ -86,16 +77,20 @@ public class SoulMode : MonoBehaviour {
 			dashDirection = dashTarget - transform.position;
 		}
 
-		if (isDashing) 
+		#region Controls according to situation
+		if ((Input.GetButtonDown ("AutoCam") || continueResetControls) && !isDashing) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
+			ResettingCameraControls();
+		else if (isDashing) 
 		{
 			mainCameraScript.dashingSoul = true;
 			Dash ();
 		}
 		else
 		{
-			move ();
+			DefaultControls(heightOfJump, localDeltaTime);
 			mainCameraScript.dashingSoul = false;
 		}
+		#endregion
 
 
 		if (startDashCoolDown && controller.isGrounded) 
@@ -131,72 +126,6 @@ public class SoulMode : MonoBehaviour {
 			startDashCoolDown = true;
 			dashTimer = dashDistance / dashSpeed;
 		}
-	}
-
-	public void stickToWorldSpace(Transform root, Transform camera, ref Vector3 directionOut, ref float floatDirOut, ref float speedOut, bool outForAnim)
-	{
-		//We take the model's direction, the stick's direction, then we put in the square magnitude.
-		Vector3 rootDirection = root.forward;
-		Vector3 stickDirection = new Vector3(horizontal, 0, vertical);
-		speedOut = stickDirection.sqrMagnitude;
-		
-		//Getting the camera's current rotation.
-		Vector3 CameraDirection = camera.forward;
-		CameraDirection.y = 0.0f;
-		Quaternion referentialShift = Quaternion.FromToRotation (Vector3.forward, CameraDirection);
-		
-		//Conversion de l'input du joystick/clavier en coordonnées World.
-		Vector3 moveDirection = referentialShift * stickDirection;
-		Vector3 axisSign = Vector3.Cross(moveDirection, rootDirection);
-		
-		#region debug draw rays
-		//Ces lignes permettent de visualiser la façon dont sont gérés les vecteurs dans la fonction StickToWorldSpace (Debug)
-		
-		/*Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), moveDirection, Color.green);
-		Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), axisSign, Color.red);
-		Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), rootDirection, Color.magenta);
-		Debug.DrawRay (new Vector3(root.position.x, root.position.y + 2f, root.position.z), stickDirection, Color.blue);*/
-		#endregion
-		
-		//Give the angle between the model's direction and the direction we give to it.
-		float angleRootToMove = Vector3.Angle (rootDirection, moveDirection) * (axisSign.y >= 0 ? -1f :1f);
-		
-		//DirectionOut will be useful to give the direction where the character have to go to the animator.
-		floatDirOut = angleRootToMove;
-	}
-
-	void move ()
-	{
-		//The rest of the update function is for the controls, which are exactly the same as in body mode.
-		#region Get Axises
-		//Get input from the main axis (Keyboard and stick)
-		horizontal = Input.GetAxisRaw ("Horizontal");
-		vertical = Input.GetAxisRaw ("Vertical");
-		#endregion
-		
-		//This method will translate axis input into world coordinates, according to the camera's point of view.
-		stickToWorldSpace (transform, mainCameraScript.transform, ref direction, ref floatDir, ref speed, false);
-		
-		Quaternion target = Quaternion.Euler (0, floatDir, 0);
-		
-		tempMoveDir = target * Vector3.forward * speed;
-		tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed);
-		
-		moveDirection.x = tempMoveDir.x;
-		moveDirection.z = tempMoveDir.z;
-		
-		if (Input.GetButton ("Jump") && controller.isGrounded)
-			moveDirection.y = this.heightOfJump;
-		
-		if(!controller.isGrounded)
-			moveDirection.y -= gravity * localDeltaTime;
-		
-		controller.Move (moveDirection * localDeltaTime);
-		
-		faceDirection = transform.position + moveDirection;
-		faceDirection.y = transform.position.y;
-		
-		transform.LookAt (faceDirection);
 	}
 
 	void revertBack () //Revert Back to normal mode.
