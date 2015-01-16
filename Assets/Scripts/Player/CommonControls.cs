@@ -5,7 +5,6 @@ public class CommonControls : MonoBehaviour {
 
 	public float horizontal = 0;
 	public float vertical = 0;
-
 	public Vector3 direction = Vector3.zero;
 	public Vector3 faceDirection = Vector3.zero;
 	public Vector3 tempMoveDir;
@@ -18,19 +17,16 @@ public class CommonControls : MonoBehaviour {
 	public float maxSpeed = 0;
 	public float gravity = 20;
 	public float localDeltaTime;
-
+	public bool setAimMode = true;
+	public bool aimingMode = false;
 
 	// Use this for initialization
-	void Start () 
+	protected virtual void Start () 
 	{
 		mainCameraScript = Camera.main.GetComponent<ThirdPersonCamera> ();
+		controller = GetComponent<CharacterController>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	public void DefaultControls (float heightOfJump, float localDeltaTime)
 	{
 		#region Get Axises
@@ -124,5 +120,27 @@ public class CommonControls : MonoBehaviour {
 		} 
 		else //Once the stick has been released, we get back to the standard controls
 			continueResetControls = false;
+	}
+
+	public void AimingControls (float heightOfJump) //When aiming, the controls are not the same.
+	{
+		if (setAimMode) 
+		{
+			this.transform.eulerAngles = new Vector3 (transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
+			setAimMode = false;
+		}
+		
+		tempMoveDir = (transform.right * horizontal + transform.forward * vertical) * maxSpeed;
+		moveDirection.x = tempMoveDir.x;
+		moveDirection.z = tempMoveDir.z;
+		
+		if (Input.GetButton ("Jump") && controller.isGrounded)
+			moveDirection.y = heightOfJump;
+		
+		if(!controller.isGrounded)
+			moveDirection.y -= gravity * localDeltaTime;
+		
+		controller.Move (moveDirection * localDeltaTime);
+		transform.Rotate (new Vector3 (0, Input.GetAxisRaw ("LookH")*50, 0) * mainCameraScript.aimLookSpeed * localDeltaTime);
 	}
 }

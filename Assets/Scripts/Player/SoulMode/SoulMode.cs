@@ -24,7 +24,6 @@ public class SoulMode : CommonControls {
 	#endregion
 
 	#region other behaviour variables
-	int currentGhostNumber = 0;
 	[HideInInspector]
 	public bool isDashing = false;
 	float timer = 0;
@@ -39,22 +38,21 @@ public class SoulMode : CommonControls {
 	#endregion
 	
 	// Use this for initialization
-	void Start () 
+	protected override void Start () 
 	{
+		base.Start ();
+		maxSpeed = setMaximumSpeed;
+
 		this.name = "Soul";
-		mainCameraScript = Camera.main.GetComponent<ThirdPersonCamera> ();
 		player = GameObject.FindWithTag ("Player");
 		playerScript = player.GetComponent<PlayerController> ();
-		controller = this.GetComponent<CharacterController> ();
 
 		soulBar = GameObject.Find ("SoulBar");
 		soulBarSlide = soulBar.GetComponent<Slider> ();
 
 		dashTimer = dashDistance / dashSpeed;
-
-		maxSpeed = setMaximumSpeed;
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -84,6 +82,10 @@ public class SoulMode : CommonControls {
 		{
 			mainCameraScript.dashingSoul = true;
 			Dash ();
+		}
+		else if (aimingMode) //Else, and if we're in aiming camera mode
+		{
+			AimingControls (heightOfJump);
 		}
 		else
 		{
@@ -134,8 +136,7 @@ public class SoulMode : CommonControls {
 		Time.timeScale = 1;
 		Time.fixedDeltaTime = .02f;
 		playerScript.soulMode = false;
-		mainCameraScript.soulMode = false;
+		mainCameraScript.SwitchPlayerMode( false );
 		Destroy (this.gameObject);
 	}
-
 }

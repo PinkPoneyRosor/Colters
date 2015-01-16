@@ -17,11 +17,10 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public Transform camTarget; //What the camera follows
 
 	private GameObject player;
-	private PlayerController playerController;
+	private CommonControls playerControls;
 	private bool ManualMode = false;
 	public GameObject soul;
-	[HideInInspector]
-	public bool soulMode = false;
+	private bool soulMode = false;
 	[HideInInspector]
 	public bool dashingSoul = false;
 	#endregion
@@ -30,7 +29,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public float cameraHeight = 6;
 	public Quaternion rotationOffset = Quaternion.identity;
 	public float distance = 10.0f; //Set the distance between the camera and the player
-	private float manualHorizontalSpeed = 250.0f;
+	//private float manualHorizontalSpeed = 250.0f;
 	public float manualCameraSpeed = 10;
 	public float manualCameraHeightMinLimit = -20f;
 	public float manualCameraHeightMaxLimit = 80f;
@@ -59,25 +58,32 @@ public class ThirdPersonCamera : MonoBehaviour {
 	#endregion
 
 	#region testing
-	float tParam = 0;
 	[HideInInspector]
 	public Vector3 camDirFromTarget = Vector3.zero;
 	float xAim;
 	public float AimMinVerticalAngle = 0;
 	public float AimMaxVerticalAngle = 0;
 	#endregion
-
-#endregion
+	#endregion
 
 	void Start () 
 	{
 		player = GameObject.FindWithTag ("Player");
-		playerController = player.GetComponent<PlayerController> ();
+		camTarget = player.transform;
+		playerControls = player.GetComponent<CommonControls> ();
 
 		currentRotationSmooth = RotationSmooth;
 		currentTranslationSmooth = TranslationSmooth;
 		CompensateLayer = LayerMask.GetMask("CameraCollider");
 
+	}
+
+	public void SwitchPlayerMode( bool bSoulMode )
+	{
+		soulMode = bSoulMode;
+		player = GameObject.FindWithTag( soulMode ? "PlayerSoul" : "Player" );
+		playerControls = player.GetComponent<CommonControls> ();
+		camTarget = player.transform;
 	}
 
 	void LateUpdate()
@@ -86,10 +92,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
-		if (!soulMode)
-			camTarget = player.transform;
-		else
-			camTarget = GameObject.Find ("Soul").transform;
+		Debug.Log (camTarget);
 
 		#region smoothing & FOV according to player's actions
 		if (soulMode && dashingSoul) 
@@ -106,8 +109,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 		}
 		#endregion
 	
-			#region Aim Mode Trigger
-		if ((Input.GetAxisRaw ("LT") > 0 && !playerController.soulMode) || (Input.GetButton("Aim") && !playerController.soulMode)) 
+		#region Aim Mode Trigger
+		if ((Input.GetAxisRaw ("LT") > 0) || (Input.GetButton("Aim"))) 
 			{
 				if(mustResetAimAngle)
 				{
@@ -116,17 +119,17 @@ public class ThirdPersonCamera : MonoBehaviour {
 				}
 
 				mustResetAimAngle = false;
-				playerController.aimingMode = true;
+				playerControls.aimingMode = true;
 				aimingMode = true;
 			} 
 			else 
 			{
-				playerController.aimingMode = false;
-				playerController.setAimMode = true;
+				playerControls.aimingMode = false;
+				playerControls.setAimMode = true;
 				aimingMode = false;
 				mustResetAimAngle = true;
 			}
-			#endregion
+		#endregion
 
 		if (camTarget != null) 
 		{
@@ -241,7 +244,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	//This functions is enabled when the 3rd Person Camera switches to aiming mode.
 	void aimingCameraMode ()
 	{
-		if ( ! playerController.setAimMode) 
+		if ( ! playerControls.setAimMode) 
 		{
 			//Those two lines make sure the camera get to the right place.
 			Vector3 setAimOffset = camTarget.transform.forward * aimOffset.z + camTarget.transform.up * aimOffset.y + camTarget.transform.right * aimOffset.x;
@@ -254,7 +257,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 			//When aiming, the camera must look in the same exact vertical direction than the player model.
 			transform.eulerAngles = currentCamTargetRotation;
 
-			xAim += Input.GetAxis ("LookV") * 50 * aimLookSpeed * Time.deltaTime;
+			xAim += Input.GetAxis ("LookV") * 50 * aimLookSpeed * localDeltaTime;
 			xAim = ClampAngle (xAim, AimMinVerticalAngle, AimMaxVerticalAngle);
 
 			Quaternion rotation = Quaternion.Euler (xAim, currentCamTargetRotation.y, 0);

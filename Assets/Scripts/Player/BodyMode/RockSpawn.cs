@@ -17,8 +17,6 @@ public class RockSpawn : MonoBehaviour {
 	//External scripts and objects
 	GameObject spawnedRock;
 	Camera mainCamera;
-	GameObject player;
-	CharacterController playerScript;
 	public GameObject spawnableRock;
 
 	//Terrain vars
@@ -32,14 +30,10 @@ public class RockSpawn : MonoBehaviour {
 	int spawnedRockAmount = 0;
 	bool coolingDown = false;
 	bool aimingAtTerrain;
-	Vector3 slope = Vector3.zero;
 	
 void Start()
 {
 	mainCamera = Camera.main;
-	
-	player = GameObject.FindWithTag ("Player");
-	playerScript = player.GetComponent<CharacterController>();
 }
 	
 	
@@ -82,8 +76,7 @@ void Update()
 				if(surfaceIndex == rockSpawnableSurface)
 				{
 					//Let's set the rock spawn point's coordinates right now.
-					float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
-					Vector3 rockSpawnPoint = new Vector3(transform.position.x, terrainHeight,transform.position.z);
+					//float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
 					
 					if (terrain.collider.Raycast(ray, out hit, Mathf.Infinity)) 
 					{ //Now, let's get the real amount of the slope we hit, so we can rotate the rock properly.

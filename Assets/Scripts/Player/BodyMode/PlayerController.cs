@@ -11,23 +11,18 @@ public class PlayerController : CommonControls {
 
 	//External scripts and objects
 	public GameObject Soul;
-
-	//Other variables
 	[HideInInspector]
-	public bool aimingMode = false;
-	[HideInInspector]
-	public bool soulMode = false;
-
-	//EXPERIMENTAL
-	[HideInInspector]
-	public bool setAimMode = true;
 	public GameObject EarthQuakeParticles;
 
 
+	//Other variables
+	[HideInInspector]
+	public bool soulMode = false;
+
 	// Use this for initialization
-	void Start () {
-		controller = GetComponent<CharacterController>();
-		mainCameraScript = Camera.main.GetComponent<ThirdPersonCamera> ();
+	protected override void Start ()
+	{
+		base.Start ();
 		maxSpeed = setMaximumSpeed;
 	}
 	
@@ -37,13 +32,11 @@ public class PlayerController : CommonControls {
 		//localDeltaTime allows the script to not be influenced by the time scale change.
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
-		Transform EarthQuakeParticlesInstance;
-
 		if(Input.GetButtonDown("SwitchMode") && !soulMode)
 			SwitchToSoulMode();
 
 		if(Input.GetButtonDown("EarthQuake") && !soulMode)
-			EarthQuakeParticlesInstance = Instantiate(EarthQuakeParticles, transform.position , Quaternion.Euler(90,0,0) ) as Transform;
+			Instantiate(EarthQuakeParticles, transform.position , Quaternion.Euler(90,0,0) );
 
 		//Make the controls adapted to the current camera mode.
 		if (!soulMode) 
@@ -54,31 +47,9 @@ public class PlayerController : CommonControls {
 				DefaultControls(heightOfJump, localDeltaTime);
 			else if (aimingMode) //Else, and if we're in aiming camera mode
 			{
-				AimingControls ();
+				AimingControls (heightOfJump);
 			}
 		}
-	}
-
-	void AimingControls () //When aiming, the controls are not the same.
-	{
-		if (setAimMode) 
-		{
-			this.transform.eulerAngles = new Vector3 (transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
-			setAimMode = false;
-		}
-
-		tempMoveDir = (transform.right * horizontal + transform.forward * vertical) * maxSpeed;
-		moveDirection.x = tempMoveDir.x;
-		moveDirection.z = tempMoveDir.z;
-
-		if (Input.GetButton ("Jump") && controller.isGrounded)
-						moveDirection.y = this.heightOfJump;
-
-		if(!controller.isGrounded)
-			moveDirection.y -= gravity * Time.deltaTime;
-
-		controller.Move (moveDirection * Time.deltaTime);
-		transform.Rotate (new Vector3 (0, Input.GetAxisRaw ("LookH")*50, 0) * mainCameraScript.aimLookSpeed * Time.deltaTime);
 	}
 
 	//Setting everything in order to engage soul mode.
@@ -87,10 +58,9 @@ public class PlayerController : CommonControls {
 		//Offset for spawn point based on the player's position.
 		Vector3 soulSpawnOffset = new Vector3(0,.5f,0);
 		Vector3 soulSpawnPoint = transform.position + soulSpawnOffset;
-		Transform spawnedSoul;
-		
-		spawnedSoul = Instantiate(Soul, soulSpawnPoint , transform.rotation) as Transform;
+
+		Instantiate(Soul, soulSpawnPoint , transform.rotation);
 		soulMode = true;
-		mainCameraScript.soulMode = true;
+		mainCameraScript.SwitchPlayerMode( true );
 	}
 }

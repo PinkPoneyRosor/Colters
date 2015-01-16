@@ -81,11 +81,11 @@ public class BasicEnemy : MonoBehaviour {
 			#endregion
 
 			#region Is the player in sight?
-			if (sightScript.playerInSight) //If the player's in sight, let's chase him ! Otherwise, let's just continue to wander around.
+			if (sightScript.playerRecentlySeen) //If the player's recently been in sight, let's chase him ! Otherwise, let's just continue to wander around.
 			{
 					CurrentMode = EnemyMode.Chasing;
 			}
-			else if (!sightScript.playerInSight) 
+			else
 			{
 					CurrentMode = EnemyMode.Wandering;
 			}
@@ -94,10 +94,12 @@ public class BasicEnemy : MonoBehaviour {
 			#region setting target position according to current behaviour
 			if (CurrentMode == EnemyMode.Chasing) //Movement when the player is in sight.
 			{
-					if (Vector3.Distance (this.transform.position, player.transform.position) > 5)
-							agent.SetDestination (player.transform.position);
-					else
-							agent.SetDestination (newEnGardePosition);
+				if (Vector3.Distance (this.transform.position, player.transform.position) > 5)
+						agent.SetDestination (sightScript.lastKnownPosition);
+				else
+						agent.SetDestination (newEnGardePosition);
+
+				this.transform.LookAt (player.transform);
 			}
 
 			if (CurrentMode == EnemyMode.Wandering) //Movement when the player's not in sight.
