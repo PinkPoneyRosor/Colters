@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 143: {fileID: 14300000}
   - 136: {fileID: 13600000}
+  - 114: {fileID: 11400002}
   m_Layer: 8
   m_Name: Soul
   m_TagString: PlayerSoul
@@ -1946,9 +1947,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86a01f5b6650c244b137e21fd717e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontal: 0
+  vertical: 0
+  direction: {x: 0, y: 0, z: 0}
+  faceDirection: {x: 0, y: 0, z: 0}
+  tempMoveDir: {x: 0, y: 0, z: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  controller: {fileID: 0}
+  mainCameraScript: {fileID: 0}
+  continueResetControls: 0
+  floatDir: 0
+  speed: 3
   maxSpeed: 10
-  heightOfJump: 8
   gravity: 20
+  localDeltaTime: 0
+  setAimMode: 1
+  aimingMode: 0
+  setMaximumSpeed: 5
+  heightOfJump: 8
   dashCoolDown: 2
   ghostPrefab: {fileID: 100000, guid: c94ae3272a3d8da41a5d8edda0437a8b, type: 2}
   isDashing: 0
@@ -1957,6 +1973,25 @@ MonoBehaviour:
     m_Bits: 524288
   dashSpeed: 50
   dashDistance: 7
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1482d1d1355422409b4799a528d792e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RockLayer:
+    serializedVersion: 2
+    m_Bits: 65536
+  otherLayers:
+    serializedVersion: 2
+    m_Bits: 4294901759
+  selectedRockCount: 0
+  currentHitPoint: {x: 0, y: 0, z: 0}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

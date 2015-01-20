@@ -26,14 +26,19 @@ public class CommonControls : MonoBehaviour {
 		mainCameraScript = Camera.main.GetComponent<ThirdPersonCamera> ();
 		controller = GetComponent<CharacterController>();
 	}
-	
-	public void DefaultControls (float heightOfJump, float localDeltaTime)
+
+	public void GetAxis()
 	{
 		#region Get Axises
 		//Get input from the main axis (Keyboard and stick)
 		horizontal = Input.GetAxisRaw ("Horizontal");
 		vertical = Input.GetAxisRaw ("Vertical");
 		#endregion
+	}
+	
+	public void DefaultControls (float heightOfJump, float localDeltaTime)
+	{
+
 
 		#region default Controls
 		#region setting essential variables each frame

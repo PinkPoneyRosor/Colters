@@ -59,6 +59,8 @@ public class SoulMode : CommonControls {
 		Time.timeScale = 0.1f;
 		Time.fixedDeltaTime = 0.1f * 0.02f; //Make sure the physics simulation is still fluid.
 
+		GetAxis ();
+
 		//localDeltaTime allows the script to not be influenced by the time scale change.
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
@@ -66,7 +68,7 @@ public class SoulMode : CommonControls {
 		if (Input.GetButtonDown ("SwitchMode") || soulBarSlide.value <= 0)
 			revertBack();
 
-		if (Input.GetButtonDown ("Action") && !isDashing && canDash) 
+		if (Input.GetButtonDown ("Action") && !isDashing && canDash && !aimingMode) 
 		{
 			mainCameraScript.camDirFromTarget = Camera.main.transform.position - this.transform.position; 
 			isDashing = true;

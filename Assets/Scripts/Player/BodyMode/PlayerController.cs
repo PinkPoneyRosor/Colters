@@ -32,6 +32,8 @@ public class PlayerController : CommonControls {
 		//localDeltaTime allows the script to not be influenced by the time scale change.
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
+		GetAxis ();
+
 		if(Input.GetButtonDown("SwitchMode") && !soulMode)
 			SwitchToSoulMode();
 

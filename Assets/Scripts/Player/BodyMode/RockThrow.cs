@@ -39,7 +39,7 @@ public class RockThrow : MonoBehaviour {
 
 					if(!hitObjectScript.isSelected)
 					{
-						hitObjectScript.getUp = true;
+						hitObjectScript.getUpInit = true;
 						selectedRockCount++;
 					}
 				}
