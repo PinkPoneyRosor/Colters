@@ -49,6 +49,7 @@ public class Rock : MonoBehaviour {
 				{
 				rigidbody.velocity = Vector3.zero;
 				gettingUp = false;
+				isSelected = true;
 				}
 			}
 			Debug.Log ("Gettin' up");
@@ -57,6 +58,7 @@ public class Rock : MonoBehaviour {
 		if (isSelected) //If the rock's in the air, it's now selected, and we nom make sur it won't move.
 		{
 			gettingUp = false;
+			rigidbody.AddTorque (this.transform.forward * getUpRotateForce);
 			rigidbody.constraints = RigidbodyConstraints.FreezePosition;
 		} 
 		else 

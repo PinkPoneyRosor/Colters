@@ -686,7 +686,7 @@ MonoBehaviour:
   getUpInit: 0
   gettingUp: 0
   maxSpeed: 35
-  getUpSpeed: 6
+  getUpSpeed: 5
   getUpRotateForce: 10
   throwForce: 1000
   homingAttackBool: 0
