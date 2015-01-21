@@ -38,21 +38,18 @@ public class Rock : MonoBehaviour {
 
 		if (gettingUp) 
 		{
-			//rigidbody.MovePosition (previousPosition + new Vector3 (0,3,0) * Time.deltaTime);
-			rigidbody.velocity = new Vector3(0,5);
+			rigidbody.velocity = new Vector3(0,getUpSpeed);
 
 			RaycastHit hit;
 			if(Physics.Raycast (transform.position, -Vector3.up, out hit, Mathf.Infinity))
 			{
-				Debug.Log (hit.distance);
-				if(hit.distance >= 5)
+				if(hit.distance >= 3)
 				{
 				rigidbody.velocity = Vector3.zero;
 				gettingUp = false;
 				isSelected = true;
 				}
 			}
-			Debug.Log ("Gettin' up");
 		}
 
 		if (isSelected) //If the rock's in the air, it's now selected, and we nom make sur it won't move.

@@ -119,12 +119,12 @@ public class ThirdPersonCamera : MonoBehaviour {
 				}
 
 				mustResetAimAngle = false;
-				playerControls.aimingMode = true;
+				CommonControls.aimingMode = true;
 				aimingMode = true;
 			} 
 			else 
 			{
-				playerControls.aimingMode = false;
+				CommonControls.aimingMode = false;
 				playerControls.setAimMode = true;
 				aimingMode = false;
 				mustResetAimAngle = true;

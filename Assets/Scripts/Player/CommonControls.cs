@@ -18,7 +18,9 @@ public class CommonControls : MonoBehaviour {
 	public float gravity = 20;
 	public float localDeltaTime;
 	public bool setAimMode = true;
-	public bool aimingMode = false;
+	public static bool aimingMode = false;
+	public bool canJump = true;
+	public static float maxJumpAngle = 35;
 
 	// Use this for initialization
 	protected virtual void Start () 
@@ -38,8 +40,6 @@ public class CommonControls : MonoBehaviour {
 	
 	public void DefaultControls (float heightOfJump, float localDeltaTime)
 	{
-
-
 		#region default Controls
 		#region setting essential variables each frame
 		
@@ -52,8 +52,18 @@ public class CommonControls : MonoBehaviour {
 		tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed);
 		moveDirection.x = tempMoveDir.x;
 		moveDirection.z = tempMoveDir.z;
+
+		RaycastHit hit;
+		if(Physics.Raycast (transform.position, -Vector3.up, out hit, Mathf.Infinity))
+		{
+			float angle = Vector3.Angle(-hit.normal, -Vector3.up);
+			if(angle>maxJumpAngle)
+				canJump = false;
+			else
+				canJump = true;
+		}
 		
-		if (Input.GetButton ("Jump") && controller.isGrounded)
+		if (Input.GetButtonDown ("Jump") && controller.isGrounded && canJump)
 			moveDirection.y = heightOfJump;
 		
 		#region apply movements & gravity

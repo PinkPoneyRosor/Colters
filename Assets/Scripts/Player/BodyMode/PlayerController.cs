@@ -19,11 +19,15 @@ public class PlayerController : CommonControls {
 	[HideInInspector]
 	public bool soulMode = false;
 
+	[SerializeField]
+	private float setMaxJumpAngle = 35;
+
 	// Use this for initialization
 	protected override void Start ()
 	{
 		base.Start ();
 		maxSpeed = setMaximumSpeed;
+		maxJumpAngle = setMaxJumpAngle;
 	}
 	
 	// Update is called once per frame
