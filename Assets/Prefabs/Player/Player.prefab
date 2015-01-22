@@ -1986,7 +1986,6 @@ MonoBehaviour:
   gravity: 20
   localDeltaTime: 0
   setAimMode: 1
-  aimingMode: 0
   canJump: 1
   heightOfJump: 8
   setMaximumSpeed: 3
@@ -2011,8 +2010,14 @@ MonoBehaviour:
   otherLayers:
     serializedVersion: 2
     m_Bits: 4294901759
+  globalPickupRadius: 10
+  maxRockCount: 4
   selectedRockCount: 0
   currentHitPoint: {x: 0, y: 0, z: 0}
+  setFirstRockPos: {x: 3, y: 3, z: -1}
+  setSecondRockPos: {x: 1, y: 3, z: -2}
+  setThirdRockPos: {x: -1, y: 3, z: -2}
+  setFourthRockPos: {x: -3, y: 3, z: -1}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

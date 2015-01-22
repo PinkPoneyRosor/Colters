@@ -14,6 +14,7 @@ public class RockThrow : MonoBehaviour {
 	public LayerMask RockLayer;
 	public LayerMask otherLayers;
 	public float globalPickupRadius = 10;
+	public int maxRockCount = 4;
 	#endregion
 
 	[HideInInspector]
@@ -23,8 +24,12 @@ public class RockThrow : MonoBehaviour {
 	// Use this for initialization
 
 	private GameObject [] allRocks;
-
 	CommonControls controlsScript;
+	
+	public Vector3 setFirstRockPos = Vector3.zero;
+	public Vector3 setSecondRockPos = Vector3.zero;
+	public Vector3 setThirdRockPos = Vector3.zero;
+	public Vector3 setFourthRockPos = Vector3.zero;
 
 	void Start () {
 		mainCamera = Camera.main.transform;
@@ -35,6 +40,8 @@ public class RockThrow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		Debug.Log("Selected Rock Count = " + selectedRockCount);
+		
 		if(Input.GetButtonDown("SelectRock"))
 		{
 			//everything in this script happens when the player is hitting the selectRock Button
@@ -44,10 +51,10 @@ public class RockThrow : MonoBehaviour {
 						RaycastHit HitObject;
 						if (Physics.SphereCast (transform.position, .5f, mainCamera.forward, out HitObject, Mathf.Infinity, RockLayer)) 
 						{
-								Rock hitObjectScript;
-								hitObjectScript = HitObject.transform.GetComponent<Rock> ();
+								ThrowableRock hitObjectScript;
+								hitObjectScript = HitObject.transform.GetComponent<ThrowableRock> ();
 
-								if (!hitObjectScript.isSelected) 
+								if (!hitObjectScript.isSelected && selectedRockCount < maxRockCount) 
 								{
 										hitObjectScript.getUpInit = true;
 										selectedRockCount++;
@@ -62,7 +69,7 @@ public class RockThrow : MonoBehaviour {
 							{
 								//Let's put all selected rocks in a single array
 								selectedRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock")
-									.Select (go => go.GetComponent<Rock> ())
+									.Select (go => go.GetComponent<ThrowableRock> ())
 										.Where (go => go.isSelected)
 											.Select (go => go.transform)
 												.ToArray ();
@@ -70,14 +77,15 @@ public class RockThrow : MonoBehaviour {
 									//Then let's throw them in the direction the player is looking.
 									foreach (Transform rock in selectedRocks) 
 									{
-										Rock rockScript = rock.GetComponent<Rock> ();
+										rock.transform.parent = null;
+										ThrowableRock rockScript = rock.GetComponent<ThrowableRock> ();
 
 										if (!HitObject.transform.CompareTag ("Enemy")) 
 										{ 
 										//If what we aimed at is not an enemy, just throw it.
 												Vector3 throwDirection = HitObject.point - rock.position;
 												throwDirection.Normalize ();
-
+												
 												rockScript.isSelected = false;
 												//This line is just to make absolutely sure there is no more constraints so that we can throw the rock in a straight line.
 												rockScript.rigidbody.constraints = RigidbodyConstraints.None;
@@ -101,15 +109,19 @@ public class RockThrow : MonoBehaviour {
 						Vector3 fromPlayerToRock = transform.position - rock.transform.position;
 						float distance = fromPlayerToRock.sqrMagnitude;
 
-						if( distance < globalPickupRadius * globalPickupRadius)
+						if( distance < globalPickupRadius * globalPickupRadius && selectedRockCount < maxRockCount)
 						{
-							rock.GetComponent<Rock>().getUpInit = true;
+							ThrowableRock rockScript = rock.GetComponent<ThrowableRock>();
+							rockScript.getUpInit = true;
+							rock.transform.SetParent(this.transform, true);
 							selectedRockCount++;
+							rockScript.selectionNumber = selectedRockCount;
 						}
 					}
+
+					
 				}
 				#endregion
 		}
 	}
-
 } //END OF CLASS

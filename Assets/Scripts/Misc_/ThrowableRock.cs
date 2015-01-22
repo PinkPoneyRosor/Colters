@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Rock : MonoBehaviour {
+public class ThrowableRock : MonoBehaviour {
 
 	#region inspector var
 	public bool isSelected = false;
@@ -17,11 +17,18 @@ public class Rock : MonoBehaviour {
 	public bool homingAttackBool = false;
 	[HideInInspector]
 	public Transform aimHoming;
+	[HideInInspector]
+	public int selectionNumber = 0;
 
 	Vector3 previousPosition = Vector3.zero;
+	
+	GameObject player;
+	RockThrow throwScript;
 
 	// Use this for initialization
 	void Start () {
+		player = GameObject.Find ("Player");
+				throwScript = player.GetComponent < RockThrow >();
 	}
 	
 	// Update is called once per frame
@@ -57,6 +64,7 @@ public class Rock : MonoBehaviour {
 			gettingUp = false;
 			rigidbody.AddTorque (this.transform.forward * getUpRotateForce);
 			rigidbody.constraints = RigidbodyConstraints.FreezePosition;
+			setSelectionPos();
 		} 
 		else 
 		{
@@ -104,5 +112,23 @@ public class Rock : MonoBehaviour {
 		else
 			homingAttackBool = false;
 	}
-
+	
+	void setSelectionPos ()
+	{
+		switch (selectionNumber)
+		{
+			case 1:
+				transform.localPosition = throwScript.setFirstRockPos;
+				break;
+			case 2:
+				transform.localPosition = throwScript.setSecondRockPos;
+				break;
+			case 3:
+				transform.localPosition = throwScript.setThirdRockPos;
+				break;
+			case 4:
+				transform.localPosition = throwScript.setFourthRockPos;
+				break;
+		}
+	}
 }
