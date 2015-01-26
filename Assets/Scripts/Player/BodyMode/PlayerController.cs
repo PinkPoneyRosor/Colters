@@ -22,6 +22,7 @@ public class PlayerController : CommonControls {
 	[SerializeField]
 	private float setMaxJumpAngle = 35;
 
+
 	// Use this for initialization
 	protected override void Start ()
 	{

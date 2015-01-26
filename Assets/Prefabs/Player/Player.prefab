@@ -2014,10 +2014,14 @@ MonoBehaviour:
   maxRockCount: 4
   selectedRockCount: 0
   currentHitPoint: {x: 0, y: 0, z: 0}
-  setFirstRockPos: {x: 3, y: 3, z: -1}
-  setSecondRockPos: {x: 1, y: 3, z: -2}
-  setThirdRockPos: {x: -1, y: 3, z: -2}
-  setFourthRockPos: {x: -3, y: 3, z: -1}
+  setFirstRockPos: {x: 3, y: 2, z: -1}
+  setSecondRockPos: {x: 1, y: 2, z: -2}
+  setThirdRockPos: {x: -1, y: 2, z: -2}
+  setFourthRockPos: {x: -3, y: 2, z: -1}
+  firstSelected: {fileID: 0}
+  secondSelected: {fileID: 0}
+  thirdSelected: {fileID: 0}
+  fourthSelected: {fileID: 0}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

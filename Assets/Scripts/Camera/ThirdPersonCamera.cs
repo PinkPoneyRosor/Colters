@@ -92,8 +92,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
-		Debug.Log (camTarget);
-
 		#region smoothing & FOV according to player's actions
 		if (soulMode && dashingSoul) 
 		{

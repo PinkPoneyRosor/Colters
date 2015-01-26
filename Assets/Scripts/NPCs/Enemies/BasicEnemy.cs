@@ -20,6 +20,10 @@ public class BasicEnemy : MonoBehaviour {
 	Vector3 newPosition;
 	Vector3 newEnGardePosition;
 	Vector3 moveDirection = Vector3.zero;
+	
+	[SerializeField]
+	private float minRockVelocityToGetHurt = 5;
+	
 	float randomizeTimer = 0f;
 	[HideInInspector]
 	public bool canGetHit = true;
@@ -157,7 +161,7 @@ public class BasicEnemy : MonoBehaviour {
 	{
 		if (hit.collider.CompareTag ("ThrowableRock")) 
 		{ //Rocks are rigidBody, so we have to check this in OnCollision Method.
-			if(hit.rigidbody.velocity.sqrMagnitude > 10 * 10)
+			if(hit.rigidbody.velocity.sqrMagnitude > minRockVelocityToGetHurt * minRockVelocityToGetHurt)
 			gotHit (2);		
 		}
 	}

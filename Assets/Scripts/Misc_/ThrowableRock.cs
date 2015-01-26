@@ -11,13 +11,16 @@ public class ThrowableRock : MonoBehaviour {
 	public float getUpSpeed = 5;
 	public float getUpRotateForce = 100;
 	public float throwForce = 1000;
+	public float changePosSpeed = 5;
 	#endregion
+	
+	private Vector3 startScale;
 
 	[HideInInspector]
 	public bool homingAttackBool = false;
 	[HideInInspector]
 	public Transform aimHoming;
-	[HideInInspector]
+	//[HideInInspector]
 	public int selectionNumber = 0;
 
 	Vector3 previousPosition = Vector3.zero;
@@ -28,7 +31,8 @@ public class ThrowableRock : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Player");
-				throwScript = player.GetComponent < RockThrow >();
+		throwScript = player.GetComponent < RockThrow >();
+		startScale = transform.localScale;
 	}
 	
 	// Update is called once per frame
@@ -65,10 +69,12 @@ public class ThrowableRock : MonoBehaviour {
 			rigidbody.AddTorque (this.transform.forward * getUpRotateForce);
 			rigidbody.constraints = RigidbodyConstraints.FreezePosition;
 			setSelectionPos();
+			transform.localScale = Vector3.Lerp (transform.localScale, startScale/2, changePosSpeed * Time.deltaTime);
 		} 
 		else 
 		{
 			rigidbody.constraints = RigidbodyConstraints.None; //Else, we make sure there is no more movement constraints.
+			transform.localScale = Vector3.Lerp (transform.localScale, startScale, changePosSpeed * Time.deltaTime);
 		}
 
 		if (homingAttackBool) //This variable is activated by the RockThrow script if it detects that the player is aiming at an enemy.
@@ -118,16 +124,16 @@ public class ThrowableRock : MonoBehaviour {
 		switch (selectionNumber)
 		{
 			case 1:
-				transform.localPosition = throwScript.setFirstRockPos;
+				transform.localPosition = Vector3.Lerp (transform.localPosition, throwScript.setFirstRockPos, changePosSpeed * Time.deltaTime);
 				break;
 			case 2:
-				transform.localPosition = throwScript.setSecondRockPos;
+				transform.localPosition = Vector3.Lerp (transform.localPosition, throwScript.setSecondRockPos, changePosSpeed * Time.deltaTime);
 				break;
 			case 3:
-				transform.localPosition = throwScript.setThirdRockPos;
+				transform.localPosition = Vector3.Lerp (transform.localPosition, throwScript.setThirdRockPos, changePosSpeed * Time.deltaTime);
 				break;
 			case 4:
-				transform.localPosition = throwScript.setFourthRockPos;
+				transform.localPosition = Vector3.Lerp (transform.localPosition, throwScript.setFourthRockPos, changePosSpeed * Time.deltaTime);
 				break;
 		}
 	}
