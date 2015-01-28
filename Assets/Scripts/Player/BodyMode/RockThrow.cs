@@ -50,9 +50,16 @@ public class RockThrow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () 
-	{	
+	{
+					
 		if(Input.GetButtonDown("SelectRock"))
 		{
+			/*Vector3 distances = setFirstRockPos - transform.position;
+			Vector3 relativePosition = Vector3.zero;
+			relativePosition.x = Vector3.Dot(distances, transform.right.normalized);
+			relativePosition.y = Vector3.Dot(distances, transform.up.normalized);
+			relativePosition.z = Vector3.Dot(distances, transform.forward.normalized);*/
+			
 			//everything in this script happens when the player is hitting the selectRock Button
 			if (CommonControls.aimingMode) 
 			{ 
@@ -66,7 +73,7 @@ public class RockThrow : MonoBehaviour {
 								if (!hitObjectScript.isSelected && selectedRockCount < maxRockCount) 
 								{
 										hitObjectScript.getUpInit = true;
-										HitObject.transform.SetParent(this.transform, true);
+										//HitObject.transform.SetParent(this.transform, true);
 										selectedRockCount++;
 										hitObjectScript.selectionNumber = selectedRockCount;
 										
@@ -94,7 +101,7 @@ public class RockThrow : MonoBehaviour {
 							//While at least a rock is selected....
 							if (selectedRockCount > 0) 
 							{
-								firstSelected.transform.parent = null;
+								//firstSelected.transform.parent = null;
 								ThrowableRock firstRockScript = firstSelected.GetComponent<ThrowableRock> ();
 
 										if (!HitObject.transform.CompareTag ("Enemy")) 
@@ -117,6 +124,7 @@ public class RockThrow : MonoBehaviour {
 										firstRockScript.isSelected = false;
 										firstRockScript.selectionNumber = 0;
 										selectedRockCount -= 1;
+										firstSelected.rigidbody.isKinematic = false;
 										
 										canThrow = false;
 										
@@ -136,9 +144,10 @@ public class RockThrow : MonoBehaviour {
 						{
 							ThrowableRock rockScript = rock.GetComponent<ThrowableRock>();
 							rockScript.getUpInit = true;
-							rock.transform.SetParent(this.transform, true);
+							//rock.transform.SetParent(this.transform, true);
 							selectedRockCount++;
 							rockScript.selectionNumber = selectedRockCount;
+							rock.rigidbody.isKinematic = true;
 							
 							switch (selectedRockCount)
 							{
