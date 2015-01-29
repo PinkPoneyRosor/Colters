@@ -113,17 +113,14 @@ MonoBehaviour:
   isSelected: 0
   getUpInit: 0
   gettingUp: 0
-  maxSpeed: 35
-  getUpSpeed: 12
-  getUpRotateForce: 10
+  maxSpeed: 50
+  getUpSpeed: 5
+  getUpRotateForce: 100
   throwForce: 1000
+  changePosSpeed: 5
   homingAttackBool: 0
   aimHoming: {fileID: 0}
   selectionNumber: 0
-  setFirstRockPos: {x: 0, y: 0, z: -2}
-  setSecondRockPos: {x: 0, y: 0, z: -4}
-  setThirdRockPos: {x: 0, y: 0, z: -6}
-  setFourthRockPos: {x: 0, y: 0, z: -8}
 --- !u!208 &20800000
 NavMeshObstacle:
   m_ObjectHideFlags: 1

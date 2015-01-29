@@ -67,6 +67,7 @@ public class ThrowableRock : MonoBehaviour {
 		{
 			gettingUp = false;
 			//rigidbody.AddTorque (this.transform.forward * getUpRotateForce);
+			transform.Rotate (Vector3.right * Time.deltaTime);
 			rigidbody.constraints = RigidbodyConstraints.FreezePosition;
 			
 			if(!CommonControls.aimingMode)

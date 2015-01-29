@@ -70,7 +70,7 @@ public class RockThrow : MonoBehaviour {
 								ThrowableRock hitObjectScript;
 								hitObjectScript = HitObject.transform.GetComponent<ThrowableRock> ();
 
-								if (!hitObjectScript.isSelected && selectedRockCount < maxRockCount) 
+						if ( selectedRockCount < maxRockCount && !hitObjectScript.isSelected && HitObject.rigidbody.velocity.sqrMagnitude < 3 * 3) 
 								{
 										hitObjectScript.getUpInit = true;
 										//HitObject.transform.SetParent(this.transform, true);

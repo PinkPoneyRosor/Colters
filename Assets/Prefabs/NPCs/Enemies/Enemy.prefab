@@ -128,8 +128,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.0979691, y: .297485441, z: -30.3151016}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.91429996, y: 3.9374001, z: -7.27869987}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 400012}
   - {fileID: 400002}
@@ -223,7 +223,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5c9e503bf1adb23479eab92884179991, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -385,6 +385,7 @@ MonoBehaviour:
   gravity: 20
   recoveryTime: 3
   CurrentMode: 0
+  minRockVelocityToGetHurt: 5
   canGetHit: 1
   soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
 --- !u!114 &11400002
@@ -399,10 +400,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fieldOfViewAngle: 110
-  playerInSight: 0
+  playerRecentlySeen: 0
+  lastKnownPosition: {x: 0, y: 0, z: 0}
   layer:
     serializedVersion: 2
     m_Bits: 4096
+  timeBeforeLosingTracks: 5
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
