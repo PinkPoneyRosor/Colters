@@ -6,11 +6,11 @@ PhysicMaterial:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Rock
-  dynamicFriction: 1
+  dynamicFriction: 100
   staticFriction: 0
   bounciness: 0
   frictionCombine: 3
   bounceCombine: 1
-  frictionDirection2: {x: 0, y: 0, z: 0}
-  dynamicFriction2: 0
+  frictionDirection2: {x: 1, y: 1, z: 1}
+  dynamicFriction2: 100
   staticFriction2: 0
