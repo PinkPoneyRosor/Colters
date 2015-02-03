@@ -53,8 +53,35 @@ public class RockThrow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+	Debug.Log ("Rock count "+selectedRockCount);	
+	
 		if (firstSelected != null)
 			firstRockScript = firstSelected.GetComponent < ThrowableRock > ();
+				
+		ThrowableRock anyRockScript;
+		
+		#region set number at all times
+		if (firstSelected != null)
+		{
+			anyRockScript = firstSelected.GetComponent <ThrowableRock>();
+			anyRockScript.selectionNumber = 1;
+		}
+		if (secondSelected != null)
+		{
+			anyRockScript = secondSelected.GetComponent <ThrowableRock>();
+			anyRockScript.selectionNumber = 2;
+		}
+		if (thirdSelected != null)
+		{
+			anyRockScript = thirdSelected.GetComponent <ThrowableRock>();
+			anyRockScript.selectionNumber = 3;
+		}
+		if (fourthSelected != null)
+		{
+			anyRockScript = fourthSelected.GetComponent <ThrowableRock>();
+			anyRockScript.selectionNumber = 4;
+		}
+		#endregion
 					
 		if(Input.GetButtonDown("SelectRock"))
 		{
@@ -67,6 +94,8 @@ public class RockThrow : MonoBehaviour {
 		
 		if ( Input.GetAxis("Scroll") > 0)
 			ManualScroll ();
+		else if (Input.GetAxis ("Scroll") < 0)
+			InvertedManualScroll ();
 	}
 		
 		IEnumerator ShiftRockPositions() 
@@ -78,97 +107,109 @@ public class RockThrow : MonoBehaviour {
 			{
 				firstSelected = secondSelected;
 				secondSelected = null;
-				ThrowableRock rockScript = firstSelected.GetComponent<ThrowableRock>();
-				rockScript.selectionNumber = 1;
 			}
 			
 			if (thirdSelected != null)
 			{
 				secondSelected = thirdSelected;
 				thirdSelected = null;
-				ThrowableRock rockScript = secondSelected.GetComponent<ThrowableRock>();
-				rockScript.selectionNumber = 2;
 			}
 			
 			if (fourthSelected != null)
 			{
 				thirdSelected = fourthSelected;
 				fourthSelected = null;
-				ThrowableRock rockScript = thirdSelected.GetComponent<ThrowableRock>();
-				rockScript.selectionNumber = 3;
 			}
 		}
 		
 		void ManualScroll ()
 		{
-			Debug.Log ("SCROLL SCROLL MOTHERFUCKER");
-			
 			GameObject tempFirst = null;
-			
-			ThrowableRock rockScript;
 			
 			if(firstSelected != null && maxRockCount >= 1)
 			{
-				tempFirst = firstSelected;
-				firstSelected = null;
+					tempFirst = firstSelected;
+					firstSelected = null;
 			}
 
 		if(secondSelected != null && maxRockCount >= 2)
 			{
-			firstSelected = secondSelected;
-			secondSelected = null;
-			rockScript = firstSelected.GetComponent <ThrowableRock>();
-			rockScript.selectionNumber = 1;
-			Debug.Log ("Second became first");
+					firstSelected = secondSelected;
+					secondSelected = null;
 			}
 			
 		if(thirdSelected != null && maxRockCount >= 3)
 			{
-			secondSelected = thirdSelected;
-			thirdSelected = null;
-			rockScript = secondSelected.GetComponent <ThrowableRock>();
-			rockScript.selectionNumber = 2;
-			Debug.Log ("Third became second");
+					secondSelected = thirdSelected;
+					thirdSelected = null;
 			}
 		
 		if(fourthSelected != null && maxRockCount == 4)
 			{
-			thirdSelected = fourthSelected;
-			fourthSelected = null;
-			rockScript = thirdSelected.GetComponent <ThrowableRock>();
-			rockScript.selectionNumber = 3;
-			Debug.Log ("Fourth became third");
+					thirdSelected = fourthSelected;
+					fourthSelected = null;
 			}
 			
 			if(tempFirst != null)
 			{
-				if(selectedRockCount == 4)
-				{
-					fourthSelected = tempFirst;
-					rockScript = fourthSelected.GetComponent <ThrowableRock>();
-					rockScript.selectionNumber = 4;
-				}
-				else if (selectedRockCount == 3)
-				{
-					thirdSelected = tempFirst;
-					rockScript = thirdSelected.GetComponent <ThrowableRock>();
-					rockScript.selectionNumber = 3;
-				}
-				else if (selectedRockCount == 2)
-				{
-					secondSelected = tempFirst;
-					rockScript = secondSelected.GetComponent <ThrowableRock>();
-					rockScript.selectionNumber = 2;
-				}
-				else if (selectedRockCount == 1)
-				{
-					firstSelected = tempFirst;
-				}
+					if(selectedRockCount == 4)
+					{
+						fourthSelected = tempFirst;
+					}
+					else if (selectedRockCount == 3)
+					{
+						thirdSelected = tempFirst;
+					}
+					else if (selectedRockCount == 2)
+					{
+						secondSelected = tempFirst;
+					}
+					else if (selectedRockCount == 1)
+					{
+						firstSelected = tempFirst;
+					}
 				
 				tempFirst = null;
-	
-				Debug.Log ("First became whatever");
 			}
+		}
+		
+		void InvertedManualScroll()
+		{
+			GameObject tempPlace = null;
+		
+			if (selectedRockCount == 2)
+			{
+				tempPlace = secondSelected;
+				
+				secondSelected = firstSelected;
+				firstSelected = tempPlace;
+				
+				tempPlace = null;
+			}
+			
+			if(selectedRockCount == 3)
+			{
+				tempPlace = thirdSelected;
+				
+				thirdSelected = secondSelected;
+				secondSelected = firstSelected;
+				firstSelected = tempPlace;
+				
+				tempPlace = null;
+			}
+			
+			if(selectedRockCount == 4)
+			{
+				tempPlace = fourthSelected;
+				
+				fourthSelected = thirdSelected;
+				thirdSelected = secondSelected;
+				secondSelected = firstSelected;
+				firstSelected = tempPlace;
+				
+				tempPlace = null;
+			}
+			
 		}
 		
 		void controlsWhileAiming ()
@@ -207,8 +248,9 @@ public class RockThrow : MonoBehaviour {
 						
 						firstRockScript.isSelected = false;
 						firstRockScript.selectionNumber = 0;
-						selectedRockCount -= 1;
 						firstSelected.rigidbody.isKinematic = false;
+						firstSelected = null;
+						selectedRockCount -= 1;
 						
 						canThrow = false;
 						
@@ -240,29 +282,25 @@ public class RockThrow : MonoBehaviour {
 		    !chosenRockScript.gettingUp && //The rock must not be already getting up
 		    chosenRock.rigidbody.velocity.sqrMagnitude < 3 * 3) //The rock must not be moving too fast (I.E. When it just launched)
 		{
-			chosenRockScript.getUpInit = true;
 			selectedRockCount++;
+			chosenRockScript.getUpInit = true;
 			chosenRock.rigidbody.isKinematic = true;
 				
 			if (firstSelected == null)
 			{
 				firstSelected = chosenRock.transform.gameObject;
-				chosenRockScript.selectionNumber = 1;
 			}
 			else if (secondSelected == null)
 			{
 				secondSelected = chosenRock.transform.gameObject;
-				chosenRockScript.selectionNumber = 2;
 			}
 			else if (thirdSelected == null)
 			{
 				thirdSelected = chosenRock.transform.gameObject;
-				chosenRockScript.selectionNumber = 3;
 			}
 			else if (fourthSelected == null)
 			{
 				fourthSelected = chosenRock.transform.gameObject;
-				chosenRockScript.selectionNumber = 4;
 			}
 		}
 	}

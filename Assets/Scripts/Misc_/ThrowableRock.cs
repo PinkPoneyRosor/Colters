@@ -41,6 +41,11 @@ public class ThrowableRock : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+	
+		if(rigidbody.isKinematic)
+			collider.isTrigger = true;
+		else
+			collider.isTrigger = false;
 
 		//This boolean must ALWAYS be verified BEFORE the isSelected one.
 		if (getUpInit) 
@@ -66,7 +71,7 @@ public class ThrowableRock : MonoBehaviour {
 			}
 		}
 
-		if (isSelected) //If the rock's in the air, it's now selected, and we nom make sur it won't move.
+		if (isSelected && throwScript.selectedRockCount >= 1) //If the rock's in the air, it's now selected, and we nom make sur it won't move.
 		{
 			gettingUp = false;
 			transform.Rotate (Vector3.right * Time.deltaTime * 100);
@@ -92,6 +97,8 @@ public class ThrowableRock : MonoBehaviour {
 		{
 			rigidbody.constraints = RigidbodyConstraints.None; //Else, we make sure there is no more movement constraints.
 			transform.localScale = Vector3.Lerp (transform.localScale, startScale, changePosSpeed * Time.deltaTime);
+			nowThrowable = false; // This is to make sure a rock isn't selected by error when the actual selected rock count is 0.
+			isSelected = false;
 		}
 
 		if (homingAttackBool) //This variable is activated by the RockThrow script if it detects that the player is aiming at an enemy.
