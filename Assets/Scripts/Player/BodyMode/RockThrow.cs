@@ -28,11 +28,6 @@ public class RockThrow : MonoBehaviour {
 	
 	private bool canThrow = true;
 	
-	public Vector3 setFirstRockPos = Vector3.zero;
-	public Vector3 setSecondRockPos = Vector3.zero;
-	public Vector3 setThirdRockPos = Vector3.zero;
-	public Vector3 setFourthRockPos = Vector3.zero;
-	
 	[HideInInspector]
 	public GameObject firstSelected;
 	[HideInInspector]
@@ -216,7 +211,7 @@ public class RockThrow : MonoBehaviour {
 		{
 				//First, we check with a sphereCast (in order to allow the player to be less precise) if the player is looking at a rock.
 				RaycastHit HitObject;
-				if (Physics.SphereCast (transform.position, .5f, mainCamera.forward, out HitObject, Mathf.Infinity, RockLayer)) 
+				if (Physics.SphereCast (transform.position, .2f, mainCamera.forward, out HitObject, Mathf.Infinity, RockLayer)) 
 				{
 					selectARock(HitObject.collider.gameObject);
 				}
