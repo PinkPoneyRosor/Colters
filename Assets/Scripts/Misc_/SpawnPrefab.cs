@@ -4,8 +4,8 @@ using System.Collections;
 class SpawnPrefab : MonoBehaviour 
 {
 	public Component[] allTrapRocks;
-	public GameObject TrapV2Prefab;
-	public Transform spawnPosition;
+	public GameObject TrapV2Prefab = null;
+	public Transform spawnPosition = null;
 	public GameObject spawnedTrap;
 	public float speed= 5;
 	
