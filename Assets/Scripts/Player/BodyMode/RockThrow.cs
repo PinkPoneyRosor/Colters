@@ -109,21 +109,41 @@ public class RockThrow : MonoBehaviour {
 			
 			tempFourth = firstSelected;
 
+			if(secondSelected != null)
+			{
 			firstSelected = secondSelected;
-			rockScript = firstSelected.GetComponent<ThrowableRock>();
+			secondSelected = null;
+			rockScript = firstSelected.GetComponent <ThrowableRock>();
 			rockScript.selectionNumber = 1;
+			Debug.Log ("Second became first");
+			}
 			
+			if(thirdSelected != null)
+			{
 			secondSelected = thirdSelected;
-			rockScript = secondSelected.GetComponent<ThrowableRock>();
+			thirdSelected = null;
+			rockScript = secondSelected.GetComponent <ThrowableRock>();
 			rockScript.selectionNumber = 2;
+			Debug.Log ("Third became second");
+			}
 		
+			if(fourthSelected != null)
+			{
 			thirdSelected = fourthSelected;
-			rockScript = thirdSelected.GetComponent<ThrowableRock>();
+			fourthSelected = null;
+			rockScript = thirdSelected.GetComponent <ThrowableRock>();
 			rockScript.selectionNumber = 3;
-		
+			Debug.Log ("Fourth became third");
+			}
+			
+			if(tempFourth != null)
+			{
 			fourthSelected = tempFourth;
-			rockScript = fourthSelected.GetComponent<ThrowableRock>();
+			tempFourth = null;
+			rockScript = fourthSelected.GetComponent <ThrowableRock>();
 			rockScript.selectionNumber = 4;
+			Debug.Log ("First became fourth");
+			}
 		
 			/*if(firstSelected != null)
 			{
@@ -237,22 +257,15 @@ public class RockThrow : MonoBehaviour {
 			selectedRockCount++;
 			chosenRockScript.selectionNumber = selectedRockCount;
 			chosenRock.rigidbody.isKinematic = true;
-			
-			switch (selectedRockCount)
-			{
-			case 1:
+				
+			if (firstSelected == null)
 				firstSelected = chosenRock.transform.gameObject;
-				break;
-			case 2:
+			else if (secondSelected == null)
 				secondSelected = chosenRock.transform.gameObject;
-				break;
-			case 3:
+			else if (thirdSelected == null)
 				thirdSelected = chosenRock.transform.gameObject;
-				break;
-			case 4:
+			else if (fourthSelected == null)
 				fourthSelected = chosenRock.transform.gameObject;
-				break;
-			}
 		}
 	}
 	

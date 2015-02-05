@@ -8,11 +8,13 @@ public class ThrowableRock : MonoBehaviour {
 	public bool getUpInit = false;
 	public bool nowThrowable = false;
 	public bool gettingUp = false;
+	public bool canExplode = false;
 	public float maxSpeed = 50;
 	public float getUpSpeed = 5;
 	public float getUpRotateForce = 100;
 	public float throwForce = 1000;
 	public float changePosSpeed = 5;
+	
 	#endregion
 	
 	private Vector3 startScale;
@@ -68,6 +70,7 @@ public class ThrowableRock : MonoBehaviour {
 
 		if (isSelected) //If the rock's in the air, it's now selected, and we nom make sur it won't move.
 		{
+			canExplode = true;
 			gettingUp = false;
 			transform.Rotate (Vector3.right * Time.deltaTime * 100);
 			rigidbody.constraints = RigidbodyConstraints.FreezePosition;
@@ -128,6 +131,7 @@ public class ThrowableRock : MonoBehaviour {
 
 			isSelected = false;
 			nowThrowable = false;
+		
 
 			this.rigidbody.constraints = RigidbodyConstraints.None;
 
