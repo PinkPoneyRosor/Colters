@@ -17,6 +17,13 @@ TagManager:
   - 
   - EarthQuake
   - 
+  - Statue Orbit 1
+  - Statue Orbit 2
+  - GlueSurface
+  - FallingRocks
+  - ThrowableRock2
+  - Explosion
+  - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
   Builtin Layer 2: Ignore Raycast

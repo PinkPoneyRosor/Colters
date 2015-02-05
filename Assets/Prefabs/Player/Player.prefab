@@ -1034,7 +1034,7 @@ GameObject:
   - 135: {fileID: 13500000}
   - 81: {fileID: 8100000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400004}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -1931,7 +1931,7 @@ Transform:
   m_GameObject: {fileID: 100136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.5, y: 1.55700004, z: 5.61639977}
-  m_LocalScale: {x: .99999994, y: 1, z: .99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
   - {fileID: 400086}
@@ -1968,7 +1968,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53ae3671b76ef9d4baae0f45836eb3b2, type: 3}
+  m_Script: {fileID: 11500000, guid: e01a46393a95a9442b9e25e5b7f36694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   horizontal: 0
@@ -1981,19 +1981,19 @@ MonoBehaviour:
   mainCameraScript: {fileID: 0}
   continueResetControls: 0
   floatDir: 0
-  speed: 3
-  maxSpeed: 5
+  speed: 0
+  maxSpeed: 8
   gravity: 20
   localDeltaTime: 0
   setAimMode: 1
   canJump: 1
-  heightOfJump: 8
-  setMaximumSpeed: 3
+  heightOfJump: 9
+  setMaximumSpeed: 7
   Soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
   EarthQuakeParticles: {fileID: 100000, guid: 6a390110c28ed514ea1f2b405900a9dd, type: 2}
   soulMode: 0
-  setMaxJumpAngle: 35
---- !u!114 &11400002
+  setMaxJumpAngle: 65
+--- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2001,7 +2001,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1482d1d1355422409b4799a528d792e, type: 3}
+  m_Script: {fileID: 11500000, guid: 17883c516281352498878f952c662419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RockLayer:
@@ -2014,10 +2014,6 @@ MonoBehaviour:
   maxRockCount: 4
   selectedRockCount: 0
   currentHitPoint: {x: 0, y: 0, z: 0}
-  setFirstRockPos: {x: 3, y: 2, z: -1}
-  setSecondRockPos: {x: 1, y: 2, z: -2}
-  setThirdRockPos: {x: -1, y: 2, z: -2}
-  setFourthRockPos: {x: -3, y: 2, z: -1}
   firstSelected: {fileID: 0}
   secondSelected: {fileID: 0}
   thirdSelected: {fileID: 0}
@@ -2125,13 +2121,13 @@ CharacterController:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100136}
   serializedVersion: 2
-  m_Height: 1.70000005
-  m_Radius: .200000003
+  m_Height: 1.69000006
+  m_Radius: .25999999
   m_SlopeLimit: 45
   m_StepOffset: .300000012
   m_SkinWidth: .100000001
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -.100000001, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

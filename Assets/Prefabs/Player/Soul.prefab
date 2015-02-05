@@ -1047,7 +1047,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.15770006, y: 2.57150006, z: 3.10409999}
+  m_LocalPosition: {x: -6.04999971, y: 27.0299988, z: 84.0999985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400046}
@@ -1962,9 +1962,9 @@ MonoBehaviour:
   gravity: 20
   localDeltaTime: 0
   setAimMode: 1
-  aimingMode: 0
-  setMaximumSpeed: 5
-  heightOfJump: 8
+  canJump: 1
+  setMaximumSpeed: 7
+  heightOfJump: 9
   dashCoolDown: 2
   ghostPrefab: {fileID: 100000, guid: c94ae3272a3d8da41a5d8edda0437a8b, type: 2}
   isDashing: 0
@@ -1981,7 +1981,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1482d1d1355422409b4799a528d792e, type: 3}
+  m_Script: {fileID: 11500000, guid: 17883c516281352498878f952c662419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RockLayer:
@@ -1990,8 +1990,14 @@ MonoBehaviour:
   otherLayers:
     serializedVersion: 2
     m_Bits: 4294901759
+  globalPickupRadius: 10
+  maxRockCount: 4
   selectedRockCount: 0
   currentHitPoint: {x: 0, y: 0, z: 0}
+  firstSelected: {fileID: 0}
+  secondSelected: {fileID: 0}
+  thirdSelected: {fileID: 0}
+  fourthSelected: {fileID: 0}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2001,10 +2007,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
+  m_Radius: .25999999
+  m_Height: 1.69000006
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -.100000001, z: 0}
 --- !u!137 &13700002
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2096,13 +2102,13 @@ CharacterController:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: .5
+  m_Height: 1.69000006
+  m_Radius: .25999999
   m_SlopeLimit: 45
   m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
+  m_SkinWidth: .100000001
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: .150000006, z: 0}
+  m_Center: {x: 0, y: -.100000001, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

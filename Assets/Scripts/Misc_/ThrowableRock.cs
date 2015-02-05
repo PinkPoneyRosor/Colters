@@ -8,11 +8,13 @@ public class ThrowableRock : MonoBehaviour {
 	public bool getUpInit = false;
 	public bool nowThrowable = false;
 	public bool gettingUp = false;
+	public bool canExplode = false;
 	public float maxSpeed = 50;
 	public float getUpSpeed = 5;
 	public float getUpRotateForce = 100;
 	public float throwForce = 1000;
 	public float changePosSpeed = 5;
+	
 	#endregion
 	
 	private Vector3 startScale;
@@ -26,16 +28,17 @@ public class ThrowableRock : MonoBehaviour {
 	
 	[SerializeField]
 	float distanceFromPlayer = 2;
+<<<<<<< HEAD
 
 	Vector3 previousPosition = Vector3.zero;
+=======
+>>>>>>> origin/Quentin-WIP
 	
 	GameObject player;
-	RockThrow throwScript;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Player");
-		throwScript = player.GetComponent < RockThrow >();
 		startScale = transform.localScale;
 	}
 	
@@ -52,7 +55,6 @@ public class ThrowableRock : MonoBehaviour {
 		{
 			getUpInit = false;
 			rigidbody.useGravity = false;
-			previousPosition = transform.position;
 			gettingUp = true;
 		}
 
@@ -73,6 +75,7 @@ public class ThrowableRock : MonoBehaviour {
 
 		if (isSelected && throwScript.selectedRockCount >= 1) //If the rock's in the air, it's now selected, and we nom make sur it won't move.
 		{
+			canExplode = true;
 			gettingUp = false;
 			transform.Rotate (Vector3.right * Time.deltaTime * 100);
 			rigidbody.constraints = RigidbodyConstraints.FreezePosition;
@@ -89,7 +92,10 @@ public class ThrowableRock : MonoBehaviour {
 			
 			if (distanceFromRockToPlayer < 8)
 			{
+<<<<<<< HEAD
 				Debug.Log ("First rock ready to launch");
+=======
+>>>>>>> origin/Quentin-WIP
 				nowThrowable = true;
 			}
 		} 
@@ -135,6 +141,10 @@ public class ThrowableRock : MonoBehaviour {
 
 			isSelected = false;
 			nowThrowable = false;
+<<<<<<< HEAD
+=======
+		
+>>>>>>> origin/Quentin-WIP
 
 			this.rigidbody.constraints = RigidbodyConstraints.None;
 
@@ -178,6 +188,7 @@ public class ThrowableRock : MonoBehaviour {
 	
 		switch (selectionNumber)
 		{
+<<<<<<< HEAD
 			case 1:
 				Vector3 firstOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * 1.2f);
 				transform.position = Vector3.Lerp (transform.position, player.transform.position + firstOffset, changePosSpeed * Time.deltaTime);
@@ -194,6 +205,24 @@ public class ThrowableRock : MonoBehaviour {
 				Vector3 fourthOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (-player.transform.up * .3f);
 				transform.position = Vector3.Lerp (transform.position, player.transform.position + fourthOffset, changePosSpeed * Time.deltaTime);
 				break;
+=======
+		case 1:
+			Vector3 firstOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * 1.2f);
+			transform.position = Vector3.Lerp (transform.position, player.transform.position + firstOffset, changePosSpeed * Time.deltaTime);
+			break;
+		case 2:
+			Vector3 secondOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * .7f);
+			transform.position = Vector3.Lerp (transform.position, player.transform.position + secondOffset, changePosSpeed * Time.deltaTime);
+			break;
+		case 3:
+			Vector3 thirdOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * .2f);
+			transform.position = Vector3.Lerp (transform.position, player.transform.position + thirdOffset, changePosSpeed * Time.deltaTime);
+			break;
+		case 4:
+			Vector3 fourthOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (-player.transform.up * .3f);
+			transform.position = Vector3.Lerp (transform.position, player.transform.position + fourthOffset, changePosSpeed * Time.deltaTime);
+			break;
+>>>>>>> origin/Quentin-WIP
 		}
 	}
 }
