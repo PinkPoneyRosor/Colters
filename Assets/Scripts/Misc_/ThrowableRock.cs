@@ -28,11 +28,6 @@ public class ThrowableRock : MonoBehaviour {
 	
 	[SerializeField]
 	float distanceFromPlayer = 2;
-<<<<<<< HEAD
-
-	Vector3 previousPosition = Vector3.zero;
-=======
->>>>>>> origin/Quentin-WIP
 	
 	GameObject player;
 
@@ -44,11 +39,6 @@ public class ThrowableRock : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-		if(rigidbody.isKinematic)
-			collider.isTrigger = true;
-		else
-			collider.isTrigger = false;
 
 		//This boolean must ALWAYS be verified BEFORE the isSelected one.
 		if (getUpInit) 
@@ -73,7 +63,7 @@ public class ThrowableRock : MonoBehaviour {
 			}
 		}
 
-		if (isSelected && throwScript.selectedRockCount >= 1) //If the rock's in the air, it's now selected, and we nom make sur it won't move.
+		if (isSelected) //If the rock's in the air, it's now selected, and we nom make sur it won't move.
 		{
 			canExplode = true;
 			gettingUp = false;
@@ -92,10 +82,6 @@ public class ThrowableRock : MonoBehaviour {
 			
 			if (distanceFromRockToPlayer < 8)
 			{
-<<<<<<< HEAD
-				Debug.Log ("First rock ready to launch");
-=======
->>>>>>> origin/Quentin-WIP
 				nowThrowable = true;
 			}
 		} 
@@ -103,8 +89,6 @@ public class ThrowableRock : MonoBehaviour {
 		{
 			rigidbody.constraints = RigidbodyConstraints.None; //Else, we make sure there is no more movement constraints.
 			transform.localScale = Vector3.Lerp (transform.localScale, startScale, changePosSpeed * Time.deltaTime);
-			nowThrowable = false; // This is to make sure a rock isn't selected by error when the actual selected rock count is 0.
-			isSelected = false;
 		}
 
 		if (homingAttackBool) //This variable is activated by the RockThrow script if it detects that the player is aiming at an enemy.
@@ -141,10 +125,7 @@ public class ThrowableRock : MonoBehaviour {
 
 			isSelected = false;
 			nowThrowable = false;
-<<<<<<< HEAD
-=======
 		
->>>>>>> origin/Quentin-WIP
 
 			this.rigidbody.constraints = RigidbodyConstraints.None;
 
@@ -158,8 +139,6 @@ public class ThrowableRock : MonoBehaviour {
 	
 	void setSelectionPos ()
 	{
-		Debug.Log ("Setting selection Pos");
-	
 		switch (selectionNumber)
 		{
 			case 1:
@@ -188,24 +167,6 @@ public class ThrowableRock : MonoBehaviour {
 	
 		switch (selectionNumber)
 		{
-<<<<<<< HEAD
-			case 1:
-				Vector3 firstOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * 1.2f);
-				transform.position = Vector3.Lerp (transform.position, player.transform.position + firstOffset, changePosSpeed * Time.deltaTime);
-				break;
-			case 2:
-				Vector3 secondOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * .7f);
-				transform.position = Vector3.Lerp (transform.position, player.transform.position + secondOffset, changePosSpeed * Time.deltaTime);
-				break;
-			case 3:
-				Vector3 thirdOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * .2f);
-				transform.position = Vector3.Lerp (transform.position, player.transform.position + thirdOffset, changePosSpeed * Time.deltaTime);
-				break;
-			case 4:
-				Vector3 fourthOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (-player.transform.up * .3f);
-				transform.position = Vector3.Lerp (transform.position, player.transform.position + fourthOffset, changePosSpeed * Time.deltaTime);
-				break;
-=======
 		case 1:
 			Vector3 firstOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * 1.2f);
 			transform.position = Vector3.Lerp (transform.position, player.transform.position + firstOffset, changePosSpeed * Time.deltaTime);
@@ -222,7 +183,6 @@ public class ThrowableRock : MonoBehaviour {
 			Vector3 fourthOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (-player.transform.up * .3f);
 			transform.position = Vector3.Lerp (transform.position, player.transform.position + fourthOffset, changePosSpeed * Time.deltaTime);
 			break;
->>>>>>> origin/Quentin-WIP
 		}
 	}
 }

@@ -550,8 +550,8 @@ Rigidbody:
   m_GameObject: {fileID: 210149439}
   serializedVersion: 2
   m_Mass: 15
-  m_Drag: 0
-  m_AngularDrag: 1.5
+  m_Drag: .100000001
+  m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -577,7 +577,7 @@ MonoBehaviour:
   maxSpeed: 50
   getUpSpeed: 5
   getUpRotateForce: 100
-  throwForce: 2000
+  throwForce: 1000
   changePosSpeed: 5
   homingAttackBool: 0
   aimHoming: {fileID: 0}
@@ -1646,7 +1646,7 @@ MonoBehaviour:
   maxSpeed: 50
   getUpSpeed: 5
   getUpRotateForce: 100
-  throwForce: 2000
+  throwForce: 1000
   changePosSpeed: 5
   homingAttackBool: 0
   aimHoming: {fileID: 0}
@@ -1661,8 +1661,8 @@ Rigidbody:
   m_GameObject: {fileID: 707373620}
   serializedVersion: 2
   m_Mass: 15
-  m_Drag: 0
-  m_AngularDrag: 1.5
+  m_Drag: .100000001
+  m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1875,53 +1875,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1612232603}
   m_RootOrder: 5
-<<<<<<< HEAD
---- !u!1001 &844881271
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400136, guid: d97fda8f2fefc7240a9069c959be9535, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 400136, guid: d97fda8f2fefc7240a9069c959be9535, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.55700004
-      objectReference: {fileID: 0}
-    - target: {fileID: 400136, guid: d97fda8f2fefc7240a9069c959be9535, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 5.61639977
-      objectReference: {fileID: 0}
-    - target: {fileID: 400136, guid: d97fda8f2fefc7240a9069c959be9535, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400136, guid: d97fda8f2fefc7240a9069c959be9535, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400136, guid: d97fda8f2fefc7240a9069c959be9535, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400136, guid: d97fda8f2fefc7240a9069c959be9535, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400136, guid: d97fda8f2fefc7240a9069c959be9535, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: d97fda8f2fefc7240a9069c959be9535, type: 2}
-  m_RootGameObject: {fileID: 267335502}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
-=======
->>>>>>> origin/Quentin-WIP
 --- !u!1 &856956027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,7 +2416,7 @@ MonoBehaviour:
   maxSpeed: 50
   getUpSpeed: 5
   getUpRotateForce: 100
-  throwForce: 2000
+  throwForce: 1000
   changePosSpeed: 5
   homingAttackBool: 0
   aimHoming: {fileID: 0}
@@ -2478,8 +2431,8 @@ Rigidbody:
   m_GameObject: {fileID: 1021591019}
   serializedVersion: 2
   m_Mass: 15
-  m_Drag: 0
-  m_AngularDrag: 1.5
+  m_Drag: .100000001
+  m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3217,7 +3170,7 @@ MonoBehaviour:
   maxSpeed: 50
   getUpSpeed: 5
   getUpRotateForce: 100
-  throwForce: 2000
+  throwForce: 1000
   changePosSpeed: 5
   homingAttackBool: 0
   aimHoming: {fileID: 0}
@@ -3232,8 +3185,8 @@ Rigidbody:
   m_GameObject: {fileID: 1420852320}
   serializedVersion: 2
   m_Mass: 15
-  m_Drag: 0
-  m_AngularDrag: 1.5
+  m_Drag: .100000001
+  m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -4231,7 +4184,7 @@ MonoBehaviour:
   maxSpeed: 50
   getUpSpeed: 5
   getUpRotateForce: 100
-  throwForce: 2000
+  throwForce: 1000
   changePosSpeed: 5
   homingAttackBool: 0
   aimHoming: {fileID: 0}
@@ -4246,8 +4199,8 @@ Rigidbody:
   m_GameObject: {fileID: 1850480340}
   serializedVersion: 2
   m_Mass: 15
-  m_Drag: 0
-  m_AngularDrag: 1.5
+  m_Drag: .100000001
+  m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
