@@ -42,7 +42,6 @@ public class RockThrow : MonoBehaviour {
 	void Start () 
 	{
 		mainCamera = Camera.main.transform;
-		allRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock");
 	}
 	
 	// Update is called once per frame
@@ -79,6 +78,9 @@ public class RockThrow : MonoBehaviour {
 		if(Input.GetButtonDown("SelectRock"))
 		{
 			//everything in this script happens when the player is hitting the selectRock Button
+			
+			allRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock");
+			
 			if (CommonControls.aimingMode)  
 				controlsWhileAiming();
 			else
@@ -268,9 +270,10 @@ public class RockThrow : MonoBehaviour {
 	void selectARock (GameObject chosenRock)
 	{
 		ThrowableRock chosenRockScript;
-		chosenRockScript = chosenRock.transform.GetComponent<ThrowableRock> ();
+		chosenRockScript = chosenRock.transform.GetComponent < ThrowableRock > ();
 		
 		if ( selectedRockCount < maxRockCount && // The player must have selected less than the maximum amount of rock allowed
+			chosenRock != null &&
 		    !chosenRockScript.isSelected && //The rock must not be already selected
 		    !chosenRockScript.getUpInit && //The rock must not be preparing to get up
 		    !chosenRockScript.gettingUp && //The rock must not be already getting up
