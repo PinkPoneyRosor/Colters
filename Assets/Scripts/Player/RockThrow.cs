@@ -245,6 +245,7 @@ public class RockThrow : MonoBehaviour {
 						firstRockScript.isSelected = false;
 						firstRockScript.selectionNumber = 0;
 						firstSelected.rigidbody.isKinematic = false;
+						firstSelected.collider.isTrigger = false;
 						firstSelected = null;
 						selectedRockCount -= 1;
 						
@@ -277,15 +278,17 @@ public class RockThrow : MonoBehaviour {
 		    !chosenRockScript.isSelected && //The rock must not be already selected
 		    !chosenRockScript.getUpInit && //The rock must not be preparing to get up
 		    !chosenRockScript.gettingUp && //The rock must not be already getting up
-		    chosenRock.rigidbody.velocity.sqrMagnitude < 3 * 3) //The rock must not be moving too fast (I.E. When it just launched)
+		    chosenRock.rigidbody.velocity.sqrMagnitude < 3 * 3 ) //The rock must not be moving too fast (I.E. When it just launched)
 		{
 			selectedRockCount++;
 			chosenRockScript.getUpInit = true;
+			chosenRock.collider.isTrigger = true;
 			chosenRock.rigidbody.isKinematic = true;
 				
 			if (firstSelected == null)
 			{
 				firstSelected = chosenRock.transform.gameObject;
+				
 			}
 			else if (secondSelected == null)
 			{
