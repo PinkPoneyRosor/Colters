@@ -24,7 +24,6 @@ class SpawnPrefab : MonoBehaviour
 			{
 				child.rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 				child.transform.Translate(Vector3.down * speed * Time.deltaTime);
-
 			}
 			
 			StartCoroutine ("DoSomethingElse");
