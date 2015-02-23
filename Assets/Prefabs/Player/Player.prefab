@@ -1929,8 +1929,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100136}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 1.55700004, z: 5.61639977}
+  m_LocalRotation: {x: 0, y: .268059373, z: 0, w: .96340245}
+  m_LocalPosition: {x: -32.6705399, y: 10.401968, z: -24.0805283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -1990,7 +1990,7 @@ MonoBehaviour:
   heightOfJump: 9
   setMaximumSpeed: 7
   Soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
-  EarthQuakeParticles: {fileID: 100000, guid: 6a390110c28ed514ea1f2b405900a9dd, type: 2}
+  EarthQuakeParticles: {fileID: 0}
   soulMode: 0
   setMaxJumpAngle: 65
 --- !u!114 &11400004
@@ -2014,6 +2014,10 @@ MonoBehaviour:
   maxRockCount: 4
   selectedRockCount: 0
   currentHitPoint: {x: 0, y: 0, z: 0}
+  setFirstRockPos: {x: 3, y: 2, z: -1}
+  setSecondRockPos: {x: 1, y: 2, z: -2}
+  setThirdRockPos: {x: -1, y: 2, z: -2}
+  setFourthRockPos: {x: -3, y: 2, z: -1}
   firstSelected: {fileID: 0}
   secondSelected: {fileID: 0}
   thirdSelected: {fileID: 0}
