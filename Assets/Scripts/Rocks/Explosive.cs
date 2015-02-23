@@ -20,7 +20,6 @@ public class Explosive : MonoBehaviour {
 		if(throwableRock.canExplode == true
 		   && rigidbody.velocity.sqrMagnitude > velocityNeededForExplosion * velocityNeededForExplosion)
 		{
-			Debug.Log (rigidbody.velocity.sqrMagnitude);
 			ContactPoint contact = collision.contacts[0];
 			Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
 			Vector3 pos = contact.point;
