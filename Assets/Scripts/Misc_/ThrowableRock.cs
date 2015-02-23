@@ -32,7 +32,8 @@ public class ThrowableRock : MonoBehaviour {
 	GameObject player;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		player = GameObject.Find ("Player");
 		startScale = transform.localScale;
 	}
@@ -65,7 +66,7 @@ public class ThrowableRock : MonoBehaviour {
 
 		if (isSelected) //If the rock's in the air, it's now selected, and we nom make sur it won't move.
 		{
-			canExplode = true;
+			canExplode = false;
 			gettingUp = false;
 			transform.Rotate (Vector3.right * Time.deltaTime * 100);
 			rigidbody.constraints = RigidbodyConstraints.FreezePosition;
@@ -87,6 +88,7 @@ public class ThrowableRock : MonoBehaviour {
 		} 
 		else 
 		{
+			canExplode = true;
 			rigidbody.constraints = RigidbodyConstraints.None; //Else, we make sure there is no more movement constraints.
 			transform.localScale = Vector3.Lerp (transform.localScale, startScale, changePosSpeed * Time.deltaTime);
 		}
