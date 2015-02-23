@@ -1981,19 +1981,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17883c516281352498878f952c662419, type: 3}
+  m_Script: {fileID: 11500000, guid: d1482d1d1355422409b4799a528d792e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RockLayer:
-    serializedVersion: 2
-    m_Bits: 65536
-  otherLayers:
-    serializedVersion: 2
-    m_Bits: 4294901759
+  mainCamera: {fileID: 0}
+  SelectedRock: {fileID: 0}
+  selectedRocks: []
+  RockLayer: {}
+  otherLayers: {}
   globalPickupRadius: 10
   maxRockCount: 4
   selectedRockCount: 0
   currentHitPoint: {x: 0, y: 0, z: 0}
+  allRocks: []
+  controlsScript: {fileID: 0}
+  canThrow: 1
+  setFirstRockPos: {x: 0, y: 0, z: 0}
+  setSecondRockPos: {x: 0, y: 0, z: 0}
+  setThirdRockPos: {x: 0, y: 0, z: 0}
+  setFourthRockPos: {x: 0, y: 0, z: 0}
   firstSelected: {fileID: 0}
   secondSelected: {fileID: 0}
   thirdSelected: {fileID: 0}

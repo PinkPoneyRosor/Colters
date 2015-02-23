@@ -5,6 +5,7 @@ public class Explosive : MonoBehaviour {
 
 
 	private ThrowableRock throwableRock;
+	private BasicEnemy basicEnemy;
 	public Transform explosionPrefab;
 
 
@@ -12,6 +13,7 @@ public class Explosive : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		throwableRock = GetComponent<ThrowableRock> ();
+		basicEnemy = GetComponent<BasicEnemy> ();
 	}
 	
 	// Update is called once per frame

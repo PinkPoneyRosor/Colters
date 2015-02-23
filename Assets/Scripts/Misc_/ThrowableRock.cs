@@ -28,12 +28,16 @@ public class ThrowableRock : MonoBehaviour {
 	
 	[SerializeField]
 	float distanceFromPlayer = 2;
+
+	Vector3 previousPosition = Vector3.zero;
 	
 	GameObject player;
+	RockThrow throwScript;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Player");
+		throwScript = player.GetComponent < RockThrow >();
 		startScale = transform.localScale;
 	}
 	
@@ -45,6 +49,7 @@ public class ThrowableRock : MonoBehaviour {
 		{
 			getUpInit = false;
 			rigidbody.useGravity = false;
+			previousPosition = transform.position;
 			gettingUp = true;
 		}
 
@@ -82,6 +87,7 @@ public class ThrowableRock : MonoBehaviour {
 			
 			if (distanceFromRockToPlayer < 8)
 			{
+				Debug.Log ("First rock ready to launch");
 				nowThrowable = true;
 			}
 		} 
