@@ -3,7 +3,8 @@ using System.Collections;
 
 public class TrapV4 : MonoBehaviour {
 
-	public Animation animation;
+
+	public AnimationClip animation;
 
 	// Use this for initialization
 	void Start () {
@@ -16,12 +17,14 @@ public class TrapV4 : MonoBehaviour {
 
 	}
 
-	/*void OnTriggerEnter(Collider c)
+
+	void OnTriggerEnter(Collider c)
 	{
 		if (c.gameObject.tag == "ThrowableRock")
 		{
-			animation.Play();
+			GameObject.Find("TrapV4").animation.Play("StatuePlateforme");
+			Debug.Log("Play!");
 		}
 
-}*/
+}
 }

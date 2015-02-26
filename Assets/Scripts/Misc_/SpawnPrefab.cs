@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 class SpawnPrefab : MonoBehaviour 
@@ -23,6 +23,7 @@ class SpawnPrefab : MonoBehaviour
 			foreach (Rigidbody child in allTrapRocks)
 			{
 				child.rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+
 				child.transform.Translate(Vector3.down * speed * Time.deltaTime);
 			}
 			

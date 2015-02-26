@@ -213,8 +213,8 @@ GameObject:
   - 23: {fileID: 2300020}
   - 114: {fileID: 11400040}
   - 65: {fileID: 6500000}
-  - 95: {fileID: 9500000}
   - 114: {fileID: 11400080}
+  - 111: {fileID: 11100000}
   m_Layer: 0
   m_Name: TrapV4
   m_TagString: Untagged
@@ -873,7 +873,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1460,21 +1460,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 1.59000015, y: 1.51999855, z: -1.55000114}
---- !u!95 &9500000
-Animator:
-  serializedVersion: 3
+--- !u!111 &11100000
+Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100020}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eea8b95076d3bd749a3bf4bb0a1dfc03, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: afcf12c08e8bde34fba5f76615718243, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8466,6 +8465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bab561693a30e34686296fcefde1026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animation: {fileID: 7400000, guid: afcf12c08e8bde34fba5f76615718243, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
