@@ -26,9 +26,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: -.235748231, w: .971814215}
-  m_LocalPosition: {x: -15.75, y: 34, z: 97.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -.194890499, y: -.0472776592, z: -.230959013, w: .952071667}
+  m_LocalPosition: {x: -31.6172752, y: 58.0612793, z: -38.8355408}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -104,6 +104,8 @@ MonoBehaviour:
   waterLayer:
     serializedVersion: 2
     m_Bits: 16
+  cloneNumber: 0
+  cloningDelay: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
