@@ -22,7 +22,7 @@ public class TrapV4 : MonoBehaviour {
 	{
 		if (c.gameObject.tag == "ThrowableRock")
 		{
-			GameObject.Find("TrapV4").animation.Play("StatuePlateforme");
+			this.gameObject.animation.Play("StatuePlateforme");
 			Debug.Log("Play!");
 		}
 

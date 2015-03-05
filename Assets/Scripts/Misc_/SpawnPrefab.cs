@@ -27,15 +27,15 @@ class SpawnPrefab : MonoBehaviour
 				child.transform.Translate(Vector3.down * speed * Time.deltaTime);
 			}
 			
-			StartCoroutine ("DoSomethingElse");
+			//StartCoroutine ("DoSomethingElse");
 		}
 	}
 
-	IEnumerator DoSomethingElse ()
+	/*IEnumerator DoSomethingElse ()
 	{
 		yield return new WaitForSeconds(5f);	
 		Destroy(spawnedTrap.gameObject);
 		spawnedTrap = Instantiate(TrapV2Prefab, transform.localPosition, transform.localRotation) as GameObject;
-		allTrapRocks = spawnedTrap.GetComponentsInChildren <Rigidbody>();
-	}
+		llTrapRocks = spawnedTrap.GetComponentsInChildren <Rigidbody>();
+	}*/
 }
