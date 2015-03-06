@@ -7,16 +7,12 @@ public class Floater : MonoBehaviour
 	public 		Vector3 		buoyancyCentreOffset;
 	public 		float 			bounceDamp;
 	public 		LayerMask 		waterLayer;
-	public 		int 			cloneNumber;
-	public 		float 			cloningDelay;
 	
 	private 	Vector3 		flowDirection = Vector3.zero;
 	private 	bool 			inWater = false;
 	private 	GameObject 		hitWater;
 	private 	WaterVolume 	hitWaterScript;
 	private 	Vector3 		startPos;
-	private 	float 			timeSpent;
-	private		int				spawnedClones;
 	private		bool			waitingToGo;
 	
 	void Start ()
@@ -52,14 +48,12 @@ public class Floater : MonoBehaviour
 				}
 				else
 				flowDirection = hitWaterScript.streamDirection;
-				
-				Debug.Log (flowDirection.normalized);
 				Debug.DrawRay( hit.point, flowDirection*5 );
 			}	
 		
 			Vector3 actionPoint = transform.position + transform.TransformDirection(buoyancyCentreOffset);
 			
-			if(flowDirection.y != 0)
+			if (flowDirection.y != 0)
 				actionPoint -= Vector3.up * -1f;
 			
 			float forceFactor = 1f - ((actionPoint.y - waterLevel) / floatHeight);
@@ -70,7 +64,7 @@ public class Floater : MonoBehaviour
 				rigidbody.AddForceAtPosition(uplift, actionPoint);
 			}
 			
-			if(flowDirection != Vector3.zero)
+			if(flowDirection != Vector3.zero && !rigidbody.isKinematic)
 			{
 				rigidbody.AddForce(flowDirection.normalized * hitWaterScript.waterStreamSpeed);
 				//Making sure speed won't be too fast
@@ -81,14 +75,6 @@ public class Floater : MonoBehaviour
 	
 	void Update ()
 	{
-		timeSpent += Time.deltaTime;
-		
-		if (timeSpent >= 3 && spawnedClones < cloneNumber)
-		{
-			Instantiate(this.gameObject, startPos, Quaternion.identity);
-			spawnedClones++;
-			timeSpent = 0;
-		}
 		
 		if(!waitingToGo)
 		{
@@ -96,12 +82,10 @@ public class Floater : MonoBehaviour
 			rigidbody.useGravity = true;
 		}
 		
-		if(transform.parent.GetComponent<FloatingRocksManager>().releaseAll)
+		if(waitingToGo && transform.parent.GetComponent<FloatingRocksManager>().releaseAll)
 		{
-			Debug.Log (transform.name +" ready to go!");
 			waitingToGo = false;
-			transform.parent.GetComponent<FloatingRocksManager>().releaseAll = false;
-			transform.parent.GetComponent<FloatingRocksManager>().readyToGoNumber = 0;
+			transform.parent.SendMessage("DecrementReadyNumber");
 		}
 	}
 	
