@@ -43,7 +43,7 @@ public class FloatingRocksManager : MonoBehaviour {
 		
 		if (!alreadyCloned && timeSpent >= cloningDelay && spawnedClones < cloneNumber)
 		{
-			GameObject clonedFloatRock = Instantiate (FloatingRocksManagerPrefabToClone, this.transform.position, Quaternion.identity) as GameObject;
+			GameObject clonedFloatRock = Instantiate (FloatingRocksManagerPrefabToClone) as GameObject;
 			clonedFloatRock.GetComponent <FloatingRocksManager>().alreadyCloned = true;
 			spawnedClones++;
 			timeSpent = 0;
