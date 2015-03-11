@@ -3,6 +3,8 @@ using System.Collections;
 
 public class pillarFall : MonoBehaviour {
 
+
+
 	// Use this for initialization
 	void Start () {
 	
