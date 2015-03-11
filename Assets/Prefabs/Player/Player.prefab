@@ -1930,7 +1930,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 1.55700004, z: 5.61639977}
+  m_LocalPosition: {x: 9.75, y: 19.5, z: 46.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   setAimMode: 1
   canJump: 1
   heightOfJump: 9
-  setMaximumSpeed: 7
+  setMaximumSpeed: 5
   Soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
   EarthQuakeParticles: {fileID: 100000, guid: 6a390110c28ed514ea1f2b405900a9dd, type: 2}
   soulMode: 0
@@ -2111,8 +2111,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 400004}
   m_AABB:
-    m_Center: {x: .00768566132, y: -.0683743954, z: .0295958817}
-    m_Extent: {x: .511424601, y: .953968763, z: .539481163}
+    m_Center: {x: .00768566132, y: -.0683743954, z: -.0534751415}
+    m_Extent: {x: .511424601, y: .953968763, z: .45641017}
   m_DirtyAABB: 0
 --- !u!143 &14300000
 CharacterController:
