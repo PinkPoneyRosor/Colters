@@ -58,8 +58,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.46999979, y: 22.9399986, z: 95.9000015}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -76.7009964, y: 26.1800003, z: -16.3490009}
+  m_LocalScale: {x: .91009587, y: .91009593, z: .91009593}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 0}
@@ -175,7 +175,7 @@ MonoBehaviour:
   maxSpeed: 50
   getUpSpeed: 5
   getUpRotateForce: 100
-  throwForce: 1000
+  throwForce: 500
   changePosSpeed: 5
   homingAttackBool: 0
   aimHoming: {fileID: 0}

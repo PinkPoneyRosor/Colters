@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 class SpawnPrefab : MonoBehaviour 
@@ -23,18 +23,19 @@ class SpawnPrefab : MonoBehaviour
 			foreach (Rigidbody child in allTrapRocks)
 			{
 				child.rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+
 				child.transform.Translate(Vector3.down * speed * Time.deltaTime);
 			}
 			
-			StartCoroutine ("DoSomethingElse");
+			//StartCoroutine ("DoSomethingElse");
 		}
 	}
 
-	IEnumerator DoSomethingElse ()
+	/*IEnumerator DoSomethingElse ()
 	{
 		yield return new WaitForSeconds(5f);	
 		Destroy(spawnedTrap.gameObject);
 		spawnedTrap = Instantiate(TrapV2Prefab, transform.localPosition, transform.localRotation) as GameObject;
-		allTrapRocks = spawnedTrap.GetComponentsInChildren <Rigidbody>();
-	}
+		llTrapRocks = spawnedTrap.GetComponentsInChildren <Rigidbody>();
+	}*/
 }
