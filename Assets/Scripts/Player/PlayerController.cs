@@ -11,7 +11,6 @@ public class PlayerController : CommonControls {
 
 	//External scripts and objects
 	public GameObject Soul;
-	public GameObject EarthQuakeParticles;
 
 
 	//Other variables
@@ -19,7 +18,7 @@ public class PlayerController : CommonControls {
 	public bool soulMode = false;
 
 	[SerializeField]
-	private float setMaxJumpAngle = 35;
+	private float maxSlopeAngleToJump = 35;
 
 
 	// Use this for initialization
@@ -27,7 +26,7 @@ public class PlayerController : CommonControls {
 	{
 		base.Start ();
 		maxSpeed = setMaximumSpeed;
-		maxJumpAngle = setMaxJumpAngle;
+		maxJumpAngle = maxSlopeAngleToJump;
 	}
 	
 	// Update is called once per frame
@@ -40,9 +39,6 @@ public class PlayerController : CommonControls {
 
 		if(Input.GetButtonDown("SwitchMode") && !soulMode)
 			SwitchToSoulMode();
-
-		if(Input.GetButtonDown("EarthQuake") && !soulMode)
-			Instantiate(EarthQuakeParticles, transform.position , Quaternion.Euler(90,0,0) );
 
 		//Make the controls adapted to the current camera mode.
 		if (!soulMode) 

@@ -3,24 +3,44 @@ using System.Collections;
 
 public class CommonControls : MonoBehaviour {
 
+	[HideInInspector]
 	public float horizontal = 0;
+	[HideInInspector]
 	public float vertical = 0;
+	[HideInInspector]
 	public Vector3 direction = Vector3.zero;
+	[HideInInspector]
 	public Vector3 faceDirection = Vector3.zero;
+	[HideInInspector]
 	public Vector3 tempMoveDir;
+	[HideInInspector]
 	public Vector3 moveDirection = Vector3.zero;
+	[HideInInspector]
 	public CharacterController controller;
+	[HideInInspector]
 	public ThirdPersonCamera mainCameraScript;
+	[HideInInspector]
 	public bool continueResetControls = false;
+	[HideInInspector]
 	public float floatDir = 0f;
+	[HideInInspector]
 	public float speed = 3f;
+	[HideInInspector]
+	public float localDeltaTime;
+	[HideInInspector]
+	public bool setAimMode = true;
+	[HideInInspector]
+	public static bool aimingMode = false;
+	[HideInInspector]
+	public bool canJump = true;
+	[HideInInspector]
+	public float airControlMultiplier = 50;
+	[HideInInspector]
+	public static float maxJumpAngle = 35;
+	
+	[HeaderAttribute("Moves parameters")]
 	public float maxSpeed = 0;
 	public float gravity = 20;
-	public float localDeltaTime;
-	public bool setAimMode = true;
-	public static bool aimingMode = false;
-	public bool canJump = true;
-	public static float maxJumpAngle = 35;
 
 	// Use this for initialization
 	protected virtual void Start () 
@@ -48,8 +68,19 @@ public class CommonControls : MonoBehaviour {
 		#endregion
 		
 		Quaternion target = Quaternion.Euler (0, floatDir, 0);
-		tempMoveDir = target * Vector3.forward * speed;
-		tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed);
+		if(controller.isGrounded)
+		{
+			tempMoveDir = target * Vector3.forward * speed;
+			tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed);
+		}
+		else
+		{
+			tempMoveDir += direction * airControlMultiplier * localDeltaTime;
+			tempMoveDir = Vector3.ClampMagnitude(tempMoveDir, maxSpeed);
+		}
+		
+		//Debug.Log ("moveDirection = "+moveDirection);
+		
 		moveDirection.x = tempMoveDir.x;
 		moveDirection.z = tempMoveDir.z;
 
@@ -96,6 +127,8 @@ public class CommonControls : MonoBehaviour {
 		//Conversion de l'input du joystick/clavier en coordonnées World.
 		Vector3 moveDirection = referentialShift * stickDirection;
 		Vector3 axisSign = Vector3.Cross(moveDirection, rootDirection);
+		
+		directionOut = moveDirection;
 		
 		#region debug draw rays
 		//These lines allow us to see how the vectors are handled for debug.
