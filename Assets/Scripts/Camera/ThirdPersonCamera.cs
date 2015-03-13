@@ -88,7 +88,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	void LateUpdate()
 	{
-
+		//Debug.Log (playerControls.transform.name);
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 

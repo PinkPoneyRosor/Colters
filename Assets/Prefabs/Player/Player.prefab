@@ -1929,8 +1929,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100136}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.75, y: 19.5, z: 46.5}
+  m_LocalRotation: {x: 0, y: -.968286932, z: 0, w: .249841064}
+  m_LocalPosition: {x: -71.7205353, y: 5.14196777, z: -91.7705231}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -1982,17 +1982,17 @@ MonoBehaviour:
   continueResetControls: 0
   floatDir: 0
   speed: 0
-  maxSpeed: 8
-  gravity: 20
   localDeltaTime: 0
   setAimMode: 1
   canJump: 1
+  airControlMultiplier: 50
+  maxSpeed: 8
+  gravity: 20
   heightOfJump: 9
   setMaximumSpeed: 5
   Soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
-  EarthQuakeParticles: {fileID: 100000, guid: 6a390110c28ed514ea1f2b405900a9dd, type: 2}
   soulMode: 0
-  setMaxJumpAngle: 65
+  maxSlopeAngleToJump: 35
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2001,23 +2001,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 100136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17883c516281352498878f952c662419, type: 3}
+  m_Script: {fileID: 11500000, guid: a2d16511111369a428b628bf0556ebe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstSelected: {fileID: 0}
+  secondSelected: {fileID: 0}
+  thirdSelected: {fileID: 0}
+  fourthSelected: {fileID: 0}
   RockLayer:
     serializedVersion: 2
     m_Bits: 65536
   otherLayers:
     serializedVersion: 2
     m_Bits: 4294901759
-  globalPickupRadius: 10
-  maxRockCount: 4
-  selectedRockCount: 0
-  currentHitPoint: {x: 0, y: 0, z: 0}
-  firstSelected: {fileID: 0}
-  secondSelected: {fileID: 0}
-  thirdSelected: {fileID: 0}
-  fourthSelected: {fileID: 0}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -29,13 +29,13 @@ public class RockThrow : MonoBehaviour {
 	private bool canThrow = true;
 	
 	[HideInInspector]
-	public GameObject firstSelected;
+	public GameObject firstSelected = null;
 	[HideInInspector]
-	public GameObject secondSelected;
+	public GameObject secondSelected = null;
 	[HideInInspector]
-	public GameObject thirdSelected;
+	public GameObject thirdSelected = null;
 	[HideInInspector]
-	public GameObject fourthSelected;
+	public GameObject fourthSelected = null;
 	
 	ThrowableRock firstRockScript;
 
@@ -47,6 +47,18 @@ public class RockThrow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		if(firstSelected != null)
+		Debug.Log (firstSelected.name);
+		
+		if(secondSelected != null)
+		Debug.Log (secondSelected.name);
+		
+		if(thirdSelected != null)
+		Debug.Log (thirdSelected.name);
+		
+		if(fourthSelected != null)
+		Debug.Log (fourthSelected.name);
+	
 		if (firstSelected != null)
 			firstRockScript = firstSelected.GetComponent < ThrowableRock > ();
 				
@@ -76,15 +88,18 @@ public class RockThrow : MonoBehaviour {
 		#endregion
 					
 		if(Input.GetButtonDown("SelectRock"))
-		{
-			//everything in this script happens when the player is hitting the selectRock Button
-			
+		{		
 			allRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock");
 			
 			if (CommonControls.aimingMode)  
 				controlsWhileAiming();
 			else
 				aimlessControls();
+		}
+		
+		if(Input.GetAxisRaw("RT") != 0)
+		{
+			ThrowRock();
 		}
 		
 		if ( Input.GetAxis("Scroll") > 0)
@@ -207,53 +222,68 @@ public class RockThrow : MonoBehaviour {
 			
 		}
 		
-		void controlsWhileAiming ()
+	void controlsWhileAiming ()
+	{
+			//First, we check with a sphereCast (in order to allow the player to be less precise) if the player is looking at a rock.
+			RaycastHit HitObject;
+			if (Physics.SphereCast (transform.position, .2f, mainCamera.forward, out HitObject, Mathf.Infinity, RockLayer)) 
+			{
+				selectARock(HitObject.collider.gameObject);
+			}
+	}
+	
+	void ThrowRock()
+	{
+		//Then, if the player is looking at anything that is not a selectable rock...
+		RaycastHit HitObject;
+		GameObject currentThrowedRock;
+		ThrowableRock currentThrowedRockScript;
+		
+		if (canThrow
+		    && selectedRockCount > 0
+		    && firstRockScript.nowThrowable 
+		    && Physics.Raycast (mainCamera.position, mainCamera.forward, out HitObject, Mathf.Infinity, otherLayers)) 
 		{
-				//First, we check with a sphereCast (in order to allow the player to be less precise) if the player is looking at a rock.
-				RaycastHit HitObject;
-				if (Physics.SphereCast (transform.position, .2f, mainCamera.forward, out HitObject, Mathf.Infinity, RockLayer)) 
-				{
-					selectARock(HitObject.collider.gameObject);
+			currentHitPoint = HitObject.point;
+			currentThrowedRock = firstSelected;
+			currentThrowedRockScript = currentThrowedRock.GetComponent <ThrowableRock>();
+			
+			firstSelected = null;
+			
+			//While at least a rock is selected....
+			if (selectedRockCount > 0) 
+			{
+				
+			
+				if (HitObject.transform.CompareTag ("Enemy") && HitObject.transform.GetComponent<BasicEnemy> ().canGetHit) 
+				{  //If what we aimed at is an enemy and that it's not knocked out, let's do a homing attack
+					currentThrowedRockScript.aimHoming = HitObject.transform;
+					currentThrowedRockScript.homingAttackBool = true;
 				}
-				//Then, if the player is looking at anything that is not a selectable rock...
-				else if (canThrow 
-						 && selectedRockCount > 0
-				         && firstRockScript.nowThrowable 
-				         && Physics.Raycast (mainCamera.position, mainCamera.forward, out HitObject, Mathf.Infinity, otherLayers)) 
+				else
 				{
-					currentHitPoint = HitObject.point;
-					//While at least a rock is selected....
-					if (selectedRockCount > 0) 
-					{
-						if (HitObject.transform.CompareTag ("Enemy") && HitObject.transform.GetComponent<BasicEnemy> ().canGetHit) 
-						{  //If what we aimed at is an enemy and that it's not knocked out, let's do a homing attack
-							firstRockScript.aimHoming = HitObject.transform;
-							firstRockScript.homingAttackBool = true;
-						}
-						else
-						{
-							//If what we aimed at is not an enemy or it is but he's knocked out, just throw the rock straightforward.
-							Vector3 throwDirection = HitObject.point - firstSelected.transform.position;
-							throwDirection.Normalize ();
-							
-							//This line is just to make absolutely sure there is no more constraints so that we can throw the rock in a straight line.
-							firstRockScript.rigidbody.constraints = RigidbodyConstraints.None;
-							
-							firstSelected.rigidbody.constantForce.force = throwDirection * firstRockScript.throwForce;
-						}
-						
-						firstRockScript.isSelected = false;
-						firstRockScript.selectionNumber = 0;
-						firstSelected.rigidbody.isKinematic = false;
-						firstSelected.collider.isTrigger = false;
-						firstSelected = null;
-						selectedRockCount -= 1;
-						
-						canThrow = false;
-						
-						StartCoroutine("ShiftRockPositions"); //This method is also used as a coolDown for throwing rocks.
-					}
+					//If what we aimed at is not an enemy or it is but he's knocked out, just throw the rock straightforward.
+					Vector3 throwDirection = HitObject.point - currentThrowedRock.transform.position;
+					throwDirection.Normalize ();
+					
+					//This line is just to make absolutely sure there is no more constraints so that we can throw the rock in a straight line.
+					currentThrowedRockScript.rigidbody.constraints = RigidbodyConstraints.None;
+					
+					currentThrowedRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
 				}
+				
+				currentThrowedRockScript.isSelected = false;
+				currentThrowedRockScript.selectionNumber = 0;
+				currentThrowedRock.rigidbody.isKinematic = false;
+				currentThrowedRock.collider.isTrigger = false;
+				currentThrowedRock = null;
+				selectedRockCount -= 1;
+				
+				canThrow = false;
+				
+				StartCoroutine("ShiftRockPositions"); //This method is also used as a coolDown for throwing rocks.
+			}
+		}
 	}
 	
 	void aimlessControls()
@@ -269,7 +299,7 @@ public class RockThrow : MonoBehaviour {
 	}
 		
 	void selectARock (GameObject chosenRock)
-	{
+	{	
 		ThrowableRock chosenRockScript;
 		chosenRockScript = chosenRock.transform.GetComponent < ThrowableRock > ();
 		
@@ -288,7 +318,6 @@ public class RockThrow : MonoBehaviour {
 			if (firstSelected == null)
 			{
 				firstSelected = chosenRock.transform.gameObject;
-				
 			}
 			else if (secondSelected == null)
 			{
@@ -303,6 +332,18 @@ public class RockThrow : MonoBehaviour {
 				fourthSelected = chosenRock.transform.gameObject;
 			}
 		}
+		
+		//Debug Section
+		if ( chosenRock.rigidbody.velocity.sqrMagnitude > 3 * 3 )
+			Debug.Log("Selected Rock is moving too fast!");
+		if (chosenRockScript.gettingUp)
+			Debug.Log ("Selected Rock is getting up!");
+		if (chosenRockScript.getUpInit)
+			Debug.Log ("Selected Rock is preparing to get up!");
+		if (chosenRockScript.getUpInit)
+			Debug.Log ("Selected Rock is preparing to get up!");
+		if (chosenRockScript.getUpInit)
+			Debug.Log ("Selected Rock is already in selection!");
 	}
 	
 } //END OF CLASS

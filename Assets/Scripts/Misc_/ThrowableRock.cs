@@ -30,16 +30,18 @@ public class ThrowableRock : MonoBehaviour {
 	float distanceFromPlayer = 2;
 	
 	GameObject player;
+	RockThrow rockThrowScript;
 
 	// Use this for initialization
 	void Start () 
 	{
 		player = GameObject.Find ("Player");
+		rockThrowScript = player.GetComponent <RockThrow>();
 		startScale = transform.localScale;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 
 		//This boolean must ALWAYS be verified BEFORE the isSelected one.
 		if (getUpInit) 
@@ -95,7 +97,6 @@ public class ThrowableRock : MonoBehaviour {
 
 		if (homingAttackBool) //This variable is activated by the RockThrow script if it detects that the player is aiming at an enemy.
 				homingAttack ();
-
 	}
 
 	void FixedUpdate ()
@@ -139,7 +140,7 @@ public class ThrowableRock : MonoBehaviour {
 	
 	
 	
-	void setSelectionPos ()
+void setSelectionPos ()
 	{
 		switch (selectionNumber)
 		{
@@ -164,27 +165,28 @@ public class ThrowableRock : MonoBehaviour {
 	
 	
 	
-	void setAimSelectionPos ()
+void setAimSelectionPos ()
 	{
 	
 		switch (selectionNumber)
 		{
-		case 1:
-			Vector3 firstOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * 1.2f);
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + firstOffset, changePosSpeed * Time.deltaTime);
-			break;
-		case 2:
-			Vector3 secondOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * .7f);
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + secondOffset, changePosSpeed * Time.deltaTime);
-			break;
-		case 3:
-			Vector3 thirdOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * .2f);
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + thirdOffset, changePosSpeed * Time.deltaTime);
-			break;
-		case 4:
-			Vector3 fourthOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (-player.transform.up * .3f);
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + fourthOffset, changePosSpeed * Time.deltaTime);
-			break;
+			case 1:
+				Vector3 firstOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * 1.2f);
+				transform.position = Vector3.Lerp (transform.position, player.transform.position + firstOffset, changePosSpeed * Time.deltaTime);
+				break;
+			case 2:
+				Vector3 secondOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * .7f);
+				transform.position = Vector3.Lerp (transform.position, player.transform.position + secondOffset, changePosSpeed * Time.deltaTime);
+				break;
+			case 3:
+				Vector3 thirdOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * .2f);
+				transform.position = Vector3.Lerp (transform.position, player.transform.position + thirdOffset, changePosSpeed * Time.deltaTime);
+				break;
+			case 4:
+				Vector3 fourthOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (-player.transform.up * .3f);
+				transform.position = Vector3.Lerp (transform.position, player.transform.position + fourthOffset, changePosSpeed * Time.deltaTime);
+				break;
 		}
 	}
+	
 }

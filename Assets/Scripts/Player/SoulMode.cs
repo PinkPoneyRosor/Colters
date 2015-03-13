@@ -11,7 +11,6 @@ public class SoulMode : CommonControls {
 	#endregion
 
 	#region external scripts and object
-	public GameObject ghostPrefab;
 	GameObject player;
 	PlayerController playerScript;
 	GameObject soulBar;

@@ -164,23 +164,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e0f66e7536423143974da0661c047a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 48c0f00fd46c53a47bcdb2efed9317ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSelected: 0
-  getUpInit: 0
-  nowThrowable: 0
-  gettingUp: 0
-  canExplode: 0
-  maxSpeed: 50
-  getUpSpeed: 5
-  getUpRotateForce: 100
-  throwForce: 500
-  changePosSpeed: 5
-  homingAttackBool: 0
-  aimHoming: {fileID: 0}
-  selectionNumber: 0
-  distanceFromPlayer: 2
 --- !u!208 &20800000
 NavMeshObstacle:
   m_ObjectHideFlags: 1
