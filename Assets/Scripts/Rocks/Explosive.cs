@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Explosive : MonoBehaviour {
 
-	private ThrowableRock throwableRock;
+	private NewThrowableRock throwableRock;
 	public Transform explosionPrefab;
 	
 	[SerializeField]
@@ -12,7 +12,7 @@ public class Explosive : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		throwableRock = GetComponent<ThrowableRock> ();
+		throwableRock = GetComponent <NewThrowableRock> ();
 	}
 
 	void OnCollisionEnter(Collision collision) 
@@ -27,8 +27,4 @@ public class Explosive : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
-
-
-
-
 }

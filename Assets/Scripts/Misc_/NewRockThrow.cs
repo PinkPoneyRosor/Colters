@@ -30,8 +30,8 @@ public class NewRockThrow : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
 		if(Input.GetButtonDown("SelectRock"))
 		{		
 			allRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock");
@@ -46,7 +46,11 @@ public class NewRockThrow : MonoBehaviour {
 		{
 			ThrowRock();
 		}
-	
+		
+		if (( Input.GetAxis("Scroll") > 0 || Input.GetButtonDown ("RockUp")) && canThrow)
+			ManualScroll ();
+		else if ((Input.GetAxis ("Scroll") < 0 || Input.GetButtonDown ("RockDown")) && canThrow)
+			InvertedManualScroll ();
 	}
 	
 	void controlsWhileAiming()
@@ -70,25 +74,32 @@ public class NewRockThrow : MonoBehaviour {
 		NewThrowableRock chosenRockScript;
 		chosenRockScript = chosenRock.GetComponent <NewThrowableRock>();
 		
-		if (firstSelected == null)
+		if(selectedRockCount < 4 && // The player must have selected less than the maximum amount of rock allowed
+		   chosenRock != null && //Let's make sure there isn't any mistake and that the player really got a rock
+		   !chosenRockScript.isSelected && //The rock must not be already selected
+		   !chosenRockScript.inTheAir && //The rock must not be already getting up
+		   chosenRock.rigidbody.velocity.sqrMagnitude < 3 * 3)
 		{
-			firstSelected = chosenRock.transform.gameObject;
-		}
-		else if (secondSelected == null)
-		{
-			secondSelected = chosenRock.transform.gameObject;
-		}
-		else if (thirdSelected == null)
-		{
-			thirdSelected = chosenRock.transform.gameObject;
-		}
-		else if (fourthSelected == null)
-		{
-			fourthSelected = chosenRock.transform.gameObject;
-		}
+			if (firstSelected == null)
+			{
+				firstSelected = chosenRock.transform.gameObject;
+			}
+			else if (secondSelected == null)
+			{
+				secondSelected = chosenRock.transform.gameObject;
+			}
+			else if (thirdSelected == null)
+			{
+				thirdSelected = chosenRock.transform.gameObject;
+			}
+			else if (fourthSelected == null)
+			{
+				fourthSelected = chosenRock.transform.gameObject;
+			}
 		
-		chosenRockScript.isSelected = true;
-		selectedRockCount++;
+			chosenRockScript.isSelected = true;
+			selectedRockCount++;
+		}
 	}
 	
 	void ThrowRock()
@@ -96,13 +107,16 @@ public class NewRockThrow : MonoBehaviour {
 		RaycastHit HitObject;
 		GameObject currentThrowedRock;
 		NewThrowableRock currentThrowedRockScript;
+		Ray ray = mainCamera.camera.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
 		
 		if (canThrow
 			&& selectedRockCount > 0
-		    && Physics.Raycast (mainCamera.position, mainCamera.forward, out HitObject, Mathf.Infinity, otherLayers)) 
+			&& firstSelected != null
+		    && Physics.Raycast (ray.origin, ray.direction, out HitObject, Mathf.Infinity, otherLayers)) 
 		{
+			canThrow = false;	
 			currentThrowedRock = firstSelected;
-			currentThrowedRockScript = currentThrowedRock.GetComponent <NewThrowableRock>();
+			currentThrowedRockScript = currentThrowedRock.GetComponent <NewThrowableRock> ();
 			firstSelected = null;
 				
 				if (HitObject.transform.CompareTag ("Enemy") && HitObject.transform.GetComponent<BasicEnemy> ().canGetHit) 
@@ -123,6 +137,7 @@ public class NewRockThrow : MonoBehaviour {
 				}
 				
 				currentThrowedRockScript.isSelected = false;
+				currentThrowedRockScript.inTheAir = false;
 				currentThrowedRockScript.selectionNumber = 0;
 				currentThrowedRock.rigidbody.isKinematic = false;
 				currentThrowedRock.collider.isTrigger = false;
@@ -135,7 +150,7 @@ public class NewRockThrow : MonoBehaviour {
 	
 	IEnumerator ShiftRockPositions() 
 	{
-		yield return new WaitForSeconds(.5f);
+		yield return new WaitForSeconds(1f);
 		canThrow = true;
 		
 		if (secondSelected != null)
@@ -155,5 +170,95 @@ public class NewRockThrow : MonoBehaviour {
 			thirdSelected = fourthSelected;
 			fourthSelected = null;
 		}
+	}
+	
+	void ManualScroll ()
+	{
+		GameObject tempFirst = null;
+		
+		if(firstSelected != null)
+		{
+			tempFirst = firstSelected;
+			firstSelected = null;
+		}
+		
+		if(secondSelected != null)
+		{
+			firstSelected = secondSelected;
+			secondSelected = null;
+		}
+		
+		if(thirdSelected != null)
+		{
+			secondSelected = thirdSelected;
+			thirdSelected = null;
+		}
+		
+		if(fourthSelected != null)
+		{
+			thirdSelected = fourthSelected;
+			fourthSelected = null;
+		}
+		
+		if(tempFirst != null)
+		{
+			if(selectedRockCount == 4)
+			{
+				fourthSelected = tempFirst;
+			}
+			else if (selectedRockCount == 3)
+			{
+				thirdSelected = tempFirst;
+			}
+			else if (selectedRockCount == 2)
+			{
+				secondSelected = tempFirst;
+			}
+			else if (selectedRockCount == 1)
+			{
+				firstSelected = tempFirst;
+			}
+			
+			tempFirst = null;
+		}
+	}
+	
+	void InvertedManualScroll()
+	{
+		GameObject tempPlace = null;
+		
+		if (selectedRockCount == 2)
+		{
+			tempPlace = secondSelected;
+			
+			secondSelected = firstSelected;
+			firstSelected = tempPlace;
+			
+			tempPlace = null;
+		}
+		
+		if(selectedRockCount == 3)
+		{
+			tempPlace = thirdSelected;
+			
+			thirdSelected = secondSelected;
+			secondSelected = firstSelected;
+			firstSelected = tempPlace;
+			
+			tempPlace = null;
+		}
+		
+		if(selectedRockCount == 4)
+		{
+			tempPlace = fourthSelected;
+			
+			fourthSelected = thirdSelected;
+			thirdSelected = secondSelected;
+			secondSelected = firstSelected;
+			firstSelected = tempPlace;
+			
+			tempPlace = null;
+		}
+		
 	}	
 }

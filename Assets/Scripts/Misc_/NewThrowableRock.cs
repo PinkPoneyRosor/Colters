@@ -24,9 +24,12 @@ public class NewThrowableRock : MonoBehaviour {
 	public Transform aimHoming;
 	
 	public float throwForce = 1000;
+	
+	public bool canExplode = false;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		player = GameObject.FindGameObjectWithTag ("Player");
 		rockThrowScript = player.GetComponent <NewRockThrow>();
 		startScale = transform.localScale;
@@ -77,6 +80,11 @@ public class NewThrowableRock : MonoBehaviour {
 				else
 					setAimSelectionPos();
 			}
+		}
+		else
+		{
+			transform.localScale = Vector3.Lerp (transform.localScale, startScale, changePosSpeed * Time.deltaTime);
+			mustGetUp = true;
 		}
 	}
 	
@@ -132,7 +140,7 @@ public class NewThrowableRock : MonoBehaviour {
 	//With this method, we make sure that if the player throwed the rock toward an enemy, he can be almost sure he will hit it.
 	void homingAttack ()
 	{
-		if (aimHoming.GetComponent<BasicEnemy> ().canGetHit) 
+		if (aimHoming.GetComponent <BasicEnemy> ().canGetHit) 
 		{
 			Vector3 throwDir = aimHoming.position - this.transform.position;
 			throwDir.Normalize ();
