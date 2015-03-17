@@ -59,7 +59,10 @@ public class NewRockThrow : MonoBehaviour {
 	{
 		//First, we check with a sphereCast (in order to allow the player to be less precise) if the player is looking at a rock.
 		RaycastHit HitObject;
-		if (Physics.SphereCast (transform.position, .2f, mainCamera.forward, out HitObject, Mathf.Infinity, RockLayer)) 
+		Ray ray = mainCamera.camera.ScreenPointToRay (new Vector3(Screen.width/2, Screen.height/2, 0));
+
+			
+		if (Physics.SphereCast (ray.origin, .2f, ray.direction, out HitObject, Mathf.Infinity, RockLayer)) 
 		{
 			selectARock(HitObject.collider.gameObject);
 		}

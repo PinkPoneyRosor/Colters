@@ -2014,6 +2014,7 @@ MonoBehaviour:
   otherLayers:
     serializedVersion: 2
     m_Bits: 4294901759
+  globalPickUpRadius: 5
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

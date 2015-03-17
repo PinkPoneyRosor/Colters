@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: .344888687, y: 0, z: 0, w: .938643634}
-  m_LocalPosition: {x: 0, y: 4.14340019, z: -10}
+  m_LocalPosition: {x: -24.9705391, y: -12.7180328, z: -120.020523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,7 +85,6 @@ MonoBehaviour:
   RotationSmooth: 6
   camTarget: {fileID: 0}
   soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
-  soulMode: 0
   dashingSoul: 0
   cameraHeight: 1
   rotationOffset: {x: 0, y: 0, z: 0, w: 1}
@@ -93,7 +92,7 @@ MonoBehaviour:
   manualCameraSpeed: 10
   manualCameraHeightMinLimit: -.5
   manualCameraHeightMaxLimit: 7
-  aimOffset: {x: .5, y: .699999988, z: -.5}
+  aimOffset: {x: .5, y: .699999988, z: -1}
   aimLookSpeed: 1.5
   invertedVerticalAxis: 1
   aimInvertedVerticalAxis: 0

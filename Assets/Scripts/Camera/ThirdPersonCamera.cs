@@ -63,6 +63,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	float xAim;
 	public float AimMinVerticalAngle = 0;
 	public float AimMaxVerticalAngle = 0;
+	private bool initAimMode = true;
 	#endregion
 	#endregion
 
@@ -115,8 +116,42 @@ public class ThirdPersonCamera : MonoBehaviour {
 					xAim = 0;
 					this.transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,transform.eulerAngles.z);
 				}
-
+				
 				mustResetAimAngle = false;
+				
+				if (initAimMode)
+				{
+					Vector3 setAimOffset = camTarget.transform.forward * aimOffset.z + camTarget.transform.up * aimOffset.y + camTarget.transform.right * aimOffset.x;
+					float DistBetweenCamAndTargetPoint = Vector3.SqrMagnitude ((camTarget.position + setAimOffset) - transform.position );
+					
+					Debug.DrawLine (transform.position, camTarget.position + setAimOffset);
+					
+					Vector3 currentCamTargetRotation = this.transform.eulerAngles;
+					currentCamTargetRotation.y = camTarget.transform.eulerAngles.y;
+					xAim += Input.GetAxis ("LookV") * 50 * aimLookSpeed * localDeltaTime;
+					xAim = ClampAngle (xAim, AimMinVerticalAngle, AimMaxVerticalAngle);
+					Quaternion targetRotation = Quaternion.Euler (xAim, currentCamTargetRotation.y, 0);
+					float AngleFromCurrentToTarget = Quaternion.Angle ( transform.rotation, targetRotation);
+					
+					Debug.Log (AngleFromCurrentToTarget);
+					
+					if(DistBetweenCamAndTargetPoint < .1f && AngleFromCurrentToTarget < .1f)
+					{
+						initAimMode = false;
+					}
+					else
+					{
+						this.transform.position = Vector3.Lerp (transform.position, camTarget.position + setAimOffset, localDeltaTime * 10);
+						//transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, localDeltaTime * 10);
+						// Bon, faudrait faire un genre de Smooth LookAt en utilisant un LookRotation
+						//A la fin ça devrait ressembler à ça :
+						/*
+						 var rotation : Quaternion = Quaternion.LookRotation(waypoint[PickWP].transform.position - follower.transform.position);
+						follower.transform.rotation = Quaternion.Slerp(follower.transform.rotation, rotation, Time.deltaTime * damping);
+						*/
+					}
+				}
+
 				CommonControls.aimingMode = true;
 				aimingMode = true;
 			} 
@@ -126,6 +161,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 				playerControls.setAimMode = true;
 				aimingMode = false;
 				mustResetAimAngle = true;
+				initAimMode = true;
 			}
 		#endregion
 
@@ -242,11 +278,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 	//This functions is enabled when the 3rd Person Camera switches to aiming mode.
 	void aimingCameraMode ()
 	{
-		if ( ! playerControls.setAimMode) 
+		if ( ! playerControls.setAimMode && ! initAimMode) 
 		{
 			//Those two lines make sure the camera get to the right place.
 			Vector3 setAimOffset = camTarget.transform.forward * aimOffset.z + camTarget.transform.up * aimOffset.y + camTarget.transform.right * aimOffset.x;
-			this.transform.position = Vector3.Lerp (transform.position, camTarget.position + setAimOffset, localDeltaTime * 60);
+			this.transform.position = Vector3.Lerp (transform.position, camTarget.position + setAimOffset, localDeltaTime * 30);
 
 			#region Manual aiming
 			Vector3 currentCamTargetRotation = this.transform.eulerAngles;
@@ -272,7 +308,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 	}
 
 	//This method can clamp different angles.
-	static float ClampAngle (float angle, float min, float max) {
+	static float ClampAngle (float angle, float min, float max) 
+	{
 		if (angle < -360)
 			angle += 360;
 		if (angle > 360)
