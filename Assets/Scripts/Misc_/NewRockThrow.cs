@@ -22,6 +22,8 @@ public class NewRockThrow : MonoBehaviour {
 	public LayerMask otherLayers;
 	bool canThrow = true;
 	
+	public float globalPickUpRadius = 5;
+	
 
 	// Use this for initialization
 	void Start () 
@@ -44,7 +46,7 @@ public class NewRockThrow : MonoBehaviour {
 		
 		if(Input.GetAxisRaw("RT") != 0)
 		{
-			ThrowRock();
+			ThrowRockWithAim();
 		}
 		
 		if (( Input.GetAxis("Scroll") > 0 || Input.GetButtonDown ("RockUp")) && canThrow)
@@ -65,7 +67,14 @@ public class NewRockThrow : MonoBehaviour {
 	
 	void aimlessControls()
 	{
-		
+		foreach (GameObject rock in allRocks)
+		{
+			Vector3 fromPlayerToRock = transform.position - rock.transform.position;
+			float distance = fromPlayerToRock.sqrMagnitude;
+			
+			if( distance < globalPickUpRadius)
+				selectARock(rock);
+		}
 	}
 	
 	void selectARock (GameObject chosenRock)
@@ -102,12 +111,18 @@ public class NewRockThrow : MonoBehaviour {
 		}
 	}
 	
-	void ThrowRock()
+	void ThrowRockWithAim()
 	{
 		RaycastHit HitObject;
 		GameObject currentThrowedRock;
 		NewThrowableRock currentThrowedRockScript;
-		Ray ray = mainCamera.camera.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
+		Ray ray;
+		
+		if(CommonControls.aimingMode)
+			ray = mainCamera.camera.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
+		else
+			ray = new Ray (transform.position, transform.forward);
+		
 		
 		if (canThrow
 			&& selectedRockCount > 0

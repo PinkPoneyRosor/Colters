@@ -74,6 +74,8 @@ public class NewThrowableRock : MonoBehaviour {
 			if(inTheAir)
 			{
 				transform.localScale = Vector3.Lerp (transform.localScale, startScale/5, changePosSpeed * Time.deltaTime);
+				transform.Rotate (Vector3.right * Time.deltaTime * 100);
+				rigidbody.constraints = RigidbodyConstraints.FreezePosition;
 				
 				if(!CommonControls.aimingMode)
 					setSelectionPos();
