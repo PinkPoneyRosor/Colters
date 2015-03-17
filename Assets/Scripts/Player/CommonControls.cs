@@ -148,7 +148,7 @@ public class CommonControls : MonoBehaviour {
 
 	public void ResettingCameraControls() //If the player is still moving when he's resetting the camera, the character's move are different, else there's a risk to see undesired behaviours.
 	{
-		if (Input.GetAxisRaw ("Horizontal") != 0 || Input.GetAxisRaw ("Vertical") <= 0) 
+		if ( (Input.GetAxisRaw ("Horizontal") < -.25f && Input.GetAxisRaw ("Horizontal") > .25f) || Input.GetAxisRaw ("Vertical") <= -.2f) 
 		{
 			continueResetControls = true;
 			
