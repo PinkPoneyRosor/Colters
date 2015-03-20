@@ -114,7 +114,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 				if(mustResetAimAngle)
 				{
 					xAim = 0;
-					this.transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,transform.eulerAngles.z);
+					Debug.Log ("Resetting aim angle");
 				}
 				
 				mustResetAimAngle = false;
@@ -128,27 +128,27 @@ public class ThirdPersonCamera : MonoBehaviour {
 					
 					Vector3 currentCamTargetRotation = this.transform.eulerAngles;
 					currentCamTargetRotation.y = camTarget.transform.eulerAngles.y;
+					
 					xAim += Input.GetAxis ("LookV") * 50 * aimLookSpeed * localDeltaTime;
 					xAim = ClampAngle (xAim, AimMinVerticalAngle, AimMaxVerticalAngle);
+					
 					Quaternion targetRotation = Quaternion.Euler (xAim, currentCamTargetRotation.y, 0);
 					float AngleFromCurrentToTarget = Quaternion.Angle ( transform.rotation, targetRotation);
 					
-					Debug.Log (AngleFromCurrentToTarget);
-					
-					if(DistBetweenCamAndTargetPoint < .1f && AngleFromCurrentToTarget < .1f)
+					if (DistBetweenCamAndTargetPoint < .1f && AngleFromCurrentToTarget < .1f)
 					{
 						initAimMode = false;
 					}
 					else
 					{
 						this.transform.position = Vector3.Lerp (transform.position, camTarget.position + setAimOffset, localDeltaTime * 10);
-						//transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, localDeltaTime * 10);
-						// Bon, faudrait faire un genre de Smooth LookAt en utilisant un LookRotation
-						//A la fin ça devrait ressembler à ça :
-						/*
-						 var rotation : Quaternion = Quaternion.LookRotation(waypoint[PickWP].transform.position - follower.transform.position);
-						follower.transform.rotation = Quaternion.Slerp(follower.transform.rotation, rotation, Time.deltaTime * damping);
-						*/
+						Vector3 forwardNeutralX = camera.transform.forward;
+						forwardNeutralX.y = 0;
+						//YEAH, Still not looking in the right direction, fixit.
+						Debug.DrawLine (transform.position, transform.position + forwardNeutralX, Color.red, 10);
+						
+						Quaternion lookRotation = Quaternion.LookRotation (player.transform.position + forwardNeutralX);
+						transform.localRotation = Quaternion.Slerp(transform.rotation, lookRotation, localDeltaTime * 10f);
 					}
 				}
 
@@ -270,7 +270,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		#region look at camera target
 		Quaternion selfRotation = Quaternion.LookRotation (camTarget.position - transform.position);
 		selfRotation *= rotationOffset;
-		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * currentRotationSmooth); //selfRotation;
+		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * currentRotationSmooth);
 		//At this point, the camera is at the right place AND is looking at the right point.
 		#endregion
 	}
@@ -278,8 +278,9 @@ public class ThirdPersonCamera : MonoBehaviour {
 	//This functions is enabled when the 3rd Person Camera switches to aiming mode.
 	void aimingCameraMode ()
 	{
-		if ( ! playerControls.setAimMode && ! initAimMode) 
+		if (!playerControls.setAimMode && !initAimMode) 
 		{
+		Debug.Log ("Aiming camera on");
 			//Those two lines make sure the camera get to the right place.
 			Vector3 setAimOffset = camTarget.transform.forward * aimOffset.z + camTarget.transform.up * aimOffset.y + camTarget.transform.right * aimOffset.x;
 			this.transform.position = Vector3.Lerp (transform.position, camTarget.position + setAimOffset, localDeltaTime * 30);
