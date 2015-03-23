@@ -17,12 +17,11 @@ public class Destructible : MonoBehaviour {
 	
 	void	OnCollisionEnter(Collision col)
 	{
-		if (col.gameObject.tag == "ThrowableRock" && col.collider.rigidbody.velocity.sqrMagnitude > 50*50) {
+		if ((col.gameObject.tag == "ThrowableRock" || col.gameObject.tag == "FallingRocks")) {
 			Debug.Log("Destroy!");
 			rigidbody.constraints = RigidbodyConstraints.None;
 		}
 	}
-
 
 
 
