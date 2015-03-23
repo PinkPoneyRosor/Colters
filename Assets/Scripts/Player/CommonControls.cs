@@ -41,6 +41,9 @@ public class CommonControls : MonoBehaviour {
 	[HeaderAttribute("Moves parameters")]
 	public float maxSpeed = 0;
 	public float gravity = 20;
+	
+	[HideInInspector]
+	public bool characterAngleOkForAim = false;
 
 	// Use this for initialization
 	protected virtual void Start () 
@@ -175,6 +178,7 @@ public class CommonControls : MonoBehaviour {
 		if (setAimMode) 
 		{
 			this.transform.eulerAngles = new Vector3 (transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
+			characterAngleOkForAim = true;
 			setAimMode = false;
 		}
 		
