@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Destructible : MonoBehaviour {
 
+	public bool mustBeExplosive;
+
 	// Use this for initialization
 	void Start () {
 		rigidbody.constraints = RigidbodyConstraints.FreezeAll;
@@ -15,13 +17,9 @@ public class Destructible : MonoBehaviour {
 	
 	void	OnCollisionEnter(Collision col)
 	{
-		if (col.gameObject.tag == "ThrowableRock") {
+		if ((col.gameObject.tag == "ThrowableRock" || col.gameObject.tag == "FallingRocks")) {
 			Debug.Log("Destroy!");
 			rigidbody.constraints = RigidbodyConstraints.None;
 		}
 	}
-
-
-
-
 }

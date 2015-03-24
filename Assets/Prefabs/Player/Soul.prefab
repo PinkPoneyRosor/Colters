@@ -1958,21 +1958,14 @@ MonoBehaviour:
   continueResetControls: 0
   floatDir: 0
   speed: 3
-  maxSpeed: 10
-  gravity: 20
   localDeltaTime: 0
   setAimMode: 1
   canJump: 1
-  setMaximumSpeed: 7
+  airControlMultiplier: 50
+  maxSpeed: 10
+  gravity: 20
+  setMaximumSpeed: 5
   heightOfJump: 9
-  dashCoolDown: 2
-  ghostPrefab: {fileID: 100000, guid: c94ae3272a3d8da41a5d8edda0437a8b, type: 2}
-  isDashing: 0
-  dashGetThrough:
-    serializedVersion: 2
-    m_Bits: 524288
-  dashSpeed: 50
-  dashDistance: 7
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

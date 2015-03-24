@@ -152,8 +152,6 @@ public class BasicEnemy : MonoBehaviour {
 		if (hit.CompareTag ("PlayerSoul") && canGetHit) //As this is in the OnTrigger Method, it'll be triggered only if the player is dashing in body mode.
 		{
 			Debug.Log ("Enemy hit player");
-			if(hit.GetComponent<SoulMode>().isDashing)
-			gotHit (1);
 		}
 	}
 

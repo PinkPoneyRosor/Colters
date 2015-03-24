@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FallingRocks : MonoBehaviour {
 
-	//public float speed = 5;
+	public float speed = 5;
 	// Use this for initialization
 	void Start () {
 
@@ -20,16 +20,16 @@ public class FallingRocks : MonoBehaviour {
 	
 	
 	
-	/*void OnCollisionEnter(Collision col)
+	void OnCollisionEnter(Collision col)
 	{
 		if (col.gameObject.tag == "ThrowableRock") {
-			transform.Translate(Vector3.down * speed * Time.deltaTime);
+		
 	
-
+			rigidbody.constraints = RigidbodyConstraints.None;
 	
 
 			
 		}
-	}*/
+	}
 }
 
