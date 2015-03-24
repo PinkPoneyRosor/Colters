@@ -36,7 +36,7 @@ public class CommonControls : MonoBehaviour {
 	[HideInInspector]
 	public float airControlMultiplier = 50;
 	[HideInInspector]
-	public static float maxJumpAngle = 35;
+	public static float maxJumpSlopeAngle = 35;
 	
 	[HeaderAttribute("Moves parameters")]
 	public float maxSpeed = 0;
@@ -44,6 +44,8 @@ public class CommonControls : MonoBehaviour {
 	
 	[HideInInspector]
 	public bool characterAngleOkForAim = false;
+	
+	private bool OnSlope = false;
 
 	// Use this for initialization
 	protected virtual void Start () 
@@ -87,15 +89,27 @@ public class CommonControls : MonoBehaviour {
 		moveDirection.x = tempMoveDir.x;
 		moveDirection.z = tempMoveDir.z;
 
+		#region In Case Of Slope
 		RaycastHit hit;
 		if(Physics.Raycast (transform.position, -Vector3.up, out hit, Mathf.Infinity))
 		{
 			float angle = Vector3.Angle(-hit.normal, -Vector3.up);
-			if(angle>maxJumpAngle)
+			if(angle > maxJumpSlopeAngle && controller.isGrounded)
+			{
+				Vector3 temp = Vector3.Cross(hit.normal, Vector3.down);
+				Vector3 groundSlopeDir = Vector3.Cross(temp, hit.normal);
+				
 				canJump = false;
+				OnSlope = true;
+				controller.Move(groundSlopeDir * maxSpeed * (angle * .025f) * localDeltaTime);
+			}
 			else
+			{
 				canJump = true;
+				OnSlope = false;
+			}
 		}
+		#endregion
 		
 		if (Input.GetButtonDown ("Jump") && controller.isGrounded && canJump)
 			moveDirection.y = heightOfJump;
@@ -104,6 +118,7 @@ public class CommonControls : MonoBehaviour {
 		if(!controller.isGrounded)
 			moveDirection.y -= gravity * localDeltaTime;
 		
+		//if(!OnSlope)
 		controller.Move (moveDirection * localDeltaTime);
 		
 		faceDirection = transform.position + moveDirection;

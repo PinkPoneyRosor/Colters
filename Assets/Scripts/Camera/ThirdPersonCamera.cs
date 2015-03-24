@@ -48,7 +48,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	LayerMask CompensateLayer;
 
 	private float localDeltaTime;
-	private bool mustResetAimAngle = true;
+	private bool JustEnteredAimMode = true;
 	private bool resetManualModeValues = false;
 
 	[HideInInspector]
@@ -66,7 +66,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 	private bool initAimMode = true;
 	private bool canUseManualMode = true;
 	private bool justExitedAimMode = false;
-	private bool preventManual = false;
+	private bool transitioningToNormal = false;
+	private bool AimSetUpTime = true;
 	#endregion
 	#endregion
 
@@ -98,14 +99,17 @@ public class ThirdPersonCamera : MonoBehaviour {
 		#region Aim Mode Trigger
 		if ((Input.GetAxisRaw ("LT") > 0) || (Input.GetButton("Aim"))) 
 			{
-				if(mustResetAimAngle)
+				StopCoroutine("transitionBackToNormalMode");
+				
+				if(JustEnteredAimMode)
 				{
 					xAim = 0;
 					Debug.Log ("Resetting aim angle");
 					playerControls.setAimMode = true;
+					StartCoroutine("AimSetUpTimeFunc");
 				}
 				
-				mustResetAimAngle = false;
+				JustEnteredAimMode = false;
 				CommonControls.aimingMode = true;
 				aimingMode = true;
 				
@@ -125,7 +129,9 @@ public class ThirdPersonCamera : MonoBehaviour {
 					Quaternion targetRotation = Quaternion.Euler (xAim, currentCamTargetRotation.y, 0);
 					float AngleFromCurrentToTarget = Quaternion.Angle ( transform.rotation, targetRotation);
 					
-					if (DistBetweenCamAndTargetPoint < .1f && AngleFromCurrentToTarget < .1f)
+					
+					
+					if ((DistBetweenCamAndTargetPoint < .1f && AngleFromCurrentToTarget < .1f) || !AimSetUpTime)
 					{
 						initAimMode = false;
 					}
@@ -142,9 +148,9 @@ public class ThirdPersonCamera : MonoBehaviour {
 			} 
 			else 
 			{
-				CommonControls.aimingMode = false;
+				
 				aimingMode = false;
-				mustResetAimAngle = true;
+				JustEnteredAimMode = true;
 				initAimMode = true;
 				playerControls.characterAngleOkForAim = false;
 			}
@@ -156,7 +162,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 			{
 				if(justExitedAimMode)
 				{
-					this.StartCoroutine("preventManualMode");
+					this.StartCoroutine("transitionBackToNormalMode");
 					justExitedAimMode = false;
 				}
 				DefaultCamera ();
@@ -170,12 +176,23 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	}
 	
-	IEnumerator preventManualMode()
+	IEnumerator transitionBackToNormalMode()
 	{
-		preventManual = true;
-		Debug.Log ("Can't control camera");
+		if(!ManualMode)
+		{
+			transitioningToNormal = true;
+			yield return new WaitForSeconds (12f * Time.deltaTime);
+			transitioningToNormal = false;
+			CommonControls.aimingMode = false;
+		}
+	}
+	
+	IEnumerator AimSetUpTimeFunc()
+	{
+		AimSetUpTime = true;
+		Debug.Log ("Can't control AIM camera");
 		yield return new WaitForSeconds (15f * Time.deltaTime);
-		preventManual = false;
+		AimSetUpTime = false;
 		Debug.Log ("You can now");
 	}
 
@@ -192,7 +209,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		}
 
 		#region Input for the second stick's manual camera controls.
-		if (ManualMode && !preventManual) 
+		if (ManualMode && !transitioningToNormal) 
 		{
 			currentRotationSmooth = 60;
 
@@ -225,8 +242,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 			targetToCamDir.y = 0f; //We don't want to use the height, it is controlled by another variable.
 			targetToCamDir.Normalize (); //We just need the direction, so we normalize it, in order to multiply the vector later.
 
-			#region reset position button
-			if (resetCameraPosition) 
+			#region reset position with button & transition from aiming mode
+			if (resetCameraPosition || transitioningToNormal) 
 			{
 				Vector3 tempSetPosition = -camTarget.transform.forward * distance + camTarget.transform.up * cameraHeight;
 				tempSetPosition += camTarget.transform.position;
@@ -243,7 +260,10 @@ public class ThirdPersonCamera : MonoBehaviour {
 				else
 				{
 					//But if the distance is more than 1 unit long, we use the position calculated before to get the camera in Phalene's back.
-					setPosition = tempSetPosition;
+					//transform.RotateAround(tempSetPosition, player.transform.up, 50 * Time.deltaTime);
+					Quaternion rotationAroundTarget = Quaternion.Euler (0,  1 * localDeltaTime, 0f);
+					setPosition = rotationAroundTarget * new Vector3 (0.0f, cameraHeight, -distance) + camTarget.position;
+					//setPosition = tempSetPosition;
 				}
 			}
 			else
@@ -263,25 +283,24 @@ public class ThirdPersonCamera : MonoBehaviour {
 		#endregion
 			
 		#region look at camera target
-		Quaternion selfRotation = Quaternion.LookRotation (camTarget.position - transform.position);
-		selfRotation *= rotationOffset;
-		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * currentRotationSmooth);
-		//At this point, the camera is at the right place AND is looking at the right point.
+		if(!transitioningToNormal)
+		{
+			Quaternion selfRotation = Quaternion.LookRotation (camTarget.position - transform.position);
+			selfRotation *= rotationOffset;
+			transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * currentRotationSmooth);
+			//At this point, the camera is at the right place AND is looking at the right point.
+		}
 		#endregion
 	}
 
 	//This functions is enabled when the 3rd Person Camera switches to aiming mode.
 	void aimingCameraMode ()
 	{
-		Debug.Log ("Trying to access aiming mode...");
-		Debug.Log ("playerControls.setAimMode = "+ playerControls.setAimMode);
-		Debug.Log("initAimMode = "+ initAimMode);
 		if (!playerControls.setAimMode && !initAimMode) 
 		{
-		Debug.Log ("Aiming mode on");
 			//Those two lines make sure the camera get to the right place.
 			Vector3 setAimOffset = camTarget.transform.forward * aimOffset.z + camTarget.transform.up * aimOffset.y + camTarget.transform.right * aimOffset.x;
-			this.transform.position = Vector3.Lerp (transform.position, camTarget.position + setAimOffset, localDeltaTime * 300);
+			this.transform.position = Vector3.Lerp (transform.position, camTarget.position + setAimOffset, localDeltaTime * 30);
 
 			#region Manual aiming
 			Vector3 currentCamTargetRotation = this.transform.eulerAngles;
@@ -298,8 +317,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 			transform.rotation = rotation;
 			#endregion
 		}
-		else
-		Debug.Log("Both must be false !");
 	}
 
 	//This method can clamp different angles.
