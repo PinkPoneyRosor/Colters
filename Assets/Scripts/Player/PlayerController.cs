@@ -26,7 +26,7 @@ public class PlayerController : CommonControls {
 	{
 		base.Start ();
 		maxSpeed = setMaximumSpeed;
-		maxJumpAngle = maxSlopeAngleToJump;
+		maxJumpSlopeAngle = maxSlopeAngleToJump;
 	}
 	
 	// Update is called once per frame
