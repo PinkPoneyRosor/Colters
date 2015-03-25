@@ -70,11 +70,11 @@ Material:
       data:
         first:
           name: _ReflDistort
-        second: .0803571418
+        second: .187499985
       data:
         first:
           name: _RefrDistort
-        second: 1.5
+        second: 0
     m_Colors:
       data:
         first:
@@ -99,7 +99,7 @@ Material:
       data:
         first:
           name: WaveSpeed
-        second: {r: 50, g: 5, b: 50, a: -50}
+        second: {r: 38.9300003, g: -92.4000015, b: -17.0300007, a: -50}
       data:
         first:
           name: _ReflectiveColor_ST
@@ -111,7 +111,7 @@ Material:
       data:
         first:
           name: _HorizonColor
-        second: {r: .135759518, g: .228107125, b: .381078809, a: 0}
+        second: {r: .00551471114, g: .130375296, b: .375, a: .309803933}
       data:
         first:
           name: _RefractionTex_ST
