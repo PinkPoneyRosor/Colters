@@ -34,7 +34,7 @@ public class CommonControls : MonoBehaviour {
 	[HideInInspector]
 	public bool canJump = true;
 	[HideInInspector]
-	public float airControlMultiplier = 50;
+	public float airControlMultiplier = 0;
 	[HideInInspector]
 	public static float maxJumpSlopeAngle = 35;
 	
@@ -80,8 +80,16 @@ public class CommonControls : MonoBehaviour {
 		}
 		else
 		{
-			tempMoveDir += direction * airControlMultiplier * localDeltaTime;
-			tempMoveDir = Vector3.ClampMagnitude(tempMoveDir, maxSpeed);
+			float stickMagnitude = Input.GetAxis ("Vertical") + Input.GetAxis ("Horizontal");
+			
+			if( stickMagnitude != 0)
+			{
+				Debug.Log (direction);
+				tempMoveDir += direction * airControlMultiplier * localDeltaTime;
+				tempMoveDir = Vector3.ClampMagnitude(tempMoveDir, maxSpeed);
+			}
+			else
+				tempMoveDir = Vector3.Lerp (tempMoveDir, Vector3.zero, 2 * localDeltaTime);
 		}
 		
 		//Debug.Log ("moveDirection = "+moveDirection);

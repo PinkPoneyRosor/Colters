@@ -118,8 +118,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 					Vector3 setAimOffset = camTarget.transform.forward * aimOffset.z + camTarget.transform.up * aimOffset.y + camTarget.transform.right * aimOffset.x;
 					float DistBetweenCamAndTargetPoint = Vector3.SqrMagnitude ((camTarget.position + setAimOffset) - transform.position );
 					
-					Debug.DrawLine (transform.position, camTarget.position + setAimOffset);
-					
 					Vector3 currentCamTargetRotation = this.transform.eulerAngles;
 					currentCamTargetRotation.y = camTarget.transform.eulerAngles.y;
 					
@@ -265,11 +263,13 @@ public class ThirdPersonCamera : MonoBehaviour {
 					setPosition = rotationAroundTarget * new Vector3 (0.0f, cameraHeight, -distance) + camTarget.position;
 					//setPosition = tempSetPosition;
 				}
+				Debug.Log ("Resetting because resetCameraPosition = " + resetCameraPosition + " & transitioningToNormal = " + transitioningToNormal);
 			}
 			else
 			{
 				//Once the camera has been resetted correctly, we get back to its automatic positioning.
 				setPosition = camTarget.position + new Vector3 (0, cameraHeight, 0) - targetToCamDir * distance;
+				Debug.Log ("Not resetting because resetCameraPosition = " + resetCameraPosition + " & transitioningToNormal = " + transitioningToNormal);
 			}
 			#endregion
 
