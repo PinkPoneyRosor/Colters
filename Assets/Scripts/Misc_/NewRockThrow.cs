@@ -44,7 +44,7 @@ public class NewRockThrow : MonoBehaviour {
 				aimlessControls();
 		}
 		
-		if(Input.GetAxisRaw("RT") != 0)
+		if(Input.GetAxisRaw("RT") != 0 || Input.GetButtonDown("Action"))
 		{
 			ThrowRockWithAim();
 		}
