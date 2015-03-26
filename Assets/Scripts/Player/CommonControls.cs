@@ -46,6 +46,9 @@ public class CommonControls : MonoBehaviour {
 	public bool characterAngleOkForAim = false;
 	
 	private bool OnSlope = false;
+	
+	private Vector3 flashStickDir = Vector3.zero;
+	private bool justPressedResetButton = false;
 
 	// Use this for initialization
 	protected virtual void Start () 
@@ -84,7 +87,6 @@ public class CommonControls : MonoBehaviour {
 			
 			if( stickMagnitude != 0)
 			{
-				Debug.Log (direction);
 				tempMoveDir += direction * airControlMultiplier * localDeltaTime;
 				tempMoveDir = Vector3.ClampMagnitude(tempMoveDir, maxSpeed);
 			}
@@ -135,6 +137,16 @@ public class CommonControls : MonoBehaviour {
 		transform.LookAt (faceDirection);
 		#endregion
 		#endregion
+		
+		Debug.Log (justPressedResetButton);
+		Debug.Log ("Button = " + Input.GetButtonDown("AutoCam"));
+		if(Input.GetButtonDown("AutoCam") && !justPressedResetButton)
+		{
+			flashStickDir = new Vector3 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw ("Vertical"), 0);
+			justPressedResetButton = true;
+			Debug.Log ("I was called");
+		}
+		Debug.Log ("flashStickDir = " + flashStickDir);
 	}
 
 	//This is where the magic happens, this method translate the left stick coordinates into world space coordinates, according to the camera's point of view!
@@ -174,7 +186,10 @@ public class CommonControls : MonoBehaviour {
 
 	public void ResettingCameraControls() //If the player is still moving when he's resetting the camera, the character's move are different, else there's a risk to see undesired behaviours.
 	{
-		if ( (Input.GetAxisRaw ("Horizontal") < -.25f && Input.GetAxisRaw ("Horizontal") > .25f) || Input.GetAxisRaw ("Vertical") <= -.2f) 
+		Vector3 currentStickPos = new Vector3 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"), 0);
+		float angleFromFlashToCurrent = Vector3.Dot (flashStickDir, currentStickPos);
+		Debug.Log (angleFromFlashToCurrent);
+		if ( angleFromFlashToCurrent > 0 ) 
 		{
 			continueResetControls = true;
 			
@@ -193,7 +208,10 @@ public class CommonControls : MonoBehaviour {
 			controller.Move (moveDirection * speedOut * localDeltaTime);
 		} 
 		else //Once the stick has been released, we get back to the standard controls
+		{
 			continueResetControls = false;
+			justPressedResetButton = false;
+		}
 	}
 
 	public void AimingControls (float heightOfJump) //When aiming, the controls are not the same.
