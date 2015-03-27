@@ -276,7 +276,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 				float sqrDistFromSetPosToCurrentPos = distFromSetPosToCurrentPos.sqrMagnitude;
 
 				//If the distance between the camera's position and the hypothetical target position is small enough..
-				if (sqrDistFromSetPosToCurrentPos < .5f)
+				if (sqrDistFromSetPosToCurrentPos < .5f || justHitAWall)
 				{
 					//We just switch back to camera mode, without repositioning the camera.
 					resetCameraPosition = false;
@@ -284,7 +284,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 				else
 				{
 					//But if the distance is more than 1 unit long, we use the position calculated before to get the camera in Phalene's back.
-					if( !resetCameraFinalPosition )
+					if( !resetCameraFinalPosition || justHitAWall)
 					{
 						float currentAngleDir = AngleDir( camTarget.transform.forward, transform.position-camTarget.transform.position, Vector3.up );
 						if( angleDir == 0f )
@@ -292,10 +292,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 							angleDir = currentAngleDir;
 						}
 						
-						if( Mathf.Sign(angleDir) != Mathf.Sign(currentAngleDir) )
+						if( Mathf.Sign(angleDir) != Mathf.Sign(currentAngleDir) || justHitAWall )
 						{
 							setPosition = tempSetPosition;
 							resetCameraFinalPosition = true;
+							Debug.Log ("Finished reset or reset aborted");
 						}
 						else
 						{
@@ -424,5 +425,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		}
 		else
 			justHitAWall = false;
+			
+			Debug.Log ("TPC Script Side Hit Wall = "+ justHitAWall);
 	}
 }
