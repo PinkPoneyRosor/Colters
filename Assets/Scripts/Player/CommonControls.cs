@@ -137,16 +137,6 @@ public class CommonControls : MonoBehaviour {
 		transform.LookAt (faceDirection);
 		#endregion
 		#endregion
-		
-		Debug.Log (justPressedResetButton);
-		Debug.Log ("Button = " + Input.GetButtonDown("AutoCam"));
-		if(Input.GetButtonDown("AutoCam") && !justPressedResetButton)
-		{
-			flashStickDir = new Vector3 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw ("Vertical"), 0);
-			justPressedResetButton = true;
-			Debug.Log ("I was called");
-		}
-		Debug.Log ("flashStickDir = " + flashStickDir);
 	}
 
 	//This is where the magic happens, this method translate the left stick coordinates into world space coordinates, according to the camera's point of view!
@@ -186,11 +176,10 @@ public class CommonControls : MonoBehaviour {
 
 	public void ResettingCameraControls() //If the player is still moving when he's resetting the camera, the character's move are different, else there's a risk to see undesired behaviours.
 	{
-		Vector3 currentStickPos = new Vector3 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"), 0);
-		float angleFromFlashToCurrent = Vector3.Dot (flashStickDir, currentStickPos);
-		Debug.Log (angleFromFlashToCurrent);
-		if ( angleFromFlashToCurrent > 0 ) 
+		if(!mainCameraScript.justHitAWall)
 		{
+			Debug.Log ("Resetting controls");
+			Debug.Log ("Just Hit A Wall = "+ mainCameraScript.justHitAWall);
 			continueResetControls = true;
 			
 			Vector3 stickDirection = new Vector3 (horizontal, 0, vertical);
@@ -206,11 +195,6 @@ public class CommonControls : MonoBehaviour {
 				moveDirection.y -= gravity * localDeltaTime;
 			
 			controller.Move (moveDirection * speedOut * localDeltaTime);
-		} 
-		else //Once the stick has been released, we get back to the standard controls
-		{
-			continueResetControls = false;
-			justPressedResetButton = false;
 		}
 	}
 

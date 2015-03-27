@@ -55,7 +55,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public bool aimingMode = false;
 	[HideInInspector]
 	public bool resetCameraPosition = false;
-	private bool resetCameraFinalPosition = false;
+	[HideInInspector]
+	public bool resetCameraFinalPosition = false;
 	private float angleDir;
 	#endregion
 
@@ -71,6 +72,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 	private bool transitioningToNormal = false;
 	private bool AimSetUpTime = true;
 	private float currentXReset = 0;
+	[HideInInspector]
+	public bool justHitAWall = false;
 	#endregion
 	#endregion
 
@@ -219,7 +222,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	void DefaultCamera()
 	{
 		//If the secondary stick is being moved, we switch to manual mode.
-		if ((Input.GetAxisRaw ("LookH") != 0 || Input.GetAxisRaw ("LookV") != 0))
+		if ((Input.GetAxisRaw ("LookH") != 0 || Input.GetAxisRaw ("LookV") != 0) && ! resetCameraPosition)
 			ManualMode = true;
 		else if (Input.GetButtonDown ("AutoCam")) 
 		{
@@ -250,7 +253,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 			y = Mathf.Clamp (y, manualCameraHeightMinLimit, manualCameraHeightMaxLimit); //The vertical angle is clamped to prevent the camera getting too high or too low.
 			Quaternion rotationAroundTarget = Quaternion.Euler (0, x, 0f);
 			setPosition = rotationAroundTarget * new Vector3 (0.0f, y, -distance) + camTarget.position;
-			Debug.DrawLine(transform.position, setPosition, Color.blue, 10f);
 		}
 		else
 		#endregion 
@@ -281,8 +283,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 				}
 				else
 				{
-					Debug.DrawLine(camTarget.transform.position, tempSetPosition, Color.cyan, 10f);
-					
 					//But if the distance is more than 1 unit long, we use the position calculated before to get the camera in Phalene's back.
 					if( !resetCameraFinalPosition )
 					{
@@ -420,6 +420,9 @@ public class ThirdPersonCamera : MonoBehaviour {
 		{
 			Vector3 hitWallNormal = wallHit.normal.normalized;
 			toTarget = new Vector3(wallHit.point.x + .5f * hitWallNormal.x, wallHit.point.y + .5f * hitWallNormal.y, wallHit.point.z + .5f * hitWallNormal.z);
+			justHitAWall = true;
 		}
+		else
+			justHitAWall = false;
 	}
 }
