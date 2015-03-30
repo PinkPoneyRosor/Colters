@@ -1964,7 +1964,8 @@ MonoBehaviour:
   airControlMultiplier: 50
   maxSpeed: 10
   gravity: 20
-  setMaximumSpeed: 5
+  characterAngleOkForAim: 0
+  setMaximumSpeed: 6
   heightOfJump: 9
 --- !u!114 &11400002
 MonoBehaviour:
