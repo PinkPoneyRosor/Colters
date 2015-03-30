@@ -75,7 +75,6 @@ public class Floater : MonoBehaviour
 	
 	void Update ()
 	{
-		
 		if(!waitingToGo)
 		{
 			rigidbody.isKinematic = false;
@@ -93,6 +92,7 @@ public class Floater : MonoBehaviour
 	{
 		if (hit.CompareTag("Water"))
 		{
+			Debug.Log ("Entered Water");
 			inWater = true;
 			hitWater = hit.gameObject;
 			hitWaterScript = hitWater.GetComponent <WaterVolume>();
