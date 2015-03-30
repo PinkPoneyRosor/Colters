@@ -15,6 +15,7 @@ public class NewRockThrow : MonoBehaviour {
 	Transform mainCamera;
 	
 	private GameObject [] allRocks;
+	private GameObject [] allSpawners;
 	
 	int selectedRockCount = 0;
 	
@@ -36,8 +37,6 @@ public class NewRockThrow : MonoBehaviour {
 	{
 		if(Input.GetButtonDown("SelectRock"))
 		{		
-			allRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock");
-			
 			if (CommonControls.aimingMode)  
 				controlsWhileAiming();
 			else
@@ -61,6 +60,7 @@ public class NewRockThrow : MonoBehaviour {
 		RaycastHit HitObject;
 		Ray ray = mainCamera.camera.ScreenPointToRay (new Vector3(Screen.width/2, Screen.height/2, 0));
 
+		allRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock");
 			
 		if (Physics.SphereCast (ray.origin, .2f, ray.direction, out HitObject, Mathf.Infinity, RockLayer)) 
 		{
@@ -70,6 +70,20 @@ public class NewRockThrow : MonoBehaviour {
 	
 	void aimlessControls()
 	{
+		
+		/*allSpawners = GameObject.FindGameObjectsWithTag ("RockSpawner");
+		
+		foreach (GameObject spawner in allSpawners)
+		{
+			Vector3 fromPlayerToSpawner = transform.position - spawner.transform.position;
+			float distance = fromPlayerToSpawner.sqrMagnitude;
+			
+			if( distance < globalPickUpRadius)
+				StartCoroutine ( spawnARock(spawner) );
+		}*/
+		
+		allRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock");
+		
 		foreach (GameObject rock in allRocks)
 		{
 			Vector3 fromPlayerToRock = transform.position - rock.transform.position;
@@ -78,7 +92,17 @@ public class NewRockThrow : MonoBehaviour {
 			if( distance < globalPickUpRadius)
 				selectARock(rock);
 		}
+		
+		
 	}
+	
+	/*IEnumerator spawnARock (GameObject chosenSpawner)
+	{
+		RockSpawner chosenSpawnScript;
+		chosenSpawnScript = chosenSpawner.GetComponent <RockSpawner>();
+		
+		yield return chosenSpawner.SendMessage ("spawnARock");
+	}*/
 	
 	void selectARock (GameObject chosenRock)
 	{
