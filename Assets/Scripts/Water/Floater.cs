@@ -32,24 +32,31 @@ public class Floater : MonoBehaviour
 				
 				if (hit.normal != Vector3.up)
 				{
-				Vector3 up = hit.normal;
-				Vector3 left = Vector3.zero;
-				
-				if (hitWaterScript.streamDirection.z != 0)
-					{
-						left = Vector3.left;
-					}
-				else if (hitWaterScript.streamDirection.x != 0)
-					{
-						left = Vector3.forward;
-					}
+					Vector3 up = hit.normal;
+					Vector3 left = Vector3.zero;
 					
-				flowDirection = -Vector3.Cross(up, left); //Uncomplete
+					Debug.DrawRay( hit.point, hit.normal * 5, Color.red );
+					
+				/*	if (hitWaterScript.streamDirection.z <= 0)
+						left = -Vector3.left;
+					else if (hitWaterScript.streamDirection.z >= 0)
+						left = Vector3.left;
+					else if (hitWaterScript.streamDirection.x < 0)
+						left = -Vector3.forward;
+					else if (hitWaterScript.streamDirection.x > 0)
+						left = Vector3.forward; */
+						
+					flowDirection = -Vector3.Cross(up, left);
+					Debug.Log ("Flow by slope");
 				}
 				else
-				flowDirection = hitWaterScript.streamDirection;
-				Debug.DrawRay( hit.point, flowDirection*5 );
-			}	
+				{
+					flowDirection = hitWaterScript.streamDirection;
+					Debug.Log ("Forced flow");
+				}
+			}
+			
+			Debug.DrawRay( hit.point, flowDirection * 5, Color.blue );	
 		
 			Vector3 actionPoint = transform.position + transform.TransformDirection(buoyancyCentreOffset);
 			
