@@ -69,19 +69,7 @@ public class NewRockThrow : MonoBehaviour {
 	}
 	
 	void aimlessControls()
-	{
-		
-		/*allSpawners = GameObject.FindGameObjectsWithTag ("RockSpawner");
-		
-		foreach (GameObject spawner in allSpawners)
-		{
-			Vector3 fromPlayerToSpawner = transform.position - spawner.transform.position;
-			float distance = fromPlayerToSpawner.sqrMagnitude;
-			
-			if( distance < globalPickUpRadius)
-				StartCoroutine ( spawnARock(spawner) );
-		}*/
-		
+	{	
 		allRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock");
 		
 		foreach (GameObject rock in allRocks)
@@ -95,14 +83,6 @@ public class NewRockThrow : MonoBehaviour {
 		
 		
 	}
-	
-	/*IEnumerator spawnARock (GameObject chosenSpawner)
-	{
-		RockSpawner chosenSpawnScript;
-		chosenSpawnScript = chosenSpawner.GetComponent <RockSpawner>();
-		
-		yield return chosenSpawner.SendMessage ("spawnARock");
-	}*/
 	
 	void selectARock (GameObject chosenRock)
 	{
@@ -180,6 +160,7 @@ public class NewRockThrow : MonoBehaviour {
 				
 				currentThrowedRockScript.isSelected = false;
 				currentThrowedRockScript.inTheAir = false;
+				currentThrowedRockScript.posAtLaunch = currentThrowedRock.transform.position;
 				currentThrowedRockScript.selectionNumber = 0;
 				currentThrowedRock.rigidbody.isKinematic = false;
 				currentThrowedRock.collider.isTrigger = false;

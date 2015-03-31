@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -76.7009964, y: 26.1800003, z: -16.3490009}
+  m_LocalPosition: {x: 1.59640503, y: 9.62412262, z: -14.6933327}
   m_LocalScale: {x: .91009587, y: .91009593, z: .91009593}
   m_Children:
   - {fileID: 400000}
@@ -167,6 +167,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c0f00fd46c53a47bcdb2efed9317ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSelected: 0
+  inTheAir: 0
+  selectionNumber: 0
+  distanceFromPlayer: 2
+  changePosSpeed: 5
+  homingAttackBool: 0
+  aimHoming: {fileID: 0}
+  throwForce: 1000
+  canExplode: 0
+  posAtLaunch: {x: 0, y: 0, z: 0}
+  maxTravelDistance: 5
 --- !u!208 &20800000
 NavMeshObstacle:
   m_ObjectHideFlags: 1
