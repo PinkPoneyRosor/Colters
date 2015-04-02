@@ -94,7 +94,6 @@ public class NewThrowableRock : MonoBehaviour {
 		#region track distance travelled
 		if (Vector3.SqrMagnitude(transform.position - posAtLaunch) > maxTravelDistance * maxTravelDistance && !isSelected)
 		{
-			Debug.Log ("Using PhysX gravity");
 			rigidbody.useGravity = true;
 			constantForce.force = Vector3.zero;
 			homingAttackBool = false;
@@ -175,7 +174,6 @@ public class NewThrowableRock : MonoBehaviour {
 	{
 		if (!isSelected) 
 		{
-			Debug.Log ("Using PhysX gravity");
 			rigidbody.useGravity = true;
 			constantForce.force = Vector3.zero;
 			homingAttackBool = false;
