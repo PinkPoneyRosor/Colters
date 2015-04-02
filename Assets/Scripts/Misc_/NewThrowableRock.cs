@@ -4,6 +4,7 @@ using System.Collections;
 public class NewThrowableRock : MonoBehaviour {
 
 	public bool isSelected = false;
+	public bool isGrowing = false;
 	bool mustGetUp = true;
 	public bool inTheAir = false;
 	NewRockThrow rockThrowScript;
@@ -28,6 +29,8 @@ public class NewThrowableRock : MonoBehaviour {
 	public bool canExplode = false;
 	public Vector3 posAtLaunch = Vector3.zero;
 	public float maxTravelDistance = 15;
+	
+	private bool growInit = true;
 
 	// Use this for initialization
 	void Start () 
@@ -40,7 +43,21 @@ public class NewThrowableRock : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(isSelected)
+		if(isGrowing)
+		{
+			isSelected = false;
+			
+			if(growInit)
+			{
+				this.transform.localScale = Vector3.zero;
+				growInit = false;
+			}
+			
+			this.transform.localScale = Vector3.Lerp (transform.localScale, startScale, 1 * Time.deltaTime);
+		}
+		
+		
+		if(isSelected || isGrowing)
 		{
 			rigidbody.useGravity = false;
 			collider.isTrigger = true;
@@ -85,7 +102,7 @@ public class NewThrowableRock : MonoBehaviour {
 					setAimSelectionPos();
 			}
 		}
-		else
+		else if (!isGrowing)
 		{
 			transform.localScale = Vector3.Lerp (transform.localScale, startScale, changePosSpeed * Time.deltaTime);
 			mustGetUp = true;
@@ -106,19 +123,19 @@ public class NewThrowableRock : MonoBehaviour {
 		switch (selectionNumber)
 		{
 		case 1:
-			Vector3 firstOffset = Quaternion.AngleAxis(90, player.transform.up) * (-player.transform.forward * 1.5f) + (player.transform.up * 1.6f);
+			Vector3 firstOffset = rockThrowScript.firstOffset;
 			transform.position = Vector3.Lerp (transform.position, player.transform.position + firstOffset, changePosSpeed * Time.deltaTime);
 			break;
 		case 2:
-			Vector3 secondOffset = Quaternion.AngleAxis(45, player.transform.up) * (-player.transform.forward * 1.5f) + (player.transform.up * 1.1f);
+			Vector3 secondOffset = rockThrowScript.secondOffset;
 			transform.position = Vector3.Lerp (transform.position, player.transform.position + secondOffset, changePosSpeed * Time.deltaTime);
 			break;
 		case 3:
-			Vector3 thirdOffset = Quaternion.AngleAxis(0, player.transform.up) * (-player.transform.forward * 1.5f) + (player.transform.up * .6f);
+			Vector3 thirdOffset = rockThrowScript.thirdOffset;
 			transform.position = Vector3.Lerp (transform.position, player.transform.position + thirdOffset, changePosSpeed * Time.deltaTime);
 			break;
 		case 4:
-			Vector3 fourthOffset = Quaternion.AngleAxis(-45, player.transform.up) * (-player.transform.forward * 1.5f) + (player.transform.up * .1f);
+			Vector3 fourthOffset = rockThrowScript.fourthOffset;
 			transform.position = Vector3.Lerp (transform.position, player.transform.position + fourthOffset, changePosSpeed * Time.deltaTime);
 			break;
 		}

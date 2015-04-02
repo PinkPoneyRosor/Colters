@@ -11,6 +11,15 @@ public class NewRockThrow : MonoBehaviour {
 	public GameObject thirdSelected = null;
 	[HideInInspector]
 	public GameObject fourthSelected = null;
+	
+	private NewThrowableRock firstScript;
+	private NewThrowableRock secondScript;
+	private NewThrowableRock thirdScript;
+	private NewThrowableRock fourthScript;
+	
+	public GameObject[] allSelectedRocks = new GameObject[4];
+	
+	public GameObject RockPrefab;
 
 	Transform mainCamera;
 	
@@ -25,47 +34,101 @@ public class NewRockThrow : MonoBehaviour {
 	
 	public float globalPickUpRadius = 5;
 	
+	#region Selected Rocks Positions
+	[HideInInspector]
+	public Vector3 firstOffset;
+	[HideInInspector]
+	public Vector3 secondOffset;
+	[HideInInspector]
+	public Vector3 thirdOffset;
+	[HideInInspector]
+	public Vector3 fourthOffset;
+	#endregion
+	
 
 	// Use this for initialization
 	void Start () 
 	{
 		mainCamera = Camera.main.transform;
+		
+		selectedManagement();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Input.GetButtonDown("SelectRock"))
-		{		
-			if (CommonControls.aimingMode)  
-				controlsWhileAiming();
-			else
-				aimlessControls();
-		}
+		selectedManagement();
+	
+		firstOffset = Quaternion.AngleAxis(90, transform.up) * (-transform.forward * 1.5f) + (transform.up * 1.6f);
+		secondOffset = Quaternion.AngleAxis(45, transform.up) * (-transform.forward * 1.5f) + (transform.up * 1.1f);
+		thirdOffset = Quaternion.AngleAxis(0, transform.up) * (-transform.forward * 1.5f) + (transform.up * .6f);
+		fourthOffset = Quaternion.AngleAxis(-45, transform.up) * (-transform.forward * 1.5f) + (transform.up * .1f);
+		
+		if(Input.GetButtonDown("SelectRock"))	
+			aimlessControls();
 		
 		if(Input.GetAxisRaw("RT") != 0 || Input.GetButtonDown("Action"))
-		{
 			ThrowRock();
-		}
 		
 		if (( Input.GetAxis("Scroll") > 0 || Input.GetButtonDown ("RockUp")) && canThrow)
 			ManualScroll ();
 		else if ((Input.GetAxis ("Scroll") < 0 || Input.GetButtonDown ("RockDown")) && canThrow)
 			InvertedManualScroll ();
+			
+		RockGrow ();
 	}
 	
-	void controlsWhileAiming()
+	void RockGrow ()
 	{
-		//First, we check with a sphereCast (in order to allow the player to be less precise) if the player is looking at a rock.
-		RaycastHit HitObject;
-		Ray ray = mainCamera.camera.ScreenPointToRay (new Vector3(Screen.width/2, Screen.height/2, 0));
-
-		allRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock");
-			
-		if (Physics.SphereCast (ray.origin, .2f, ray.direction, out HitObject, Mathf.Infinity, RockLayer)) 
+		if (selectedRockCount < 4 )
 		{
-			selectARock(HitObject.collider.gameObject);
+			Debug.Log ("Growing a rock...");
+			
+			if (firstSelected == null)
+			{
+				firstSelected = Instantiate ( RockPrefab, transform.position + firstOffset, Quaternion.identity ) as GameObject;
+				selectedManagement();
+				firstScript.isGrowing = true;
+				Debug.Log ("Grown first");
+			}
+			else if (secondSelected == null)
+			{
+				secondSelected = Instantiate ( RockPrefab, transform.position + secondOffset, Quaternion.identity  ) as GameObject;
+				selectedManagement();
+				secondScript.isGrowing = true;
+			}
+			else if (thirdSelected == null)
+			{
+				thirdSelected = Instantiate ( RockPrefab, transform.position + thirdOffset, Quaternion.identity  ) as GameObject;
+				selectedManagement();
+				thirdScript.isGrowing = true;
+			}
+			else if (fourthSelected == null)
+			{
+				fourthSelected = Instantiate ( RockPrefab, transform.position + fourthOffset, Quaternion.identity  ) as GameObject;
+				selectedManagement();
+				fourthScript.isGrowing = true;
+			}
+			
+			selectedRockCount++;
 		}
+	}
+	
+	void selectedManagement()
+	{
+		allSelectedRocks[0] = firstSelected;
+		allSelectedRocks[1] = secondSelected;
+		allSelectedRocks[2] = thirdSelected;
+		allSelectedRocks[3] = fourthSelected;
+		
+		if (allSelectedRocks[0] != null)
+		firstScript = allSelectedRocks[0].GetComponent <NewThrowableRock>();
+		if (allSelectedRocks[1] != null)
+		secondScript = allSelectedRocks[1].GetComponent <NewThrowableRock>();
+		if (allSelectedRocks[2] != null)
+		thirdScript = allSelectedRocks[2].GetComponent <NewThrowableRock>();
+		if (allSelectedRocks[3] != null)
+		fourthScript = allSelectedRocks[3].GetComponent <NewThrowableRock>();
 	}
 	
 	void aimlessControls()
