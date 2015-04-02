@@ -26,6 +26,8 @@ public class NewThrowableRock : MonoBehaviour {
 	public float throwForce = 1000;
 	
 	public bool canExplode = false;
+	public Vector3 posAtLaunch = Vector3.zero;
+	public float maxTravelDistance = 15;
 
 	// Use this for initialization
 	void Start () 
@@ -88,6 +90,16 @@ public class NewThrowableRock : MonoBehaviour {
 			transform.localScale = Vector3.Lerp (transform.localScale, startScale, changePosSpeed * Time.deltaTime);
 			mustGetUp = true;
 		}
+		
+		#region track distance travelled
+		if (Vector3.SqrMagnitude(transform.position - posAtLaunch) > maxTravelDistance * maxTravelDistance && !isSelected)
+		{
+			Debug.Log ("Using PhysX gravity");
+			rigidbody.useGravity = true;
+			constantForce.force = Vector3.zero;
+			homingAttackBool = false;
+		}
+		#endregion
 	}
 	
 	void setSelectionPos ()
@@ -163,6 +175,7 @@ public class NewThrowableRock : MonoBehaviour {
 	{
 		if (!isSelected) 
 		{
+			Debug.Log ("Using PhysX gravity");
 			rigidbody.useGravity = true;
 			constantForce.force = Vector3.zero;
 			homingAttackBool = false;

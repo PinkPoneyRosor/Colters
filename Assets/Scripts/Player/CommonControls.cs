@@ -44,11 +44,6 @@ public class CommonControls : MonoBehaviour {
 	
 	[HideInInspector]
 	public bool characterAngleOkForAim = false;
-	
-	private bool OnSlope = false;
-	
-	private Vector3 flashStickDir = Vector3.zero;
-	private bool justPressedResetButton = false;
 
 	// Use this for initialization
 	protected virtual void Start () 
@@ -110,13 +105,11 @@ public class CommonControls : MonoBehaviour {
 				Vector3 groundSlopeDir = Vector3.Cross(temp, hit.normal);
 				
 				canJump = false;
-				OnSlope = true;
 				controller.Move(groundSlopeDir * maxSpeed * (angle * .025f) * localDeltaTime);
 			}
 			else
 			{
 				canJump = true;
-				OnSlope = false;
 			}
 		}
 		#endregion
@@ -128,7 +121,6 @@ public class CommonControls : MonoBehaviour {
 		if(!controller.isGrounded)
 			moveDirection.y -= gravity * localDeltaTime;
 		
-		//if(!OnSlope)
 		controller.Move (moveDirection * localDeltaTime);
 		
 		faceDirection = transform.position + moveDirection;

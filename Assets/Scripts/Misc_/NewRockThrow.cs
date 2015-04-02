@@ -45,7 +45,7 @@ public class NewRockThrow : MonoBehaviour {
 		
 		if(Input.GetAxisRaw("RT") != 0 || Input.GetButtonDown("Action"))
 		{
-			ThrowRockWithAim();
+			ThrowRock();
 		}
 		
 		if (( Input.GetAxis("Scroll") > 0 || Input.GetButtonDown ("RockUp")) && canThrow)
@@ -69,19 +69,7 @@ public class NewRockThrow : MonoBehaviour {
 	}
 	
 	void aimlessControls()
-	{
-		
-		/*allSpawners = GameObject.FindGameObjectsWithTag ("RockSpawner");
-		
-		foreach (GameObject spawner in allSpawners)
-		{
-			Vector3 fromPlayerToSpawner = transform.position - spawner.transform.position;
-			float distance = fromPlayerToSpawner.sqrMagnitude;
-			
-			if( distance < globalPickUpRadius)
-				StartCoroutine ( spawnARock(spawner) );
-		}*/
-		
+	{	
 		allRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock");
 		
 		foreach (GameObject rock in allRocks)
@@ -95,14 +83,6 @@ public class NewRockThrow : MonoBehaviour {
 		
 		
 	}
-	
-	/*IEnumerator spawnARock (GameObject chosenSpawner)
-	{
-		RockSpawner chosenSpawnScript;
-		chosenSpawnScript = chosenSpawner.GetComponent <RockSpawner>();
-		
-		yield return chosenSpawner.SendMessage ("spawnARock");
-	}*/
 	
 	void selectARock (GameObject chosenRock)
 	{
@@ -138,48 +118,47 @@ public class NewRockThrow : MonoBehaviour {
 		}
 	}
 	
-	void ThrowRockWithAim()
+	void ThrowRock()
 	{
 		RaycastHit HitObject;
 		GameObject currentThrowedRock;
 		NewThrowableRock currentThrowedRockScript;
 		Ray ray;
 		
-		if(CommonControls.aimingMode)
 			ray = mainCamera.camera.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
-		else
-			ray = new Ray (transform.position, transform.forward);
-		
 		
 		if (canThrow
 			&& selectedRockCount > 0
 			&& firstSelected != null
-		    && Physics.Raycast (ray.origin, ray.direction, out HitObject, Mathf.Infinity, otherLayers)) 
+		    ) 
 		{
 			canThrow = false;	
 			currentThrowedRock = firstSelected;
 			currentThrowedRockScript = currentThrowedRock.GetComponent <NewThrowableRock> ();
 			firstSelected = null;
 				
-				if (HitObject.transform.CompareTag ("Enemy") && HitObject.transform.GetComponent<BasicEnemy> ().canGetHit) 
-				{  //If what we aimed at is an enemy and that it's not knocked out, let's do a homing attack
-					currentThrowedRockScript.aimHoming = HitObject.transform;
-					currentThrowedRockScript.homingAttackBool = true;
-				}
-				else
-				{
-					//If what we aimed at is not an enemy or it is but he's knocked out, just throw the rock straightforward.
-					Vector3 throwDirection = HitObject.point - currentThrowedRock.transform.position;
-					throwDirection.Normalize ();
-					
-					//This line is just to make absolutely sure there is no more constraints so that we can throw the rock in a straight line.
-					currentThrowedRockScript.rigidbody.constraints = RigidbodyConstraints.None;
-					
-					currentThrowedRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
-				}
+			if (Physics.Raycast (ray.origin, ray.direction, out HitObject, Mathf.Infinity, otherLayers)
+			    && HitObject.transform.CompareTag ("Enemy") && HitObject.transform.GetComponent<BasicEnemy> ().canGetHit)
+			{ 
+			  //If what we aimed at is an enemy and that it's not knocked out, let's do a homing attack
+				currentThrowedRockScript.aimHoming = HitObject.transform;
+				currentThrowedRockScript.homingAttackBool = true;
+			}
+			else 
+			{
+				//If what we aimed at is not an enemy or it is but he's knocked out, just throw the rock straightforward.
+				Vector3 throwDirection = ray.direction;
+				throwDirection.Normalize ();
+				
+				//This line is just to make absolutely sure there is no more constraints so that we can throw the rock in a straight line.
+				currentThrowedRockScript.rigidbody.constraints = RigidbodyConstraints.None;
+				
+				currentThrowedRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
+			}
 				
 				currentThrowedRockScript.isSelected = false;
 				currentThrowedRockScript.inTheAir = false;
+				currentThrowedRockScript.posAtLaunch = currentThrowedRock.transform.position;
 				currentThrowedRockScript.selectionNumber = 0;
 				currentThrowedRock.rigidbody.isKinematic = false;
 				currentThrowedRock.collider.isTrigger = false;
