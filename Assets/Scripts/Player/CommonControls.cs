@@ -44,8 +44,6 @@ public class CommonControls : MonoBehaviour {
 	
 	[HideInInspector]
 	public bool characterAngleOkForAim = false;
-	
-	private bool OnSlope = false;
 
 	// Use this for initialization
 	protected virtual void Start () 
@@ -84,7 +82,6 @@ public class CommonControls : MonoBehaviour {
 			
 			if( stickMagnitude != 0)
 			{
-				Debug.Log (direction);
 				tempMoveDir += direction * airControlMultiplier * localDeltaTime;
 				tempMoveDir = Vector3.ClampMagnitude(tempMoveDir, maxSpeed);
 			}
@@ -108,13 +105,11 @@ public class CommonControls : MonoBehaviour {
 				Vector3 groundSlopeDir = Vector3.Cross(temp, hit.normal);
 				
 				canJump = false;
-				OnSlope = true;
 				controller.Move(groundSlopeDir * maxSpeed * (angle * .025f) * localDeltaTime);
 			}
 			else
 			{
 				canJump = true;
-				OnSlope = false;
 			}
 		}
 		#endregion
@@ -126,7 +121,6 @@ public class CommonControls : MonoBehaviour {
 		if(!controller.isGrounded)
 			moveDirection.y -= gravity * localDeltaTime;
 		
-		//if(!OnSlope)
 		controller.Move (moveDirection * localDeltaTime);
 		
 		faceDirection = transform.position + moveDirection;
@@ -174,8 +168,10 @@ public class CommonControls : MonoBehaviour {
 
 	public void ResettingCameraControls() //If the player is still moving when he's resetting the camera, the character's move are different, else there's a risk to see undesired behaviours.
 	{
-		if ( (Input.GetAxisRaw ("Horizontal") < -.25f && Input.GetAxisRaw ("Horizontal") > .25f) || Input.GetAxisRaw ("Vertical") <= -.2f) 
+		if(!mainCameraScript.justHitAWall)
 		{
+			Debug.Log ("Resetting controls");
+			Debug.Log ("Just Hit A Wall = "+ mainCameraScript.justHitAWall);
 			continueResetControls = true;
 			
 			Vector3 stickDirection = new Vector3 (horizontal, 0, vertical);
@@ -191,9 +187,7 @@ public class CommonControls : MonoBehaviour {
 				moveDirection.y -= gravity * localDeltaTime;
 			
 			controller.Move (moveDirection * speedOut * localDeltaTime);
-		} 
-		else //Once the stick has been released, we get back to the standard controls
-			continueResetControls = false;
+		}
 	}
 
 	public void AimingControls (float heightOfJump) //When aiming, the controls are not the same.

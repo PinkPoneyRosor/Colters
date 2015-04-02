@@ -25,8 +25,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -74.2205353, y: 6.39196777, z: -89.2705231}
+  m_LocalRotation: {x: .344888687, y: 0, z: 0, w: .938643634}
+  m_LocalPosition: {x: -154.300003, y: 49.2999992, z: -187.800003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,17 +49,17 @@ Camera:
     height: 1
   near clip plane: .00999999978
   far clip plane: 1000
-  field of view: 60
+  field of view: 75
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_HDR: 0
+  m_HDR: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
@@ -86,7 +86,7 @@ MonoBehaviour:
   camTarget: {fileID: 0}
   soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
   dashingSoul: 0
-  cameraHeight: 1
+  cameraHeight: 1.5
   rotationOffset: {x: 0, y: 0, z: 0, w: 1}
   distance: 4
   manualCameraSpeed: 10
@@ -95,12 +95,12 @@ MonoBehaviour:
   aimOffset: {x: .699999988, y: .699999988, z: -1}
   aimLookSpeed: 1.5
   invertedVerticalAxis: 1
-  aimInvertedVerticalAxis: 0
-  aimingMode: 0
   resetCameraPosition: 0
+  resetCameraFinalPosition: 0
   camDirFromTarget: {x: 0, y: 0, z: 0}
-  AimMinVerticalAngle: -40
-  AimMaxVerticalAngle: 60
+  MinVerticalAngle: -25
+  MaxVerticalAngle: 50
+  justHitAWall: 0
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

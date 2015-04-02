@@ -17,13 +17,11 @@ public class FloatingRocksManager : MonoBehaviour {
 	public		bool			alreadyCloned = false;
 	private 	float 			timeSpent;
 	private		int				spawnedClones;
-	private 	Vector3 		startPos;
 	
 	// Use this for initialization
 	void Start () 
 	{
 		FloatingRockNumber = transform.childCount;
-		startPos = transform.position;
 	}
 	
 	// Update is called once per frame
