@@ -62,7 +62,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public float MinVerticalAngle = 0;
 	public float MaxVerticalAngle = 0;
 	private bool transitioningToNormal = false;
-	private float currentXReset = 0;
 	private float currentYReset = 0;
 	[HideInInspector]
 	public bool justHitAWall = false;
@@ -90,7 +89,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	void LateUpdate()
 	{
-		Debug.Log ("Manual mode = " +ManualMode);
 	
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
@@ -219,7 +217,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 						}
 						else
 						{
-							currentXReset = this.transform.eulerAngles.x + (angleDir * manualCameraSpeed * 30) * 0.2f;
 							currentYReset = this.transform.eulerAngles.y + (angleDir * manualCameraSpeed * 30) * 0.2f;
 							
 							Quaternion rotationAroundTarget = Quaternion.Euler (0, currentYReset, 0f);

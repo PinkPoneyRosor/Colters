@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GrotteSortie : MonoBehaviour {
 
-	public AnimationClip animation;
+	public AnimationClip anim;
 	
 	// Use this for initialization
 	void Start () {

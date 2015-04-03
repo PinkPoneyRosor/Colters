@@ -12,12 +12,9 @@ public class NewThrowableRock : MonoBehaviour {
 	[HideInInspector]
 	public int selectionNumber = 0;
 	
-	[SerializeField]
-	float distanceFromPlayer = 2;
-	
 	public float changePosSpeed = 5;
 	
-	private Vector3 startScale;
+	public Vector3 normalScale;
 	
 	[HideInInspector]
 	public bool homingAttackBool = false;
@@ -37,7 +34,6 @@ public class NewThrowableRock : MonoBehaviour {
 	{
 		player = GameObject.FindGameObjectWithTag ("Player");
 		rockThrowScript = player.GetComponent <NewRockThrow>();
-		startScale = transform.localScale;
 	}
 	
 	// Update is called once per frame
@@ -45,6 +41,8 @@ public class NewThrowableRock : MonoBehaviour {
 	{
 		if(isGrowing)
 		{
+//			Debug.Log ("Current Scale = " + transform.localScale);
+//			Debug.Log ("Target Scale = " + normalScale/5);
 			isSelected = false;
 			
 			if(growInit)
@@ -53,7 +51,13 @@ public class NewThrowableRock : MonoBehaviour {
 				growInit = false;
 			}
 			
-			this.transform.localScale = Vector3.Lerp (transform.localScale, startScale, 1 * Time.deltaTime);
+			transform.localScale = Vector3.Lerp (transform.localScale, normalScale/5, .5f * Time.deltaTime);
+			
+			if (Vector3.SqrMagnitude(this.transform.localScale - normalScale/5) < .05f)
+			{
+				isGrowing = false;
+				isSelected = true;
+			}
 		}
 		
 		
@@ -64,7 +68,7 @@ public class NewThrowableRock : MonoBehaviour {
 			rigidbody.isKinematic = true;
 			
 			#region Get up
-			if (mustGetUp)
+			if (mustGetUp && !isGrowing)
 			{
 				transform.position = Vector3.Lerp (transform.position, transform.position + Vector3.up * 4, Time.deltaTime * 1.5f);
 				RaycastHit hit;
@@ -76,6 +80,11 @@ public class NewThrowableRock : MonoBehaviour {
 						inTheAir = true;
 					}
 				}
+			}
+			else
+			{
+				mustGetUp = false;
+				inTheAir = true;
 			}
 			#endregion
 			
@@ -92,19 +101,18 @@ public class NewThrowableRock : MonoBehaviour {
 			
 			if(inTheAir)
 			{
-				transform.localScale = Vector3.Lerp (transform.localScale, startScale/5, changePosSpeed * Time.deltaTime);
+				if(!isGrowing)
+					transform.localScale = Vector3.Lerp (transform.localScale, normalScale/5, changePosSpeed * Time.deltaTime);
+				
 				transform.Rotate (Vector3.right * Time.deltaTime * 100);
 				rigidbody.constraints = RigidbodyConstraints.FreezePosition;
-				
-				if(!CommonControls.aimingMode)
-					setSelectionPos();
-				else
-					setAimSelectionPos();
+
+				setSelectionPos();
 			}
 		}
 		else if (!isGrowing)
 		{
-			transform.localScale = Vector3.Lerp (transform.localScale, startScale, changePosSpeed * Time.deltaTime);
+			transform.localScale = Vector3.Lerp (transform.localScale, normalScale, changePosSpeed * Time.deltaTime);
 			mustGetUp = true;
 		}
 		
@@ -136,32 +144,6 @@ public class NewThrowableRock : MonoBehaviour {
 			break;
 		case 4:
 			Vector3 fourthOffset = rockThrowScript.fourthOffset;
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + fourthOffset, changePosSpeed * Time.deltaTime);
-			break;
-		}
-	}
-	
-	
-	
-	void setAimSelectionPos ()
-	{
-		
-		switch (selectionNumber)
-		{
-		case 1:
-			Vector3 firstOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * 1.2f);
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + firstOffset, changePosSpeed * Time.deltaTime);
-			break;
-		case 2:
-			Vector3 secondOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * .7f);
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + secondOffset, changePosSpeed * Time.deltaTime);
-			break;
-		case 3:
-			Vector3 thirdOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (player.transform.up * .2f);
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + thirdOffset, changePosSpeed * Time.deltaTime);
-			break;
-		case 4:
-			Vector3 fourthOffset = Quaternion.AngleAxis(45, player.transform.up) * (player.transform.forward * distanceFromPlayer) + (-player.transform.up * .3f);
 			transform.position = Vector3.Lerp (transform.position, player.transform.position + fourthOffset, changePosSpeed * Time.deltaTime);
 			break;
 		}
