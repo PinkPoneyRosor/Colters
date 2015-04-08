@@ -1929,8 +1929,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100136}
-  m_LocalRotation: {x: 0, y: .968286872, z: 0, w: -.249841034}
-  m_LocalPosition: {x: -74.0599976, y: 6.28000021, z: -91.8099976}
+  m_LocalRotation: {x: 0, y: -.968286932, z: 0, w: .249841064}
+  m_LocalPosition: {x: -77.3199997, y: 5.03999996, z: -84.3799973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -2009,6 +2009,12 @@ MonoBehaviour:
   secondSelected: {fileID: 0}
   thirdSelected: {fileID: 0}
   fourthSelected: {fileID: 0}
+  allSelectedRocks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  RockPrefab: {fileID: 100002, guid: 44ac67430c7d5124b9e038b1290bb882, type: 2}
   RockLayer:
     serializedVersion: 2
     m_Bits: 65536
@@ -2016,6 +2022,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294901759
   globalPickUpRadius: 5
+  firstOffset: {x: 0, y: 0, z: 0}
+  secondOffset: {x: 0, y: 0, z: 0}
+  thirdOffset: {x: 0, y: 0, z: 0}
+  fourthOffset: {x: 0, y: 0, z: 0}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2040,7 +2050,7 @@ SkinnedMeshRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 1033724d112895444bbbb54e31f37e7f, type: 2}
+  - {fileID: 2100000, guid: 0fec7d185f3bba6498fe9589d29ebd14, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

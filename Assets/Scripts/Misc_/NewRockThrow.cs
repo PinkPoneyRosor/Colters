@@ -11,6 +11,15 @@ public class NewRockThrow : MonoBehaviour {
 	public GameObject thirdSelected = null;
 	[HideInInspector]
 	public GameObject fourthSelected = null;
+	
+	private NewThrowableRock firstScript;
+	private NewThrowableRock secondScript;
+	private NewThrowableRock thirdScript;
+	private NewThrowableRock fourthScript;
+	
+	public GameObject[] allSelectedRocks = new GameObject[4];
+	
+	public GameObject RockPrefab;
 
 	Transform mainCamera;
 	
@@ -25,47 +34,102 @@ public class NewRockThrow : MonoBehaviour {
 	
 	public float globalPickUpRadius = 5;
 	
-
+	#region Selected Rocks Positions
+	[HideInInspector]
+	public Vector3 firstOffset;
+	[HideInInspector]
+	public Vector3 secondOffset;
+	[HideInInspector]
+	public Vector3 thirdOffset;
+	[HideInInspector]
+	public Vector3 fourthOffset;
+	#endregion
+	
+	private bool loopThrow = false;
+	private GameObject currentThrowedRock = null;
+	
 	// Use this for initialization
 	void Start () 
 	{
 		mainCamera = Camera.main.transform;
+		
+		selectedManagement();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Input.GetButtonDown("SelectRock"))
-		{		
-			if (CommonControls.aimingMode)  
-				controlsWhileAiming();
-			else
-				aimlessControls();
-		}
+		selectedManagement();
+	
+		firstOffset = Quaternion.AngleAxis(90, transform.up) * (-transform.forward * 1.5f) + (transform.up * 1.6f);
+		secondOffset = Quaternion.AngleAxis(45, transform.up) * (-transform.forward * 1.5f) + (transform.up * 1.1f);
+		thirdOffset = Quaternion.AngleAxis(0, transform.up) * (-transform.forward * 1.5f) + (transform.up * .6f);
+		fourthOffset = Quaternion.AngleAxis(-45, transform.up) * (-transform.forward * 1.5f) + (transform.up * .1f);
 		
-		if(Input.GetAxisRaw("RT") != 0 || Input.GetButtonDown("Action"))
-		{
-			ThrowRock();
-		}
+		if(Input.GetAxisRaw("RT") != 0 || Input.GetButtonDown("Action") || loopThrow)
+			prepareToThrow();
 		
 		if (( Input.GetAxis("Scroll") > 0 || Input.GetButtonDown ("RockUp")) && canThrow)
 			ManualScroll ();
 		else if ((Input.GetAxis ("Scroll") < 0 || Input.GetButtonDown ("RockDown")) && canThrow)
 			InvertedManualScroll ();
+		
+		if(canThrow)
+			RockGrow ();
 	}
 	
-	void controlsWhileAiming()
+	void RockGrow ()
 	{
-		//First, we check with a sphereCast (in order to allow the player to be less precise) if the player is looking at a rock.
-		RaycastHit HitObject;
-		Ray ray = mainCamera.camera.ScreenPointToRay (new Vector3(Screen.width/2, Screen.height/2, 0));
-
-		allRocks = GameObject.FindGameObjectsWithTag ("ThrowableRock");
-			
-		if (Physics.SphereCast (ray.origin, .2f, ray.direction, out HitObject, Mathf.Infinity, RockLayer)) 
+		if (selectedRockCount < 4 )
 		{
-			selectARock(HitObject.collider.gameObject);
+			
+			if (firstSelected == null)
+			{
+				firstSelected = Instantiate ( RockPrefab, transform.position + firstOffset, Quaternion.identity ) as GameObject;
+				selectedManagement();
+				firstScript.isGrowing = true;
+				firstSelected.transform.localScale = Vector3.zero;
+			}
+			else if (secondSelected == null)
+			{
+				secondSelected = Instantiate ( RockPrefab, transform.position + secondOffset, Quaternion.identity  ) as GameObject;
+				selectedManagement();
+				secondScript.isGrowing = true;
+				secondSelected.transform.localScale = Vector3.zero;
+			}
+			else if (thirdSelected == null)
+			{
+				thirdSelected = Instantiate ( RockPrefab, transform.position + thirdOffset, Quaternion.identity  ) as GameObject;
+				selectedManagement();
+				thirdScript.isGrowing = true;
+				thirdSelected.transform.localScale = Vector3.zero;
+			}
+			else if (fourthSelected == null)
+			{
+				fourthSelected = Instantiate ( RockPrefab, transform.position + fourthOffset, Quaternion.identity  ) as GameObject;
+				selectedManagement();
+				fourthScript.isGrowing = true;
+				fourthSelected.transform.localScale = Vector3.zero;
+			}
+			selectedRockCount++;
 		}
+	}
+	
+	void selectedManagement()
+	{
+		allSelectedRocks[0] = firstSelected;
+		allSelectedRocks[1] = secondSelected;
+		allSelectedRocks[2] = thirdSelected;
+		allSelectedRocks[3] = fourthSelected;
+		
+		if (allSelectedRocks[0] != null)
+		firstScript = allSelectedRocks[0].GetComponent <NewThrowableRock>();
+		if (allSelectedRocks[1] != null)
+		secondScript = allSelectedRocks[1].GetComponent <NewThrowableRock>();
+		if (allSelectedRocks[2] != null)
+		thirdScript = allSelectedRocks[2].GetComponent <NewThrowableRock>();
+		if (allSelectedRocks[3] != null)
+		fourthScript = allSelectedRocks[3].GetComponent <NewThrowableRock>();
 	}
 	
 	void aimlessControls()
@@ -118,27 +182,74 @@ public class NewRockThrow : MonoBehaviour {
 		}
 	}
 	
+	void prepareToThrow ()
+	{	
+		if (canThrow
+		    && selectedRockCount > 0
+		    && firstSelected != null
+		    && firstSelected.GetComponent <NewThrowableRock>().isSelected
+		    || loopThrow
+		    )
+		{
+		
+		NewThrowableRock currentThrowedRockScript;
+		
+		if(!loopThrow)
+		{
+			canThrow = false;
+			currentThrowedRock = firstSelected;
+			firstSelected = null;
+			
+			currentThrowedRockScript = currentThrowedRock.GetComponent <NewThrowableRock> ();
+			
+			currentThrowedRockScript.isSelected = false;
+			currentThrowedRockScript.inTheAir = false;
+			currentThrowedRockScript.posAtLaunch = currentThrowedRock.transform.position;
+			currentThrowedRockScript.selectionNumber = 0;
+			currentThrowedRock.rigidbody.isKinematic = false;
+			currentThrowedRock.collider.isTrigger = false;
+		}
+			Vector3 screenCenter = new Vector3 (Screen.width/2, Screen.height/2,0);
+			Vector3 screenCenterInWorld = mainCamera.camera.ScreenToWorldPoint(screenCenter);
+			
+			Vector3 newTargetPosition = transform.position + transform.forward;
+			newTargetPosition.y = transform.position.y + 2;
+			Vector3 currentRockPos = currentThrowedRock.transform.position;
+			
+			Debug.DrawLine (transform.position, newTargetPosition, Color.blue);
+			Debug.DrawLine (transform.position, currentRockPos, Color.red);
+			
+			if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .5f * .5f)
+			{
+				currentThrowedRock.transform.position = Vector3.Lerp (currentRockPos, newTargetPosition, Time.deltaTime * 5);
+				
+				//Updating the parameters...
+				loopThrow = true;
+				Debug.Log("Placing it...");
+			}
+			else
+			{
+				loopThrow = false;
+				ThrowRock ();
+			}
+		} 
+		
+	}
+	
 	void ThrowRock()
 	{
 		RaycastHit HitObject;
-		GameObject currentThrowedRock;
 		NewThrowableRock currentThrowedRockScript;
 		Ray ray;
 		
 			ray = mainCamera.camera.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
 		
-		if (canThrow
-			&& selectedRockCount > 0
-			&& firstSelected != null
-		    ) 
-		{
 			canThrow = false;	
-			currentThrowedRock = firstSelected;
 			currentThrowedRockScript = currentThrowedRock.GetComponent <NewThrowableRock> ();
-			firstSelected = null;
 				
 			if (Physics.Raycast (ray.origin, ray.direction, out HitObject, Mathf.Infinity, otherLayers)
-			    && HitObject.transform.CompareTag ("Enemy") && HitObject.transform.GetComponent<BasicEnemy> ().canGetHit)
+			    && HitObject.transform.CompareTag ("Enemy") 
+			    && HitObject.transform.GetComponent<BasicEnemy> ().canGetHit)
 			{ 
 			  //If what we aimed at is an enemy and that it's not knocked out, let's do a homing attack
 				currentThrowedRockScript.aimHoming = HitObject.transform;
@@ -155,18 +266,10 @@ public class NewRockThrow : MonoBehaviour {
 				
 				currentThrowedRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
 			}
-				
-				currentThrowedRockScript.isSelected = false;
-				currentThrowedRockScript.inTheAir = false;
-				currentThrowedRockScript.posAtLaunch = currentThrowedRock.transform.position;
-				currentThrowedRockScript.selectionNumber = 0;
-				currentThrowedRock.rigidbody.isKinematic = false;
-				currentThrowedRock.collider.isTrigger = false;
 				currentThrowedRock = null;
 				selectedRockCount -= 1;
 				
 				StartCoroutine("ShiftRockPositions"); //This method is also used as a coolDown for throwing rocks.
-		}
 	}
 	
 	IEnumerator ShiftRockPositions() 

@@ -4,7 +4,7 @@ using System.Collections;
 public class TrapV4 : MonoBehaviour {
 
 
-	public AnimationClip animation;
+	public AnimationClip anim;
 
 	// Use this for initialization
 	void Start () {

@@ -62,7 +62,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public float MinVerticalAngle = 0;
 	public float MaxVerticalAngle = 0;
 	private bool transitioningToNormal = false;
-	private float currentXReset = 0;
+	private float currentYReset = 0;
 	[HideInInspector]
 	public bool justHitAWall = false;
 	#endregion
@@ -89,6 +89,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	void LateUpdate()
 	{
+	
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 	
@@ -145,15 +146,18 @@ public class ThirdPersonCamera : MonoBehaviour {
 		}
 
 		#region Input for the second stick's manual camera controls.
-		if (ManualMode && !transitioningToNormal) 
+		if (ManualMode) 
 		{
 			currentRotationSmooth = 60;
 
 			if (resetManualModeValues)
 			{
+				y = transform.eulerAngles.y;
+				x = transform.eulerAngles.x;
 				resetManualModeValues = false;
-				x = transform.position.y - camTarget.position.y;
 			}
+			else
+			{
 
 				y += Input.GetAxis ("LookH") * (manualCameraSpeed * 25) * localDeltaTime;
 
@@ -161,6 +165,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 				x -= Input.GetAxis ("LookV") * (manualCameraSpeed * 25) * localDeltaTime;
 			else
 				x += Input.GetAxis ("LookV") * (manualCameraSpeed * 25) * localDeltaTime;
+			}
 			
 			x = ClampAngle (x, MinVerticalAngle, MaxVerticalAngle); //The vertical angle is clamped to prevent the camera getting too high or too low.
 			Quaternion rotationAroundTarget = Quaternion.Euler (x, y, 0f);
@@ -212,9 +217,9 @@ public class ThirdPersonCamera : MonoBehaviour {
 						}
 						else
 						{
-							currentXReset = this.transform.eulerAngles.y + (angleDir * manualCameraSpeed * 30) * 0.2f;
+							currentYReset = this.transform.eulerAngles.y + (angleDir * manualCameraSpeed * 30) * 0.2f;
 							
-							Quaternion rotationAroundTarget = Quaternion.Euler (0, currentXReset, 0f);
+							Quaternion rotationAroundTarget = Quaternion.Euler (0, currentYReset, 0f);
 							setPosition = rotationAroundTarget * new Vector3 (0, cameraHeight, -distance) + camTarget.position;
 						}
 						
@@ -301,7 +306,5 @@ public class ThirdPersonCamera : MonoBehaviour {
 		}
 		else
 			justHitAWall = false;
-			
-			Debug.Log ("TPC Script Side Hit Wall = "+ justHitAWall);
 	}
 }
