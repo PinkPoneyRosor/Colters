@@ -12,7 +12,7 @@ public class NewThrowableRock : MonoBehaviour {
 	[HideInInspector]
 	public int selectionNumber = 0;
 	
-	public float changePosSpeed = 5;
+	private float changePosSpeed = 10;
 	
 	public Vector3 normalScale;
 	

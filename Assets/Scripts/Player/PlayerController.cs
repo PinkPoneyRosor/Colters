@@ -11,6 +11,9 @@ public class PlayerController : CommonControls {
 
 	//External scripts and objects
 	public GameObject Soul;
+	
+	public float maxHealth = 10;
+	public float currentHealth;
 
 
 	//Other variables
@@ -27,6 +30,8 @@ public class PlayerController : CommonControls {
 		base.Start ();
 		maxSpeed = setMaximumSpeed;
 		maxJumpSlopeAngle = maxSlopeAngleToJump;
+		
+		currentHealth = maxHealth;
 	}
 	
 	// Update is called once per frame
@@ -64,5 +69,10 @@ public class PlayerController : CommonControls {
 		Instantiate(Soul, soulSpawnPoint , transform.rotation);
 		soulMode = true;
 		mainCameraScript.SwitchPlayerMode( true );
+	}
+	
+	void GetHurt (float damageAmount)
+	{
+		currentHealth -= damageAmount;
 	}
 }

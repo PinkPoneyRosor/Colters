@@ -192,23 +192,24 @@ public class NewRockThrow : MonoBehaviour {
 		    )
 		{
 		
-		NewThrowableRock currentThrowedRockScript;
-		
-		if(!loopThrow)
-		{
-			canThrow = false;
-			currentThrowedRock = firstSelected;
-			firstSelected = null;
+			NewThrowableRock currentThrowedRockScript;
 			
-			currentThrowedRockScript = currentThrowedRock.GetComponent <NewThrowableRock> ();
+			if(!loopThrow)
+			{
+				canThrow = false;
+				currentThrowedRock = firstSelected;
+				firstSelected = null;
+				
+				currentThrowedRockScript = currentThrowedRock.GetComponent <NewThrowableRock> ();
+				
+				currentThrowedRockScript.isSelected = false;
+				currentThrowedRockScript.inTheAir = false;
+				currentThrowedRockScript.posAtLaunch = currentThrowedRock.transform.position;
+				currentThrowedRockScript.selectionNumber = 0;
+				currentThrowedRock.rigidbody.isKinematic = false;
+				currentThrowedRock.collider.isTrigger = false;
+			}
 			
-			currentThrowedRockScript.isSelected = false;
-			currentThrowedRockScript.inTheAir = false;
-			currentThrowedRockScript.posAtLaunch = currentThrowedRock.transform.position;
-			currentThrowedRockScript.selectionNumber = 0;
-			currentThrowedRock.rigidbody.isKinematic = false;
-			currentThrowedRock.collider.isTrigger = false;
-		}
 			Vector3 screenCenter = new Vector3 (Screen.width/2, Screen.height/2,0);
 			Vector3 screenCenterInWorld = mainCamera.camera.ScreenToWorldPoint(screenCenter);
 			
@@ -219,21 +220,21 @@ public class NewRockThrow : MonoBehaviour {
 			Debug.DrawLine (transform.position, newTargetPosition, Color.blue);
 			Debug.DrawLine (transform.position, currentRockPos, Color.red);
 			
-			if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .5f * .5f)
+			if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .2f * .2f)
 			{
-				currentThrowedRock.transform.position = Vector3.Lerp (currentRockPos, newTargetPosition, Time.deltaTime * 5);
+				//currentThrowedRock.transform.position = Vector3.Lerp (currentRockPos, newTargetPosition, Time.deltaTime * 5);
+				currentThrowedRock.transform.Translate ( (newTargetPosition - currentThrowedRock.transform.position) * Time.deltaTime * 10, Space.World );
+				
 				
 				//Updating the parameters...
 				loopThrow = true;
-				Debug.Log("Placing it...");
 			}
 			else
 			{
 				loopThrow = false;
 				ThrowRock ();
 			}
-		} 
-		
+		} 	
 	}
 	
 	void ThrowRock()
