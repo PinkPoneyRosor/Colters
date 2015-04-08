@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySpeed: 10
   myRange: 50
-  turnSpeed: 5
+  turnSpeed: 3
   rotationNeeded: {fileID: 400004}
   rigidbody: {fileID: 0}
   masterTurret: {fileID: 0}
