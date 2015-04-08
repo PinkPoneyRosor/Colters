@@ -213,7 +213,7 @@ public class NewRockThrow : MonoBehaviour {
 			Vector3 screenCenterInWorld = mainCamera.camera.ScreenToWorldPoint(screenCenter);
 			
 			Vector3 newTargetPosition = transform.position + transform.forward;
-			newTargetPosition.y = screenCenterInWorld.y;
+			newTargetPosition.y = transform.position.y + 2;
 			Vector3 currentRockPos = currentThrowedRock.transform.position;
 			
 			Debug.DrawLine (transform.position, newTargetPosition, Color.blue);
