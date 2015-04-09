@@ -41,8 +41,6 @@ public class NewThrowableRock : MonoBehaviour {
 	{
 		if(isGrowing)
 		{
-//			Debug.Log ("Current Scale = " + transform.localScale);
-//			Debug.Log ("Target Scale = " + normalScale/5);
 			isSelected = false;
 			
 			if(growInit)

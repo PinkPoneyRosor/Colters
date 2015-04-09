@@ -208,6 +208,7 @@ public class NewRockThrow : MonoBehaviour {
 				currentThrowedRockScript.selectionNumber = 0;
 				currentThrowedRock.rigidbody.isKinematic = false;
 				currentThrowedRock.collider.isTrigger = false;
+				currentThrowedRock.transform.SetParent (transform, true);
 			}
 			
 			Vector3 screenCenter = new Vector3 (Screen.width/2, Screen.height/2,0);
@@ -220,7 +221,7 @@ public class NewRockThrow : MonoBehaviour {
 			Debug.DrawLine (transform.position, newTargetPosition, Color.blue);
 			Debug.DrawLine (transform.position, currentRockPos, Color.red);
 			
-			if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .2f * .2f)
+			if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .2f * .2f || Input.GetAxisRaw("RT") != 0)
 			{
 				//currentThrowedRock.transform.position = Vector3.Lerp (currentRockPos, newTargetPosition, Time.deltaTime * 5);
 				currentThrowedRock.transform.Translate ( (newTargetPosition - currentThrowedRock.transform.position) * Time.deltaTime * 10, Space.World );
@@ -232,6 +233,7 @@ public class NewRockThrow : MonoBehaviour {
 			else
 			{
 				loopThrow = false;
+				currentThrowedRock.transform.SetParent (null);
 				ThrowRock ();
 			}
 		} 	

@@ -46,7 +46,8 @@ public class Projectile_Tracking : MonoBehaviour {
 
 		transform.Translate (Vector3.forward * Time.deltaTime * mySpeed);
 		
-		distBetweenMeAndTarget = Vector3.SqrMagnitude (turret_Bandito_Tracking.myTarget.position - transform.position);
+		if(!lostTarget && turret_Bandito_Tracking.myTarget != null)
+			distBetweenMeAndTarget = Vector3.SqrMagnitude (turret_Bandito_Tracking.myTarget.position - transform.position);
 
 		if( distBetweenMeAndTarget > lateFrameDist) //The arrow got further than the target
 			lostTarget = true;
@@ -68,6 +69,14 @@ public class Projectile_Tracking : MonoBehaviour {
 		if(hit.CompareTag ("Player"))
 		{
 			hit.SendMessage("GetHurt", damage, SendMessageOptions.DontRequireReceiver);
+		}
+	}
+	
+	void OnTriggerExit (Collider hit)
+	{
+		if(hit.CompareTag ("Player"))
+		{
+			lostTarget = true;
 		}
 	}
 
