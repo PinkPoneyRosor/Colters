@@ -98,7 +98,7 @@ MonoBehaviour:
   resetCameraPosition: 0
   resetCameraFinalPosition: 0
   camDirFromTarget: {x: 0, y: 0, z: 0}
-  MinVerticalAngle: -25
+  MinVerticalAngle: -50
   MaxVerticalAngle: 50
   justHitAWall: 0
 --- !u!124 &12400000

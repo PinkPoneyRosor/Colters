@@ -5,6 +5,7 @@ public class Projectile_Bandit : MonoBehaviour {
 
 	public float mySpeed = 10;
 	public float myRange = 10;
+	public float damage = 1;
 	public GameObject player;
 	public Transform target;
 	private float myDist;
@@ -12,21 +13,25 @@ public class Projectile_Bandit : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
 		transform.Translate (Vector3.forward * Time.deltaTime * mySpeed);
 		myDist += Time.deltaTime * mySpeed;
 
-		if(myDist>= myRange){
-		Destroy(gameObject);
-		}
-
-
-
+		if(myDist>= myRange)
+			Destroy(gameObject);
 	}
+	
+	void OnTriggerEnter (Collider hit)
+	{
+		if (hit.CompareTag ("Player"))
+			hit.SendMessage("GetHurt", damage, SendMessageOptions.DontRequireReceiver);
+	}
+	
+	
 }
