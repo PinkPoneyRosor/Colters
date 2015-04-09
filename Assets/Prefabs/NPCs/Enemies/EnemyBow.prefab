@@ -86,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: -.999412417, z: 0, w: .0342763327}
-  m_LocalPosition: {x: -94.3799973, y: 38.3199997, z: 22.7399998}
+  m_LocalPosition: {x: -95.6019974, y: 38.3260002, z: 22.0680008}
   m_LocalScale: {x: 1, y: 1.01472521, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -203,6 +203,9 @@ MonoBehaviour:
   - {fileID: 400000}
   turretBall: {fileID: 400004}
   currentHealthPoint: 10
+  sightObstructionLayers:
+    serializedVersion: 2
+    m_Bits: 4294705151
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -227,7 +230,7 @@ CapsuleCollider:
   m_Radius: .5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: .469999999, z: 0}
 --- !u!136 &13600002
 CapsuleCollider:
   m_ObjectHideFlags: 1

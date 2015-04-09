@@ -221,11 +221,9 @@ public class NewRockThrow : MonoBehaviour {
 			Debug.DrawLine (transform.position, newTargetPosition, Color.blue);
 			Debug.DrawLine (transform.position, currentRockPos, Color.red);
 			
-			if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .2f * .2f || Input.GetAxisRaw("RT") != 0)
+			if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .2f * .2f || Input.GetAxisRaw("RT") != 0 || Input.GetButton ("Action"))
 			{
-				//currentThrowedRock.transform.position = Vector3.Lerp (currentRockPos, newTargetPosition, Time.deltaTime * 5);
-				currentThrowedRock.transform.Translate ( (newTargetPosition - currentThrowedRock.transform.position) * Time.deltaTime * 10, Space.World );
-				
+				currentThrowedRock.transform.Translate ( (newTargetPosition - currentThrowedRock.transform.position) * Time.deltaTime * 10, Space.World );	
 				
 				//Updating the parameters...
 				loopThrow = true;

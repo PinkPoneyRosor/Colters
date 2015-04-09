@@ -92,8 +92,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
-	
-		playerControls.characterAngleOkForAim = false;
 
 		if (camTarget != null) 
 			DefaultCamera ();

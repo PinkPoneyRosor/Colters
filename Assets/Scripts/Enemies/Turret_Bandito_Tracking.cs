@@ -20,16 +20,30 @@ public class Turret_Bandito_Tracking : MonoBehaviour {
 	private float nextMoveTime;
 	private Quaternion desiredRotation;
 	private float aimError;
+	private Transform player;
+	private bool holdFire = false;
+	
+	public LayerMask sightObstructionLayers;
 	
 	// Use this for initialization
 	void Start () 
 	{
 		muzzle = this.transform.GetChild (0);
+		player = GameObject.Find ("Player").transform;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+	
+		RaycastHit rayHit;
+		
+		Physics.Raycast ( transform.position,(player.position - transform.position).normalized, out rayHit, Mathf.Infinity, sightObstructionLayers );
+		
+		if (rayHit.collider == player.collider)
+			holdFire = false;
+		else
+			holdFire = true;
 		
 		if(myTarget)
 		{
@@ -45,16 +59,17 @@ public class Turret_Bandito_Tracking : MonoBehaviour {
 	}
 	
 	
-	void OnTriggerEnter(Collider other){
-		
-		if(other.gameObject.tag == "Player"){
-			nextFireTime = Time.time+(reloadTime*1);
+	void OnTriggerEnter(Collider other)
+	{	
+		if(other.gameObject.tag == "Player")
+		{
+			nextFireTime = Time.time+(reloadTime * 1);
 			myTarget = other.gameObject.transform;
 		}
 	}
 	
-	void OnTriggerExit(Collider other){
-		
+	void OnTriggerExit(Collider other)
+	{	
 		if(other.gameObject.transform == myTarget)
 		{
 			myTarget = null;

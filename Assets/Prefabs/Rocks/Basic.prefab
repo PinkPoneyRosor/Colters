@@ -171,8 +171,6 @@ MonoBehaviour:
   isGrowing: 0
   inTheAir: 0
   selectionNumber: 0
-  distanceFromPlayer: 2
-  changePosSpeed: 5
   normalScale: {x: .91009587, y: 2.14581299, z: .91009587}
   homingAttackBool: 0
   aimHoming: {fileID: 0}
@@ -180,6 +178,7 @@ MonoBehaviour:
   canExplode: 0
   posAtLaunch: {x: 0, y: 0, z: 0}
   maxTravelDistance: 15
+  growingRate: .100000001
 --- !u!208 &20800000
 NavMeshObstacle:
   m_ObjectHideFlags: 1

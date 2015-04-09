@@ -26,6 +26,7 @@ public class NewThrowableRock : MonoBehaviour {
 	public bool canExplode = false;
 	public Vector3 posAtLaunch = Vector3.zero;
 	public float maxTravelDistance = 15;
+	public float growingRate = .5f;
 	
 	private bool growInit = true;
 
@@ -49,10 +50,11 @@ public class NewThrowableRock : MonoBehaviour {
 				growInit = false;
 			}
 			
-			transform.localScale = Vector3.Lerp (transform.localScale, normalScale/5, .5f * Time.deltaTime);
+			transform.localScale = Vector3.MoveTowards (transform.localScale, normalScale/5, growingRate * Time.deltaTime);
 			
-			if (Vector3.SqrMagnitude(this.transform.localScale - normalScale/5) < .05f)
+			if ( Vector3.SqrMagnitude (this.transform.localScale - normalScale / 5) <= 0f)
 			{
+				Debug.Log ("DING!");
 				isGrowing = false;
 				isSelected = true;
 			}

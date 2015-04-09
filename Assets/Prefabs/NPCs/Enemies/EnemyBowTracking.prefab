@@ -74,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: -.999412417, z: 0, w: .0342763327}
-  m_LocalPosition: {x: -95.7900009, y: 38.5400009, z: 22.5200005}
+  m_LocalPosition: {x: -93.1289978, y: 38.6040001, z: 22.5109997}
   m_LocalScale: {x: 1, y: 1.01472521, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -201,6 +201,9 @@ MonoBehaviour:
   myTarget: {fileID: 0}
   muzzle: {fileID: 0}
   currentHealthPoint: 10
+  sightObstructionLayers:
+    serializedVersion: 2
+    m_Bits: 4292870143
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
