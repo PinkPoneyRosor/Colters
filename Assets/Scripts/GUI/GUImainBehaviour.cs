@@ -7,11 +7,14 @@ public class GUImainBehaviour : MonoBehaviour {
 	//External scripts, objects, files,...
 
 	GameObject soulBar;
+	GameObject lifeBar;
+	
 	GameObject player;
 
 	PlayerController playerScript;
 
 	Slider soulBarSlide;
+	Slider lifeBarSlide;
 
 	float localDeltaTime;
 
@@ -21,9 +24,11 @@ public class GUImainBehaviour : MonoBehaviour {
 	void Start () 
 	{
 		soulBar = GameObject.Find ("SoulBar");
+		lifeBar = GameObject.Find ("LifeBar");
 		player = GameObject.Find ("Player");
 
 		soulBarSlide = soulBar.GetComponent<Slider> ();
+		lifeBarSlide = lifeBar.GetComponent<Slider> ();
 		playerScript = player.GetComponent<PlayerController> ();
 	}
 	
@@ -42,6 +47,11 @@ public class GUImainBehaviour : MonoBehaviour {
 		{
 			soulBarSlide.value += SoulBarSpeedRate * localDeltaTime;
 		}
+		#endregion
+		
+		#region Life Bar
+		lifeBarSlide.maxValue = playerScript.maxHealth;
+		lifeBarSlide.value = playerScript.currentHealth;
 		#endregion
 	}
 

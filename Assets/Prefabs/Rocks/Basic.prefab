@@ -32,6 +32,7 @@ GameObject:
   - 208: {fileID: 20800000}
   - 75: {fileID: 7500000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 16
   m_Name: Basic
   m_TagString: ThrowableRock
@@ -171,8 +172,6 @@ MonoBehaviour:
   isGrowing: 0
   inTheAir: 0
   selectionNumber: 0
-  distanceFromPlayer: 2
-  changePosSpeed: 5
   normalScale: {x: .91009587, y: 2.14581299, z: .91009587}
   homingAttackBool: 0
   aimHoming: {fileID: 0}
@@ -180,6 +179,24 @@ MonoBehaviour:
   canExplode: 0
   posAtLaunch: {x: 0, y: 0, z: 0}
   maxTravelDistance: 15
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2841878914e489abe7d3a43a5e0578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterLevel: 0
+  floatHeight: 0
+  buoyancyCentreOffset: {x: 0, y: 0, z: 0}
+  bounceDamp: 0
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!208 &20800000
 NavMeshObstacle:
   m_ObjectHideFlags: 1

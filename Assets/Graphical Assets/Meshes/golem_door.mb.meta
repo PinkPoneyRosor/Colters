@@ -1,0 +1,382 @@
+fileFormatVersion: 2
+guid: 4925abd4d27d78f4c9e23bbe7dd58a04
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: group
+    100004: group1
+    100006: group2
+    100008: group3
+    100010: group4
+    100012: group5
+    100014: pasted__pCube100
+    100016: pasted__pCube101
+    100018: pasted__pCube103
+    100020: pasted__pCube104
+    100022: pasted__pCube105
+    100024: pasted__pCube106
+    100026: pasted__pCube107
+    100028: pasted__pCube107 1
+    100030: pasted__pCube108
+    100032: pasted__pCube108 1
+    100034: pasted__pCube109
+    100036: pasted__pCube109 1
+    100038: pasted__pCube110
+    100040: pasted__pCube111
+    100042: pasted__pCube112
+    100044: pasted__pCube113
+    100046: pasted__pCube114
+    100048: pasted__pCube115
+    100050: pasted__pCube116
+    100052: pasted__pCube117
+    100054: pasted__pCube117 1
+    100056: pasted__pCube118
+    100058: pasted__pCube118 1
+    100060: pasted__pCube119
+    100062: pasted__pCube119 1
+    100064: pasted__pCube120
+    100066: pasted__pCube121
+    100068: pasted__pCube90
+    100070: pasted__pCube91
+    100072: pasted__pCube92
+    100074: pasted__pCube93
+    100076: pasted__pCube94
+    100078: pasted__pCube95
+    100080: pasted__pCube96
+    100082: pasted__pCylinder8
+    100084: pasted__pCylinder9
+    100086: pasted__pCylinder9 1
+    100088: Big_Body_Detail
+    100090: Body
+    100092: Head
+    100094: L_Arm
+    100096: L_Down_Leg
+    100098: L_Elbow
+    100100: L_Foot
+    100102: L_Hand
+    100104: L_Leg
+    100106: L_Ring
+    100108: L_Shoulder
+    100110: L_Shoulder 1
+    100112: L_Shoulder_Fix
+    100114: L_Upper_Leg
+    100116: Neck
+    100118: R_Arm
+    100120: R_Down_leg
+    100122: R_Elbow
+    100124: R_Foot
+    100126: R_Hand
+    100128: R_Leg
+    100130: R_Ring
+    100132: R_Shoulder
+    100134: R_Shoulder 1
+    100136: R_Shoulder_Fix
+    100138: R_Upper_Leg
+    100140: Small_Body_Detail
+    400000: //RootNode
+    400002: group
+    400004: group1
+    400006: group2
+    400008: group3
+    400010: group4
+    400012: group5
+    400014: pasted__pCube100
+    400016: pasted__pCube101
+    400018: pasted__pCube103
+    400020: pasted__pCube104
+    400022: pasted__pCube105
+    400024: pasted__pCube106
+    400026: pasted__pCube107
+    400028: pasted__pCube107 1
+    400030: pasted__pCube108
+    400032: pasted__pCube108 1
+    400034: pasted__pCube109
+    400036: pasted__pCube109 1
+    400038: pasted__pCube110
+    400040: pasted__pCube111
+    400042: pasted__pCube112
+    400044: pasted__pCube113
+    400046: pasted__pCube114
+    400048: pasted__pCube115
+    400050: pasted__pCube116
+    400052: pasted__pCube117
+    400054: pasted__pCube117 1
+    400056: pasted__pCube118
+    400058: pasted__pCube118 1
+    400060: pasted__pCube119
+    400062: pasted__pCube119 1
+    400064: pasted__pCube120
+    400066: pasted__pCube121
+    400068: pasted__pCube90
+    400070: pasted__pCube91
+    400072: pasted__pCube92
+    400074: pasted__pCube93
+    400076: pasted__pCube94
+    400078: pasted__pCube95
+    400080: pasted__pCube96
+    400082: pasted__pCylinder8
+    400084: pasted__pCylinder9
+    400086: pasted__pCylinder9 1
+    400088: Big_Body_Detail
+    400090: Body
+    400092: Head
+    400094: L_Arm
+    400096: L_Down_Leg
+    400098: L_Elbow
+    400100: L_Foot
+    400102: L_Hand
+    400104: L_Leg
+    400106: L_Ring
+    400108: L_Shoulder
+    400110: L_Shoulder 1
+    400112: L_Shoulder_Fix
+    400114: L_Upper_Leg
+    400116: Neck
+    400118: R_Arm
+    400120: R_Down_leg
+    400122: R_Elbow
+    400124: R_Foot
+    400126: R_Hand
+    400128: R_Leg
+    400130: R_Ring
+    400132: R_Shoulder
+    400134: R_Shoulder 1
+    400136: R_Shoulder_Fix
+    400138: R_Upper_Leg
+    400140: Small_Body_Detail
+    2300000: pasted__pCube100
+    2300002: pasted__pCube101
+    2300004: pasted__pCube103
+    2300006: pasted__pCube104
+    2300008: pasted__pCube105
+    2300010: pasted__pCube106
+    2300012: pasted__pCube107
+    2300014: pasted__pCube107 1
+    2300016: pasted__pCube108
+    2300018: pasted__pCube108 1
+    2300020: pasted__pCube109
+    2300022: pasted__pCube109 1
+    2300024: pasted__pCube110
+    2300026: pasted__pCube111
+    2300028: pasted__pCube112
+    2300030: pasted__pCube113
+    2300032: pasted__pCube114
+    2300034: pasted__pCube115
+    2300036: pasted__pCube116
+    2300038: pasted__pCube117
+    2300040: pasted__pCube117 1
+    2300042: pasted__pCube118
+    2300044: pasted__pCube118 1
+    2300046: pasted__pCube119
+    2300048: pasted__pCube119 1
+    2300050: pasted__pCube120
+    2300052: pasted__pCube121
+    2300054: pasted__pCube90
+    2300056: pasted__pCube91
+    2300058: pasted__pCube92
+    2300060: pasted__pCube93
+    2300062: pasted__pCube94
+    2300064: pasted__pCube95
+    2300066: pasted__pCube96
+    2300068: pasted__pCylinder8
+    2300070: pasted__pCylinder9
+    2300072: pasted__pCylinder9 1
+    2300074: Big_Body_Detail
+    2300076: Body
+    2300078: Head
+    2300080: L_Down_Leg
+    2300082: L_Elbow
+    2300084: L_Foot
+    2300086: L_Hand
+    2300088: L_Ring
+    2300090: L_Shoulder
+    2300092: L_Shoulder 1
+    2300094: L_Shoulder_Fix
+    2300096: L_Upper_Leg
+    2300098: Neck
+    2300100: R_Down_leg
+    2300102: R_Elbow
+    2300104: R_Foot
+    2300106: R_Hand
+    2300108: R_Ring
+    2300110: R_Shoulder
+    2300112: R_Shoulder 1
+    2300114: R_Shoulder_Fix
+    2300116: R_Upper_Leg
+    2300118: Small_Body_Detail
+    3300000: pasted__pCube100
+    3300002: pasted__pCube101
+    3300004: pasted__pCube103
+    3300006: pasted__pCube104
+    3300008: pasted__pCube105
+    3300010: pasted__pCube106
+    3300012: pasted__pCube107
+    3300014: pasted__pCube107 1
+    3300016: pasted__pCube108
+    3300018: pasted__pCube108 1
+    3300020: pasted__pCube109
+    3300022: pasted__pCube109 1
+    3300024: pasted__pCube110
+    3300026: pasted__pCube111
+    3300028: pasted__pCube112
+    3300030: pasted__pCube113
+    3300032: pasted__pCube114
+    3300034: pasted__pCube115
+    3300036: pasted__pCube116
+    3300038: pasted__pCube117
+    3300040: pasted__pCube117 1
+    3300042: pasted__pCube118
+    3300044: pasted__pCube118 1
+    3300046: pasted__pCube119
+    3300048: pasted__pCube119 1
+    3300050: pasted__pCube120
+    3300052: pasted__pCube121
+    3300054: pasted__pCube90
+    3300056: pasted__pCube91
+    3300058: pasted__pCube92
+    3300060: pasted__pCube93
+    3300062: pasted__pCube94
+    3300064: pasted__pCube95
+    3300066: pasted__pCube96
+    3300068: pasted__pCylinder8
+    3300070: pasted__pCylinder9
+    3300072: pasted__pCylinder9 1
+    3300074: Big_Body_Detail
+    3300076: Body
+    3300078: Head
+    3300080: L_Down_Leg
+    3300082: L_Elbow
+    3300084: L_Foot
+    3300086: L_Hand
+    3300088: L_Ring
+    3300090: L_Shoulder
+    3300092: L_Shoulder 1
+    3300094: L_Shoulder_Fix
+    3300096: L_Upper_Leg
+    3300098: Neck
+    3300100: R_Down_leg
+    3300102: R_Elbow
+    3300104: R_Foot
+    3300106: R_Hand
+    3300108: R_Ring
+    3300110: R_Shoulder
+    3300112: R_Shoulder 1
+    3300114: R_Shoulder_Fix
+    3300116: R_Upper_Leg
+    3300118: Small_Body_Detail
+    4300000: pasted__pCube110
+    4300002: pasted__pCube111
+    4300004: pasted__pCube112
+    4300006: pasted__pCube113
+    4300008: pasted__pCube114
+    4300010: pasted__pCube115
+    4300012: pasted__pCube116
+    4300014: pasted__pCube107
+    4300016: pasted__pCube108
+    4300018: pasted__pCube109
+    4300020: pasted__pCube107
+    4300022: pasted__pCube108
+    4300024: pasted__pCube109
+    4300026: pasted__pCube117
+    4300028: pasted__pCube118
+    4300030: pasted__pCylinder9
+    4300032: pasted__pCube119
+    4300034: pasted__pCube117
+    4300036: pasted__pCube118
+    4300038: pasted__pCylinder9
+    4300040: pasted__pCube119
+    4300042: pasted__pCube120
+    4300044: pasted__pCube121
+    4300046: pasted__pCube90
+    4300048: pasted__pCube91
+    4300050: pasted__pCube92
+    4300052: pasted__pCube93
+    4300054: pasted__pCube94
+    4300056: pasted__pCube100
+    4300058: pasted__pCube101
+    4300060: pasted__pCube103
+    4300062: pasted__pCube104
+    4300064: pasted__pCube105
+    4300066: pasted__pCube106
+    4300068: pasted__pCylinder8
+    4300070: pasted__pCube96
+    4300072: pasted__pCube95
+    4300074: Body
+    4300076: R_Shoulder
+    4300078: L_Shoulder
+    4300080: R_Shoulder_Fix
+    4300082: Big_Body_Detail
+    4300084: Small_Body_Detail
+    4300086: Head
+    4300088: R_Foot
+    4300090: R_Down_leg
+    4300092: R_Upper_Leg
+    4300094: L_Foot
+    4300096: L_Down_Leg
+    4300098: L_Upper_Leg
+    4300100: R_Shoulder
+    4300102: R_Elbow
+    4300104: R_Ring
+    4300106: R_Hand
+    4300108: L_Shoulder
+    4300110: L_Elbow
+    4300112: L_Ring
+    4300114: L_Hand
+    4300116: L_Shoulder_Fix
+    4300118: Neck
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

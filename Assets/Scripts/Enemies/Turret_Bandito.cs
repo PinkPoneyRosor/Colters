@@ -46,9 +46,15 @@ public class Turret_Bandito : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 
-		if(other.gameObject.tag == "Player"){
-			nextFireTime = Time.time+(reloadTime*1);
-			myTarget = other.gameObject.transform;
+		RaycastHit rayHit;
+		
+		if(other.gameObject.tag == "Player")
+		{
+			if(Physics.Raycast ( transform.position, other.transform.position, out rayHit, Mathf.Infinity ))
+			{
+				nextFireTime = Time.time + (reloadTime * 1);
+				myTarget = other.gameObject.transform;
+			}
 		}
 	}
 
