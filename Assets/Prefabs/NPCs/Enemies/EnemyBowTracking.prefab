@@ -200,7 +200,14 @@ MonoBehaviour:
   errorAmount: .00100000005
   myTarget: {fileID: 0}
   muzzle: {fileID: 0}
+  turretBall: {fileID: 400002}
   currentHealthPoint: 10
+  nextFireTime: 0
+  nextMoveTime: 0
+  desiredRotation: {x: 0, y: 0, z: 0, w: 0}
+  aimError: 0
+  player: {fileID: 0}
+  holdFire: 0
   sightObstructionLayers:
     serializedVersion: 2
     m_Bits: 4292870143
