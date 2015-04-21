@@ -54,7 +54,6 @@ public class NewThrowableRock : MonoBehaviour {
 			
 			if ( Vector3.SqrMagnitude (this.transform.localScale - normalScale / 5) <= 0f)
 			{
-				Debug.Log ("DING!");
 				isGrowing = false;
 				isSelected = true;
 			}

@@ -44,7 +44,6 @@ public class Turret_GlobalBehaviour : MonoBehaviour
 	// Update is called once per frame
 	public void Update () 
 	{
-		
 		RaycastHit rayHit;
 		
 		Physics.Raycast ( transform.position,(player.position - transform.position).normalized, out rayHit, Mathf.Infinity, sightObstructionLayers );

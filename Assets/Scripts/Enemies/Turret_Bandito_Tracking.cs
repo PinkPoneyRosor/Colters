@@ -15,6 +15,7 @@ public class Turret_Bandito_Tracking : Turret_GlobalBehaviour {
 		
 		Projectile_Tracking projectileScript = spawnedArrow.GetComponent <Projectile_Tracking>();
 		projectileScript.masterTurret = this.gameObject;
+		projectileScript.target = this.myTarget;
 	}
 
 }

@@ -276,7 +276,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 		}
 		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * currentRotationSmooth);
 		//At this point, the camera is at the right place AND is looking at the right point.
-		
 		#endregion
 	}
 
@@ -299,7 +298,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		if (Physics.Linecast(fromObject, toTarget, out wallHit, CompensateLayer))
 		{
 			Vector3 hitWallNormal = wallHit.normal.normalized;
-			toTarget = new Vector3(wallHit.point.x + .5f * hitWallNormal.x, wallHit.point.y + .5f * hitWallNormal.y, wallHit.point.z + .5f * hitWallNormal.z);
+			toTarget = new Vector3(wallHit.point.x + .5f * hitWallNormal.x, wallHit.point.y + .5f /* hitWallNormal.y*/, wallHit.point.z + .5f * hitWallNormal.z);
 			justHitAWall = true;
 		}
 		else

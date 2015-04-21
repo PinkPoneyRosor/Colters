@@ -42,8 +42,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 65: {fileID: 6500000}
-  - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
+  - 114: {fileID: 11400000}
   m_Layer: 21
   m_Name: Tracking_Arrow
   m_TagString: Untagged
@@ -192,16 +192,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed3ccb1332712840a9e76a1ef4c55e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 06bc2d94abca52e44af984117cc7d9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnSpeed: 50
+  DistanceBeforeDestruction: 20
   mySpeed: 10
-  myRange: 50
-  damage: 1
-  turnSpeed: 3
-  rotationNeeded: {fileID: 400004}
-  rigidbody: {fileID: 0}
+  myRange: 10
   masterTurret: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
