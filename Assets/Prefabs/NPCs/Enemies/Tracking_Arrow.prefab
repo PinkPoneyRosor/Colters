@@ -46,7 +46,7 @@ GameObject:
   - 114: {fileID: 11400000}
   m_Layer: 21
   m_Name: Tracking_Arrow
-  m_TagString: Untagged
+  m_TagString: HomingProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ BoxCollider:
   m_GameObject: {fileID: 100004}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .119999997, y: .0900000036, z: 1.46000004}
   m_Center: {x: 0, y: 0, z: .419999987}
@@ -195,10 +195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bc2d94abca52e44af984117cc7d9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 50
-  DistanceBeforeDestruction: 20
+  turnSpeed: 2
   mySpeed: 10
-  myRange: 10
+  myRange: 50
+  damage: 1
   masterTurret: {fileID: 0}
   target: {fileID: 0}
 --- !u!1001 &100100000

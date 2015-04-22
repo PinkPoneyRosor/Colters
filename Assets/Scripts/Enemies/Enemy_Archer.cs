@@ -5,9 +5,8 @@ public class Enemy_Archer : MonoBehaviour {
 
 	private GameObject player;
 	private bool holdFire = false;
-	private Transform myTarget = null;
 	private Quaternion desiredRotation;
-	private float nextFireTime;
+
 	private float nextMoveTime;
 	
 	public LayerMask sightObstructionLayers;
@@ -16,6 +15,11 @@ public class Enemy_Archer : MonoBehaviour {
 	public float firePauseTime = .25f;
 	public GameObject myProjectile;
 	public float errorAmount = .001f;
+	
+	[HideInInspector]
+	public GameObject myTarget = null;
+	[HideInInspector]
+	public float nextFireTime;
 	
 	// Use this for initialization
 	void Start () 
@@ -39,7 +43,7 @@ public class Enemy_Archer : MonoBehaviour {
 		{
 			if(Time.time >= nextMoveTime)
 			{
-				CalculateAimPosition(myTarget.position);
+				CalculateAimPosition(myTarget.transform.position);
 				transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime * turnSpeed);
 				
 			}
@@ -62,22 +66,18 @@ public class Enemy_Archer : MonoBehaviour {
 		nextMoveTime = Time.time + firePauseTime;
 		
 		GameObject spawnedArrow;
-		
 		spawnedArrow = Instantiate (myProjectile, transform.position, transform.rotation) as GameObject;
 		
-		
-		//TO-DO : Let's check here if our arrow is a homing one or not, and if yes, let's give it a target.
-		Arrow_Homing projectileScript = spawnedArrow.GetComponent <Arrow_Homing>();
-		projectileScript.masterTurret = this.gameObject;
-		projectileScript.target = myTarget;
-	}
-	
-	public void OnTriggerEnter(Collider other)
-	{
-		if(other.gameObject.tag == "Player")
+		if (spawnedArrow.CompareTag ("HomingProjectile"))
 		{
-			nextFireTime = Time.time + (reloadTime * 1);
-			myTarget = other.gameObject.transform;
+			Arrow_Homing projectileScript = spawnedArrow.GetComponent <Arrow_Homing>();
+			projectileScript.masterTurret = this.gameObject;
+			projectileScript.target = myTarget;
+		}
+		else
+		{
+			Arrow_Normal projectileScript = spawnedArrow.GetComponent <Arrow_Normal>();
+			projectileScript.masterTurret = this.gameObject;
 		}
 	}
 }

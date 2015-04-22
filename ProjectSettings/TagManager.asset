@@ -25,6 +25,8 @@ TagManager:
   - Explosion
   - Water
   - RockSpawner
+  - HomingProjectile
+  - Projectile
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
