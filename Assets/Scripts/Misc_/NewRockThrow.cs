@@ -210,10 +210,6 @@ public class NewRockThrow : MonoBehaviour {
 				currentThrowedRock.collider.isTrigger = false;
 				currentThrowedRock.transform.SetParent (transform, true);
 			}
-			
-			Vector3 screenCenter = new Vector3 (Screen.width/2, Screen.height/2,0);
-			Vector3 screenCenterInWorld = mainCamera.camera.ScreenToWorldPoint(screenCenter);
-			
 			Vector3 newTargetPosition = transform.position + transform.forward;
 			newTargetPosition.y = transform.position.y + 2;
 			Vector3 currentRockPos = currentThrowedRock.transform.position;
@@ -267,6 +263,7 @@ public class NewRockThrow : MonoBehaviour {
 				
 				currentThrowedRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
 			}
+				currentThrowedRockScript.beingThrowned = true;
 				currentThrowedRock = null;
 				selectedRockCount -= 1;
 				

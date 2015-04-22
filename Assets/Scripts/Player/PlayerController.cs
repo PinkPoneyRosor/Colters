@@ -15,7 +15,6 @@ public class PlayerController : CommonControls {
 	public float maxHealth = 10;
 	public float currentHealth;
 
-
 	//Other variables
 	[HideInInspector]
 	public bool soulMode = false;

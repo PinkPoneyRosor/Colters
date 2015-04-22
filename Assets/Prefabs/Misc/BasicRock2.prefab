@@ -16,7 +16,7 @@ GameObject:
   - 208: {fileID: 20800000}
   - 114: {fileID: 11400002}
   m_Layer: 16
-  m_Name: BasicRock
+  m_Name: BasicRock2
   m_TagString: ThrowableRock2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

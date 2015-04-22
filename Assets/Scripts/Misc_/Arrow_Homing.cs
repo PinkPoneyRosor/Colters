@@ -8,13 +8,11 @@ public class Arrow_Homing : MonoBehaviour {
 	public float myRange = 10;
 	public float damage = 1;
 
-	private GameObject player;
 	private float lateFrameDist;
 	private bool hitSomething = false;
 	private bool hitPlayer = false;
 	private bool lostTarget = false;
 	private Quaternion rotationNeeded;
-	private Quaternion desiredRotation = Quaternion.identity;
 	private float distBetweenMeAndTarget;
 	private float myDist = 0;
 
@@ -26,7 +24,6 @@ public class Arrow_Homing : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		player = GameObject.Find("Player");
 		lateFrameDist = Vector3.SqrMagnitude (target.transform.position - transform.position);
 	}
 	
@@ -74,9 +71,7 @@ public class Arrow_Homing : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter (Collider hit)
-	{
-		Debug.Log ("Homing hit "+ hit.name);
-							
+	{						
 		if (hit.CompareTag ("Player"))
 		{
 			hit.SendMessage("GetHurt", damage, SendMessageOptions.DontRequireReceiver);

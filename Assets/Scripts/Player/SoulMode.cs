@@ -17,6 +17,9 @@ public class SoulMode : CommonControls {
 	Slider soulBarSlide;
 	#endregion
 	
+	private bool climbRock = false;
+	private GameObject currentClimbingRock;
+	
 	// Use this for initialization
 	protected override void Start () 
 	{
@@ -36,6 +39,9 @@ public class SoulMode : CommonControls {
 	{
 		Time.timeScale = 0.1f;
 		Time.fixedDeltaTime = 0.1f * 0.02f; //Make sure the physics simulation is still fluid.
+		
+		if (climbRock)
+			transform.position = currentClimbingRock.transform.position;
 
 		GetAxis ();
 
@@ -65,5 +71,22 @@ public class SoulMode : CommonControls {
 		playerScript.soulMode = false;
 		mainCameraScript.SwitchPlayerMode( false );
 		Destroy (this.gameObject);
+	}
+	
+	void OnControllerColliderHit (ControllerColliderHit hit)
+	{
+		Debug.Log ("Soul in collision with " + hit.gameObject.name);
+	
+		if (hit.collider.CompareTag("ThrowableRock"))
+		{
+			NewThrowableRock hitScript = hit.transform.GetComponent <NewThrowableRock>();
+			
+			if (hitScript.beingThrowned)
+			{
+				Physics.IgnoreCollision (this.collider, hit.collider);
+				climbRock = true;
+				currentClimbingRock = hit.gameObject;
+			}
+		}
 	}
 }

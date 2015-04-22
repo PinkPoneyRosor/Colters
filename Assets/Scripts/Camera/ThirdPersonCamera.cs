@@ -17,7 +17,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public Transform camTarget; //What the camera follows
 
 	private GameObject player;
-	private CommonControls playerControls;
 	private bool ManualMode = false;
 	public GameObject soul;
 	private bool soulMode = false;
@@ -72,7 +71,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	{
 		player = GameObject.FindWithTag ("Player");
 		camTarget = player.transform;
-		playerControls = player.GetComponent<CommonControls> ();
 
 		currentRotationSmooth = RotationSmooth;
 		currentTranslationSmooth = TranslationSmooth;
@@ -83,7 +81,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	{
 		soulMode = bSoulMode;
 		player = GameObject.FindWithTag( soulMode ? "PlayerSoul" : "Player" );
-		playerControls = player.GetComponent<CommonControls> ();
 		camTarget = player.transform;
 	}
 

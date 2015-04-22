@@ -20,6 +20,8 @@ public class NewThrowableRock : MonoBehaviour {
 	public bool homingAttackBool = false;
 	[HideInInspector]
 	public Transform aimHoming;
+	[HideInInspector]
+	public bool beingThrowned = false;
 	
 	public float throwForce = 1000;
 	
@@ -158,7 +160,6 @@ public class NewThrowableRock : MonoBehaviour {
 			
 			isSelected = false;
 			
-			
 			this.rigidbody.constraints = RigidbodyConstraints.None;
 			
 			constantForce.force = throwDir * throwForce;
@@ -175,6 +176,7 @@ public class NewThrowableRock : MonoBehaviour {
 			rigidbody.useGravity = true;
 			constantForce.force = Vector3.zero;
 			homingAttackBool = false;
+			beingThrowned = false;
 		}
 	}
 	
