@@ -171,7 +171,7 @@ public class CommonControls : MonoBehaviour {
 		if(!mainCameraScript.justHitAWall)
 		{
 			Debug.Log ("Resetting controls");
-			Debug.Log ("Just Hit A Wall = "+ mainCameraScript.justHitAWall);
+			Debug.Log ("Just Hit A Wall = " + mainCameraScript.justHitAWall);
 			continueResetControls = true;
 			
 			Vector3 stickDirection = new Vector3 (horizontal, 0, vertical);

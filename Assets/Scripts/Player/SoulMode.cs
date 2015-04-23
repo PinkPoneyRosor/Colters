@@ -19,6 +19,8 @@ public class SoulMode : CommonControls {
 	
 	private bool climbRock = false;
 	private GameObject currentClimbingRock;
+	private NewThrowableRock currentClimbRockScript;
+	private float gravitySave;
 	
 	// Use this for initialization
 	protected override void Start () 
@@ -41,7 +43,18 @@ public class SoulMode : CommonControls {
 		Time.fixedDeltaTime = 0.1f * 0.02f; //Make sure the physics simulation is still fluid.
 		
 		if (climbRock)
-			transform.position = currentClimbingRock.transform.position;
+			if(currentClimbRockScript.beingThrowned)
+			{
+				Vector3 rockClimbOffset = new Vector3 (0, 1, 0);
+				transform.position = Vector3.MoveTowards(transform.position, currentClimbingRock.transform.position + rockClimbOffset, localDeltaTime * 5);
+				gravity = 0;
+			}
+			else
+			{
+				climbRock = false;
+				controller.enabled = true;
+				gravity = gravitySave;
+			}
 
 		GetAxis ();
 
@@ -84,8 +97,11 @@ public class SoulMode : CommonControls {
 			if (hitScript.beingThrowned)
 			{
 				Physics.IgnoreCollision (this.collider, hit.collider);
+				controller.enabled = false;
 				climbRock = true;
 				currentClimbingRock = hit.gameObject;
+				currentClimbRockScript = currentClimbingRock.GetComponent <NewThrowableRock> ();
+				gravitySave = gravity;
 			}
 		}
 	}

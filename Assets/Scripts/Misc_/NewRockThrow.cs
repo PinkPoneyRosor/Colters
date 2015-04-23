@@ -48,11 +48,17 @@ public class NewRockThrow : MonoBehaviour {
 	private bool loopThrow = false;
 	private GameObject currentThrowedRock = null;
 	
+	#region launched rocks management
+	private int launchedRockAmount = 0;
+	private int currentLaunchedRockNumber = 0;
+	private GameObject[] launchedRocks;
+	#endregion
+	
 	// Use this for initialization
 	void Start () 
 	{
 		mainCamera = Camera.main.transform;
-		
+		launchedRocks = new GameObject[4];
 		selectedManagement();
 	}
 	
@@ -229,6 +235,7 @@ public class NewRockThrow : MonoBehaviour {
 				loopThrow = false;
 				currentThrowedRock.transform.SetParent (null);
 				ThrowRock ();
+				
 			}
 		} 	
 	}
@@ -263,11 +270,34 @@ public class NewRockThrow : MonoBehaviour {
 				
 				currentThrowedRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
 			}
-				currentThrowedRockScript.beingThrowned = true;
-				currentThrowedRock = null;
-				selectedRockCount -= 1;
-				
-				StartCoroutine("ShiftRockPositions"); //This method is also used as a coolDown for throwing rocks.
+			
+			if(currentLaunchedRockNumber < 4)
+				currentLaunchedRockNumber ++;
+			else
+			{
+				currentLaunchedRockNumber = 1;
+			}
+			
+			Debug.Log (currentLaunchedRockNumber);
+			
+			LaunchedRockManager();
+			
+			if (currentLaunchedRockNumber == 1)
+				launchedRocks[0] = currentThrowedRock;
+			if (currentLaunchedRockNumber == 2)
+				launchedRocks[1] = currentThrowedRock;
+			if (currentLaunchedRockNumber == 3)
+				launchedRocks[2] = currentThrowedRock;
+			if (currentLaunchedRockNumber == 4)
+				launchedRocks[3] = currentThrowedRock;
+			
+			currentThrowedRockScript.beingThrowned = true;
+			currentThrowedRock = null;
+			selectedRockCount -= 1;
+			
+			launchedRockAmount ++;
+			
+			StartCoroutine("ShiftRockPositions"); //This method is also used as a coolDown for throwing rocks.
 	}
 	
 	IEnumerator ShiftRockPositions() 
@@ -381,6 +411,19 @@ public class NewRockThrow : MonoBehaviour {
 			
 			tempPlace = null;
 		}
-		
+	}
+	
+	void LaunchedRockManager ()
+	{
+		if(launchedRockAmount == 4)
+		{
+			Destroy(launchedRocks[0].gameObject);
+			
+			launchedRocks[0] = launchedRocks [1];
+			launchedRocks[1] = launchedRocks [2];
+			launchedRocks[2] = launchedRocks [3];
+			
+			launchedRockAmount--;
+		}	
 	}	
 }

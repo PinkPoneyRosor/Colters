@@ -22,6 +22,8 @@ public class NewThrowableRock : MonoBehaviour {
 	public Transform aimHoming;
 	[HideInInspector]
 	public bool beingThrowned = false;
+	[HideInInspector]
+	public int throwedRockNumber = 0;
 	
 	public float throwForce = 1000;
 	
@@ -31,6 +33,7 @@ public class NewThrowableRock : MonoBehaviour {
 	public float growingRate = .5f;
 	
 	private bool growInit = true;
+	
 
 	// Use this for initialization
 	void Start () 
