@@ -1,0 +1,1 @@
+Canvas alpha (=0) => anim alpha = 1 => play anim

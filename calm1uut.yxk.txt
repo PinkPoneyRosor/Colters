@@ -1,0 +1,1189 @@
+﻿Merge branch 'Quentin-WIP' into Lerenwe-WIP
+
+Conflicts:
+	Assets/Packages/Bélier/Golem_Belier.prefab
+	Assets/Prefabs/NPCs/Enemies/Arrow.prefab
+	Assets/Prefabs/NPCs/Enemies/Tracking_Arrow.prefab
+	Assets/Prefabs/Rocks/BasicRock.prefab
+	Assets/Scenes/Game/LD_25_02_2015.unity
+	Assets/Scripts/Enemies/Turret_Bandito.cs
+	Assets/ShaderForge/Example Assets/Skyboxes/Sunny1 Skybox.mat
+	ProjectSettings/TagManager.asset
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch Lerenwe-WIP
+# Your branch is up-to-date with 'origin/Lerenwe-WIP'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	new file:   Assets/0000 ats V2 package.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Fern 1sided.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Fern 1sided.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Fern 2sided.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Fern 2sided.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Fern.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Fern.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Materials.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Materials/Fern 1sided-Fern.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Materials/Fern 1sided-Fern.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Materials/Fern 2sided-Fern.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Materials/Fern 2sided-Fern.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Materials/Fern.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Fern/Materials/Fern.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassMesh.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassMesh/Grass_veryhigh.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassMesh/Grass_veryhigh.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassMesh/Materials.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassMesh/Materials/Grass_veryhigh.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassMesh/Materials/Grass_veryhigh.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassMesh/Materials/grass.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassMesh/Materials/grass.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassMesh/grass.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassMesh/grass.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassTextures.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassTextures/grass 1.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassTextures/grass 1.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassTextures/grass.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/GrassTextures/grass.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Path.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Path/Materials.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Path/Materials/path_0_0-pathMat.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Path/Materials/path_0_0-pathMat.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Path/Textures.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Path/Textures/myRoadTexture normal.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Path/Textures/myRoadTexture normal.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Path/Textures/myRoadTexture.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Path/Textures/myRoadTexture.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Path/path_0_0.obj
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Path/path_0_0.obj.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/Materials.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/Materials/reed_1sidedmat.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/Materials/reed_1sidedmat.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/Materials/reed_2sidedmat.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/Materials/reed_2sidedmat.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/Materials/reed_simple.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/Materials/reed_simple.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/reed_1sided.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/reed_1sided.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/reed_2sided.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/reed_2sided.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/reed_simple.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Reed/reed_simple.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/Materials.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/Materials/RockJagged0021Diffuse.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/Materials/RockJagged0021Diffuse.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/Materials/myRock.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/Materials/myRock.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/Materials/rockblob.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/Materials/rockblob.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/Textures.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/Textures/rock_1024_fit terrain.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/Textures/rock_1024_fit terrain.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobFive.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobFive.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobFour.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobFour.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobOne.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobOne.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobSix.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobSix.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobThree.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobThree.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobTwo.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/RockBlobs/rockBlobTwo.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/forst_1024-normal.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/forst_1024-normal.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/forst_1024.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/forst_1024.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/ground_1024-normal.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/ground_1024-normal.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/ground_1024.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/ground_1024.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/rock_2048-norm.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/rock_2048-norm.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/rock_2048.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/TerrainTextures/rock_2048.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Basicmaterials.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Basicmaterials/bark.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Basicmaterials/bark.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Basicmaterials/tree_bark.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Basicmaterials/tree_bark.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Basicmaterials/tree_bark_normal.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Basicmaterials/tree_bark_normal.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Basicmaterials/twig.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Basicmaterials/twig.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Basicmaterials/twig.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Basicmaterials/twig.psd.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 4 Master.prefab
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 4 Master.prefab.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 4 Master_Textures.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 4 Master_Textures/diffuse.png
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 4 Master_Textures/diffuse.png.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 4 Master_Textures/normal_specular.png
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 4 Master_Textures/normal_specular.png.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 4 Master_Textures/shadow.png
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 4 Master_Textures/shadow.png.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 4 Master_Textures/translucency_gloss.png
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 4 Master_Textures/translucency_gloss.png.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 5.prefab
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/Trees/Tree 5.prefab.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/ats DemoTerrain.asset
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/ats DemoTerrain.asset.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/atsV2 Demoscene.unity
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/atsV2 Demoscene.unity.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/Materials.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/Materials/flower01-1sided-grass-myflower02.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/Materials/flower01-1sided-grass-myflower02.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/Materials/flower01-2sided-vertexlit-myflower01.mat
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/Materials/flower01-2sided-vertexlit-myflower01.mat.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/flower01-1sided-grass.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/flower01-1sided-grass.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/flower01-2sided-vertexlit.fbx
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/flower01-2sided-vertexlit.fbx.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/flower_fw.png
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/flower_fw.png.meta
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/flower_psd.psd
+#	new file:   Assets/0000 ats V2 package/__atsV2 Demoscene/roughFlower/flower_psd.psd.meta
+#	new file:   Assets/0000 ats V2 package/ats pathShader Package.meta
+#	new file:   Assets/0000 ats V2 package/ats pathShader Package/Shader.meta
+#	new file:   Assets/0000 ats V2 package/ats pathShader Package/Shader/ats Road Path bumped diffuse alphatest.shader
+#	new file:   Assets/0000 ats V2 package/ats pathShader Package/Shader/ats Road Path bumped diffuse alphatest.shader.meta
+#	new file:   Assets/0000 ats V2 package/ats vertexLitShader Package.meta
+#	new file:   Assets/0000 ats V2 package/ats vertexLitShader Package/Script.meta
+#	new file:   Assets/0000 ats V2 package/ats vertexLitShader Package/Script/setupVertexLitShaderV2.js
+#	new file:   Assets/0000 ats V2 package/ats vertexLitShader Package/Script/setupVertexLitShaderV2.js.meta
+#	new file:   Assets/0000 ats V2 package/ats vertexLitShader Package/Shader.meta
+#	new file:   Assets/0000 ats V2 package/ats vertexLitShader Package/Shader/atsv2 vertexlit.shader
+#	new file:   Assets/0000 ats V2 package/ats vertexLitShader Package/Shader/atsv2 vertexlit.shader.meta
+#	new file:   Assets/0000 ats V2 package/atsV2 UnityTerrainBump Package.meta
+#	new file:   Assets/0000 ats V2 package/atsV2 UnityTerrainBump Package/CustomTerrainScriptAtsV2.cs
+#	new file:   Assets/0000 ats V2 package/atsV2 UnityTerrainBump Package/CustomTerrainScriptAtsV2.cs.meta
+#	new file:   Assets/0000 ats V2 package/atsV2 UnityTerrainBump Package/TerrainReplacementAtsV2.shader
+#	new file:   Assets/0000 ats V2 package/atsV2 UnityTerrainBump Package/TerrainReplacementAtsV2.shader.meta
+#	new file:   Assets/0000 ats V2 package/atsV2 billboardShader package.meta
+#	new file:   Assets/0000 ats V2 package/atsV2 billboardShader package/Tree.cginc
+#	new file:   Assets/0000 ats V2 package/atsV2 billboardShader package/Tree.cginc.meta
+#	new file:   Assets/0000 ats V2 package/atsV2 billboardShader package/TreeCreatorBarkRendertex.shader
+#	new file:   Assets/0000 ats V2 package/atsV2 billboardShader package/TreeCreatorBarkRendertex.shader.meta
+#	new file:   Assets/0000 ats V2 package/atsV2 billboardShader package/TreeCreatorLeavesRendertex.shader
+#	new file:   Assets/0000 ats V2 package/atsV2 billboardShader package/TreeCreatorLeavesRendertex.shader.meta
+#	new file:   Assets/0000 ats V2 package/atsV2 grassShader Package.meta
+#	new file:   Assets/0000 ats V2 package/atsV2 grassShader Package/atsV2WavingGrass.shader
+#	new file:   Assets/0000 ats V2 package/atsV2 grassShader Package/atsV2WavingGrass.shader.meta
+#	new file:   Assets/0000 ats V2 package/dummyMaterial.meta
+#	new file:   Assets/0000 ats V2 package/dummyMaterial/billBoardBark.mat
+#	new file:   Assets/0000 ats V2 package/dummyMaterial/billBoardBark.mat.meta
+#	new file:   Assets/0000 ats V2 package/dummyMaterial/billBoardLeaves.mat
+#	new file:   Assets/0000 ats V2 package/dummyMaterial/billBoardLeaves.mat.meta
+#	new file:   Assets/0000 ats V2 package/dummyMaterial/terrainBumb.mat
+#	new file:   Assets/0000 ats V2 package/dummyMaterial/terrainBumb.mat.meta
+#	new file:   Assets/0000 ats V2 package/dummyMaterial/vertexLitMat.mat
+#	new file:   Assets/0000 ats V2 package/dummyMaterial/vertexLitMat.mat.meta
+#	new file:   Assets/0000 ats V2 package/readme_billboardShader.txt
+#	new file:   Assets/0000 ats V2 package/readme_billboardShader.txt.meta
+#	new file:   Assets/0000 ats V2 package/readme_grassShader.txt
+#	new file:   Assets/0000 ats V2 package/readme_grassShader.txt.meta
+#	new file:   Assets/0000 ats V2 package/readme_terrainBumpShader.txt
+#	new file:   Assets/0000 ats V2 package/readme_terrainBumpShader.txt.meta
+#	new file:   Assets/0000 ats V2 package/readme_treeBarkShader.txt
+#	new file:   Assets/0000 ats V2 package/readme_treeBarkShader.txt.meta
+#	new file:   Assets/0000 ats V2 package/readme_vertexLitShader.txt
+#	new file:   Assets/0000 ats V2 package/readme_vertexLitShader.txt.meta
+#	new file:   "Assets/Animators/B\303\251lier.controller"
+#	new file:   "Assets/Animators/B\303\251lier.controller.meta"
+#	new file:   Assets/Animators/Cristal.controller
+#	new file:   Assets/Animators/Cristal.controller.meta
+#	new file:   Assets/Animators/Misc/Cristal.controller
+#	new file:   Assets/Animators/Misc/Cristal.controller.meta
+#	new file:   Assets/Animators/Misc/Cristal10.controller
+#	new file:   Assets/Animators/Misc/Cristal10.controller.meta
+#	new file:   Assets/Animators/Misc/GrotteExit.anim
+#	new file:   Assets/Animators/Misc/GrotteExit.anim.meta
+#	new file:   Assets/Animators/Misc/Grue.anim
+#	new file:   Assets/Animators/Misc/Grue.anim.meta
+#	new file:   Assets/DynamicElements_Effects.meta
+#	new file:   Assets/DynamicElements_Effects/AcidEffects.meta
+#	new file:   Assets/DynamicElements_Effects/AcidEffects/AcidBomb.prefab
+#	new file:   Assets/DynamicElements_Effects/AcidEffects/AcidBomb.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/AcidEffects/AcidShover.prefab
+#	new file:   Assets/DynamicElements_Effects/AcidEffects/AcidShover.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/AirEffects.meta
+#	new file:   Assets/DynamicElements_Effects/AirEffects/TornadoEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/AirEffects/TornadoEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/BloodEffects.meta
+#	new file:   Assets/DynamicElements_Effects/BloodEffects/BloodSplatEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/BloodEffects/BloodSplatEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/BloodEffects/BloodSplatEffectSmaller.prefab
+#	new file:   Assets/DynamicElements_Effects/BloodEffects/BloodSplatEffectSmaller.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/BloodEffects/GreenBloodSplatEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/BloodEffects/GreenBloodSplatEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Buffs.meta
+#	new file:   Assets/DynamicElements_Effects/Buffs/BlessedGlyph.prefab
+#	new file:   Assets/DynamicElements_Effects/Buffs/BlessedGlyph.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Buffs/Cure.prefab
+#	new file:   Assets/DynamicElements_Effects/Buffs/Cure.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Buffs/ManaRegenerationBlue.prefab
+#	new file:   Assets/DynamicElements_Effects/Buffs/ManaRegenerationBlue.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Buffs/ManaRegenerationEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/Buffs/ManaRegenerationEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Buffs/ResurrectionEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/Buffs/ResurrectionEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Buffs/ShieldEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/Buffs/ShieldEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Buffs/ShieldEffectSubtleGold.prefab
+#	new file:   Assets/DynamicElements_Effects/Buffs/ShieldEffectSubtleGold.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Buffs/ShieldEffectSubtlePurplish.prefab
+#	new file:   Assets/DynamicElements_Effects/Buffs/ShieldEffectSubtlePurplish.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Buffs/StaminaRegeneration.prefab
+#	new file:   Assets/DynamicElements_Effects/Buffs/StaminaRegeneration.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Buffs/StaminaRegeneration2.prefab
+#	new file:   Assets/DynamicElements_Effects/Buffs/StaminaRegeneration2.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/DarknessEffects.meta
+#	new file:   Assets/DynamicElements_Effects/DarknessEffects/BoneWhirlwind.prefab
+#	new file:   Assets/DynamicElements_Effects/DarknessEffects/BoneWhirlwind.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/DarknessEffects/CrowstormEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/DarknessEffects/CrowstormEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/DarknessEffects/DarknessBlast.prefab
+#	new file:   Assets/DynamicElements_Effects/DarknessEffects/DarknessBlast.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/DarknessEffects/NightmareVomit.prefab
+#	new file:   Assets/DynamicElements_Effects/DarknessEffects/NightmareVomit.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Debuffs.meta
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Blackout.prefab
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Blackout.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Confused.prefab
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Confused.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Enchanted.prefab
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Enchanted.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Nightmare.prefab
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Nightmare.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Prisoned.prefab
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Prisoned.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Sleep.prefab
+#	new file:   Assets/DynamicElements_Effects/Debuffs/STATUS_Sleep.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/EarthEffects.meta
+#	new file:   Assets/DynamicElements_Effects/EarthEffects/DustStorm.prefab
+#	new file:   Assets/DynamicElements_Effects/EarthEffects/DustStorm.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/EarthEffects/EarthSpikes.prefab
+#	new file:   Assets/DynamicElements_Effects/EarthEffects/EarthSpikes.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/EarthEffects/EntangleEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/EarthEffects/EntangleEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/FireEffects.meta
+#	new file:   Assets/DynamicElements_Effects/FireEffects/ConfusionBombEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/FireEffects/ConfusionBombEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/FireEffects/FireExplosion.prefab
+#	new file:   Assets/DynamicElements_Effects/FireEffects/FireExplosion.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/FireEffects/FlashbangEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/FireEffects/FlashbangEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/FireEffects/HolyFireStrike.prefab
+#	new file:   Assets/DynamicElements_Effects/FireEffects/HolyFireStrike.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/FireEffects/MagmaEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/FireEffects/MagmaEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/FireEffects/StarfallSingle.prefab
+#	new file:   Assets/DynamicElements_Effects/FireEffects/StarfallSingle.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/FireEffects/StarfallStorm.prefab
+#	new file:   Assets/DynamicElements_Effects/FireEffects/StarfallStorm.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/FireEffects/VanishEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/FireEffects/VanishEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Fireworks.meta
+#	new file:   Assets/DynamicElements_Effects/Fireworks/BlueFireworkEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/Fireworks/BlueFireworkEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Fireworks/FireworksEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/Fireworks/FireworksEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Fireworks/GreenFireworkEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/Fireworks/GreenFireworkEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Fireworks/OrangeFireworkEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/Fireworks/OrangeFireworkEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Healing.meta
+#	new file:   Assets/DynamicElements_Effects/Healing/BeingHealedEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/Healing/BeingHealedEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Healing/HelixHealing.prefab
+#	new file:   Assets/DynamicElements_Effects/Healing/HelixHealing.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Healing/NatureBlessing.prefab
+#	new file:   Assets/DynamicElements_Effects/Healing/NatureBlessing.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Healing/NatureHealingEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/Healing/NatureHealingEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/Labels.prefab
+#	new file:   Assets/DynamicElements_Effects/Labels.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/LightningEffects.meta
+#	new file:   Assets/DynamicElements_Effects/LightningEffects/LightningBeams.prefab
+#	new file:   Assets/DynamicElements_Effects/LightningEffects/LightningBeams.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/LightningEffects/LightningBlast.prefab
+#	new file:   Assets/DynamicElements_Effects/LightningEffects/LightningBlast.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/LightningEffects/LightningStrike.prefab
+#	new file:   Assets/DynamicElements_Effects/LightningEffects/LightningStrike.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/LightningEffects/StaticChargeEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/LightningEffects/StaticChargeEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/PhysicalEffects.meta
+#	new file:   Assets/DynamicElements_Effects/PhysicalEffects/ComboHitEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/PhysicalEffects/ComboHitEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/PhysicalEffects/ComboRipEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/PhysicalEffects/ComboRipEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/PhysicalEffects/RipEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/PhysicalEffects/RipEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/PhysicalEffects/RipEffectSimple.prefab
+#	new file:   Assets/DynamicElements_Effects/PhysicalEffects/RipEffectSimple.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/PhysicalEffects/SimpleHitEffect.prefab
+#	new file:   Assets/DynamicElements_Effects/PhysicalEffects/SimpleHitEffect.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/effects.unity
+#	new file:   Assets/DynamicElements_Effects/effects.unity.meta
+#	new file:   Assets/DynamicElements_Effects/lightmaps.meta
+#	new file:   Assets/DynamicElements_Effects/lightmaps/LightmapFar-0.exr
+#	new file:   Assets/DynamicElements_Effects/lightmaps/LightmapFar-0.exr.meta
+#	new file:   Assets/DynamicElements_Effects/lightmaps/LightmapFar-1.exr
+#	new file:   Assets/DynamicElements_Effects/lightmaps/LightmapFar-1.exr.meta
+#	new file:   Assets/DynamicElements_Effects/lightmaps/LightmapNear-0.exr
+#	new file:   Assets/DynamicElements_Effects/lightmaps/LightmapNear-0.exr.meta
+#	new file:   Assets/DynamicElements_Effects/lightmaps/LightmapNear-1.exr
+#	new file:   Assets/DynamicElements_Effects/lightmaps/LightmapNear-1.exr.meta
+#	new file:   Assets/DynamicElements_Effects/materials.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Acid.psd
+#	new file:   Assets/DynamicElements_Effects/materials/Acid.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidBlobs.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AcidBlobs.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidBlobs.png
+#	new file:   Assets/DynamicElements_Effects/materials/AcidBlobs.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidDrops.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AcidDrops.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidDrops.png
+#	new file:   Assets/DynamicElements_Effects/materials/AcidDrops.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidFlash.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AcidFlash.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidFlash.png
+#	new file:   Assets/DynamicElements_Effects/materials/AcidFlash.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidLargeSplat1.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AcidLargeSplat1.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidLargeSplat2.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AcidLargeSplat2.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSmoke.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSmoke.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSmoke.png
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSmoke.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplat.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplat.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplat.png
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplat.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplatBrownish.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplatBrownish.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplatBrownish.png
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplatBrownish.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplatDarker.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplatDarker.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplatDarker.png
+#	new file:   Assets/DynamicElements_Effects/materials/AcidSplatDarker.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedLine.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedLine.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedLine.png
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedLine.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedLineBlue.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedLineBlue.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedLineBlue.png
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedLineBlue.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedStar.mat
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedStar.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedStar.png
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedStar.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedStar.psd
+#	new file:   Assets/DynamicElements_Effects/materials/AnimatedStar.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BPFlash.mat
+#	new file:   Assets/DynamicElements_Effects/materials/BPFlash.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BPFlash.png
+#	new file:   Assets/DynamicElements_Effects/materials/BPFlash.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BPLightningArrowSpark.mat
+#	new file:   Assets/DynamicElements_Effects/materials/BPLightningArrowSpark.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BPLightningArrowSpark.png
+#	new file:   Assets/DynamicElements_Effects/materials/BPLightningArrowSpark.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BPLightningShockWave.mat
+#	new file:   Assets/DynamicElements_Effects/materials/BPLightningShockWave.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BPLightningShockWave.png
+#	new file:   Assets/DynamicElements_Effects/materials/BPLightningShockWave.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BPShockWave.mat
+#	new file:   Assets/DynamicElements_Effects/materials/BPShockWave.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BPShockWave.png
+#	new file:   Assets/DynamicElements_Effects/materials/BPShockWave.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BattlepetUpLight.mat
+#	new file:   Assets/DynamicElements_Effects/materials/BattlepetUpLight.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BattlepetUpLight.png
+#	new file:   Assets/DynamicElements_Effects/materials/BattlepetUpLight.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BlackNoText.mat
+#	new file:   Assets/DynamicElements_Effects/materials/BlackNoText.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BlastFire.png
+#	new file:   Assets/DynamicElements_Effects/materials/BlastFire.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BlastFireAdditive.mat
+#	new file:   Assets/DynamicElements_Effects/materials/BlastFireAdditive.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BlastFireSimple.mat
+#	new file:   Assets/DynamicElements_Effects/materials/BlastFireSimple.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BlindText.mat
+#	new file:   Assets/DynamicElements_Effects/materials/BlindText.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/BlindText.png
+#	new file:   Assets/DynamicElements_Effects/materials/BlindText.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/COLOR_Black.png
+#	new file:   Assets/DynamicElements_Effects/materials/COLOR_Black.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/COLOR_White.png
+#	new file:   Assets/DynamicElements_Effects/materials/COLOR_White.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/CartoonyFlash.mat
+#	new file:   Assets/DynamicElements_Effects/materials/CartoonyFlash.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/CartoonyFlash.png
+#	new file:   Assets/DynamicElements_Effects/materials/CartoonyFlash.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/CartoonySmoke.mat
+#	new file:   Assets/DynamicElements_Effects/materials/CartoonySmoke.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/CartoonySmoke.png
+#	new file:   Assets/DynamicElements_Effects/materials/CartoonySmoke.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Color_Black.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Color_Black.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Color_White.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Color_White.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/CrowFlash.png
+#	new file:   Assets/DynamicElements_Effects/materials/CrowFlash.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/CrowUpmagic.png
+#	new file:   Assets/DynamicElements_Effects/materials/CrowUpmagic.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Flash.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Flash.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Smoke.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Smoke.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Smoke.png
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Smoke.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Upmagic.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Upmagic.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Vortex.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Vortex.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Vortex.png
+#	new file:   Assets/DynamicElements_Effects/materials/Crowstorm_Vortex.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessDrops.mat
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessDrops.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessDrops.png
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessDrops.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizon.mat
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizon.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizon.png
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizon.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizon.psd
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizon.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizonEmpty.mat
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizonEmpty.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizonEmpty.png
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizonEmpty.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizonEmpty.psd
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessEventHorizonEmpty.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessExplosmoke.mat
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessExplosmoke.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessExplosmoke.png
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessExplosmoke.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessExplosmokePSD.psd
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessExplosmokePSD.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessFlash.mat
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessFlash.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessFlash.png
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessFlash.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessPurpleDots.mat
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessPurpleDots.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessPurpleDotsHard.mat
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessPurpleDotsHard.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessSmoke.mat
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessSmoke.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessSmoke.png
+#	new file:   Assets/DynamicElements_Effects/materials/DarknessSmoke.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Dreamcatcher.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Dreamcatcher.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthAll_PSD.psd
+#	new file:   Assets/DynamicElements_Effects/materials/EarthAll_PSD.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthBlast.mat
+#	new file:   Assets/DynamicElements_Effects/materials/EarthBlast.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthBlast.png
+#	new file:   Assets/DynamicElements_Effects/materials/EarthBlast.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthDust.mat
+#	new file:   Assets/DynamicElements_Effects/materials/EarthDust.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthDust.png
+#	new file:   Assets/DynamicElements_Effects/materials/EarthDust.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthDustDark.mat
+#	new file:   Assets/DynamicElements_Effects/materials/EarthDustDark.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthDustDark.png
+#	new file:   Assets/DynamicElements_Effects/materials/EarthDustDark.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthPeebles.mat
+#	new file:   Assets/DynamicElements_Effects/materials/EarthPeebles.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthPeebles.png
+#	new file:   Assets/DynamicElements_Effects/materials/EarthPeebles.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthShattered.mat
+#	new file:   Assets/DynamicElements_Effects/materials/EarthShattered.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthShattered.png
+#	new file:   Assets/DynamicElements_Effects/materials/EarthShattered.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthSmallCraters.mat
+#	new file:   Assets/DynamicElements_Effects/materials/EarthSmallCraters.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/EarthSmallCraters.png
+#	new file:   Assets/DynamicElements_Effects/materials/EarthSmallCraters.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireArrowspark.mat
+#	new file:   Assets/DynamicElements_Effects/materials/FireArrowspark.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireArrowspark.png
+#	new file:   Assets/DynamicElements_Effects/materials/FireArrowspark.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireCrater.mat
+#	new file:   Assets/DynamicElements_Effects/materials/FireCrater.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireCrater.png
+#	new file:   Assets/DynamicElements_Effects/materials/FireCrater.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireDarkSmoke.mat
+#	new file:   Assets/DynamicElements_Effects/materials/FireDarkSmoke.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireDarkSmoke.png
+#	new file:   Assets/DynamicElements_Effects/materials/FireDarkSmoke.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireExplosion.mat
+#	new file:   Assets/DynamicElements_Effects/materials/FireExplosion.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireExplosion.png
+#	new file:   Assets/DynamicElements_Effects/materials/FireExplosion.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireExplosionBlurred.mat
+#	new file:   Assets/DynamicElements_Effects/materials/FireExplosionBlurred.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireExplosionBlurred.png
+#	new file:   Assets/DynamicElements_Effects/materials/FireExplosionBlurred.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireFlash.mat
+#	new file:   Assets/DynamicElements_Effects/materials/FireFlash.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireFlash.png
+#	new file:   Assets/DynamicElements_Effects/materials/FireFlash.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireSmoke.mat
+#	new file:   Assets/DynamicElements_Effects/materials/FireSmoke.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireSmoke.png
+#	new file:   Assets/DynamicElements_Effects/materials/FireSmoke.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/FireSparks.png
+#	new file:   Assets/DynamicElements_Effects/materials/FireSparks.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Firesparks.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Firesparks.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/GreenBubblyMagic.mat
+#	new file:   Assets/DynamicElements_Effects/materials/GreenBubblyMagic.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/GreenBubblyMagic.png
+#	new file:   Assets/DynamicElements_Effects/materials/GreenBubblyMagic.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/GreenSplatter.mat
+#	new file:   Assets/DynamicElements_Effects/materials/GreenSplatter.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/GreenSplatter.png
+#	new file:   Assets/DynamicElements_Effects/materials/GreenSplatter.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/GreenSplatter.psd
+#	new file:   Assets/DynamicElements_Effects/materials/GreenSplatter.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/HalfCircle.mat
+#	new file:   Assets/DynamicElements_Effects/materials/HalfCircle.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/HispeedSplash.mat
+#	new file:   Assets/DynamicElements_Effects/materials/HispeedSplash.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/HispeedSplash.png
+#	new file:   Assets/DynamicElements_Effects/materials/HispeedSplash.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LargeSplash.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LargeSplash.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LargeSplash.png
+#	new file:   Assets/DynamicElements_Effects/materials/LargeSplash.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LargeSplat1.png
+#	new file:   Assets/DynamicElements_Effects/materials/LargeSplat1.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LargeSplat2.png
+#	new file:   Assets/DynamicElements_Effects/materials/LargeSplat2.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LargeSplats.psd
+#	new file:   Assets/DynamicElements_Effects/materials/LargeSplats.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LargeStar.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LargeStar.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LargeStar.png
+#	new file:   Assets/DynamicElements_Effects/materials/LargeStar.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LeafAnimated.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LeafAnimated.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LeafAnimated.png
+#	new file:   Assets/DynamicElements_Effects/materials/LeafAnimated.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightShaft.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LightShaft.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Lightbeam.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Lightbeam.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Lightbeam.png
+#	new file:   Assets/DynamicElements_Effects/materials/Lightbeam.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightbeamAnimated.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LightbeamAnimated.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Lightbeam_animated.png
+#	new file:   Assets/DynamicElements_Effects/materials/Lightbeam_animated.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningArrowSpark.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LightningArrowSpark.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningArrowSpark.png
+#	new file:   Assets/DynamicElements_Effects/materials/LightningArrowSpark.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningBigSpark.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LightningBigSpark.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningBurnedGround.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LightningBurnedGround.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningBurnedGround.png
+#	new file:   Assets/DynamicElements_Effects/materials/LightningBurnedGround.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningFlash.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LightningFlash.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningFlash.png
+#	new file:   Assets/DynamicElements_Effects/materials/LightningFlash.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningShaft.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LightningShaft.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningShaft.png
+#	new file:   Assets/DynamicElements_Effects/materials/LightningShaft.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningSmallSparks.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LightningSmallSparks.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningSmallSparks.png
+#	new file:   Assets/DynamicElements_Effects/materials/LightningSmallSparks.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningSmoke.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LightningSmoke.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningSmoke.png
+#	new file:   Assets/DynamicElements_Effects/materials/LightningSmoke.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LightningSpark.png
+#	new file:   Assets/DynamicElements_Effects/materials/LightningSpark.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Lightning_PSD.psd
+#	new file:   Assets/DynamicElements_Effects/materials/Lightning_PSD.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LongLine.mat
+#	new file:   Assets/DynamicElements_Effects/materials/LongLine.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/LongLine.png
+#	new file:   Assets/DynamicElements_Effects/materials/LongLine.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/MagicCircle.mat
+#	new file:   Assets/DynamicElements_Effects/materials/MagicCircle.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/MagicRune2.mat
+#	new file:   Assets/DynamicElements_Effects/materials/MagicRune2.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/MagicRune2.png
+#	new file:   Assets/DynamicElements_Effects/materials/MagicRune2.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/MagicRuneCircle.png
+#	new file:   Assets/DynamicElements_Effects/materials/MagicRuneCircle.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/MagmaFlowAdd.mat
+#	new file:   Assets/DynamicElements_Effects/materials/MagmaFlowAdd.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/MagmaFlowNorm.mat
+#	new file:   Assets/DynamicElements_Effects/materials/MagmaFlowNorm.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Materials.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Materials/stone_runes_circle.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Materials/stone_runes_circle.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/NatureAll_PSD.psd
+#	new file:   Assets/DynamicElements_Effects/materials/NatureAll_PSD.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/NatureLightshaft.png
+#	new file:   Assets/DynamicElements_Effects/materials/NatureLightshaft.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/NatureMoss.mat
+#	new file:   Assets/DynamicElements_Effects/materials/NatureMoss.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/NatureMoss.png
+#	new file:   Assets/DynamicElements_Effects/materials/NatureMoss.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/NatureSmoke.mat
+#	new file:   Assets/DynamicElements_Effects/materials/NatureSmoke.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/NatureSmoke.png
+#	new file:   Assets/DynamicElements_Effects/materials/NatureSmoke.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/NatureStar.mat
+#	new file:   Assets/DynamicElements_Effects/materials/NatureStar.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/NatureStar.png
+#	new file:   Assets/DynamicElements_Effects/materials/NatureStar.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/NatureUpLight.png
+#	new file:   Assets/DynamicElements_Effects/materials/NatureUpLight.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/NatureUplight.mat
+#	new file:   Assets/DynamicElements_Effects/materials/NatureUplight.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/PurpleDarknessDots.png
+#	new file:   Assets/DynamicElements_Effects/materials/PurpleDarknessDots.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/PurpleHelix.mat
+#	new file:   Assets/DynamicElements_Effects/materials/PurpleHelix.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/PurpleHelix.png
+#	new file:   Assets/DynamicElements_Effects/materials/PurpleHelix.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/QuestionMarkText.mat
+#	new file:   Assets/DynamicElements_Effects/materials/QuestionMarkText.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/QuestionMarkText.png
+#	new file:   Assets/DynamicElements_Effects/materials/QuestionMarkText.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/ResurrectLightshaft.mat
+#	new file:   Assets/DynamicElements_Effects/materials/ResurrectLightshaft.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/ResurrectLightshaft.png
+#	new file:   Assets/DynamicElements_Effects/materials/ResurrectLightshaft.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Ring.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Ring.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Ring.png
+#	new file:   Assets/DynamicElements_Effects/materials/Ring.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Rip.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Rip.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Rokafark.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Rokafark.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/ShieldBubble.png
+#	new file:   Assets/DynamicElements_Effects/materials/ShieldBubble.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/ShieldShimmer.mat
+#	new file:   Assets/DynamicElements_Effects/materials/ShieldShimmer.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/ShieldShimmer.png
+#	new file:   Assets/DynamicElements_Effects/materials/ShieldShimmer.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/ShieldShimmer.psd
+#	new file:   Assets/DynamicElements_Effects/materials/ShieldShimmer.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Shieldbubble.mat
+#	new file:   Assets/DynamicElements_Effects/materials/Shieldbubble.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/SleepZ.mat
+#	new file:   Assets/DynamicElements_Effects/materials/SleepZ.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/SleepZ.png
+#	new file:   Assets/DynamicElements_Effects/materials/SleepZ.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/SmokyGroundExplo.png
+#	new file:   Assets/DynamicElements_Effects/materials/SmokyGroundExplo.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/SmokyGroundExpoAdd.mat
+#	new file:   Assets/DynamicElements_Effects/materials/SmokyGroundExpoAdd.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/SmokyGroundExpoNormal.mat
+#	new file:   Assets/DynamicElements_Effects/materials/SmokyGroundExpoNormal.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/StoneRunesCircle.mat
+#	new file:   Assets/DynamicElements_Effects/materials/StoneRunesCircle.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/TribalRunesCircle.mat
+#	new file:   Assets/DynamicElements_Effects/materials/TribalRunesCircle.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/TribalRunesCircleBlue.mat
+#	new file:   Assets/DynamicElements_Effects/materials/TribalRunesCircleBlue.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/Untitled-1.psd
+#	new file:   Assets/DynamicElements_Effects/materials/Untitled-1.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/VanishText.mat
+#	new file:   Assets/DynamicElements_Effects/materials/VanishText.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/VanishText.png
+#	new file:   Assets/DynamicElements_Effects/materials/VanishText.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/VanishTextBackground.png
+#	new file:   Assets/DynamicElements_Effects/materials/VanishTextBackground.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/WhiteDots.mat
+#	new file:   Assets/DynamicElements_Effects/materials/WhiteDots.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/WhiteDots.png
+#	new file:   Assets/DynamicElements_Effects/materials/WhiteDots.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/WhiteDotsAdd.mat
+#	new file:   Assets/DynamicElements_Effects/materials/WhiteDotsAdd.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/a.png
+#	new file:   Assets/DynamicElements_Effects/materials/a.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/asd.psd
+#	new file:   Assets/DynamicElements_Effects/materials/asd.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/crowAlpha.png
+#	new file:   Assets/DynamicElements_Effects/materials/crowAlpha.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/dreamcatcher.png
+#	new file:   Assets/DynamicElements_Effects/materials/dreamcatcher.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/effectCrow.jpg
+#	new file:   Assets/DynamicElements_Effects/materials/effectCrow.jpg.meta
+#	new file:   Assets/DynamicElements_Effects/materials/helix.psd
+#	new file:   Assets/DynamicElements_Effects/materials/helix.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/lightning1.mat
+#	new file:   Assets/DynamicElements_Effects/materials/lightning1.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/lightning1.png
+#	new file:   Assets/DynamicElements_Effects/materials/lightning1.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/lightning2.mat
+#	new file:   Assets/DynamicElements_Effects/materials/lightning2.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/lightning2.png
+#	new file:   Assets/DynamicElements_Effects/materials/lightning2.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/lightning3.mat
+#	new file:   Assets/DynamicElements_Effects/materials/lightning3.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/lightning3.png
+#	new file:   Assets/DynamicElements_Effects/materials/lightning3.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/magmaFlow.png
+#	new file:   Assets/DynamicElements_Effects/materials/magmaFlow.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/rip.png
+#	new file:   Assets/DynamicElements_Effects/materials/rip.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/rokafark.png
+#	new file:   Assets/DynamicElements_Effects/materials/rokafark.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/runes_circle.psd
+#	new file:   Assets/DynamicElements_Effects/materials/runes_circle.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/runes_halfcircle.png
+#	new file:   Assets/DynamicElements_Effects/materials/runes_halfcircle.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/sdfUntitled-1.psd
+#	new file:   Assets/DynamicElements_Effects/materials/sdfUntitled-1.psd.meta
+#	new file:   Assets/DynamicElements_Effects/materials/small.mat
+#	new file:   Assets/DynamicElements_Effects/materials/small.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/starAnim2.mat
+#	new file:   Assets/DynamicElements_Effects/materials/starAnim2.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/starAnim2.png
+#	new file:   Assets/DynamicElements_Effects/materials/starAnim2.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/stone_runes_circle.png
+#	new file:   Assets/DynamicElements_Effects/materials/stone_runes_circle.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/testMaterial.mat
+#	new file:   Assets/DynamicElements_Effects/materials/testMaterial.mat.meta
+#	new file:   Assets/DynamicElements_Effects/materials/testTexture.png
+#	new file:   Assets/DynamicElements_Effects/materials/testTexture.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/tribal_runes_circle.png
+#	new file:   Assets/DynamicElements_Effects/materials/tribal_runes_circle.png.meta
+#	new file:   Assets/DynamicElements_Effects/materials/tribal_runes_circle_blue.png
+#	new file:   Assets/DynamicElements_Effects/materials/tribal_runes_circle_blue.png.meta
+#	new file:   Assets/DynamicElements_Effects/models.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/CrowStorm_Main.FBX
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/CrowStorm_Main.FBX.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/EclipseAlpha.png
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/EclipseAlpha.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/HelixUpSingle_FBX.FBX
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/HelixUpSingle_FBX.FBX.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/HelixUp_FBX.FBX
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/HelixUp_FBX.FBX.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/EclipseAlpha.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/EclipseAlpha.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/HelixSingleUp_MAX-No Name.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/HelixSingleUp_MAX-No Name.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/HelixUpSingle_FBX-No Name.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/HelixUpSingle_FBX-No Name.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/RootTexture.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/RootTexture.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/Roots-No Name.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/Roots-No Name.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/crowAlpha.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/crowAlpha.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/eclipse-01 - Default.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/eclipse-01 - Default.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/eclipse-02 - Default.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/eclipse-02 - Default.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/eclipse-07 - Default.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/eclipse-07 - Default.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/effectCrow.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/effectCrow.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/render_lightbeam-01 - Default.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/render_lightbeam-01 - Default.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/render_lightbeamxcv-07 - Default.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/render_lightbeamxcv-07 - Default.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/render_shochwavemini-01 - Default.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/render_shochwavemini-01 - Default.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/singleleaf-01 - Default.mat
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Materials/singleleaf-01 - Default.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/RootTexture.jpg
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/RootTexture.jpg.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Roots.FBX
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/Roots.FBX.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/eclipse.FBX
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/eclipse.FBX.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0000.png
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0000.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0001.png
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0001.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0002.png
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0002.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0003.png
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0003.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0004.png
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0004.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0005.png
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0005.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0006.png
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0006.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0007.png
+#	new file:   Assets/DynamicElements_Effects/models/BPModels/leaf0007.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/BoneStorm_Bones.FBX
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/BoneStorm_Bones.FBX.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/DeathBones.jpg
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/DeathBones.jpg.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/BoneStorm-01 - Default.mat
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/BoneStorm-01 - Default.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/DeathBones.mat
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/DeathBones.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/NightmareSkull-Material #0.mat
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/NightmareSkull-Material #0.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/NightmareSkullHair.mat
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/NightmareSkullHair.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/NightmareSkull_MAX-01 - Default.mat
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/NightmareSkull_MAX-01 - Default.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/SkullEye.mat
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/SkullEye.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/SkullModel_MAX-01 - Default.mat
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/SkullModel_MAX-01 - Default.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/deathSkull_white.mat
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/Materials/deathSkull_white.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/NightmareSkull.FBX
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/NightmareSkull.FBX.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/NightmareSkullHair.png
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/NightmareSkullHair.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/SkullEye.png
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/SkullEye.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/deathSkull_brown.jpg
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/deathSkull_brown.jpg.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/deathSkull_white.jpg
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/deathSkull_white.jpg.meta
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/nightmareSkull.jpg
+#	new file:   Assets/DynamicElements_Effects/models/DeathModels/nightmareSkull.jpg.meta
+#	new file:   Assets/DynamicElements_Effects/models/EarthModels.meta
+#	new file:   Assets/DynamicElements_Effects/models/EarthModels/EarthSpike.jpg
+#	new file:   Assets/DynamicElements_Effects/models/EarthModels/EarthSpike.jpg.meta
+#	new file:   Assets/DynamicElements_Effects/models/EarthModels/EarthSpikes_anim.FBX
+#	new file:   Assets/DynamicElements_Effects/models/EarthModels/EarthSpikes_anim.FBX.meta
+#	new file:   Assets/DynamicElements_Effects/models/EarthModels/Materials.meta
+#	new file:   Assets/DynamicElements_Effects/models/EarthModels/Materials/EarthSpike.mat
+#	new file:   Assets/DynamicElements_Effects/models/EarthModels/Materials/EarthSpike.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/Butterflies_MAX-No Name.mat
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/Butterflies_MAX-No Name.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/NatureButterflies-No Name.mat
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/NatureButterflies-No Name.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/NatureButterflies_FBX-No Name.mat
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/NatureButterflies_FBX-No Name.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/btrfly1.mat
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/btrfly1.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/flwrcol1.mat
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/flwrcol1.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/flwrgrn1.mat
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/Materials/flwrgrn1.mat.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/NatureButterflies_FBX.FBX
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/NatureButterflies_FBX.FBX.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/NatureButterflies_prefab.prefab
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/NatureButterflies_prefab.prefab.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/NatureFlowers_FBX.FBX
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/NatureFlowers_FBX.FBX.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly1.tga
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly1.tga.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly2.tga
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly2.tga.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly3.tga
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly3.tga.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly4.tga
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly4.tga.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly5.tga
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly5.tga.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly6.tga
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/btrfly6.tga.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/flwrcol1.png
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/flwrcol1.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/flwrgrn1.png
+#	new file:   Assets/DynamicElements_Effects/models/NatureModels/flwrgrn1.png.meta
+#	new file:   Assets/DynamicElements_Effects/models/Shapes.meta
+#	new file:   Assets/DynamicElements_Effects/models/Shapes/EffectsShapes.FBX
+#	new file:   Assets/DynamicElements_Effects/models/Shapes/EffectsShapes.FBX.meta
+#	new file:   Assets/DynamicElements_Effects/models/Shapes/Materials.meta
+#	new file:   Assets/DynamicElements_Effects/models/Shapes/Materials/EffectsShapes-No Name.mat
+#	new file:   Assets/DynamicElements_Effects/models/Shapes/Materials/EffectsShapes-No Name.mat.meta
+#	new file:   Assets/DynamicElements_Effects/readme.txt
+#	new file:   Assets/DynamicElements_Effects/readme.txt.meta
+#	new file:   Assets/DynamicElements_Effects/scripts.meta
+#	new file:   Assets/DynamicElements_Effects/scripts/ParticleScale.js
+#	new file:   Assets/DynamicElements_Effects/scripts/ParticleScale.js.meta
+#	new file:   Assets/DynamicElements_Effects/scripts/PrefabGenerator.js
+#	new file:   Assets/DynamicElements_Effects/scripts/PrefabGenerator.js.meta
+#	new file:   Assets/DynamicElements_Effects/scripts/Raycast.js
+#	new file:   Assets/DynamicElements_Effects/scripts/Raycast.js.meta
+#	new file:   Assets/DynamicElements_Effects/scripts/activateWithDelay.js
+#	new file:   Assets/DynamicElements_Effects/scripts/activateWithDelay.js.meta
+#	new file:   Assets/DynamicElements_Effects/scripts/destroyThisTimed.js
+#	new file:   Assets/DynamicElements_Effects/scripts/destroyThisTimed.js.meta
+#	new file:   Assets/DynamicElements_Effects/scripts/moveThis.js
+#	new file:   Assets/DynamicElements_Effects/scripts/moveThis.js.meta
+#	new file:   Assets/DynamicElements_Effects/scripts/moveThisAdvanced.js
+#	new file:   Assets/DynamicElements_Effects/scripts/moveThisAdvanced.js.meta
+#	new file:   Assets/DynamicElements_Effects/scripts/rampDownParticle.js
+#	new file:   Assets/DynamicElements_Effects/scripts/rampDownParticle.js.meta
+#	new file:   Assets/DynamicElements_Effects/scripts/rotateThis.js
+#	new file:   Assets/DynamicElements_Effects/scripts/rotateThis.js.meta
+#	new file:   Assets/DynamicElements_Effects/scripts/scaleThisTimed.js
+#	new file:   Assets/DynamicElements_Effects/scripts/scaleThisTimed.js.meta
+#	modified:   Assets/Elementals/Media/Mobile/Textures/Glow_01.tga
+#	new file:   Assets/Graphical Assets/Caverne.meta
+#	new file:   Assets/Graphical Assets/Caverne/Door_cave.obj
+#	new file:   Assets/Graphical Assets/Caverne/Door_cave.obj.meta
+#	new file:   Assets/Graphical Assets/Caverne/GrotteParois.mat
+#	new file:   Assets/Graphical Assets/Caverne/GrotteParois.mat.meta
+#	new file:   Assets/Graphical Assets/Caverne/Materials.meta
+#	new file:   Assets/Graphical Assets/Caverne/Materials/pCube9Mat.mat
+#	new file:   Assets/Graphical Assets/Caverne/Materials/pCube9Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Caverne/Materials/testgrot_initialShadingGroup_testgrot_pPlane1 polySurface7Mat.mat
+#	new file:   Assets/Graphical Assets/Caverne/Materials/testgrot_initialShadingGroup_testgrot_pPlane1 polySurface7Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Caverne/Materials/testgrot_initialShadingGroup_testgrot_pPlane2 polySurface7Mat.mat
+#	new file:   Assets/Graphical Assets/Caverne/Materials/testgrot_initialShadingGroup_testgrot_pPlane2 polySurface7Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Caverne/Materials/testgrot_initialShadingGroup_testgrot_pPlane3 polySurface7Mat.mat
+#	new file:   Assets/Graphical Assets/Caverne/Materials/testgrot_initialShadingGroup_testgrot_pPlane3 polySurface7Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Caverne/Normal grotte.PSD
+#	new file:   Assets/Graphical Assets/Caverne/Normal grotte.PSD.meta
+#	new file:   Assets/Graphical Assets/Caverne/Texture grotte.PSD
+#	new file:   Assets/Graphical Assets/Caverne/Texture grotte.PSD.meta
+#	new file:   Assets/Graphical Assets/Caverne/grotte.obj
+#	new file:   Assets/Graphical Assets/Caverne/grotte.obj.meta
+#	new file:   Assets/Graphical Assets/Materials/Flag.mat
+#	new file:   Assets/Graphical Assets/Materials/Flag.mat.meta
+#	new file:   Assets/Graphical Assets/Materials/Glowy.mat
+#	new file:   Assets/Graphical Assets/Materials/Glowy.mat.meta
+#	new file:   Assets/Graphical Assets/Materials/GrotteParois.mat
+#	new file:   Assets/Graphical Assets/Materials/GrotteParois.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Cristal.obj
+#	new file:   Assets/Graphical Assets/Meshes/Cristal.obj.meta
+#	new file:   Assets/Graphical Assets/Meshes/GRootePorte.mat
+#	new file:   Assets/Graphical Assets/Meshes/GRootePorte.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/GolemDoor.mat
+#	new file:   Assets/Graphical Assets/Meshes/GolemDoor.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/GrotteWAlls.mat
+#	new file:   Assets/Graphical Assets/Meshes/GrotteWAlls.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Materials/blinn3SG.mat
+#	new file:   Assets/Graphical Assets/Meshes/Materials/blinn3SG.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Materials/initialShadingGroup_pCube1Mat.mat
+#	new file:   Assets/Graphical Assets/Meshes/Materials/initialShadingGroup_pCube1Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Materials/pCylinder85Mat.mat
+#	new file:   Assets/Graphical Assets/Meshes/Materials/pCylinder85Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Materials/pCylinder86Mat.mat
+#	new file:   Assets/Graphical Assets/Meshes/Materials/pCylinder86Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Materials/pCylinder87Mat.mat
+#	new file:   Assets/Graphical Assets/Meshes/Materials/pCylinder87Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Materials/pCylinder88Mat.mat
+#	new file:   Assets/Graphical Assets/Meshes/Materials/pCylinder88Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Materials/testgrot_initialShadingGroup_testgrot_pPlane1 testgrot_polySurface1Mat.mat
+#	new file:   Assets/Graphical Assets/Meshes/Materials/testgrot_initialShadingGroup_testgrot_pPlane1 testgrot_polySurface1Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Materials/testgrot_initialShadingGroup_testgrot_pPlane2 testgrot_polySurface1Mat.mat
+#	new file:   Assets/Graphical Assets/Meshes/Materials/testgrot_initialShadingGroup_testgrot_pPlane2 testgrot_polySurface1Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Materials/testgrot_initialShadingGroup_testgrot_pPlane3 testgrot_polySurface1Mat.mat
+#	new file:   Assets/Graphical Assets/Meshes/Materials/testgrot_initialShadingGroup_testgrot_pPlane3 testgrot_polySurface1Mat.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Planche.mat
+#	new file:   Assets/Graphical Assets/Meshes/Planche.mat.meta
+#	new file:   Assets/Graphical Assets/Meshes/Prism_Long.obj
+#	new file:   Assets/Graphical Assets/Meshes/Prism_Long.obj.meta
+#	new file:   Assets/Graphical Assets/Meshes/Prism_Medium.obj
+#	new file:   Assets/Graphical Assets/Meshes/Prism_Medium.obj.meta
+#	new file:   Assets/Graphical Assets/Meshes/Prism_Short.obj
+#	new file:   Assets/Graphical Assets/Meshes/Prism_Short.obj.meta
+#	new file:   Assets/Graphical Assets/Meshes/golem_door.mb
+#	new file:   Assets/Graphical Assets/Meshes/golem_door.mb.meta
+#	new file:   Assets/Graphical Assets/Meshes/golem_door_normals.tga
+#	new file:   Assets/Graphical Assets/Meshes/golem_door_normals.tga.meta
+#	new file:   Assets/Graphical Assets/Meshes/grotte3.obj
+#	new file:   Assets/Graphical Assets/Meshes/grotte3.obj.meta
+#	new file:   "Assets/Graphical Assets/Meshes/n pav\303\251_normals.tga"
+#	new file:   "Assets/Graphical Assets/Meshes/n pav\303\251_normals.tga.meta"
+#	new file:   "Assets/Graphical Assets/Meshes/n pav\303\251_occlusion.psd"
+#	new file:   "Assets/Graphical Assets/Meshes/n pav\303\251_occlusion.psd.meta"
+#	new file:   Assets/Graphical Assets/Meshes/ngrotte.tga
+#	new file:   Assets/Graphical Assets/Meshes/ngrotte.tga.meta
+#	new file:   Assets/Graphical Assets/Meshes/nplanche_normals.tga
+#	new file:   Assets/Graphical Assets/Meshes/nplanche_normals.tga.meta
+#	new file:   Assets/Graphical Assets/Meshes/pilier.mtl
+#	new file:   Assets/Graphical Assets/Meshes/pilier.mtl.meta
+#	new file:   Assets/Graphical Assets/Meshes/pilier.obj
+#	new file:   Assets/Graphical Assets/Meshes/pilier.obj.meta
+#	new file:   Assets/Graphical Assets/Meshes/planche.obj
+#	new file:   Assets/Graphical Assets/Meshes/planche.obj.meta
+#	new file:   Assets/Graphical Assets/Meshes/planche_texture.tga
+#	new file:   Assets/Graphical Assets/Meshes/planche_texture.tga.meta
+#	new file:   Assets/Graphical Assets/Meshes/tgrotte.tga
+#	new file:   Assets/Graphical Assets/Meshes/tgrotte.tga.meta
+#	modified:   "Assets/Packages/B\303\251lier/Golem_Belier.prefab"
+#	new file:   Assets/Prefabs/Graphs.meta
+#	new file:   Assets/Prefabs/Graphs/Filaments 1.prefab
+#	new file:   Assets/Prefabs/Graphs/Filaments 1.prefab.meta
+#	new file:   Assets/Prefabs/Graphs/Filaments 2.prefab
+#	new file:   Assets/Prefabs/Graphs/Filaments 2.prefab.meta
+#	new file:   Assets/Prefabs/Graphs/Filaments.prefab
+#	new file:   Assets/Prefabs/Graphs/Filaments.prefab.meta
+#	new file:   "Assets/Prefabs/LD/Fila\303\271ments2.prefab"
+#	new file:   "Assets/Prefabs/LD/Fila\303\271ments2.prefab.meta"
+#	new file:   Assets/Prefabs/LD/Grotte Exit.prefab
+#	new file:   Assets/Prefabs/LD/Grotte Exit.prefab.meta
+#	new file:   Assets/Prefabs/LD/Materials/New Font.fontsettings
+#	new file:   Assets/Prefabs/LD/Materials/New Font.fontsettings.meta
+#	new file:   Assets/Prefabs/LD/New Prefab.prefab
+#	new file:   Assets/Prefabs/LD/New Prefab.prefab.meta
+#	new file:   Assets/Prefabs/LD/Pont.meta
+#	new file:   Assets/Prefabs/LD/Pont/AnimationPontPetitCube.anim
+#	new file:   Assets/Prefabs/LD/Pont/AnimationPontPetitCube.anim.meta
+#	new file:   Assets/Prefabs/LD/Pont/Modif Mesh Pont.txt
+#	new file:   Assets/Prefabs/LD/Pont/Modif Mesh Pont.txt.meta
+#	new file:   Assets/Prefabs/LD/Pont/Pont petit 1.controller
+#	new file:   Assets/Prefabs/LD/Pont/Pont petit 1.controller.meta
+#	new file:   Assets/Prefabs/LD/Pont/Pont petit cube v1.prefab
+#	new file:   Assets/Prefabs/LD/Pont/Pont petit cube v1.prefab.meta
+#	new file:   Assets/Prefabs/LD/River.prefab
+#	new file:   Assets/Prefabs/LD/River.prefab.meta
+#	new file:   Assets/Prefabs/LD/WALL.prefab
+#	new file:   Assets/Prefabs/LD/WALL.prefab.meta
+#	new file:   Assets/Prefabs/Misc/Flag.prefab
+#	new file:   Assets/Prefabs/Misc/Flag.prefab.meta
+#	modified:   Assets/Prefabs/Misc/FloatingRocksGroup1.prefab
+#	modified:   Assets/Prefabs/Misc/TrapV4.prefab
+#	modified:   Assets/Prefabs/Misc/felfius.mat
+#	modified:   Assets/Prefabs/Player/Main Camera.prefab
+#	new file:   Assets/Scenes/Game/20_04_15.unity
+#	new file:   Assets/Scenes/Game/20_04_15.unity.meta
+#	modified:   Assets/Scenes/Game/LD_08_04_2015.unity
+#	modified:   Assets/Scenes/Game/LD_25_02_2015.unity
+#	new file:   Assets/Scripts/Misc_/DestructibleGroup.cs
+#	new file:   Assets/Scripts/Misc_/DestructibleGroup.cs.meta
+#	new file:   Assets/Scripts/Misc_/GrotteExit.cs
+#	new file:   Assets/Scripts/Misc_/GrotteExit.cs.meta
+#	new file:   Assets/Scripts/Misc_/Grue.cs
+#	new file:   Assets/Scripts/Misc_/Grue.cs.meta
+#	new file:   Assets/ShaderForge/Example Assets/Skyboxes/Sunny1 Skybox.mat
+#	new file:   Assets/Shaders.meta
+#	new file:   Assets/Shaders/Flag.shader
+#	new file:   Assets/Shaders/Flag.shader.meta
+#	new file:   Assets/Shaders/ItemGlow.shader
+#	new file:   Assets/Shaders/ItemGlow.shader.meta
+#	new file:   Assets/Shaders/grueSwitch.shader
+#	new file:   Assets/Shaders/grueSwitch.shader.meta
+#	new file:   Assets/Standard Assets/Skyboxes.meta
+#	new file:   Assets/Standard Assets/Skyboxes/Sunny3 Skybox.mat
+#	new file:   Assets/Standard Assets/Skyboxes/Sunny3 Skybox.mat.meta
+#	new file:   Assets/Standard Assets/Skyboxes/Textures.meta
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3.meta
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_back.tif
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_back.tif.meta
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_down.tif
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_down.tif.meta
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_front.tif
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_front.tif.meta
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_left.tif
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_left.tif.meta
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_right.tif
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_right.tif.meta
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_up.tif
+#	new file:   Assets/Standard Assets/Skyboxes/Textures/Sunny3/Sunny3_up.tif.meta
+#	modified:   Assets/Unity Addons/ShaderForge/Editor/Resources/ShaderForgeInternal.mat
+#	new file:   Assets/Water FX Pack.meta
+#	new file:   Assets/Water FX Pack/Demo Scenes.meta
+#	new file:   Assets/Water FX Pack/Demo Scenes/Rain.unity
+#	new file:   Assets/Water FX Pack/Demo Scenes/Rain.unity.meta
+#	new file:   Assets/Water FX Pack/Demo Scenes/Snow.unity
+#	new file:   Assets/Water FX Pack/Demo Scenes/Snow.unity.meta
+#	new file:   Assets/Water FX Pack/Demo Scenes/SteamSpray.unity
+#	new file:   Assets/Water FX Pack/Demo Scenes/SteamSpray.unity.meta
+#	new file:   Assets/Water FX Pack/Demo Scenes/VolumeSteam.unity
+#	new file:   Assets/Water FX Pack/Demo Scenes/VolumeSteam.unity.meta
+#	new file:   Assets/Water FX Pack/Demo Scenes/Waterfall.unity
+#	new file:   Assets/Water FX Pack/Demo Scenes/Waterfall.unity.meta
+#	new file:   Assets/Water FX Pack/Materials.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxSnow.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxSnow.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxSpit.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxSpit.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxSpit2.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxSpit2.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxSteam.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxSteam.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxVolumSteamBottom.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxVolumSteamBottom.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxVolumeSteam.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxVolumeSteam.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterFallSpit.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterFallSpit.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterFallWater.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterFallWater.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterfallBottom.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterfallBottom.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterfallFoam.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterfallFoam.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterfallMist.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterfallMist.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterfallSplashes.mat
+#	new file:   Assets/Water FX Pack/Materials/Mat_FxWaterfallSplashes.mat.meta
+#	new file:   Assets/Water FX Pack/Materials/Self-Illumin Diffuse Beige.mat
+#	new file:   Assets/Water FX Pack/Materials/Self-Illumin Diffuse Beige.mat.meta
+#	new file:   Assets/Water FX Pack/Models.meta
+#	new file:   Assets/Water FX Pack/Models/OBJ_WaterfallBig.fbx
+#	new file:   Assets/Water FX Pack/Models/OBJ_WaterfallBig.fbx.meta
+#	new file:   Assets/Water FX Pack/Prefabs.meta
+#	new file:   Assets/Water FX Pack/Prefabs/Rain.prefab
+#	new file:   Assets/Water FX Pack/Prefabs/Rain.prefab.meta
+#	new file:   Assets/Water FX Pack/Prefabs/Snow.prefab
+#	new file:   Assets/Water FX Pack/Prefabs/Snow.prefab.meta
+#	new file:   Assets/Water FX Pack/Prefabs/SteamSpray.prefab
+#	new file:   Assets/Water FX Pack/Prefabs/SteamSpray.prefab.meta
+#	new file:   Assets/Water FX Pack/Prefabs/VolumeSteam.prefab
+#	new file:   Assets/Water FX Pack/Prefabs/VolumeSteam.prefab.meta
+#	new file:   Assets/Water FX Pack/Prefabs/Waterfall.prefab
+#	new file:   Assets/Water FX Pack/Prefabs/Waterfall.prefab.meta
+#	new file:   Assets/Water FX Pack/Scripts.meta
+#	new file:   Assets/Water FX Pack/Scripts/ScrollUV.js
+#	new file:   Assets/Water FX Pack/Scripts/ScrollUV.js.meta
+#	new file:   Assets/Water FX Pack/Textures.meta
+#	new file:   Assets/Water FX Pack/Textures/Cloud1.tga
+#	new file:   Assets/Water FX Pack/Textures/Cloud1.tga.meta
+#	new file:   Assets/Water FX Pack/Textures/Cloud2.tga
+#	new file:   Assets/Water FX Pack/Textures/Cloud2.tga.meta
+#	new file:   Assets/Water FX Pack/Textures/CloudRotation.tga
+#	new file:   Assets/Water FX Pack/Textures/CloudRotation.tga.meta
+#	new file:   Assets/Water FX Pack/Textures/FX_snow1.tga
+#	new file:   Assets/Water FX Pack/Textures/FX_snow1.tga.meta
+#	new file:   Assets/Water FX Pack/Textures/FX_waterfall1.tga
+#	new file:   Assets/Water FX Pack/Textures/FX_waterfall1.tga.meta
+#	new file:   Assets/Water FX Pack/Textures/FX_waterfall4.tga
+#	new file:   Assets/Water FX Pack/Textures/FX_waterfall4.tga.meta
+#	new file:   Assets/Water FX Pack/Textures/FX_waterfall5.tga
+#	new file:   Assets/Water FX Pack/Textures/FX_waterfall5.tga.meta
+#	new file:   Assets/Water FX Pack/Textures/Spit.tga
+#	new file:   Assets/Water FX Pack/Textures/Spit.tga.meta
+#	new file:   Assets/Water FX Pack/Textures/Spit2.tga
+#	new file:   Assets/Water FX Pack/Textures/Spit2.tga.meta
+#	modified:   ProjectSettings/EditorBuildSettings.asset
+#	modified:   ProjectSettings/TagManager.asset
+#
+

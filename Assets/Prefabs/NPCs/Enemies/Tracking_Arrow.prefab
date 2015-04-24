@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 96: {fileID: 9600000}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Arrow_Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,10 +42,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 65: {fileID: 6500000}
+  - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Tracking_Arrow
-  m_TagString: Untagged
+  m_TagString: HomingProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +116,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Mesh: {fileID: 4300000, guid: 5f4995c02e0db1e49917bf1082d4b740, type: 3}
+--- !u!54 &5400000
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -123,7 +139,7 @@ BoxCollider:
   m_GameObject: {fileID: 100004}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .119999997, y: .0900000036, z: 1.46000004}
   m_Center: {x: 0, y: 0, z: .419999987}
@@ -176,15 +192,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed3ccb1332712840a9e76a1ef4c55e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 06bc2d94abca52e44af984117cc7d9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnSpeed: 2
   mySpeed: 10
   myRange: 50
-  turnSpeed: 3
-  rotationNeeded: {fileID: 400004}
-  rigidbody: {fileID: 0}
+  damage: 1
   masterTurret: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

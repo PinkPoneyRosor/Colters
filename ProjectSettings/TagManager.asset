@@ -25,6 +25,8 @@ TagManager:
   - Explosion
   - Water
   - RockSpawner
+  - HomingProjectile
+  - Projectile
   - 
   - 
   - Groot
@@ -50,7 +52,7 @@ TagManager:
   User Layer 18: EnemySight
   User Layer 19: DashGetThrough
   User Layer 20: OnlySoul
-  User Layer 21: Groot
+  User Layer 21: Projectiles
   User Layer 22: 
   User Layer 23: 
   User Layer 24: 
