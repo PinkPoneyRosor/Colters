@@ -26,6 +26,9 @@ TagManager:
   - Water
   - RockSpawner
   - 
+  - 
+  - Groot
+  - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
   Builtin Layer 2: Ignore Raycast
@@ -47,7 +50,7 @@ TagManager:
   User Layer 18: EnemySight
   User Layer 19: DashGetThrough
   User Layer 20: OnlySoul
-  User Layer 21: 
+  User Layer 21: Groot
   User Layer 22: 
   User Layer 23: 
   User Layer 24: 

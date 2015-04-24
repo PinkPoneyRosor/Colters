@@ -1,0 +1,17 @@
+Ajouter le Nom du bloc à le mesh correspondante.
+==> Mesh début, nom = mesh 01 pour avoir l'animation du bloc 01
+Avoir le même nombre d'animation (delete les animations inutiles)
+
+
+
+
+-----Prog------
+Activation par trigger
+Exeption pour la glissade (glissade suivant l'angle)
+
+
+
+
+----Autres------
+Particle explosion terre/poussières à plusieur endroit
+Son écroulement => regler suivan temps animation
