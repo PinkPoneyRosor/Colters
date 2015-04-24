@@ -17,6 +17,11 @@ public class SoulMode : CommonControls {
 	Slider soulBarSlide;
 	#endregion
 	
+	private bool climbRock = false;
+	private GameObject currentClimbingRock;
+	private NewThrowableRock currentClimbRockScript;
+	private float gravitySave;
+	
 	// Use this for initialization
 	protected override void Start () 
 	{
@@ -36,6 +41,20 @@ public class SoulMode : CommonControls {
 	{
 		Time.timeScale = 0.1f;
 		Time.fixedDeltaTime = 0.1f * 0.02f; //Make sure the physics simulation is still fluid.
+		
+		if (climbRock)
+			if(currentClimbRockScript.beingThrowned)
+			{
+				Vector3 rockClimbOffset = new Vector3 (0, 1, 0);
+				transform.position = Vector3.MoveTowards(transform.position, currentClimbingRock.transform.position + rockClimbOffset, localDeltaTime * 5);
+				gravity = 0;
+			}
+			else
+			{
+				climbRock = false;
+				controller.enabled = true;
+				gravity = gravitySave;
+			}
 
 		GetAxis ();
 
@@ -49,10 +68,6 @@ public class SoulMode : CommonControls {
 		#region Controls according to situation
 		if ((Input.GetButtonDown ("AutoCam") || continueResetControls)) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
 			ResettingCameraControls();
-		else if (aimingMode) //Else, and if we're in aiming camera mode
-		{
-			AimingControls (heightOfJump);
-		}
 		else
 		{
 			DefaultControls(heightOfJump, localDeltaTime);
@@ -69,5 +84,25 @@ public class SoulMode : CommonControls {
 		playerScript.soulMode = false;
 		mainCameraScript.SwitchPlayerMode( false );
 		Destroy (this.gameObject);
+	}
+	
+	void OnControllerColliderHit (ControllerColliderHit hit)
+	{
+		Debug.Log ("Soul in collision with " + hit.gameObject.name);
+	
+		if (hit.collider.CompareTag("ThrowableRock"))
+		{
+			NewThrowableRock hitScript = hit.transform.GetComponent <NewThrowableRock>();
+			
+			if (hitScript.beingThrowned)
+			{
+				Physics.IgnoreCollision (this.collider, hit.collider);
+				controller.enabled = false;
+				climbRock = true;
+				currentClimbingRock = hit.gameObject;
+				currentClimbRockScript = currentClimbingRock.GetComponent <NewThrowableRock> ();
+				gravitySave = gravity;
+			}
+		}
 	}
 }

@@ -17,7 +17,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public Transform camTarget; //What the camera follows
 
 	private GameObject player;
-	private CommonControls playerControls;
 	private bool ManualMode = false;
 	public GameObject soul;
 	private bool soulMode = false;
@@ -72,7 +71,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	{
 		player = GameObject.FindWithTag ("Player");
 		camTarget = player.transform;
-		playerControls = player.GetComponent<CommonControls> ();
 
 		currentRotationSmooth = RotationSmooth;
 		currentTranslationSmooth = TranslationSmooth;
@@ -83,7 +81,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	{
 		soulMode = bSoulMode;
 		player = GameObject.FindWithTag( soulMode ? "PlayerSoul" : "Player" );
-		playerControls = player.GetComponent<CommonControls> ();
 		camTarget = player.transform;
 	}
 
@@ -92,8 +89,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	
 		//Setting this object's local delta time...
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
-	
-		playerControls.characterAngleOkForAim = false;
 
 		if (camTarget != null) 
 			DefaultCamera ();
@@ -278,7 +273,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 		}
 		transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, localDeltaTime * currentRotationSmooth);
 		//At this point, the camera is at the right place AND is looking at the right point.
-		
 		#endregion
 	}
 
@@ -301,7 +295,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		if (Physics.Linecast(fromObject, toTarget, out wallHit, CompensateLayer))
 		{
 			Vector3 hitWallNormal = wallHit.normal.normalized;
-			toTarget = new Vector3(wallHit.point.x + .5f * hitWallNormal.x, wallHit.point.y + .5f * hitWallNormal.y, wallHit.point.z + .5f * hitWallNormal.z);
+			toTarget = new Vector3(wallHit.point.x + .5f * hitWallNormal.x, wallHit.point.y + .5f /* hitWallNormal.y*/, wallHit.point.z + .5f * hitWallNormal.z);
 			justHitAWall = true;
 		}
 		else

@@ -11,7 +11,6 @@ GameObject:
   - 114: {fileID: 11400000}
   - 143: {fileID: 14300000}
   - 136: {fileID: 13600000}
-  - 114: {fileID: 11400002}
   m_Layer: 8
   m_Name: Soul
   m_TagString: PlayerSoul
@@ -1967,28 +1966,6 @@ MonoBehaviour:
   characterAngleOkForAim: 0
   setMaximumSpeed: 6
   heightOfJump: 9
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2d16511111369a428b628bf0556ebe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstSelected: {fileID: 0}
-  secondSelected: {fileID: 0}
-  thirdSelected: {fileID: 0}
-  fourthSelected: {fileID: 0}
-  RockLayer:
-    serializedVersion: 2
-    m_Bits: 65536
-  otherLayers:
-    serializedVersion: 2
-    m_Bits: 4294901759
-  globalPickUpRadius: 10
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

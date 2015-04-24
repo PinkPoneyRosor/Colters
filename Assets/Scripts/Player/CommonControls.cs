@@ -171,7 +171,7 @@ public class CommonControls : MonoBehaviour {
 		if(!mainCameraScript.justHitAWall)
 		{
 			Debug.Log ("Resetting controls");
-			Debug.Log ("Just Hit A Wall = "+ mainCameraScript.justHitAWall);
+			Debug.Log ("Just Hit A Wall = " + mainCameraScript.justHitAWall);
 			continueResetControls = true;
 			
 			Vector3 stickDirection = new Vector3 (horizontal, 0, vertical);
@@ -188,28 +188,5 @@ public class CommonControls : MonoBehaviour {
 			
 			controller.Move (moveDirection * speedOut * localDeltaTime);
 		}
-	}
-
-	public void AimingControls (float heightOfJump) //When aiming, the controls are not the same.
-	{
-		if (setAimMode) 
-		{
-			this.transform.eulerAngles = new Vector3 (transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
-			characterAngleOkForAim = true;
-			setAimMode = false;
-		}
-		
-		tempMoveDir = (transform.right * horizontal + transform.forward * vertical) * maxSpeed;
-		moveDirection.x = tempMoveDir.x;
-		moveDirection.z = tempMoveDir.z;
-		
-		if (Input.GetButton ("Jump") && controller.isGrounded)
-			moveDirection.y = heightOfJump;
-		
-		if(!controller.isGrounded)
-			moveDirection.y -= gravity * localDeltaTime;
-		
-		controller.Move (moveDirection * localDeltaTime);
-		transform.Rotate (new Vector3 (0, Input.GetAxisRaw ("LookH")*50, 0) * mainCameraScript.aimLookSpeed * localDeltaTime);
 	}
 }

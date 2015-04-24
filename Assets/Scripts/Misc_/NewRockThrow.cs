@@ -48,11 +48,17 @@ public class NewRockThrow : MonoBehaviour {
 	private bool loopThrow = false;
 	private GameObject currentThrowedRock = null;
 	
+	#region launched rocks management
+	private int launchedRockAmount = 0;
+	private int currentLaunchedRockNumber = 0;
+	private GameObject[] launchedRocks;
+	#endregion
+	
 	// Use this for initialization
 	void Start () 
 	{
 		mainCamera = Camera.main.transform;
-		
+		launchedRocks = new GameObject[4];
 		selectedManagement();
 	}
 	
@@ -210,10 +216,6 @@ public class NewRockThrow : MonoBehaviour {
 				currentThrowedRock.collider.isTrigger = false;
 				currentThrowedRock.transform.SetParent (transform, true);
 			}
-			
-			Vector3 screenCenter = new Vector3 (Screen.width/2, Screen.height/2,0);
-			Vector3 screenCenterInWorld = mainCamera.camera.ScreenToWorldPoint(screenCenter);
-			
 			Vector3 newTargetPosition = transform.position + transform.forward;
 			newTargetPosition.y = transform.position.y + 2;
 			Vector3 currentRockPos = currentThrowedRock.transform.position;
@@ -221,11 +223,9 @@ public class NewRockThrow : MonoBehaviour {
 			Debug.DrawLine (transform.position, newTargetPosition, Color.blue);
 			Debug.DrawLine (transform.position, currentRockPos, Color.red);
 			
-			if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .2f * .2f || Input.GetAxisRaw("RT") != 0)
+			if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .2f * .2f || Input.GetAxisRaw("RT") != 0 || Input.GetButton ("Action"))
 			{
-				//currentThrowedRock.transform.position = Vector3.Lerp (currentRockPos, newTargetPosition, Time.deltaTime * 5);
-				currentThrowedRock.transform.Translate ( (newTargetPosition - currentThrowedRock.transform.position) * Time.deltaTime * 10, Space.World );
-				
+				currentThrowedRock.transform.Translate ( (newTargetPosition - currentThrowedRock.transform.position) * Time.deltaTime * 10, Space.World );	
 				
 				//Updating the parameters...
 				loopThrow = true;
@@ -235,6 +235,7 @@ public class NewRockThrow : MonoBehaviour {
 				loopThrow = false;
 				currentThrowedRock.transform.SetParent (null);
 				ThrowRock ();
+				
 			}
 		} 	
 	}
@@ -269,10 +270,34 @@ public class NewRockThrow : MonoBehaviour {
 				
 				currentThrowedRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
 			}
-				currentThrowedRock = null;
-				selectedRockCount -= 1;
-				
-				StartCoroutine("ShiftRockPositions"); //This method is also used as a coolDown for throwing rocks.
+			
+			if(currentLaunchedRockNumber < 4)
+				currentLaunchedRockNumber ++;
+			else
+			{
+				currentLaunchedRockNumber = 1;
+			}
+			
+			Debug.Log (currentLaunchedRockNumber);
+			
+			LaunchedRockManager();
+			
+			if (currentLaunchedRockNumber == 1)
+				launchedRocks[0] = currentThrowedRock;
+			if (currentLaunchedRockNumber == 2)
+				launchedRocks[1] = currentThrowedRock;
+			if (currentLaunchedRockNumber == 3)
+				launchedRocks[2] = currentThrowedRock;
+			if (currentLaunchedRockNumber == 4)
+				launchedRocks[3] = currentThrowedRock;
+			
+			currentThrowedRockScript.beingThrowned = true;
+			currentThrowedRock = null;
+			selectedRockCount -= 1;
+			
+			launchedRockAmount ++;
+			
+			StartCoroutine("ShiftRockPositions"); //This method is also used as a coolDown for throwing rocks.
 	}
 	
 	IEnumerator ShiftRockPositions() 
@@ -386,6 +411,19 @@ public class NewRockThrow : MonoBehaviour {
 			
 			tempPlace = null;
 		}
-		
+	}
+	
+	void LaunchedRockManager ()
+	{
+		if(launchedRockAmount == 4)
+		{
+			Destroy(launchedRocks[0].gameObject);
+			
+			launchedRocks[0] = launchedRocks [1];
+			launchedRocks[1] = launchedRocks [2];
+			launchedRocks[2] = launchedRocks [3];
+			
+			launchedRockAmount--;
+		}	
 	}	
 }

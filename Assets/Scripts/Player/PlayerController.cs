@@ -15,7 +15,6 @@ public class PlayerController : CommonControls {
 	public float maxHealth = 10;
 	public float currentHealth;
 
-
 	//Other variables
 	[HideInInspector]
 	public bool soulMode = false;
@@ -50,12 +49,8 @@ public class PlayerController : CommonControls {
 		{
 			if (mainCameraScript.resetCameraPosition && !mainCameraScript.justHitAWall) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
 				ResettingCameraControls();
-			else if (!aimingMode) //Else, and if we're in normal camera mode
+			else//Else, and if we're in normal camera mode
 				DefaultControls(heightOfJump, localDeltaTime);
-			else if (aimingMode) //Else, and if we're in aiming camera mode
-			{
-				AimingControls (heightOfJump);
-			}
 		}
 	}
 
@@ -63,7 +58,7 @@ public class PlayerController : CommonControls {
 	void SwitchToSoulMode()
 	{
 		//Offset for spawn point based on the player's position.
-		Vector3 soulSpawnOffset = new Vector3(0,.5f,0);
+		Vector3 soulSpawnOffset = new Vector3(0, .5f, 0);
 		Vector3 soulSpawnPoint = transform.position + soulSpawnOffset;
 
 		Instantiate(Soul, soulSpawnPoint , transform.rotation);
