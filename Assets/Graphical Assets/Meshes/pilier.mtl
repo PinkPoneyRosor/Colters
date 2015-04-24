@@ -1,0 +1,30 @@
+newmtl CageShaderSG2
+illum 4
+Kd 0.25 0.25 0.50
+Ka 0.00 0.00 0.00
+Tf 0.50 0.50 0.50
+Ni 1.00
+newmtl blinn3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd n pavé_occlusion.tga
+bump n pavé_normals.tga -bm 0.396226
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl lambert5SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 0.20 0.20 0.20
+Ni 1.00
+newmtl phongE1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd tgrotte.tga
+bump ngrotte.tga -bm 0.195531
+Ni 1.00
+Ks 0.50 0.50 0.50
