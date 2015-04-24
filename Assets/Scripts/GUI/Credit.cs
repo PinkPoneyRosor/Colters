@@ -12,7 +12,8 @@ public class Credit : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-	startPos = transform.position;
+		startPos = image.transform.position;
+		Debug.Log ("START");
 	}
 	
 	// Update is called once per frame
@@ -30,6 +31,7 @@ public class Credit : MonoBehaviour {
 			Application.LoadLevel(0);
 			creditRoll = false;
 		}
+			
 	}
 	
 	public void StartCredits ()
@@ -37,10 +39,9 @@ public class Credit : MonoBehaviour {
 		creditRoll = true;
 	}
 	
-	
-	public void resetCredits ()
+	public void resetCredits()
 	{
-		transform.position = startPos;
+		image.transform.position = startPos;
 	}
 	
 }
