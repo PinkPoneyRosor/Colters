@@ -12,13 +12,17 @@ public class GUImainBehaviour : MonoBehaviour {
 	GameObject player;
 
 	PlayerController playerScript;
-
-	Slider soulBarSlide;
+	
+	[HideInInspector]
+	public Slider soulBarSlide;
+	
 	Slider lifeBarSlide;
 
 	float localDeltaTime;
 
 	public float SoulBarSpeedRate = .1f;
+	[HideInInspector]
+	public float soulStartValue;
 
 	// Use this for initialization
 	void Start () 
@@ -30,6 +34,8 @@ public class GUImainBehaviour : MonoBehaviour {
 		soulBarSlide = soulBar.GetComponent<Slider> ();
 		lifeBarSlide = lifeBar.GetComponent<Slider> ();
 		playerScript = player.GetComponent<PlayerController> ();
+		
+		soulStartValue = soulBarSlide.value;
 	}
 	
 	// Update is called once per frame

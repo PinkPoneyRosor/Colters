@@ -37,6 +37,14 @@ public class CommonControls : MonoBehaviour {
 	public float airControlMultiplier = 0;
 	[HideInInspector]
 	public static float maxJumpSlopeAngle = 35;
+	[HideInInspector]
+	public Transform activePlatform;
+	[HideInInspector]
+	public Vector3 activeLocalPlatformPoint;
+	[HideInInspector]
+	public Vector3 activeGlobalPlatformPoint;
+	[HideInInspector]
+	public Vector3 lastPlatformVelocity;
 	
 	[HeaderAttribute("Moves parameters")]
 	public float maxSpeed = 0;
@@ -71,6 +79,7 @@ public class CommonControls : MonoBehaviour {
 		#endregion
 		
 		Quaternion target = Quaternion.Euler (0, floatDir, 0);
+		
 		if(controller.isGrounded)
 		{
 			tempMoveDir = target * Vector3.forward * speed;
@@ -80,7 +89,7 @@ public class CommonControls : MonoBehaviour {
 		{
 			float stickMagnitude = Input.GetAxis ("Vertical") + Input.GetAxis ("Horizontal");
 			
-			if( stickMagnitude != 0)
+			if( stickMagnitude != 0 )
 			{
 				tempMoveDir += direction * airControlMultiplier * localDeltaTime;
 				tempMoveDir = Vector3.ClampMagnitude(tempMoveDir, maxSpeed);
@@ -88,8 +97,6 @@ public class CommonControls : MonoBehaviour {
 			else
 				tempMoveDir = Vector3.Lerp (tempMoveDir, Vector3.zero, 2 * localDeltaTime);
 		}
-		
-		//Debug.Log ("moveDirection = "+moveDirection);
 		
 		moveDirection.x = tempMoveDir.x;
 		moveDirection.z = tempMoveDir.z;
@@ -120,13 +127,42 @@ public class CommonControls : MonoBehaviour {
 		#region apply movements & gravity
 		if(!controller.isGrounded)
 			moveDirection.y -= gravity * localDeltaTime;
+			
+		//Moving platform support
+		if (activePlatform != null)
+		{
+			Vector3 newGlobalPlatformPoint = activePlatform.TransformPoint(activeLocalPlatformPoint);
+			Vector3 moveDistance = (newGlobalPlatformPoint - activeGlobalPlatformPoint);
+			
+			if (moveDistance != Vector3.zero)
+				controller.Move ( moveDistance );
+				
+			lastPlatformVelocity = (newGlobalPlatformPoint - activeGlobalPlatformPoint) / Time.deltaTime;
+		}
+		else 
+			lastPlatformVelocity = Vector3.zero;
 		
-		controller.Move (moveDirection * localDeltaTime);
+		activePlatform = null;
+		
+		faceDirection = transform.position + moveDirection;
+		faceDirection.y = transform.position.y;
+		
+		Quaternion rotation = Quaternion.LookRotation (faceDirection);
+		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * 1.5f); 
+		
+		//controller.Move (moveDirection * localDeltaTime);
 		
 		faceDirection = transform.position + moveDirection;
 		faceDirection.y = transform.position.y;
 		
 		transform.LookAt (faceDirection);
+		
+		// Moving platforms support
+		if (activePlatform != null) 
+		{
+			activeGlobalPlatformPoint = transform.position;
+			activeLocalPlatformPoint = activePlatform.InverseTransformPoint (transform.position);
+		}
 		#endregion
 		#endregion
 	}

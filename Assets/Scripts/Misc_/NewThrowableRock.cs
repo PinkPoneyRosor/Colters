@@ -34,7 +34,9 @@ public class NewThrowableRock : MonoBehaviour {
 	
 	private bool growInit = true;
 	
-
+	[HideInInspector]
+	public bool growingMyself = true;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -55,7 +57,10 @@ public class NewThrowableRock : MonoBehaviour {
 				growInit = false;
 			}
 			
-			transform.localScale = Vector3.MoveTowards (transform.localScale, normalScale/5, growingRate * Time.deltaTime);
+			if (growingMyself)
+				transform.localScale = Vector3.MoveTowards (transform.localScale, normalScale/5, growingRate * Time.deltaTime);
+			else
+				transform.localScale = Vector3.MoveTowards (transform.localScale, normalScale/5, 1.5f * Time.deltaTime);
 			
 			if ( Vector3.SqrMagnitude (this.transform.localScale - normalScale / 5) <= 0f)
 			{
@@ -181,6 +186,11 @@ public class NewThrowableRock : MonoBehaviour {
 			homingAttackBool = false;
 			beingThrowned = false;
 		}
+	}
+	
+	void InstantGrow ()
+	{
+		growingMyself = false;
 	}
 	
 }

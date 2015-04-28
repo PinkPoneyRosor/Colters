@@ -150,8 +150,6 @@ public class NewRockThrow : MonoBehaviour {
 			if( distance < globalPickUpRadius)
 				selectARock(rock);
 		}
-		
-		
 	}
 	
 	void selectARock (GameObject chosenRock)
@@ -277,8 +275,6 @@ public class NewRockThrow : MonoBehaviour {
 			{
 				currentLaunchedRockNumber = 1;
 			}
-			
-			Debug.Log (currentLaunchedRockNumber);
 			
 			LaunchedRockManager();
 			

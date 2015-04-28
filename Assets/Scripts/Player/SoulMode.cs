@@ -39,6 +39,9 @@ public class SoulMode : CommonControls {
 	// Update is called once per frame
 	void Update () 
 	{
+		if(activePlatform != null)
+			Debug.Log ("Soul is standing on : " + activePlatform.name);
+	
 		Time.timeScale = 0.1f;
 		Time.fixedDeltaTime = 0.1f * 0.02f; //Make sure the physics simulation is still fluid.
 		
@@ -78,7 +81,8 @@ public class SoulMode : CommonControls {
 
 	void revertBack () //Revert Back to normal mode.
 	{
-		player.transform.position = transform.position;
+		Vector3 revertBackOffset = new Vector3 (0, .5f, 0); 
+		player.transform.position = transform.position + revertBackOffset;
 		Time.timeScale = 1;
 		Time.fixedDeltaTime = .02f;
 		playerScript.soulMode = false;
@@ -88,8 +92,11 @@ public class SoulMode : CommonControls {
 	
 	void OnControllerColliderHit (ControllerColliderHit hit)
 	{
-		Debug.Log ("Soul in collision with " + hit.gameObject.name);
-	
+		// Make sure we are really standing on a straight platform 
+		// Not on the underside of one and not falling down from it either! 
+		if (hit.moveDirection.y < -0.9 && hit.normal.y > 0.5) 
+			activePlatform = hit.collider.transform;
+		
 		if (hit.collider.CompareTag("ThrowableRock"))
 		{
 			NewThrowableRock hitScript = hit.transform.GetComponent <NewThrowableRock>();
