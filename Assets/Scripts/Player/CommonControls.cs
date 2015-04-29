@@ -84,6 +84,7 @@ public class CommonControls : MonoBehaviour {
 		{
 			tempMoveDir = target * Vector3.forward * speed;
 			tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed);
+			Debug.Log ("Calculating moves...");
 		}
 		else
 		{
@@ -123,6 +124,9 @@ public class CommonControls : MonoBehaviour {
 		
 		if (Input.GetButtonDown ("Jump") && controller.isGrounded && canJump)
 			moveDirection.y = heightOfJump;
+			
+		faceDirection = moveDirection;
+		faceDirection.y = 0;
 		
 		#region apply movements & gravity
 		if(!controller.isGrounded)
@@ -144,18 +148,19 @@ public class CommonControls : MonoBehaviour {
 		
 		activePlatform = null;
 		
-		faceDirection = transform.position + moveDirection;
-		faceDirection.y = transform.position.y;
+		controller.Move (moveDirection * localDeltaTime);
 		
-		Quaternion rotation = Quaternion.LookRotation (faceDirection);
-		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * 1.5f); 
+		Debug.DrawRay (transform.position, moveDirection, Color.red); 
+		Debug.DrawRay (transform.position, faceDirection, Color.blue);
 		
-		//controller.Move (moveDirection * localDeltaTime);
-		
-		faceDirection = transform.position + moveDirection;
-		faceDirection.y = transform.position.y;
-		
-		transform.LookAt (faceDirection);
+		Debug.Log (Input.GetAxis ("Vertical") + Input.GetAxis ("Horizontal") > 0);
+		//Make Phalene face the direction in which she's going.
+		if(Input.GetAxis ("Vertical") + Input.GetAxis ("Horizontal") > 0)
+		{
+			Quaternion rotation = Quaternion.LookRotation (faceDirection);
+			transform.rotation = Quaternion.Slerp (transform.rotation, rotation, localDeltaTime * 3f);
+			Debug.Log ("turning");
+		}
 		
 		// Moving platforms support
 		if (activePlatform != null) 
