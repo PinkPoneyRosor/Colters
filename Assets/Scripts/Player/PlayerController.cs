@@ -77,5 +77,11 @@ public class PlayerController : CommonControls {
 		// Not on the underside of one and not falling down from it either! 
 		if (hit.moveDirection.y < -0.9 && hit.normal.y > 0.5) 
 			activePlatform = hit.collider.transform;
-	} 
+	}
+	
+	public void Die ()
+	{
+		transform.position = lastCheckpointPosition;
+		currentHealth = maxHealth;
+	}
 }

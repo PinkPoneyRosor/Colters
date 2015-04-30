@@ -46,12 +46,15 @@ public class CommonControls : MonoBehaviour {
 	[HideInInspector]
 	public Vector3 lastPlatformVelocity;
 	
+	[HideInInspector]
+	public Vector3 lastCheckpointPosition;
+	
 	[HeaderAttribute("Moves parameters")]
 	public float maxSpeed = 0;
 	public float gravity = 20;
 	
 	[HideInInspector]
-	public bool characterAngleOkForAim = false;
+	static public bool characterAngleOkForAim = false;
 
 	// Use this for initialization
 	protected virtual void Start () 
@@ -155,10 +158,10 @@ public class CommonControls : MonoBehaviour {
 		
 		Debug.Log (Input.GetAxis ("Vertical") + Input.GetAxis ("Horizontal") > 0);
 		//Make Phalene face the direction in which she's going.
-		if(Input.GetAxis ("Vertical") + Input.GetAxis ("Horizontal") > 0)
+		if( Input.GetAxisRaw ("Vertical") + Input.GetAxisRaw ("Horizontal") != 0)
 		{
 			Quaternion rotation = Quaternion.LookRotation (faceDirection);
-			transform.rotation = Quaternion.Slerp (transform.rotation, rotation, localDeltaTime * 3f);
+			transform.rotation = Quaternion.Slerp (transform.rotation, rotation, localDeltaTime * 5f);
 			Debug.Log ("turning");
 		}
 		
@@ -229,5 +232,10 @@ public class CommonControls : MonoBehaviour {
 			
 			controller.Move (moveDirection * speedOut * localDeltaTime);
 		}
+	}
+	
+	public void FlashCheckPointPosition ()
+	{
+		lastCheckpointPosition = transform.position;
 	}
 }

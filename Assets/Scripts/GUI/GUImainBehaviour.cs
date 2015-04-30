@@ -23,6 +23,8 @@ public class GUImainBehaviour : MonoBehaviour {
 	public float SoulBarSpeedRate = .1f;
 	[HideInInspector]
 	public float soulStartValue;
+	[HideInInspector]
+	public float lifeStartValue;
 
 	// Use this for initialization
 	void Start () 
@@ -36,6 +38,7 @@ public class GUImainBehaviour : MonoBehaviour {
 		playerScript = player.GetComponent<PlayerController> ();
 		
 		soulStartValue = soulBarSlide.value;
+		lifeStartValue = lifeBarSlide.value;
 	}
 	
 	// Update is called once per frame
@@ -58,6 +61,11 @@ public class GUImainBehaviour : MonoBehaviour {
 		#region Life Bar
 		lifeBarSlide.maxValue = playerScript.maxHealth;
 		lifeBarSlide.value = playerScript.currentHealth;
+		
+		if(lifeBarSlide.value <= 0)
+		{
+			player.SendMessage ("Die");
+		}
 		#endregion
 	}
 
