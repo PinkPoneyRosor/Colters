@@ -131,6 +131,7 @@ public class NewThrowableRock : MonoBehaviour {
 			rigidbody.useGravity = true;
 			constantForce.force = Vector3.zero;
 			homingAttackBool = false;
+			//LET'S SEE THIS
 		}
 		#endregion
 	}
