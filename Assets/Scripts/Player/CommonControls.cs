@@ -155,8 +155,7 @@ public class CommonControls : MonoBehaviour {
 		
 		Debug.DrawRay (transform.position, moveDirection, Color.red); 
 		Debug.DrawRay (transform.position, faceDirection, Color.blue);
-		
-		Debug.Log (Input.GetAxis ("Vertical") + Input.GetAxis ("Horizontal") > 0);
+
 		//Make Phalene face the direction in which she's going.
 		if( Input.GetAxisRaw ("Vertical") + Input.GetAxisRaw ("Horizontal") != 0)
 		{

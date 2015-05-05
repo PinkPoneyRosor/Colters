@@ -24,12 +24,16 @@ public class NewThrowableRock : MonoBehaviour {
 	public bool beingThrowned = false;
 	[HideInInspector]
 	public int throwedRockNumber = 0;
+	[HideInInspector]
+	public bool isThrowed = false;
 	
 	public float throwForce = 1000;
 	
 	public bool canExplode = false;
 	public Vector3 posAtLaunch = Vector3.zero;
 	public float maxTravelDistance = 15;
+	public float DecelerationRate = 15;
+	public float maxVelocityWhenDecelerating = 22;
 	public float growingRate = .5f;
 	
 	private bool growInit = true;
@@ -126,12 +130,19 @@ public class NewThrowableRock : MonoBehaviour {
 		}
 		
 		#region track distance travelled
-		if (Vector3.SqrMagnitude(transform.position - posAtLaunch) > maxTravelDistance * maxTravelDistance && !isSelected)
+		if (Vector3.SqrMagnitude(transform.position - posAtLaunch) > maxTravelDistance * maxTravelDistance && !isSelected && isThrowed)
 		{
 			rigidbody.useGravity = true;
 			constantForce.force = Vector3.zero;
+			
+			if (Vector3.SqrMagnitude(rigidbody.velocity) > maxVelocityWhenDecelerating * maxVelocityWhenDecelerating)
+			{
+				rigidbody.drag = DecelerationRate;
+			}
+			else
+				rigidbody.drag = 0;
+			
 			homingAttackBool = false;
-			//LET'S SEE THIS
 		}
 		#endregion
 	}
