@@ -84,4 +84,12 @@ public class PlayerController : CommonControls {
 		transform.position = lastCheckpointPosition;
 		currentHealth = maxHealth;
 	}
+	
+	void CrushImpulse ()
+	{
+		if(!controller.isGrounded)
+			moveDirection.y = heightOfJump;
+		else
+			moveDirection.y = heightOfJump/2;
+	}
 }

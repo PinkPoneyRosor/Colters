@@ -171,15 +171,18 @@ MonoBehaviour:
   isGrowing: 0
   inTheAir: 0
   selectionNumber: 0
-  normalScale: {x: .91009587, y: 2.14581299, z: .91009587}
+  normalScale: {x: .5, y: 1, z: .5}
   homingAttackBool: 0
   aimHoming: {fileID: 0}
   beingThrowned: 0
   throwedRockNumber: 0
+  isThrowed: 0
   throwForce: 2000
   canExplode: 0
   posAtLaunch: {x: 0, y: 0, z: 0}
   maxTravelDistance: 15
+  DecelerationRate: 15
+  maxVelocityWhenDecelerating: 22
   growingRate: .100000001
   growingMyself: 1
 --- !u!208 &20800000

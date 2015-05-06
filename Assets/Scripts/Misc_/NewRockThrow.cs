@@ -17,6 +17,8 @@ public class NewRockThrow : MonoBehaviour {
 	private NewThrowableRock thirdScript;
 	private NewThrowableRock fourthScript;
 	
+	private PlayerController playerScript;
+	
 	public GameObject[] allSelectedRocks = new GameObject[4];
 	
 	public GameObject RockPrefab;
@@ -46,6 +48,7 @@ public class NewRockThrow : MonoBehaviour {
 	#endregion
 	
 	private bool loopThrow = false;
+	private bool loopCrush = false;
 	private GameObject currentThrowedRock = null;
 	
 	#region launched rocks management
@@ -60,6 +63,7 @@ public class NewRockThrow : MonoBehaviour {
 		mainCamera = Camera.main.transform;
 		launchedRocks = new GameObject[4];
 		selectedManagement();
+		playerScript = this.GetComponent <PlayerController>();
 	}
 	
 	// Update is called once per frame
@@ -72,10 +76,10 @@ public class NewRockThrow : MonoBehaviour {
 		thirdOffset = Quaternion.AngleAxis(0, transform.up) * (-transform.forward * 1.5f) + (transform.up * .6f);
 		fourthOffset = Quaternion.AngleAxis(-45, transform.up) * (-transform.forward * 1.5f) + (transform.up * .1f);
 		
-		if (Input.GetAxisRaw("RT") != 0 || Input.GetButtonDown("Action") || loopThrow)
-			prepareToThrow(false);
-		else if (Input.GetButtonDown ("Melee Attack"))
-		    prepareToThrow(true);
+		if (Input.GetAxisRaw("RT") != 0 || Input.GetButton("Action") || loopThrow)
+			prepareToThrow();
+		else if (Input.GetButton ("Melee Attack") || loopCrush)
+		    prepareToCrush();
 			
 		
 		if (( Input.GetAxis("Scroll") > 0 || Input.GetButtonDown ("RockUp")) && canThrow)
@@ -189,9 +193,9 @@ public class NewRockThrow : MonoBehaviour {
 		}
 	}
 	
-	void prepareToThrow (bool meleeAttack)
-	{	
-		Debug.Log ("meleeAttack = " + meleeAttack);
+	void prepareToThrow ()
+	{
+	Debug.Log ("Throw rock prep was called !");
 		if (canThrow
 		    && selectedRockCount > 0
 		    && firstSelected != null
@@ -199,7 +203,6 @@ public class NewRockThrow : MonoBehaviour {
 		    || loopThrow
 		    )
 		{
-		
 			NewThrowableRock currentThrowedRockScript;
 			
 			if(!loopThrow)
@@ -221,60 +224,82 @@ public class NewRockThrow : MonoBehaviour {
 			}
 			
 			Vector3 newTargetPosition;
-			
-			if(meleeAttack)
-			{
-				Debug.Log ("MELEEEEEE ATTAAAACKKKKK");
-				newTargetPosition = transform.position + transform.forward * 2.5f;
-				newTargetPosition.y = transform.position.y + 4;
-			}
-			else
-			{
-				Debug.Log ("YOU THROWING ROCK AT ME");
-				newTargetPosition = transform.position + transform.forward;
-				newTargetPosition.y = transform.position.y + 2;
-			}
+
+			newTargetPosition = transform.position + transform.forward;
+			newTargetPosition.y = transform.position.y + 2;
 			
 			Vector3 currentRockPos = currentThrowedRock.transform.position;
 			
 			Debug.DrawLine (transform.position, newTargetPosition, Color.blue);
 			Debug.DrawLine (transform.position, currentRockPos, Color.red);
 			
-			if(!meleeAttack)
+			if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .2f * .2f || Input.GetAxisRaw("RT") != 0 || Input.GetButton ("Action"))
 			{
-				Debug.Log ("HIT EYE AND IT NO HURT ME");
-				if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .2f * .2f || Input.GetAxisRaw("RT") != 0 || Input.GetButton ("Action"))
-				{
-					currentThrowedRock.transform.Translate ( (newTargetPosition - currentThrowedRock.transform.position) * Time.deltaTime * 10, Space.World );	
-					
-					//Updating the parameters...
-					loopThrow = true;
-					meleeAttack = false;
-				}
-				else
-				{
-					loopThrow = false;
-					currentThrowedRock.transform.SetParent (null);
-					ThrowRock ();
-				}
+				currentThrowedRock.transform.Translate ( (newTargetPosition - currentThrowedRock.transform.position) * Time.deltaTime * 10, Space.World );	
+				
+				//Updating the parameters...
+				loopThrow = true;
 			}
-			else if (meleeAttack)
+			else
 			{
-				Debug.Log ("MELEEEEEE ATTAAAACKKKKK 2 THE RETURRRN");
-				if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .2f * .2f || Input.GetButtonDown("Melee Attack"))
-				{
-					currentThrowedRock.transform.Translate ( (newTargetPosition - currentThrowedRock.transform.position) * Time.deltaTime * 10, Space.World );	
-					loopThrow = true;
-					meleeAttack = false;
-				}
-				else
-				{
-					loopThrow = false;
-					currentThrowedRock.transform.SetParent (null);
-					ShortRangeAttack();
-				}
+				loopThrow = false;
+				currentThrowedRock.transform.SetParent (null);
+				ThrowRock ();
 			}
 		} 	
+	}
+	
+	void prepareToCrush ()
+	{
+		if (canThrow
+		    && selectedRockCount > 0
+		    && firstSelected != null
+		    && firstSelected.GetComponent <NewThrowableRock>().isSelected
+		    || loopCrush
+		    )
+		{
+			NewThrowableRock currentThrowedRockScript;
+			
+			if(!loopCrush)
+			{
+				//canThrow = false;
+				currentThrowedRock = firstSelected;
+				firstSelected = null;
+				
+				currentThrowedRockScript = currentThrowedRock.GetComponent <NewThrowableRock> ();
+				
+				currentThrowedRockScript.isSelected = false;
+				currentThrowedRockScript.inTheAir = false;
+				currentThrowedRockScript.posAtLaunch = currentThrowedRock.transform.position;
+				currentThrowedRockScript.selectionNumber = 0;
+				currentThrowedRock.rigidbody.isKinematic = false;
+				currentThrowedRock.collider.isTrigger = false;
+				currentThrowedRock.transform.SetParent (transform, true);
+			}
+			
+			Vector3 newTargetPosition;
+			
+			newTargetPosition = transform.position + transform.up * 2.5f;
+			
+			Vector3 currentRockPos = currentThrowedRock.transform.position;
+			
+			Debug.DrawLine (transform.position, newTargetPosition, Color.blue);
+			Debug.DrawLine (transform.position, currentRockPos, Color.red);
+			
+			if ( Vector3.SqrMagnitude (currentRockPos - newTargetPosition) > .2f * .2f || Input.GetButton ("Melee Attack") )
+			{
+				currentThrowedRock.transform.Translate ( (newTargetPosition - currentThrowedRock.transform.position) * Time.deltaTime * 10, Space.World );	
+				loopCrush = true;
+			}
+			else
+			{
+				loopCrush = false;
+				currentThrowedRock.transform.SetParent (null);
+				Debug.Log ("Crushin'");
+				ShortRangeAttack();
+			}
+		}
+		
 	}
 	
 	void ShortRangeAttack()
@@ -285,10 +310,12 @@ public class NewRockThrow : MonoBehaviour {
 		currentThrowedRockScript = currentThrowedRock.GetComponent <NewThrowableRock> ();
 
 		//If what we aimed at is not an enemy or it is but he's knocked out, just throw the rock straightforward.
-		Vector3 throwDirection = -Vector3.up;
+		Vector3 throwDirection = -Vector3.up + transform.forward;
 		
 		//This line is just to make absolutely sure there is no more constraints so that we can throw the rock in a straight line.
 		currentThrowedRockScript.rigidbody.constraints = RigidbodyConstraints.None;
+		
+		playerScript.SendMessage ("CrushImpulse");
 		
 		currentThrowedRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
 		
@@ -332,7 +359,7 @@ public class NewRockThrow : MonoBehaviour {
 				
 			if (Physics.Raycast (ray.origin, ray.direction, out HitObject, Mathf.Infinity, otherLayers)
 			    && HitObject.transform.CompareTag ("Enemy") 
-			    && HitObject.transform.GetComponent<BasicEnemy> ().canGetHit)
+			    && HitObject.transform.GetComponent <BasicEnemy> ().canGetHit)
 			{ 
 			  //If what we aimed at is an enemy and that it's not knocked out, let's do a homing attack
 				currentThrowedRockScript.aimHoming = HitObject.transform;
