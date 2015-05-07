@@ -32,6 +32,7 @@ GameObject:
   - 208: {fileID: 20800000}
   - 75: {fileID: 7500000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 16
   m_Name: BasicRock
   m_TagString: ThrowableRock
@@ -132,7 +133,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -185,6 +186,21 @@ MonoBehaviour:
   maxVelocityWhenDecelerating: 22
   growingRate: .100000001
   growingMyself: 1
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fed1b7bc8b661478f881125287660c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  skinWidth: .100000001
 --- !u!208 &20800000
 NavMeshObstacle:
   m_ObjectHideFlags: 1

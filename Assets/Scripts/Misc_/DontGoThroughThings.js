@@ -29,6 +29,11 @@ function FixedUpdate()
       //check for obstructions we might have missed
       if (Physics.Raycast(previousPosition, movementThisStep, hitInfo, movementMagnitude, layerMask.value))
          myPosition.position = hitInfo.point - (movementThisStep/movementMagnitude)*partialExtent;
+         
+         if(this.gameObject.CompareTag ("ThrowableRock"))
+         {
+         	this.SendMessage ("JustHitSomething");
+         }
    }
    previousPosition = myPosition.position;
 }

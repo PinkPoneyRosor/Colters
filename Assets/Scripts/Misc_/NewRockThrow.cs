@@ -78,7 +78,7 @@ public class NewRockThrow : MonoBehaviour {
 		
 		if (Input.GetAxisRaw("RT") != 0 || Input.GetButton("Action") || loopThrow)
 			prepareToThrow();
-		else if (Input.GetButton ("Melee Attack") || loopCrush)
+		else if (Input.GetButton ("Melee Attack") || loopCrush || Input.GetKey ("e"))
 		    prepareToCrush();
 			
 		
