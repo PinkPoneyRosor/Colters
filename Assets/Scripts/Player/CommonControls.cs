@@ -87,7 +87,6 @@ public class CommonControls : MonoBehaviour {
 		{
 			tempMoveDir = target * Vector3.forward * speed;
 			tempMoveDir = transform.TransformDirection (tempMoveDir * maxSpeed);
-			Debug.Log ("Calculating moves...");
 		}
 		else
 		{
@@ -161,7 +160,6 @@ public class CommonControls : MonoBehaviour {
 		{
 			Quaternion rotation = Quaternion.LookRotation (faceDirection);
 			transform.rotation = Quaternion.Slerp (transform.rotation, rotation, localDeltaTime * 5f);
-			Debug.Log ("turning");
 		}
 		
 		// Moving platforms support

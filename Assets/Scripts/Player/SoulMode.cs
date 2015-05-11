@@ -39,8 +39,6 @@ public class SoulMode : CommonControls {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(activePlatform != null)
-			Debug.Log ("Soul is standing on : " + activePlatform.name);
 	
 		Time.timeScale = 0.1f;
 		Time.fixedDeltaTime = 0.1f * 0.02f; //Make sure the physics simulation is still fluid.
@@ -66,7 +64,9 @@ public class SoulMode : CommonControls {
 
 		//Resetting back to body mode when pushing swith button or Soul Bar depleted.
 		if (Input.GetButtonDown ("SwitchMode") || soulBarSlide.value <= 0)
-			revertBack();
+			revertBack(true);
+		else if (Input.GetButtonDown ("SoulToBody"))
+			revertBack (false);
 
 		#region Controls according to situation
 		if ((Input.GetButtonDown ("AutoCam") || continueResetControls)) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
@@ -79,10 +79,15 @@ public class SoulMode : CommonControls {
 		#endregion
 	}
 
-	void revertBack () //Revert Back to normal mode.
+	void revertBack (bool bodyToSoul) //Revert Back to normal mode.
 	{
 		Vector3 revertBackOffset = new Vector3 (0, .5f, 0); 
-		player.transform.position = transform.position + revertBackOffset;
+		
+		if(bodyToSoul)
+			player.transform.position = transform.position + revertBackOffset;
+		else
+			transform.position = player.transform.position + revertBackOffset;
+			
 		Time.timeScale = 1;
 		Time.fixedDeltaTime = .02f;
 		playerScript.soulMode = false;

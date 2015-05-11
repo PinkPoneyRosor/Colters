@@ -21,14 +21,14 @@ public class Collectible_Rock : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (maxOutRockScale)
+		/*if (maxOutRockScale)
 		{
 			foreach (GameObject rock in rockThrowScript.allSelectedRocks)
 			{
 				rock.SendMessage ("InstantGrow");
 			}
 			Destroy (this.gameObject);
-		}
+		}*/
 	}
 	
 	void OnTriggerEnter (Collider hit)

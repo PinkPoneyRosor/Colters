@@ -101,17 +101,6 @@ public class NewThrowableRock : MonoBehaviour {
 			}
 			#endregion
 			
-			#region set Number
-			if (this.gameObject == rockThrowScript.firstSelected)
-				selectionNumber = 1;
-			else if (this.gameObject == rockThrowScript.secondSelected)
-				selectionNumber = 2;
-			else if (this.gameObject == rockThrowScript.thirdSelected)
-				selectionNumber = 3;
-			else if (this.gameObject == rockThrowScript.fourthSelected)
-				selectionNumber = 4;
-			#endregion
-			
 			if(inTheAir)
 			{
 				if(!isGrowing)

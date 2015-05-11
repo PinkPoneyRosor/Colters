@@ -49,7 +49,7 @@ public class BasicEnemy : MonoBehaviour {
 	void Start () 
 	{
 		player = GameObject.FindGameObjectWithTag ("Player");
-		sightSphere = transform.Find("Sight") as Transform;
+		sightSphere = transform.Find ("Sight") as Transform;
 
 		agent = GetComponent<NavMeshAgent>();
 		navMeshAgent = GetComponent<NavMeshAgent>();
