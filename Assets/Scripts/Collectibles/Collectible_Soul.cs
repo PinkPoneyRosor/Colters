@@ -9,7 +9,7 @@ public class Collectible_Soul : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		mainCanvas = GameObject.Find ("Canvas");
+		mainCanvas = GameObject.Find ("GameHUD");
 		GUIScript = mainCanvas.GetComponent <GUImainBehaviour>();
 	}
 	

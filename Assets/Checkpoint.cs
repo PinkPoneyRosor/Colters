@@ -17,7 +17,8 @@ public class Checkpoint : MonoBehaviour {
 	{
 		if (hit.CompareTag ("Player") || hit.CompareTag ("PlayerSoul"))
 		{
-			hit.SendMessage ("FlashCheckPointPosition");
+			hit.SendMessage ("FlashCheckPointPosition", SendMessageOptions.DontRequireReceiver);
+			hit.SendMessage ("CheckPointActivated", SendMessageOptions.DontRequireReceiver);
 		}
 	}
 }

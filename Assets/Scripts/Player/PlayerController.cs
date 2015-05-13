@@ -21,6 +21,8 @@ public class PlayerController : CommonControls {
 
 	[SerializeField]
 	private float maxSlopeAngleToJump = 35;
+	
+	private Vector3 startPosition;
 
 
 	// Use this for initialization
@@ -29,6 +31,8 @@ public class PlayerController : CommonControls {
 		base.Start ();
 		maxSpeed = setMaximumSpeed;
 		maxJumpSlopeAngle = maxSlopeAngleToJump;
+		
+		startPosition = transform.position;
 		
 		currentHealth = maxHealth;
 	}
@@ -81,7 +85,11 @@ public class PlayerController : CommonControls {
 	
 	public void Die ()
 	{
-		transform.position = lastCheckpointPosition;
+		if (checkPointOn)
+			transform.position = lastCheckpointPosition + Vector3.up; //ayo !
+		else
+			transform.position = startPosition + Vector3.up * 1.5f;
+			
 		currentHealth = maxHealth;
 	}
 	

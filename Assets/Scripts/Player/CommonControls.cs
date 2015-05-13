@@ -45,6 +45,8 @@ public class CommonControls : MonoBehaviour {
 	public Vector3 activeGlobalPlatformPoint;
 	[HideInInspector]
 	public Vector3 lastPlatformVelocity;
+	[HideInInspector]
+	public bool checkPointOn = false;
 	
 	[HideInInspector]
 	public Vector3 lastCheckpointPosition;
@@ -234,5 +236,10 @@ public class CommonControls : MonoBehaviour {
 	public void FlashCheckPointPosition ()
 	{
 		lastCheckpointPosition = transform.position;
+	}
+	
+	public void CheckPointActivated ()
+	{
+		checkPointOn = true;
 	}
 }
