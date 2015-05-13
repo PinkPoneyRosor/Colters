@@ -1931,7 +1931,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100136}
   m_LocalRotation: {x: 0, y: -.968286932, z: 0, w: .249841064}
-  m_LocalPosition: {x: 63.25, y: 2.28999996, z: -382.98999}
+  m_LocalPosition: {x: 33.0400009, y: 9.89000034, z: -409.700012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -1991,6 +1991,7 @@ MonoBehaviour:
   activeLocalPlatformPoint: {x: 0, y: 0, z: 0}
   activeGlobalPlatformPoint: {x: 0, y: 0, z: 0}
   lastPlatformVelocity: {x: 0, y: 0, z: 0}
+  checkPointOn: 0
   lastCheckpointPosition: {x: 0, y: 0, z: 0}
   maxSpeed: 8
   gravity: 20
@@ -2027,13 +2028,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d16511111369a428b628bf0556ebe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allSelectedRocks:
+  allLaunchedRocks:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   RockPrefab: {fileID: 100002, guid: 44ac67430c7d5124b9e038b1290bb882, type: 2}
   ExplosivePrefab: {fileID: 100000, guid: ce25e84c9ae676c47867fda06c4914c0, type: 2}
+  energyPerRockLaunched: .300000012
   RockLayer:
     serializedVersion: 2
     m_Bits: 65536

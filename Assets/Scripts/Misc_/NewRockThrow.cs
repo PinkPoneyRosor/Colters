@@ -10,6 +10,8 @@ public class NewRockThrow : MonoBehaviour {
 	public GameObject RockPrefab;
 	public GameObject ExplosivePrefab;
 	
+	public float energyPerRockLaunched = 0.1f;
+	
 	private int launchCount = 0;
 
 	Transform mainCamera;
@@ -35,17 +37,25 @@ public class NewRockThrow : MonoBehaviour {
 	#endregion
 	
 	private bool loopCrush = false;
+	private GameObject HudObject;
+	private GUImainBehaviour HudScript;
 	
 	// Use this for initialization
 	void Start () 
 	{
 		mainCamera = Camera.main.transform;
 		playerScript = this.GetComponent <PlayerController>();
+		
+		HudObject = GameObject.Find ("GameHUD");
+		HudScript = HudObject.GetComponent <GUImainBehaviour>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		if (HudScript.rockBarSlide.value <= 0)
+			canThrow = false;
+	
 		if(canThrow)
 		{
 			if (Input.GetAxisRaw("RockThrow") != 0 || Input.GetButton("Action"))
@@ -79,6 +89,8 @@ public class NewRockThrow : MonoBehaviour {
 		currentThrowedRockScript.beingThrowned = true;
 		
 		launchCount ++;
+		
+		HudScript.rockBarSlide.value -= energyPerRockLaunched;
 		
 		if(launchCount > 4)
 		{
@@ -144,6 +156,8 @@ public class NewRockThrow : MonoBehaviour {
 		}
 		
 		launchCount ++;
+		
+		HudScript.rockBarSlide.value -= energyPerRockLaunched;
 		
 		if(launchCount > 4)
 		{

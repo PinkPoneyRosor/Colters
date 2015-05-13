@@ -8,6 +8,7 @@ public class GUImainBehaviour : MonoBehaviour {
 
 	GameObject soulBar;
 	GameObject lifeBarCircular;
+	GameObject rockBar;
 	
 	GameObject player;
 
@@ -15,6 +16,8 @@ public class GUImainBehaviour : MonoBehaviour {
 	
 	[HideInInspector]
 	public Slider soulBarSlide;
+	[HideInInspector]
+	public Slider rockBarSlide;
 	
 	Image lifeBarImage;
 
@@ -32,12 +35,14 @@ public class GUImainBehaviour : MonoBehaviour {
 		soulBar = GameObject.Find ("SoulBar");
 		lifeBarCircular = GameObject.Find ("RadialLife");
 		player = GameObject.Find ("Player");
+		rockBar = GameObject.Find ("RockBar");
 
 		soulBarSlide = soulBar.GetComponent<Slider> ();
 		lifeBarImage = lifeBarCircular.GetComponent <Image> ();
 		playerScript = player.GetComponent<PlayerController> ();
 		
 		soulStartValue = soulBarSlide.value;
+		rockBarSlide = rockBar.GetComponent <Slider> ();
 	}
 	
 	// Update is called once per frame
@@ -64,6 +69,12 @@ public class GUImainBehaviour : MonoBehaviour {
 		{
 			player.SendMessage ("Die");
 		}
+		#endregion
+		
+		#region RockBar
+		if (rockBarSlide.value < 1)
+			rockBarSlide.value += 0.1f * Time.deltaTime;
+			
 		#endregion
 	}
 
