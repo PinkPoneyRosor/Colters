@@ -139,6 +139,7 @@ public class NewRockThrow : MonoBehaviour {
 		    && HitObject.transform.CompareTag ("Enemy") 
 		    && HitObject.transform.GetComponent <BasicEnemy> ().canGetHit)
 		{ 
+			Debug.Log ("THROW THAT FUCKING ROCK TOWARD AN ENNEMY");
 		  //If what we aimed at is an enemy and that it's not knocked out, let's do a homing attack
 			currentThrowedRockScript.aimHoming = HitObject.transform;
 			currentThrowedRockScript.homingAttackBool = true;
@@ -151,6 +152,7 @@ public class NewRockThrow : MonoBehaviour {
 			
 			//This line is just to make absolutely sure there is no more constraints so that we can throw the rock in a straight line.
 			currentThrowedRockScript.rigidbody.constraints = RigidbodyConstraints.None;
+			
 			
 			thrownRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
 		}
@@ -180,7 +182,7 @@ public class NewRockThrow : MonoBehaviour {
 			allLaunchedRocks[3] = thrownRock;
 		}
 		
-		StartCoroutine("CoolDown");
+		StartCoroutine ("CoolDown");
 	}
 
 	IEnumerator CoolDown() 

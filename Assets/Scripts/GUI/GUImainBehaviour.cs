@@ -74,7 +74,6 @@ public class GUImainBehaviour : MonoBehaviour {
 		#region RockBar
 		if (rockBarSlide.value < 1)
 			rockBarSlide.value += 0.1f * Time.deltaTime;
-			
 		#endregion
 	}
 

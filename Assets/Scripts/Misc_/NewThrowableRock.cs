@@ -51,73 +51,6 @@ public class NewThrowableRock : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(isGrowing)
-		{
-			isSelected = false;
-			
-			if(growInit)
-			{
-				this.transform.localScale = Vector3.zero;
-				growInit = false;
-			}
-			
-			if (growingMyself)
-				transform.localScale = Vector3.MoveTowards (transform.localScale, normalScale/5, growingRate * Time.deltaTime);
-			else
-				transform.localScale = Vector3.MoveTowards (transform.localScale, normalScale/5, 1.5f * Time.deltaTime);
-			
-			if ( Vector3.SqrMagnitude (this.transform.localScale - normalScale / 5) <= 0f)
-			{
-				isGrowing = false;
-				isSelected = true;
-			}
-		}
-		
-		
-		if(isSelected || isGrowing)
-		{
-			rigidbody.useGravity = false;
-			collider.isTrigger = true;
-			rigidbody.isKinematic = true;
-			
-			#region Get up
-			if (mustGetUp && !isGrowing)
-			{
-				transform.position = Vector3.Lerp (transform.position, transform.position + Vector3.up * 4, Time.deltaTime * 1.5f);
-				RaycastHit hit;
-				if(Physics.Raycast (transform.position, -Vector3.up, out hit, Mathf.Infinity))
-				{
-					if(hit.distance >= 3)
-					{
-						mustGetUp = false;
-						inTheAir = true;
-					}
-				}
-			}
-			else
-			{
-				mustGetUp = false;
-				inTheAir = true;
-			}
-			#endregion
-			
-			if(inTheAir)
-			{
-				if(!isGrowing)
-					transform.localScale = Vector3.Lerp (transform.localScale, normalScale/5, changePosSpeed * Time.deltaTime);
-				
-				transform.Rotate (Vector3.right * Time.deltaTime * 100);
-				rigidbody.constraints = RigidbodyConstraints.FreezePosition;
-
-				setSelectionPos();
-			}
-		}
-		else if (!isGrowing)
-		{
-			transform.localScale = Vector3.Lerp (transform.localScale, normalScale, changePosSpeed * Time.deltaTime);
-			mustGetUp = true;
-		}
-		
 		#region track distance travelled
 		if (Vector3.SqrMagnitude(transform.position - posAtLaunch) > maxTravelDistance * maxTravelDistance && !isSelected && isThrowed)
 		{
@@ -134,40 +67,23 @@ public class NewThrowableRock : MonoBehaviour {
 			homingAttackBool = false;
 		}
 		#endregion
-	}
-	
-	void setSelectionPos ()
-	{
-		switch (selectionNumber)
-		{
-		case 1:
-			Vector3 firstOffset = rockThrowScript.firstOffset;
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + firstOffset, changePosSpeed * Time.deltaTime);
-			break;
-		case 2:
-			Vector3 secondOffset = rockThrowScript.secondOffset;
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + secondOffset, changePosSpeed * Time.deltaTime);
-			break;
-		case 3:
-			Vector3 thirdOffset = rockThrowScript.thirdOffset;
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + thirdOffset, changePosSpeed * Time.deltaTime);
-			break;
-		case 4:
-			Vector3 fourthOffset = rockThrowScript.fourthOffset;
-			transform.position = Vector3.Lerp (transform.position, player.transform.position + fourthOffset, changePosSpeed * Time.deltaTime);
-			break;
-		}
+		
+		if (homingAttackBool)
+			homingAttack();
 	}
 	
 	//With this method, we make sure that if the player throwed the rock toward an enemy, he can be almost sure he will hit it.
 	void homingAttack ()
 	{
+		Debug.Log ("Homin' attack");
 		if (aimHoming.GetComponent <BasicEnemy> ().canGetHit) 
 		{
+			Debug.Log ("Homin' attack, bitchiz");
+			
+			
+			
 			Vector3 throwDir = aimHoming.position - this.transform.position;
 			throwDir.Normalize ();
-			
-			isSelected = false;
 			
 			this.rigidbody.constraints = RigidbodyConstraints.None;
 			

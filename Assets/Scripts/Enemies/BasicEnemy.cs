@@ -64,7 +64,7 @@ public class BasicEnemy : MonoBehaviour {
 	{
 		if (canGetHit) 
 		{ //If the ennemy can't get hit, he can't move either.
-
+			Debug.Log ("I can get hit");
 			if (!navMeshAgent.enabled) { //Since the enemy can get hit, he can also moves, so we make sure the navAgent is activated.
 					navMeshAgent.enabled = true;
 			}
