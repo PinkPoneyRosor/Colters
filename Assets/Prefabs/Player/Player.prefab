@@ -1035,6 +1035,7 @@ GameObject:
   - 81: {fileID: 8100000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400002}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -1930,7 +1931,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100136}
   m_LocalRotation: {x: 0, y: -.968286932, z: 0, w: .249841064}
-  m_LocalPosition: {x: -77.3199997, y: 5.03999996, z: -84.3799973}
+  m_LocalPosition: {x: 33.0400009, y: 9.89000034, z: -409.700012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -1986,14 +1987,36 @@ MonoBehaviour:
   setAimMode: 1
   canJump: 1
   airControlMultiplier: 50
+  activePlatform: {fileID: 0}
+  activeLocalPlatformPoint: {x: 0, y: 0, z: 0}
+  activeGlobalPlatformPoint: {x: 0, y: 0, z: 0}
+  lastPlatformVelocity: {x: 0, y: 0, z: 0}
+  checkPointOn: 0
+  lastCheckpointPosition: {x: 0, y: 0, z: 0}
   maxSpeed: 8
   gravity: 20
-  characterAngleOkForAim: 0
   heightOfJump: 9
   setMaximumSpeed: 5
   Soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
+  maxHealth: 10
+  currentHealth: 0
   soulMode: 0
   maxSlopeAngleToJump: 35
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fed1b7bc8b661478f881125287660c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  skinWidth: .100000001
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2005,16 +2028,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d16511111369a428b628bf0556ebe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSelected: {fileID: 0}
-  secondSelected: {fileID: 0}
-  thirdSelected: {fileID: 0}
-  fourthSelected: {fileID: 0}
-  allSelectedRocks:
+  allLaunchedRocks:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   RockPrefab: {fileID: 100002, guid: 44ac67430c7d5124b9e038b1290bb882, type: 2}
+  ExplosivePrefab: {fileID: 100000, guid: ce25e84c9ae676c47867fda06c4914c0, type: 2}
+  energyPerRockLaunched: .300000012
   RockLayer:
     serializedVersion: 2
     m_Bits: 65536

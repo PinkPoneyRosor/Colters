@@ -37,13 +37,26 @@ public class CommonControls : MonoBehaviour {
 	public float airControlMultiplier = 0;
 	[HideInInspector]
 	public static float maxJumpSlopeAngle = 35;
+	[HideInInspector]
+	public Transform activePlatform;
+	[HideInInspector]
+	public Vector3 activeLocalPlatformPoint;
+	[HideInInspector]
+	public Vector3 activeGlobalPlatformPoint;
+	[HideInInspector]
+	public Vector3 lastPlatformVelocity;
+	[HideInInspector]
+	public bool checkPointOn = false;
+	
+	[HideInInspector]
+	public Vector3 lastCheckpointPosition;
 	
 	[HeaderAttribute("Moves parameters")]
 	public float maxSpeed = 0;
 	public float gravity = 20;
 	
 	[HideInInspector]
-	public bool characterAngleOkForAim = false;
+	static public bool characterAngleOkForAim = false;
 
 	// Use this for initialization
 	protected virtual void Start () 
@@ -71,6 +84,7 @@ public class CommonControls : MonoBehaviour {
 		#endregion
 		
 		Quaternion target = Quaternion.Euler (0, floatDir, 0);
+		
 		if(controller.isGrounded)
 		{
 			tempMoveDir = target * Vector3.forward * speed;
@@ -80,7 +94,7 @@ public class CommonControls : MonoBehaviour {
 		{
 			float stickMagnitude = Input.GetAxis ("Vertical") + Input.GetAxis ("Horizontal");
 			
-			if( stickMagnitude != 0)
+			if( stickMagnitude != 0 )
 			{
 				tempMoveDir += direction * airControlMultiplier * localDeltaTime;
 				tempMoveDir = Vector3.ClampMagnitude(tempMoveDir, maxSpeed);
@@ -88,8 +102,6 @@ public class CommonControls : MonoBehaviour {
 			else
 				tempMoveDir = Vector3.Lerp (tempMoveDir, Vector3.zero, 2 * localDeltaTime);
 		}
-		
-		//Debug.Log ("moveDirection = "+moveDirection);
 		
 		moveDirection.x = tempMoveDir.x;
 		moveDirection.z = tempMoveDir.z;
@@ -116,17 +128,48 @@ public class CommonControls : MonoBehaviour {
 		
 		if (Input.GetButtonDown ("Jump") && controller.isGrounded && canJump)
 			moveDirection.y = heightOfJump;
+			
+		faceDirection = moveDirection;
+		faceDirection.y = 0;
 		
 		#region apply movements & gravity
 		if(!controller.isGrounded)
 			moveDirection.y -= gravity * localDeltaTime;
+			
+		//Moving platform support
+		if (activePlatform != null)
+		{
+			Vector3 newGlobalPlatformPoint = activePlatform.TransformPoint(activeLocalPlatformPoint);
+			Vector3 moveDistance = (newGlobalPlatformPoint - activeGlobalPlatformPoint);
+			
+			if (moveDistance != Vector3.zero)
+				controller.Move ( moveDistance );
+				
+			lastPlatformVelocity = (newGlobalPlatformPoint - activeGlobalPlatformPoint) / Time.deltaTime;
+		}
+		else 
+			lastPlatformVelocity = Vector3.zero;
+		
+		activePlatform = null;
 		
 		controller.Move (moveDirection * localDeltaTime);
 		
-		faceDirection = transform.position + moveDirection;
-		faceDirection.y = transform.position.y;
+		Debug.DrawRay (transform.position, moveDirection, Color.red); 
+		Debug.DrawRay (transform.position, faceDirection, Color.blue);
+
+		//Make Phalene face the direction in which she's going.
+		if( Input.GetAxisRaw ("Vertical") + Input.GetAxisRaw ("Horizontal") != 0)
+		{
+			Quaternion rotation = Quaternion.LookRotation (faceDirection);
+			transform.rotation = Quaternion.Slerp (transform.rotation, rotation, localDeltaTime * 5f);
+		}
 		
-		transform.LookAt (faceDirection);
+		// Moving platforms support
+		if (activePlatform != null) 
+		{
+			activeGlobalPlatformPoint = transform.position;
+			activeLocalPlatformPoint = activePlatform.InverseTransformPoint (transform.position);
+		}
 		#endregion
 		#endregion
 	}
@@ -188,5 +231,15 @@ public class CommonControls : MonoBehaviour {
 			
 			controller.Move (moveDirection * speedOut * localDeltaTime);
 		}
+	}
+	
+	public void FlashCheckPointPosition ()
+	{
+		lastCheckpointPosition = transform.position;
+	}
+	
+	public void CheckPointActivated ()
+	{
+		checkPointOn = true;
 	}
 }

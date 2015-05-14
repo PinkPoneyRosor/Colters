@@ -21,6 +21,8 @@ public class PlayerController : CommonControls {
 
 	[SerializeField]
 	private float maxSlopeAngleToJump = 35;
+	
+	private Vector3 startPosition;
 
 
 	// Use this for initialization
@@ -29,6 +31,8 @@ public class PlayerController : CommonControls {
 		base.Start ();
 		maxSpeed = setMaximumSpeed;
 		maxJumpSlopeAngle = maxSlopeAngleToJump;
+		
+		startPosition = transform.position;
 		
 		currentHealth = maxHealth;
 	}
@@ -69,5 +73,31 @@ public class PlayerController : CommonControls {
 	void GetHurt (float damageAmount)
 	{
 		currentHealth -= damageAmount;
+	}
+	
+	void OnControllerColliderHit (ControllerColliderHit hit) 
+	{ 
+		// Make sure we are really standing on a straight platform 
+		// Not on the underside of one and not falling down from it either! 
+		if (hit.moveDirection.y < -0.9 && hit.normal.y > 0.5) 
+			activePlatform = hit.collider.transform;
+	}
+	
+	public void Die ()
+	{
+		if (checkPointOn)
+			transform.position = lastCheckpointPosition + Vector3.up; //ayo !
+		else
+			transform.position = startPosition + Vector3.up * 1.5f;
+			
+		currentHealth = maxHealth;
+	}
+	
+	void CrushImpulse ()
+	{
+		if(!controller.isGrounded)
+			moveDirection.y = heightOfJump;
+		else
+			moveDirection.y = heightOfJump/2;
 	}
 }

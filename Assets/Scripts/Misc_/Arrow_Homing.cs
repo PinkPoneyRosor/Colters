@@ -15,6 +15,8 @@ public class Arrow_Homing : MonoBehaviour {
 	private Quaternion rotationNeeded;
 	private float distBetweenMeAndTarget;
 	private float myDist = 0;
+	
+	private bool alreadyHit = false;
 
 	[HideInInspector]
 	public GameObject masterTurret;
@@ -71,22 +73,28 @@ public class Arrow_Homing : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter (Collider hit)
-	{						
-		if (hit.CompareTag ("Player"))
-		{
-			hit.SendMessage("GetHurt", damage, SendMessageOptions.DontRequireReceiver);
-			hitPlayer = true;
-		}
-		
-		if(hit.gameObject != masterTurret)
-		{
-			hitSomething = true;
-			transform.SetParent (hit.transform, true);
-			StartCoroutine(Disappear());
-		}
-		else
-		{
-			hitSomething = false;
+	{
+		if(!alreadyHit)
+		{						
+			if (hit.CompareTag ("Player"))
+			{
+				hit.SendMessage("GetHurt", damage, SendMessageOptions.DontRequireReceiver);
+				hitPlayer = true;
+				alreadyHit = true;
+			}
+			
+			if(hit.gameObject != masterTurret)
+			{
+				hitSomething = true;
+				transform.SetParent (hit.transform, true);
+				alreadyHit = true;
+				StartCoroutine(Disappear());
+			}
+			else
+			{
+				hitSomething = false;
+				alreadyHit = false;
+			}
 		}
 	}
 	

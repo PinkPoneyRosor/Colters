@@ -27,7 +27,6 @@ public class FloatingRocksManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-	
 		timeSpent += Time.deltaTime;
 	
 		if(readyToGoNumber == FloatingRockNumber)

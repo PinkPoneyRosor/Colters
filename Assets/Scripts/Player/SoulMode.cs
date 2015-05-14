@@ -39,6 +39,7 @@ public class SoulMode : CommonControls {
 	// Update is called once per frame
 	void Update () 
 	{
+	
 		Time.timeScale = 0.1f;
 		Time.fixedDeltaTime = 0.1f * 0.02f; //Make sure the physics simulation is still fluid.
 		
@@ -63,7 +64,9 @@ public class SoulMode : CommonControls {
 
 		//Resetting back to body mode when pushing swith button or Soul Bar depleted.
 		if (Input.GetButtonDown ("SwitchMode") || soulBarSlide.value <= 0)
-			revertBack();
+			revertBack(true);
+		else if (Input.GetButtonDown ("SoulToBody"))
+			revertBack (false);
 
 		#region Controls according to situation
 		if ((Input.GetButtonDown ("AutoCam") || continueResetControls)) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
@@ -76,9 +79,15 @@ public class SoulMode : CommonControls {
 		#endregion
 	}
 
-	void revertBack () //Revert Back to normal mode.
+	void revertBack (bool bodyToSoul) //Revert Back to normal mode.
 	{
-		player.transform.position = transform.position;
+		Vector3 revertBackOffset = new Vector3 (0, .5f, 0); 
+		
+		if(bodyToSoul)
+			player.transform.position = transform.position + revertBackOffset;
+		else
+			transform.position = player.transform.position + revertBackOffset;
+			
 		Time.timeScale = 1;
 		Time.fixedDeltaTime = .02f;
 		playerScript.soulMode = false;
@@ -88,8 +97,11 @@ public class SoulMode : CommonControls {
 	
 	void OnControllerColliderHit (ControllerColliderHit hit)
 	{
-		Debug.Log ("Soul in collision with " + hit.gameObject.name);
-	
+		// Make sure we are really standing on a straight platform 
+		// Not on the underside of one and not falling down from it either! 
+		if (hit.moveDirection.y < -0.9 && hit.normal.y > 0.5) 
+			activePlatform = hit.collider.transform;
+		
 		if (hit.collider.CompareTag("ThrowableRock"))
 		{
 			NewThrowableRock hitScript = hit.transform.GetComponent <NewThrowableRock>();

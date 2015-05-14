@@ -9,6 +9,7 @@ public class Arrow_Normal : MonoBehaviour {
 	
 	private float myDist = 0;
 	private bool hitSomething = false;
+	private bool alreadyHit = false;
 	
 	[HideInInspector]
 	public GameObject masterTurret;
@@ -39,20 +40,26 @@ public class Arrow_Normal : MonoBehaviour {
 	
 	void OnTriggerEnter (Collider hit)
 	{	
-		if (hit.CompareTag ("Player"))
+		if(!alreadyHit)
 		{
-			hit.SendMessage("GetHurt", damage, SendMessageOptions.DontRequireReceiver);
-		}
-		
-		if(hit.gameObject != masterTurret)
-		{
-			hitSomething = true;
-			transform.SetParent (hit.transform, true);
-			StartCoroutine(Disappear());
-		}
-		else
-		{
-			hitSomething = false;
+			if (hit.CompareTag ("Player"))
+			{
+				hit.SendMessage("GetHurt", damage, SendMessageOptions.DontRequireReceiver);
+				alreadyHit = true;
+			}
+			
+			if(hit.gameObject != masterTurret)
+			{
+				hitSomething = true;
+				transform.SetParent (hit.transform, true);
+				alreadyHit = true;
+				StartCoroutine (Disappear()) ;
+			}
+			else
+			{
+				hitSomething = false;
+				alreadyHit = false;
+			}
 		}
 	}
 	
