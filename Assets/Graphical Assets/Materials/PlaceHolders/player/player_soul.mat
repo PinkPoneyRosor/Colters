@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: player_soul
-  m_Shader: {fileID: 10, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 31c37506cc751c74bb9c11a5c0b2f926, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -22,12 +22,23 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Bumpmap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Illum
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
+      data:
+        first:
+          name: _RimPower
+        second: 1
       data:
         first:
           name: _EmissionLM
@@ -37,3 +48,11 @@ Material:
         first:
           name: _Color
         second: {r: 0, g: .213793039, b: 1, a: 1}
+      data:
+        first:
+          name: _ColorTint
+        second: {r: 0, g: .503448486, b: 1, a: 1}
+      data:
+        first:
+          name: _RimColor
+        second: {r: 1, g: 1, b: 1, a: 1}

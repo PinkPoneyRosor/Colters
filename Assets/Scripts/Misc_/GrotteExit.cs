@@ -21,7 +21,7 @@ public class GrotteExit : MonoBehaviour {
 	{
 		if (c.gameObject.tag == "Player")
 		{
-			this.animation.Play("GrotteExit");
+			this.animation.Play("GrotteSortie");
 			Debug.Log("Play!");
 		}
 	}
