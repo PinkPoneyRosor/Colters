@@ -15,7 +15,7 @@ GameObject:
   - 75: {fileID: 7500000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
-  - 64: {fileID: 6400000}
+  - 65: {fileID: 6500000}
   m_Layer: 16
   m_Name: Explosive
   m_TagString: ThrowableRock
@@ -47,7 +47,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 51b94cccb60546f479a4547b960a598a, type: 2}
+  - {fileID: 2100000, guid: e5fc773fb3887384c95340a518e3f8da, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -77,19 +77,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &6400000
-MeshCollider:
+--- !u!65 &6500000
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Material: {fileID: 13400000, guid: 1d412b50214bd4a488e767b70ee0ec0e, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 1
-  m_Mesh: {fileID: 4300004, guid: 93c37bf59b390a9408f1f2e7db753b39, type: 3}
+  m_Size: {x: 54.624527, y: 49.5564003, z: 49.4408264}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!75 &7500000
 ConstantForce:
   m_ObjectHideFlags: 1
@@ -112,6 +111,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c0f00fd46c53a47bcdb2efed9317ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSelected: 0
+  isGrowing: 0
+  inTheAir: 0
+  selectionNumber: 0
+  normalScale: {x: .0199999996, y: .0199999996, z: .0199999996}
+  homingAttackBool: 0
+  aimHoming: {fileID: 0}
+  beingThrowned: 0
+  throwedRockNumber: 0
+  isThrowed: 0
+  throwForce: 2000
+  canExplode: 0
+  posAtLaunch: {x: 0, y: 0, z: 0}
+  maxTravelDistance: 15
+  DecelerationRate: 15
+  maxVelocityWhenDecelerating: 22
+  growingRate: .100000001
+  growingMyself: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 400000, guid: 8e02e06584f51ab42986fd44c73d976e, type: 2}
-  velocityNeededForExplosion: 10
+  velocityNeededForExplosion: 1
 --- !u!208 &20800000
 NavMeshObstacle:
   m_ObjectHideFlags: 1

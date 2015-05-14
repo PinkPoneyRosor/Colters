@@ -47,12 +47,10 @@ public class Floater : MonoBehaviour
 						left = Vector3.forward; */
 						
 					flowDirection = -Vector3.Cross(up, left);
-					Debug.Log ("Flow by slope");
 				}
 				else
 				{
 					flowDirection = hitWaterScript.streamDirection;
-					Debug.Log ("Forced flow");
 				}
 			}
 			
@@ -99,7 +97,6 @@ public class Floater : MonoBehaviour
 	{
 		if (hit.CompareTag("Water"))
 		{
-			Debug.Log ("Entered Water");
 			inWater = true;
 			hitWater = hit.gameObject;
 			hitWaterScript = hitWater.GetComponent <WaterVolume>();

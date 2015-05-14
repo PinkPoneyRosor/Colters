@@ -7,29 +7,42 @@ public class GUImainBehaviour : MonoBehaviour {
 	//External scripts, objects, files,...
 
 	GameObject soulBar;
-	GameObject lifeBar;
+	GameObject lifeBarCircular;
+	GameObject rockBar;
 	
 	GameObject player;
 
 	PlayerController playerScript;
-
-	Slider soulBarSlide;
-	Slider lifeBarSlide;
+	
+	[HideInInspector]
+	public Slider soulBarSlide;
+	[HideInInspector]
+	public Slider rockBarSlide;
+	
+	Image lifeBarImage;
 
 	float localDeltaTime;
 
 	public float SoulBarSpeedRate = .1f;
+	[HideInInspector]
+	public float soulStartValue;
+	[HideInInspector]
+	public float lifeStartValue;
 
 	// Use this for initialization
 	void Start () 
 	{
 		soulBar = GameObject.Find ("SoulBar");
-		lifeBar = GameObject.Find ("LifeBar");
+		lifeBarCircular = GameObject.Find ("RadialLife");
 		player = GameObject.Find ("Player");
+		rockBar = GameObject.Find ("RockBar");
 
 		soulBarSlide = soulBar.GetComponent<Slider> ();
-		lifeBarSlide = lifeBar.GetComponent<Slider> ();
+		lifeBarImage = lifeBarCircular.GetComponent <Image> ();
 		playerScript = player.GetComponent<PlayerController> ();
+		
+		soulStartValue = soulBarSlide.value;
+		rockBarSlide = rockBar.GetComponent <Slider> ();
 	}
 	
 	// Update is called once per frame
@@ -50,8 +63,17 @@ public class GUImainBehaviour : MonoBehaviour {
 		#endregion
 		
 		#region Life Bar
-		lifeBarSlide.maxValue = playerScript.maxHealth;
-		lifeBarSlide.value = playerScript.currentHealth;
+		lifeBarImage.fillAmount = Mathf.MoveTowards (lifeBarImage.fillAmount, playerScript.currentHealth / playerScript.maxHealth, Time.deltaTime);
+		
+		if(playerScript.currentHealth <= 0)
+		{
+			player.SendMessage ("Die");
+		}
+		#endregion
+		
+		#region RockBar
+		if (rockBarSlide.value < 1)
+			rockBarSlide.value += 0.1f * Time.deltaTime;
 		#endregion
 	}
 
