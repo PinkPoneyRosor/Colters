@@ -1,7 +1,7 @@
 // Shader created with Shader Forge Beta 0.30 
 // Shader Forge (c) Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:0.30;sub:START;pass:START;ps:flbk:,lico:1,lgpr:1,nrmq:1,limd:1,uamb:True,mssp:True,lmpd:False,lprd:False,enco:False,frtr:True,vitr:True,dbil:True,rmgx:True,hqsc:True,hqlp:False,blpr:1,bsrc:3,bdst:7,culm:2,dpts:2,wrdp:False,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,ofsf:0,ofsu:0,f2p0:False;n:type:ShaderForge.SFN_Final,id:1,x:31951,y:32660|diff-2-RGB,spec-718-RGB,alpha-2-A;n:type:ShaderForge.SFN_Tex2d,id:2,x:32321,y:32561,ptlb:diff,ptin:_diff,tex:27eb2f8201138ae46904174340b18d6b,ntxv:0,isnm:False;n:type:ShaderForge.SFN_LightColor,id:718,x:32334,y:32738;proporder:2;pass:END;sub:END;*/
+/*SF_DATA;ver:0.30;sub:START;pass:START;ps:flbk:,lico:1,lgpr:1,nrmq:1,limd:1,uamb:True,mssp:True,lmpd:False,lprd:False,enco:False,frtr:True,vitr:True,dbil:True,rmgx:True,hqsc:True,hqlp:False,blpr:1,bsrc:3,bdst:7,culm:2,dpts:2,wrdp:False,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,ofsf:0,ofsu:0,f2p0:False;n:type:ShaderForge.SFN_Final,id:1,x:31951,y:32660|diff-2-RGB,spec-718-RGB,alpha-2-A;n:type:ShaderForge.SFN_Tex2d,id:2,x:32321,y:32561,ptlb:diff,ptin:_diff,ntxv:0,isnm:False;n:type:ShaderForge.SFN_LightColor,id:718,x:32419,y:32740;proporder:2;pass:END;sub:END;*/
 
 Shader "Custom/Filaments" {
     Properties {
@@ -79,8 +79,8 @@ Shader "Custom/Filaments" {
                 float3 specular = (floor(attenuation) * _LightColor0.xyz) * pow(max(0,dot(halfDirection,normalDirection)),gloss) * specularColor;
                 float3 finalColor = 0;
                 float3 diffuseLight = diffuse;
-                float2 node_722 = i.uv0;
-                float4 node_2 = tex2D(_diff,TRANSFORM_TEX(node_722.rg, _diff));
+                float2 node_737 = i.uv0;
+                float4 node_2 = tex2D(_diff,TRANSFORM_TEX(node_737.rg, _diff));
                 finalColor += diffuseLight * node_2.rgb;
                 finalColor += specular;
 /// Final Color:
@@ -156,8 +156,8 @@ Shader "Custom/Filaments" {
                 float3 specular = attenColor * pow(max(0,dot(halfDirection,normalDirection)),gloss) * specularColor;
                 float3 finalColor = 0;
                 float3 diffuseLight = diffuse;
-                float2 node_723 = i.uv0;
-                float4 node_2 = tex2D(_diff,TRANSFORM_TEX(node_723.rg, _diff));
+                float2 node_738 = i.uv0;
+                float4 node_2 = tex2D(_diff,TRANSFORM_TEX(node_738.rg, _diff));
                 finalColor += diffuseLight * node_2.rgb;
                 finalColor += specular;
 /// Final Color:
