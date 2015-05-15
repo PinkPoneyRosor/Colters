@@ -4,6 +4,10 @@ private var delayTime:float=0;
 
 function Update () 
 {
-	delayTime+=Time.deltaTime;
-	if(delayTime>delay) activateThis.SetActiveRecursively(true);
+
+delayTime+=Time.deltaTime;
+
+if(delayTime>delay)
+	activateThis.SetActiveRecursively(true);
+
 }

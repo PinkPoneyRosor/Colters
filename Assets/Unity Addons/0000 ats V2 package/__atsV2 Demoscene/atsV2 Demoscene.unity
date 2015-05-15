@@ -4304,7 +4304,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f6daa8f139d406ca78cc59b1a5cf20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VertexLitTranslucencyColor: {r: .730000019, g: .850000024, b: .400000006, a: 1}
+  VertexLitTranslucencyColor:
+    r: .730000019
+    g: .850000024
+    b: .400000006
+    a: 1
   VertexLitWaveScale: 4
   VertexLitDetailDistance: 60
 --- !u!1001 &299

@@ -31,7 +31,7 @@ Material:
       data:
         first:
           name: _RimPower
-        second: 1
+        second: 5.14285707
     m_Colors:
       data:
         first:
@@ -44,4 +44,4 @@ Material:
       data:
         first:
           name: _RimColor
-        second: {r: .0294117928, g: .678702116, b: 1, a: 1}
+        second: {r: .79411763, g: 1, b: .821095347, a: 1}

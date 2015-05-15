@@ -8,8 +8,8 @@ QualitySettings:
   m_QualitySettings:
   - serializedVersion: 2
     name: Trobo lol
-    pixelLightCount: 15
-    shadows: 0
+    pixelLightCount: 5
+    shadows: 2
     shadowResolution: 3
     shadowProjection: 1
     shadowCascades: 4
@@ -17,8 +17,8 @@ QualitySettings:
     blendWeights: 4
     textureQuality: 0
     anisotropicTextures: 2
-    antiAliasing: 0
-    softParticles: 1
+    antiAliasing: 8
+    softParticles: 0
     softVegetation: 1
     vSyncCount: 1
     lodBias: 1
