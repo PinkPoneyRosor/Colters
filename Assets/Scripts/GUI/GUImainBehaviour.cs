@@ -77,4 +77,9 @@ public class GUImainBehaviour : MonoBehaviour {
 		#endregion
 	}
 
+	void MaxRockBar ()
+	{
+		rockBarSlide.value = 1;
+	}
+
 }

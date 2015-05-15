@@ -5,14 +5,9 @@ public class NewThrowableRock : MonoBehaviour {
 
 	public bool isSelected = false;
 	public bool isGrowing = false;
-	bool mustGetUp = true;
 	public bool inTheAir = false;
-	NewRockThrow rockThrowScript;
-	GameObject player;
 	[HideInInspector]
 	public int selectionNumber = 0;
-	
-	private float changePosSpeed = 10;
 	
 	public Vector3 normalScale;
 	
@@ -36,16 +31,12 @@ public class NewThrowableRock : MonoBehaviour {
 	public float maxVelocityWhenDecelerating = 22;
 	public float growingRate = .5f;
 	
-	private bool growInit = true;
-	
 	[HideInInspector]
 	public bool growingMyself = true;
 	
 	// Use this for initialization
 	void Start () 
 	{
-		player = GameObject.FindGameObjectWithTag ("Player");
-		rockThrowScript = player.GetComponent <NewRockThrow>();
 	}
 	
 	// Update is called once per frame
