@@ -28,6 +28,7 @@ public class BasicEnemy : MonoBehaviour {
 	[HideInInspector]
 	public bool canGetHit = true;
 	bool justJumped = false;
+	bool canHit = true;
 	#endregion
 
 	#region Enemy's components
@@ -62,6 +63,8 @@ public class BasicEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		Debug.Log(CurrentMode);
+	
 		if (canGetHit) 
 		{ //If the ennemy can't get hit, he can't move either.
 			Debug.Log ("I can get hit");
@@ -80,7 +83,7 @@ public class BasicEnemy : MonoBehaviour {
 
 			if (randomizeTimer > 1) 
 			{
-					newEnGardePosition = player.transform.position + (Random.insideUnitSphere * Random.Range (5, 8));
+					newEnGardePosition = player.transform.position + (Random.insideUnitSphere * Random.Range (4, 7));
 			}
 			#endregion
 
@@ -88,6 +91,7 @@ public class BasicEnemy : MonoBehaviour {
 			if (sightScript.playerRecentlySeen) //If the player's recently been in sight, let's chase him ! Otherwise, let's just continue to wander around.
 			{
 					CurrentMode = EnemyMode.Chasing;
+					agent.updateRotation = false;
 			}
 			else
 			{
@@ -96,19 +100,24 @@ public class BasicEnemy : MonoBehaviour {
 			#endregion
 
 			#region setting target position according to current behaviour
-			if (CurrentMode == EnemyMode.Chasing) //Movement when the player is in sight.
+			if (CurrentMode == EnemyMode.Chasing) //Movement when the player is in sight, or was in sight recently.
 			{
 				if (Vector3.Distance (this.transform.position, player.transform.position) > 5)
 						agent.SetDestination (sightScript.lastKnownPosition);
-				else
+				else if (!canHit)
 						agent.SetDestination (newEnGardePosition);
-
-				this.transform.LookAt (player.transform);
+						
+				Debug.Log (canHit);
+						
+				Quaternion selfRotation = Quaternion.LookRotation (player.transform.position - transform.position);
+				selfRotation.y = transform.rotation.y;	
+				
+				transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, Time.deltaTime * 15);
 			}
 
 			if (CurrentMode == EnemyMode.Wandering) //Movement when the player's not in sight.
 			{
-					agent.SetDestination (new Vector3 (newPosition.x, transform.position.y, newPosition.z));
+				agent.SetDestination (new Vector3 (newPosition.x, transform.position.y, newPosition.z));
 			}
 			#endregion
 
@@ -124,6 +133,8 @@ public class BasicEnemy : MonoBehaviour {
 
 		if(!navMeshAgent.enabled)
 			controller.Move(moveDirection * Time.deltaTime);
+			
+		Hit ();
 	}
 
 	void LateUpdate()
@@ -135,6 +146,26 @@ public class BasicEnemy : MonoBehaviour {
 			moveDirection = Vector3.zero;
 			justJumped = false;
 		}
+	}
+	
+	void Hit ()
+	{
+		if (CurrentMode == EnemyMode.Chasing && Vector3.Distance (this.transform.position, player.transform.position) < 2 && canHit)
+		{
+			player.SendMessage ("GetHurt", 1 , SendMessageOptions.RequireReceiver);
+			StartCoroutine (HitCoolDown());
+		}
+		else if (CurrentMode == EnemyMode.Chasing && canHit) //If the enemy is not near enough to the player...
+		{
+			agent.SetDestination (player.transform.position + (Random.insideUnitSphere * Random.Range (1,2)));
+		}
+	}
+	
+	IEnumerator HitCoolDown ()
+	{
+		canHit = false;
+		yield return new WaitForSeconds(3);
+		canHit = true;
 	}
 
 	void Jump (bool isPushed) //Jump func. 'Nuff said.
@@ -179,12 +210,6 @@ public class BasicEnemy : MonoBehaviour {
 	{
 		Destroy (this.gameObject);
 	}
-
-	void OnParticleCollision(GameObject other)
-	{
-		if (other.CompareTag ("EarthQuake"))
-			gotHit (1);
-		}
 
 	IEnumerator temporaryIntangible() //Right after being hit, the enemy is stunned and Intangible. Consider this as a small recovery time for the enemy.
 	{

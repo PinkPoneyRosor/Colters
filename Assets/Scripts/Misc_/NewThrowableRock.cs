@@ -66,13 +66,8 @@ public class NewThrowableRock : MonoBehaviour {
 	//With this method, we make sure that if the player throwed the rock toward an enemy, he can be almost sure he will hit it.
 	void homingAttack ()
 	{
-		Debug.Log ("Homin' attack");
 		if (aimHoming.GetComponent <BasicEnemy> ().canGetHit) 
-		{
-			Debug.Log ("Homin' attack, bitchiz");
-			
-			
-			
+		{	
 			Vector3 throwDir = aimHoming.position - this.transform.position;
 			throwDir.Normalize ();
 			

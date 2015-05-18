@@ -98,19 +98,19 @@ public class NewRockThrow : MonoBehaviour {
 		}
 		else if (launchCount == 1)
 		{
-			allLaunchedRocks[1] = thrownRock;
+			allLaunchedRocks[0] = thrownRock;
 		}
 		else if (launchCount == 2)
 		{
-			allLaunchedRocks[2] = thrownRock;
+			allLaunchedRocks[1] = thrownRock;
 		}
 		else if (launchCount == 3)
 		{
-			allLaunchedRocks[3] = thrownRock;
+			allLaunchedRocks[2] = thrownRock;
 		}
 		else if (launchCount == 4)
 		{
-			allLaunchedRocks[4] = thrownRock;
+			allLaunchedRocks[3] = thrownRock;
 		}
 		
 		StartCoroutine("CoolDown");
@@ -139,7 +139,6 @@ public class NewRockThrow : MonoBehaviour {
 		    && HitObject.transform.CompareTag ("Enemy") 
 		    && HitObject.transform.GetComponent <BasicEnemy> ().canGetHit)
 		{ 
-			Debug.Log ("THROW THAT FUCKING ROCK TOWARD AN ENNEMY");
 		  //If what we aimed at is an enemy and that it's not knocked out, let's do a homing attack
 			currentThrowedRockScript.aimHoming = HitObject.transform;
 			currentThrowedRockScript.homingAttackBool = true;

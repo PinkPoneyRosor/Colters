@@ -33,7 +33,7 @@ public class GUImainBehaviour : MonoBehaviour {
 	void Start () 
 	{
 		soulBar = GameObject.Find ("SoulBar");
-		lifeBarCircular = GameObject.Find ("RadialLife");
+		lifeBarCircular = GameObject.Find ("RadialLifeBar");
 		player = GameObject.Find ("Player");
 		rockBar = GameObject.Find ("RockBar");
 

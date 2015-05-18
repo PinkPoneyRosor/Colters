@@ -34,7 +34,6 @@ public class EnemySight : MonoBehaviour
 			ResetTimer ();
 			playerRecentlySeen = false;
 		}
-			
 	}
 
 	void Timer ()
@@ -67,7 +66,7 @@ public class EnemySight : MonoBehaviour
 			float angle = Vector3.Angle(direction, transform.forward);
 
 			// If the angle between forward and where the player is, is less than half the angle of view...
-			if(angle < fieldOfViewAngle * 0.5f)
+			if(angle < fieldOfViewAngle * 0.5f || Vector3.Distance (this.transform.position, player.transform.position) < 5)
 			{
 				RaycastHit hit;
 				
