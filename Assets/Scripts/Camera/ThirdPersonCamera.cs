@@ -69,7 +69,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	void Start () 
 	{
-		player = GameObject.FindWithTag ("Player");
+		player = GameObject.Find ("Player");
 		camTarget = player.transform;
 
 		currentRotationSmooth = RotationSmooth;

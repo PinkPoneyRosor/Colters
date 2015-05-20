@@ -49,7 +49,7 @@ public class BasicEnemy : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		player = GameObject.FindGameObjectWithTag ("Player");
+		player = GameObject.Find ("Player");
 		sightSphere = transform.Find ("Sight") as Transform;
 
 		agent = GetComponent<NavMeshAgent>();
@@ -63,8 +63,6 @@ public class BasicEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		Debug.Log(CurrentMode);
-	
 		if (canGetHit) 
 		{ //If the ennemy can't get hit, he can't move either.
 			Debug.Log ("I can get hit");
@@ -103,11 +101,17 @@ public class BasicEnemy : MonoBehaviour {
 			if (CurrentMode == EnemyMode.Chasing) //Movement when the player is in sight, or was in sight recently.
 			{
 				if (Vector3.Distance (this.transform.position, player.transform.position) > 5)
+				{
 						agent.SetDestination (sightScript.lastKnownPosition);
+						Debug.Log ("Chasin' her!");
+				}
 				else if (!canHit)
+				{
 						agent.SetDestination (newEnGardePosition);
-						
-				Debug.Log (canHit);
+					Debug.Log ("Gettin' en garde");
+				}
+				
+				Debug.Log ("canHit = " + canHit);
 						
 				Quaternion selfRotation = Quaternion.LookRotation (player.transform.position - transform.position);
 				selfRotation.y = transform.rotation.y;	
@@ -150,6 +154,9 @@ public class BasicEnemy : MonoBehaviour {
 	
 	void Hit ()
 	{
+	
+		Debug.Log (Vector3.Distance (this.transform.position, player.transform.position));
+		
 		if (CurrentMode == EnemyMode.Chasing && Vector3.Distance (this.transform.position, player.transform.position) < 2 && canHit)
 		{
 			player.SendMessage ("GetHurt", 1 , SendMessageOptions.RequireReceiver);

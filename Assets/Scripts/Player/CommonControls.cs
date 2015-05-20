@@ -47,7 +47,8 @@ public class CommonControls : MonoBehaviour {
 	public Vector3 lastPlatformVelocity;
 	[HideInInspector]
 	public bool checkPointOn = false;
-	
+	[HideInInspector]
+	public bool justJumped = false;
 	[HideInInspector]
 	public Vector3 lastCheckpointPosition;
 	
@@ -126,11 +127,22 @@ public class CommonControls : MonoBehaviour {
 		}
 		#endregion
 		
+		if (justJumped && controller.isGrounded)
+		{
+			justJumped = false;
+		}
+		
 		if (Input.GetButtonDown ("Jump") && controller.isGrounded && canJump)
+		{
 			moveDirection.y = heightOfJump;
+			justJumped = true;
+		}
 			
 		faceDirection = moveDirection;
 		faceDirection.y = 0;
+		
+		//Make Phalene face the direction in which she's going.
+		transform.LookAt (transform.position + faceDirection);
 		
 		#region apply movements & gravity
 		if(!controller.isGrounded)
@@ -156,13 +168,6 @@ public class CommonControls : MonoBehaviour {
 		
 		Debug.DrawRay (transform.position, moveDirection, Color.red); 
 		Debug.DrawRay (transform.position, faceDirection, Color.blue);
-
-		//Make Phalene face the direction in which she's going.
-		if( Input.GetAxisRaw ("Vertical") + Input.GetAxisRaw ("Horizontal") != 0)
-		{
-			Quaternion rotation = Quaternion.LookRotation (faceDirection);
-			transform.rotation = Quaternion.Slerp (transform.rotation, rotation, localDeltaTime * 5f);
-		}
 		
 		// Moving platforms support
 		if (activePlatform != null) 

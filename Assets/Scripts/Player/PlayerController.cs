@@ -23,6 +23,7 @@ public class PlayerController : CommonControls {
 	private float maxSlopeAngleToJump = 35;
 	
 	private Vector3 startPosition;
+	private Animator animator;
 
 
 	// Use this for initialization
@@ -35,6 +36,7 @@ public class PlayerController : CommonControls {
 		startPosition = transform.position;
 		
 		currentHealth = maxHealth;
+		animator = gameObject.GetComponent <Animator>();
 	}
 	
 	// Update is called once per frame
@@ -56,6 +58,15 @@ public class PlayerController : CommonControls {
 			else//Else, and if we're in normal camera mode
 				DefaultControls (heightOfJump, localDeltaTime);
 		}
+		
+		#region Animator parameters
+		this.animator.SetFloat ("Speed", speed);
+		
+		if (justJumped)
+			animator.SetBool ("Jump", true);
+		else
+			animator.SetBool ("Jump", false);			
+		#endregion
 	}
 
 	//Setting everything in order to engage soul mode.
@@ -85,11 +96,22 @@ public class PlayerController : CommonControls {
 	
 	public void Die ()
 	{
+		animator.SetBool ("Dead", true);
+		
+		StartCoroutine(RespawnCountDown());
+	}
+	
+	IEnumerator RespawnCountDown()
+	{
+		yield return new WaitForSeconds (3);
+		
+		animator.SetBool ("Dead", false);
+	
 		if (checkPointOn)
 			transform.position = lastCheckpointPosition + Vector3.up; //ayo !
 		else
 			transform.position = startPosition + Vector3.up * 1.5f;
-			
+		
 		currentHealth = maxHealth;
 	}
 	

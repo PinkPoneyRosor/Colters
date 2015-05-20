@@ -50,7 +50,7 @@ public class EnemySight : MonoBehaviour
 	void Awake ()
 	{
 		sightCollider = GetComponent<SphereCollider>();
-		player = GameObject.FindGameObjectWithTag("Player");
+		player = GameObject.Find("Player");
 	}
 
 	void OnTriggerStay (Collider other)
