@@ -242,15 +242,15 @@ ModelImporter:
     - serializedVersion: 16
       name: Locomotion@UngroundedLoop
       takeName: mixamo.com
-      firstFrame: 14.6999998
-      lastFrame: 18.2999992
+      firstFrame: 3.5999999
+      lastFrame: 17.8999996
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1

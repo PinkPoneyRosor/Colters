@@ -26,6 +26,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: isGrounded
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -51,7 +57,7 @@ Transition:
   m_TransitionOffset: .0175428558
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: isGrounded
     m_EventTreshold: 0
     m_ExitTime: .503898799
   m_Atomic: 0
@@ -76,6 +82,10 @@ Transition:
     m_ExitTime: 0
   - m_ConditionMode: 4
     m_ConditionEvent: Speed
+    m_EventTreshold: .100000001
+    m_ExitTime: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isGrounded
     m_EventTreshold: .100000001
     m_ExitTime: 0
   m_Atomic: 1
@@ -206,6 +216,26 @@ Transition:
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
+--- !u!1101 &110155320
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110234643}
+  m_DstState: {fileID: 110218854}
+  m_TransitionDuration: .107142851
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isGrounded
+    m_EventTreshold: 0
+    m_ExitTime: .892857134
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110166001
 Transition:
   serializedVersion: 2
@@ -286,6 +316,26 @@ Transition:
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
+--- !u!1101 &110182402
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110242697}
+  m_DstState: {fileID: 110218854}
+  m_TransitionDuration: .00765306083
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isGrounded
+    m_EventTreshold: 0
+    m_ExitTime: .992346942
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110188517
 Transition:
   serializedVersion: 2
@@ -344,6 +394,10 @@ Transition:
     m_ExitTime: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Jump
+    m_EventTreshold: .100000001
+    m_ExitTime: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isGrounded
     m_EventTreshold: .100000001
     m_ExitTime: 0
   m_Atomic: 0
@@ -409,7 +463,7 @@ State:
   m_Speed: .100000001
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: c7e539d5d8eea724c9dff21f2d4d23f4, type: 3}
+  - {fileID: 7400000, guid: c08c7ece26d188e4ea92886d5e903a28, type: 3}
   m_ParentStateMachine: {fileID: 110700000}
   m_Position: {x: 288, y: 132, z: 0}
   m_IKOnFeet: 0
@@ -489,6 +543,7 @@ StateMachine:
       - {fileID: 110170437}
       - {fileID: 110195171}
       - {fileID: 110171187}
+      - {fileID: 110182402}
     data:
       first: {fileID: 110200000}
       second:
@@ -501,6 +556,7 @@ StateMachine:
       second:
       - {fileID: 110195360}
       - {fileID: 110176858}
+      - {fileID: 110155320}
     data:
       first: {fileID: 110256289}
       second:

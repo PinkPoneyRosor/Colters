@@ -172,18 +172,18 @@ ModelImporter:
     - serializedVersion: 16
       name: Locomotion@Idle_Jump
       takeName: mixamo.com
-      firstFrame: 19
-      lastFrame: 25
+      firstFrame: 23.5
+      lastFrame: 23.6000004
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
-      cycleOffset: 0
+      cycleOffset: 24.9200001
       loop: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0

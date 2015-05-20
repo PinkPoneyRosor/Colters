@@ -188,7 +188,12 @@ public class CommonControls : MonoBehaviour {
 		if (justJumped)
 			animator.SetBool ("Jump", true);
 		else
-			animator.SetBool ("Jump", false);			
+			animator.SetBool ("Jump", false);
+			
+		if (controller.isGrounded)
+			animator.SetBool ("isGrounded", true);
+		else
+			animator.SetBool ("isGrounded", false);	
 		#endregion
 	}
 
