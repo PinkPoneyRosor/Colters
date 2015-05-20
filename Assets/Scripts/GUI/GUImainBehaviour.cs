@@ -65,7 +65,7 @@ public class GUImainBehaviour : MonoBehaviour {
 		#region Life Bar
 		lifeBarImage.fillAmount = Mathf.MoveTowards (lifeBarImage.fillAmount, playerScript.currentHealth / playerScript.maxHealth, Time.deltaTime);
 		
-		if(playerScript.currentHealth <= 0)
+		if(playerScript.currentHealth <= 0 && !playerScript.dead)
 		{
 			player.SendMessage ("Die");
 		}

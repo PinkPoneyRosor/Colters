@@ -77,11 +77,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 		CompensateLayer = LayerMask.GetMask("CameraCollider");
 	}
 
-	public void SwitchPlayerMode( bool bSoulMode )
+	public void SwitchPlayerMode( GameObject newTarget, bool bSoulMode )
 	{
 		soulMode = bSoulMode;
-		player = GameObject.FindWithTag( soulMode ? "PlayerSoul" : "Player" );
-		camTarget = player.transform;
+		player = newTarget;
+		camTarget = newTarget.transform;
 	}
 
 	void LateUpdate()

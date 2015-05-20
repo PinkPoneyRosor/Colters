@@ -31,12 +31,15 @@ public class NewThrowableRock : MonoBehaviour {
 	public float maxVelocityWhenDecelerating = 22;
 	public float growingRate = .5f;
 	
+	private GameObject player;
+	
 	[HideInInspector]
 	public bool growingMyself = true;
 	
 	// Use this for initialization
 	void Start () 
 	{
+		player = GameObject.Find ("Player");
 	}
 	
 	// Update is called once per frame

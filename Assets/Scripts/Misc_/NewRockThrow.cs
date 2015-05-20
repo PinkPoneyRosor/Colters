@@ -118,7 +118,7 @@ public class NewRockThrow : MonoBehaviour {
 	
 	void ThrowRock(bool explosive)
 	{
-		Vector3 startPos = transform.position + transform.up * 2;
+		Vector3 startPos = transform.position + transform.up * 2.5f + transform.forward;
 		GameObject thrownRock;
 		
 		if(!explosive)
@@ -151,7 +151,6 @@ public class NewRockThrow : MonoBehaviour {
 			
 			//This line is just to make absolutely sure there is no more constraints so that we can throw the rock in a straight line.
 			currentThrowedRockScript.rigidbody.constraints = RigidbodyConstraints.None;
-			
 			
 			thrownRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
 		}

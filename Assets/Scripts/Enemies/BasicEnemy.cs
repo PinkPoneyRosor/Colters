@@ -63,9 +63,10 @@ public class BasicEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		agent.updateRotation = false;
+		
 		if (canGetHit) 
 		{ //If the ennemy can't get hit, he can't move either.
-			Debug.Log ("I can get hit");
 			if (!navMeshAgent.enabled) { //Since the enemy can get hit, he can also moves, so we make sure the navAgent is activated.
 					navMeshAgent.enabled = true;
 			}
@@ -89,7 +90,7 @@ public class BasicEnemy : MonoBehaviour {
 			if (sightScript.playerRecentlySeen) //If the player's recently been in sight, let's chase him ! Otherwise, let's just continue to wander around.
 			{
 					CurrentMode = EnemyMode.Chasing;
-					agent.updateRotation = false;
+					
 			}
 			else
 			{
@@ -101,20 +102,11 @@ public class BasicEnemy : MonoBehaviour {
 			if (CurrentMode == EnemyMode.Chasing) //Movement when the player is in sight, or was in sight recently.
 			{
 				if (Vector3.Distance (this.transform.position, player.transform.position) > 5)
-				{
 						agent.SetDestination (sightScript.lastKnownPosition);
-						Debug.Log ("Chasin' her!");
-				}
 				else if (!canHit)
-				{
 						agent.SetDestination (newEnGardePosition);
-					Debug.Log ("Gettin' en garde");
-				}
-				
-				Debug.Log ("canHit = " + canHit);
 						
-				Quaternion selfRotation = Quaternion.LookRotation (player.transform.position - transform.position);
-				selfRotation.y = transform.rotation.y;	
+				Quaternion selfRotation = Quaternion.LookRotation (new Vector3 (player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position);
 				
 				transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, Time.deltaTime * 15);
 			}
@@ -153,10 +145,7 @@ public class BasicEnemy : MonoBehaviour {
 	}
 	
 	void Hit ()
-	{
-	
-		Debug.Log (Vector3.Distance (this.transform.position, player.transform.position));
-		
+	{	
 		if (CurrentMode == EnemyMode.Chasing && Vector3.Distance (this.transform.position, player.transform.position) < 2 && canHit)
 		{
 			player.SendMessage ("GetHurt", 1 , SendMessageOptions.RequireReceiver);

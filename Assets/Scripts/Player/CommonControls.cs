@@ -51,6 +51,8 @@ public class CommonControls : MonoBehaviour {
 	public bool justJumped = false;
 	[HideInInspector]
 	public Vector3 lastCheckpointPosition;
+	[HideInInspector]
+	public Animator animator;
 	
 	[HeaderAttribute("Moves parameters")]
 	public float maxSpeed = 0;
@@ -64,6 +66,8 @@ public class CommonControls : MonoBehaviour {
 	{
 		mainCameraScript = Camera.main.GetComponent<ThirdPersonCamera> ();
 		controller = GetComponent<CharacterController>();
+		
+		animator = gameObject.GetComponent <Animator>();
 	}
 
 	public void GetAxis()
@@ -176,6 +180,15 @@ public class CommonControls : MonoBehaviour {
 			activeLocalPlatformPoint = activePlatform.InverseTransformPoint (transform.position);
 		}
 		#endregion
+		#endregion
+		
+		#region Animator parameters
+		this.animator.SetFloat ("Speed", speed);
+		
+		if (justJumped)
+			animator.SetBool ("Jump", true);
+		else
+			animator.SetBool ("Jump", false);			
 		#endregion
 	}
 
