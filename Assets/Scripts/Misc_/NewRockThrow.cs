@@ -9,8 +9,7 @@ public class NewRockThrow : MonoBehaviour {
 	
 	public GameObject RockPrefab;
 	public GameObject ExplosivePrefab;
-	
-	public float energyPerRockLaunched = 0.1f;
+	public float explosiveRockLoadTime = 1;
 	
 	private int launchCount = 0;
 
@@ -40,6 +39,13 @@ public class NewRockThrow : MonoBehaviour {
 	private GameObject HudObject;
 	private GUImainBehaviour HudScript;
 	
+	private float holdDownThrowTime = 0;
+	private float localDeltaTime;
+	private bool justHitThrowButton = false;
+	private bool nextRockWillBeExplosive = false;
+	
+	private ParticleSystem explosiveLoadParticles;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -48,22 +54,63 @@ public class NewRockThrow : MonoBehaviour {
 		
 		HudObject = GameObject.Find ("GameHUD");
 		HudScript = HudObject.GetComponent <GUImainBehaviour>();
+		
+		explosiveLoadParticles = this.GetComponent <ParticleSystem>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (HudScript.rockBarSlide.value <= 0)
+		//Setting this object's local delta time...
+		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
+		
+		if (HudScript.rockBarSlide.value < 1)
 			canThrow = false;
+		else
+			canThrow = true;
 	
 		if(canThrow)
 		{
-			if (Input.GetAxisRaw("RockThrow") != 0 || Input.GetButton("Action"))
-				ThrowRock(false);
-			else if (Input.GetButton("ExplosiveThrow"))
-				ThrowRock(true);
+			if (Input.GetAxisRaw("RockThrow") != 0)
+				HoldingThrowButton();
 			else if (Input.GetButton ("Melee Attack") || loopCrush || Input.GetKey ("e"))
 			    ShortRangeAttack();
+			  
+			#region Gonna throw a rock
+			if (Input.GetAxisRaw("RockThrow") == 0 && justHitThrowButton)
+			{
+				explosiveLoadParticles.Stop ();
+			
+				holdDownThrowTime = 0;
+				justHitThrowButton = false;
+			
+				if (nextRockWillBeExplosive)
+					ThrowRock(true);
+				else
+					ThrowRock(false);
+			}
+			#endregion
+		}
+	}
+	
+	void HoldingThrowButton ()
+	{
+		holdDownThrowTime += localDeltaTime;
+		
+		justHitThrowButton = true;
+		
+		if (holdDownThrowTime >= .1f)
+			explosiveLoadParticles.Play ();
+		
+		if (holdDownThrowTime >= explosiveRockLoadTime)
+		{
+			nextRockWillBeExplosive = true;
+			explosiveLoadParticles.Stop ();
+		}
+		else
+		{
+			nextRockWillBeExplosive = false;
+			explosiveLoadParticles.Stop ();
 		}
 	}
 	
@@ -73,7 +120,6 @@ public class NewRockThrow : MonoBehaviour {
 		GameObject thrownRock = Instantiate (RockPrefab, startPos, Quaternion.identity) as GameObject;
 		NewThrowableRock currentThrowedRockScript;
 		
-		canThrow = false;	
 		currentThrowedRockScript = thrownRock.GetComponent <NewThrowableRock> ();
 
 		//Let's throw the rock downward
@@ -90,7 +136,7 @@ public class NewRockThrow : MonoBehaviour {
 		
 		launchCount ++;
 		
-		HudScript.rockBarSlide.value -= energyPerRockLaunched;
+		HudScript.rockBarSlide.value = 0;
 		
 		if(launchCount > 4)
 		{
@@ -112,13 +158,11 @@ public class NewRockThrow : MonoBehaviour {
 		{
 			allLaunchedRocks[3] = thrownRock;
 		}
-		
-		StartCoroutine("CoolDown");
 	}
 	
 	void ThrowRock(bool explosive)
 	{
-		Vector3 startPos = transform.position + transform.up * 2.5f + transform.forward;
+		Vector3 startPos = transform.position + transform.up * 2.5f + mainCamera.forward;
 		GameObject thrownRock;
 		
 		if(!explosive)
@@ -132,7 +176,6 @@ public class NewRockThrow : MonoBehaviour {
 		
 		ray = mainCamera.camera.ScreenPointToRay (new Vector3(Screen.width/2, Screen.height/2, 0));
 	
-		canThrow = false;	
 		currentThrowedRockScript = thrownRock.GetComponent <NewThrowableRock> ();
 			
 		if (Physics.Raycast (ray.origin, ray.direction, out HitObject, Mathf.Infinity, otherLayers)
@@ -157,7 +200,7 @@ public class NewRockThrow : MonoBehaviour {
 		
 		launchCount ++;
 		
-		HudScript.rockBarSlide.value -= energyPerRockLaunched;
+		HudScript.rockBarSlide.value = 0;
 		
 		if(launchCount > 4)
 		{
@@ -179,14 +222,6 @@ public class NewRockThrow : MonoBehaviour {
 		{
 			allLaunchedRocks[3] = thrownRock;
 		}
-		
-		StartCoroutine ("CoolDown");
-	}
-
-	IEnumerator CoolDown() 
-	{
-		yield return new WaitForSeconds(1f);
-		canThrow = true;
 	}
 	
 	void ShiftRockArray(GameObject newFirstRock)

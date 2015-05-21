@@ -86,7 +86,7 @@ MonoBehaviour:
   camTarget: {fileID: 0}
   soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
   dashingSoul: 0
-  cameraHeight: 1.5
+  cameraHeight: 2.5
   rotationOffset: {x: 0, y: 0, z: 0, w: 1}
   distance: 4
   manualCameraSpeed: 10

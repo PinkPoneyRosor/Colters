@@ -28,6 +28,8 @@ public class GUImainBehaviour : MonoBehaviour {
 	public float soulStartValue;
 	[HideInInspector]
 	public float lifeStartValue;
+	
+	public float rockRefillRate = 0.9f;
 
 	// Use this for initialization
 	void Start () 
@@ -72,8 +74,8 @@ public class GUImainBehaviour : MonoBehaviour {
 		#endregion
 		
 		#region RockBar
-		if (rockBarSlide.value < 1)
-			rockBarSlide.value += 0.1f * Time.deltaTime;
+		if (rockBarSlide.value < 1 && player.GetComponent <CharacterController>().isGrounded)
+			rockBarSlide.value += rockRefillRate * Time.deltaTime;
 		#endregion
 	}
 

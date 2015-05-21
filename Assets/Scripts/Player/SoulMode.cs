@@ -29,7 +29,7 @@ public class SoulMode : CommonControls {
 		maxSpeed = setMaximumSpeed;
 
 		this.name = "Soul";
-		player = GameObject.FindWithTag ("Player");
+		player = GameObject.Find ("Player");
 		playerScript = player.GetComponent<PlayerController> ();
 
 		soulBar = GameObject.Find ("SoulBar");

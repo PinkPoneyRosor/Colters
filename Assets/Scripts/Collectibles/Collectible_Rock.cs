@@ -20,12 +20,15 @@ public class Collectible_Rock : MonoBehaviour
 		if (maxOutRockBar)
 		{
 			GameGUI.SendMessage("MaxRockBar");
+			Destroy (this.gameObject);
 		}
 	}
 	
 	void OnTriggerEnter (Collider hit)
 	{
 		if (hit.collider.CompareTag ("Player"))
+		{
 			maxOutRockBar = true;
+		}
 	}
 }
