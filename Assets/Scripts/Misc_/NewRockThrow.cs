@@ -35,6 +35,10 @@ public class NewRockThrow : MonoBehaviour {
 	public Vector3 fourthOffset;
 	#endregion
 	
+	#region particle effects
+	public GameObject explosiveFinishLoadParticles;
+	#endregion
+	
 	private bool loopCrush = false;
 	private GameObject HudObject;
 	private GUImainBehaviour HudScript;
@@ -45,6 +49,7 @@ public class NewRockThrow : MonoBehaviour {
 	private bool nextRockWillBeExplosive = false;
 	
 	private ParticleSystem explosiveLoadParticles;
+	private bool startFinishedLoadparticle = true;
 	
 	// Use this for initialization
 	void Start () 
@@ -80,6 +85,7 @@ public class NewRockThrow : MonoBehaviour {
 			if (Input.GetAxisRaw("RockThrow") == 0 && justHitThrowButton)
 			{
 				explosiveLoadParticles.Stop ();
+				startFinishedLoadparticle = true;
 			
 				holdDownThrowTime = 0;
 				justHitThrowButton = false;
@@ -99,18 +105,31 @@ public class NewRockThrow : MonoBehaviour {
 		
 		justHitThrowButton = true;
 		
-		if (holdDownThrowTime >= .1f)
+		if (holdDownThrowTime >= .2f)
+		{
 			explosiveLoadParticles.Play ();
+		}
+		
+		if (holdDownThrowTime >= explosiveRockLoadTime - .2f)
+		{
+			explosiveLoadParticles.Stop ();
+		}
 		
 		if (holdDownThrowTime >= explosiveRockLoadTime)
 		{
 			nextRockWillBeExplosive = true;
-			explosiveLoadParticles.Stop ();
+			
+			if (startFinishedLoadparticle)
+			{
+				GameObject particlesLoadEnd;
+				particlesLoadEnd = Instantiate(explosiveFinishLoadParticles, transform.position + transform.up, Quaternion.identity) as GameObject;
+				particlesLoadEnd.transform.SetParent (this.transform);
+				startFinishedLoadparticle = false;
+			}
 		}
 		else
 		{
 			nextRockWillBeExplosive = false;
-			explosiveLoadParticles.Stop ();
 		}
 	}
 	
