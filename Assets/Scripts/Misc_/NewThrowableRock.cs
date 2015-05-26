@@ -31,12 +31,15 @@ public class NewThrowableRock : MonoBehaviour {
 	public float maxVelocityWhenDecelerating = 22;
 	public float growingRate = .5f;
 	
+	private GameObject player;
+	
 	[HideInInspector]
 	public bool growingMyself = true;
 	
 	// Use this for initialization
 	void Start () 
 	{
+		player = GameObject.Find ("Player");
 	}
 	
 	// Update is called once per frame
@@ -66,13 +69,8 @@ public class NewThrowableRock : MonoBehaviour {
 	//With this method, we make sure that if the player throwed the rock toward an enemy, he can be almost sure he will hit it.
 	void homingAttack ()
 	{
-		Debug.Log ("Homin' attack");
 		if (aimHoming.GetComponent <BasicEnemy> ().canGetHit) 
-		{
-			Debug.Log ("Homin' attack, bitchiz");
-			
-			
-			
+		{	
 			Vector3 throwDir = aimHoming.position - this.transform.position;
 			throwDir.Normalize ();
 			

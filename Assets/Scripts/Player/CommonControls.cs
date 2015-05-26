@@ -47,9 +47,12 @@ public class CommonControls : MonoBehaviour {
 	public Vector3 lastPlatformVelocity;
 	[HideInInspector]
 	public bool checkPointOn = false;
-	
+	[HideInInspector]
+	public bool justJumped = false;
 	[HideInInspector]
 	public Vector3 lastCheckpointPosition;
+	[HideInInspector]
+	public Animator animator;
 	
 	[HeaderAttribute("Moves parameters")]
 	public float maxSpeed = 0;
@@ -63,6 +66,8 @@ public class CommonControls : MonoBehaviour {
 	{
 		mainCameraScript = Camera.main.GetComponent<ThirdPersonCamera> ();
 		controller = GetComponent<CharacterController>();
+		
+		animator = gameObject.GetComponent <Animator>();
 	}
 
 	public void GetAxis()
@@ -126,11 +131,22 @@ public class CommonControls : MonoBehaviour {
 		}
 		#endregion
 		
+		if (justJumped && controller.isGrounded)
+		{
+			justJumped = false;
+		}
+		
 		if (Input.GetButtonDown ("Jump") && controller.isGrounded && canJump)
+		{
 			moveDirection.y = heightOfJump;
+			justJumped = true;
+		}
 			
 		faceDirection = moveDirection;
 		faceDirection.y = 0;
+		
+		//Make Phalene face the direction in which she's going.
+		transform.LookAt (transform.position + faceDirection);
 		
 		#region apply movements & gravity
 		if(!controller.isGrounded)
@@ -156,13 +172,6 @@ public class CommonControls : MonoBehaviour {
 		
 		Debug.DrawRay (transform.position, moveDirection, Color.red); 
 		Debug.DrawRay (transform.position, faceDirection, Color.blue);
-
-		//Make Phalene face the direction in which she's going.
-		if( Input.GetAxisRaw ("Vertical") + Input.GetAxisRaw ("Horizontal") != 0)
-		{
-			Quaternion rotation = Quaternion.LookRotation (faceDirection);
-			transform.rotation = Quaternion.Slerp (transform.rotation, rotation, localDeltaTime * 5f);
-		}
 		
 		// Moving platforms support
 		if (activePlatform != null) 
@@ -171,6 +180,20 @@ public class CommonControls : MonoBehaviour {
 			activeLocalPlatformPoint = activePlatform.InverseTransformPoint (transform.position);
 		}
 		#endregion
+		#endregion
+		
+		#region Animator parameters
+		this.animator.SetFloat ("Speed", speed);
+		
+		if (justJumped)
+			animator.SetBool ("Jump", true);
+		else
+			animator.SetBool ("Jump", false);
+			
+		if (controller.isGrounded)
+			animator.SetBool ("isGrounded", true);
+		else
+			animator.SetBool ("isGrounded", false);	
 		#endregion
 	}
 

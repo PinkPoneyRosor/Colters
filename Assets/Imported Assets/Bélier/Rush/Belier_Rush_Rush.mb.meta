@@ -1,0 +1,572 @@
+fileFormatVersion: 2
+guid: 902fef4a0a736b248bec9dab91f152d4
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: B__lier
+    100002: B__lier_GRP
+    100004: Base_Head
+    100006: //RootNode
+    100008: collerette01
+    100010: corps01
+    100012: End_Head
+    100014: Head_Orient_CTRL
+    100016: Hips_CTRL
+    100018: Hips_Leg
+    100020: L_Ankle
+    100022: L_Arm_CTRL
+    100024: L_Arm_Ik
+    100026: L_Elbow
+    100028: L_Fingers
+    100030: L_Foot
+    100032: L_Hand
+    100034: L_Hip
+    100036: L_Knee
+    100038: L_Leg_CTRL
+    100040: L_Leg_Ik
+    100042: L_Shoulder
+    100044: left
+    100046: Main_CTRL
+    100048: Neck
+    100050: Neck_Orient_CTRL
+    100052: oeil_droit01
+    100054: oeil_gauche01
+    100056: patte_bas_arriere_gauche01
+    100058: patte_bas_arriere_gauche02
+    100060: patte_bas_avant_gauche01
+    100062: patte_bas_avant_gauche02
+    100064: patte_haut_arriere_gauche01
+    100066: patte_haut_arriere_gauche02
+    100068: patte_haut_avant_gauche01
+    100070: patte_haut_avant_gauche02
+    100072: persp1
+    100074: point_faible01
+    100076: R_Ankle
+    100078: R_Arm_CTRL
+    100080: R_Arm_Ik
+    100082: R_Elbow
+    100084: R_Fingers
+    100086: R_Foot
+    100088: R_Hand
+    100090: R_Hip
+    100092: R_Knee
+    100094: R_Leg_CTRL
+    100096: R_Leg_Ik
+    100098: R_Shoulder
+    100100: Sabot_arriere_gauche01
+    100102: Sabot_arriere_gauche02
+    100104: Sabot_avant_gauche01
+    100106: Sabot_avant_gauche02
+    100108: Shoulders_Arm
+    100110: tete01
+    100112: transform1
+    100114: transform10
+    100116: transform11
+    100118: transform12
+    100120: transform13
+    100122: transform14
+    100124: transform15
+    100126: transform16
+    100128: transform17
+    100130: transform18
+    100132: transform19
+    100134: transform2
+    100136: transform3
+    100138: transform4
+    100140: transform5
+    100142: transform6
+    100144: transform7
+    100146: transform8
+    100148: transform9
+    100150: vertebre01
+    400000: B__lier
+    400002: B__lier_GRP
+    400004: Base_Head
+    400006: //RootNode
+    400008: collerette01
+    400010: corps01
+    400012: End_Head
+    400014: Head_Orient_CTRL
+    400016: Hips_CTRL
+    400018: Hips_Leg
+    400020: L_Ankle
+    400022: L_Arm_CTRL
+    400024: L_Arm_Ik
+    400026: L_Elbow
+    400028: L_Fingers
+    400030: L_Foot
+    400032: L_Hand
+    400034: L_Hip
+    400036: L_Knee
+    400038: L_Leg_CTRL
+    400040: L_Leg_Ik
+    400042: L_Shoulder
+    400044: left
+    400046: Main_CTRL
+    400048: Neck
+    400050: Neck_Orient_CTRL
+    400052: oeil_droit01
+    400054: oeil_gauche01
+    400056: patte_bas_arriere_gauche01
+    400058: patte_bas_arriere_gauche02
+    400060: patte_bas_avant_gauche01
+    400062: patte_bas_avant_gauche02
+    400064: patte_haut_arriere_gauche01
+    400066: patte_haut_arriere_gauche02
+    400068: patte_haut_avant_gauche01
+    400070: patte_haut_avant_gauche02
+    400072: persp1
+    400074: point_faible01
+    400076: R_Ankle
+    400078: R_Arm_CTRL
+    400080: R_Arm_Ik
+    400082: R_Elbow
+    400084: R_Fingers
+    400086: R_Foot
+    400088: R_Hand
+    400090: R_Hip
+    400092: R_Knee
+    400094: R_Leg_CTRL
+    400096: R_Leg_Ik
+    400098: R_Shoulder
+    400100: Sabot_arriere_gauche01
+    400102: Sabot_arriere_gauche02
+    400104: Sabot_avant_gauche01
+    400106: Sabot_avant_gauche02
+    400108: Shoulders_Arm
+    400110: tete01
+    400112: transform1
+    400114: transform10
+    400116: transform11
+    400118: transform12
+    400120: transform13
+    400122: transform14
+    400124: transform15
+    400126: transform16
+    400128: transform17
+    400130: transform18
+    400132: transform19
+    400134: transform2
+    400136: transform3
+    400138: transform4
+    400140: transform5
+    400142: transform6
+    400144: transform7
+    400146: transform8
+    400148: transform9
+    400150: vertebre01
+    4300000: B__lier
+    7400000: "B\xE9lier_Rush_Start"
+    7400002: "B\xE9lier_Rush_End"
+    9500000: //RootNode
+    13700000: B__lier
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: "B\xE9lier_Rush_Start"
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: B__lier
+        weight: 1
+      - path: B__lier_GRP
+        weight: 1
+      - path: B__lier_GRP/collerette01
+        weight: 1
+      - path: B__lier_GRP/collerette01/transform15
+        weight: 1
+      - path: B__lier_GRP/corps01
+        weight: 1
+      - path: B__lier_GRP/corps01/transform14
+        weight: 1
+      - path: B__lier_GRP/oeil_droit01
+        weight: 1
+      - path: B__lier_GRP/oeil_droit01/transform17
+        weight: 1
+      - path: B__lier_GRP/oeil_gauche01
+        weight: 1
+      - path: B__lier_GRP/oeil_gauche01/transform18
+        weight: 1
+      - path: B__lier_GRP/patte_bas_arriere_gauche01
+        weight: 1
+      - path: B__lier_GRP/patte_bas_arriere_gauche01/transform8
+        weight: 1
+      - path: B__lier_GRP/patte_bas_arriere_gauche02
+        weight: 1
+      - path: B__lier_GRP/patte_bas_arriere_gauche02/transform5
+        weight: 1
+      - path: B__lier_GRP/patte_bas_avant_gauche01
+        weight: 1
+      - path: B__lier_GRP/patte_bas_avant_gauche01/transform10
+        weight: 1
+      - path: B__lier_GRP/patte_bas_avant_gauche02
+        weight: 1
+      - path: B__lier_GRP/patte_bas_avant_gauche02/transform2
+        weight: 1
+      - path: B__lier_GRP/patte_haut_arriere_gauche01
+        weight: 1
+      - path: B__lier_GRP/patte_haut_arriere_gauche01/transform11
+        weight: 1
+      - path: B__lier_GRP/patte_haut_arriere_gauche02
+        weight: 1
+      - path: B__lier_GRP/patte_haut_arriere_gauche02/transform4
+        weight: 1
+      - path: B__lier_GRP/patte_haut_avant_gauche01
+        weight: 1
+      - path: B__lier_GRP/patte_haut_avant_gauche01/transform12
+        weight: 1
+      - path: B__lier_GRP/patte_haut_avant_gauche02
+        weight: 1
+      - path: B__lier_GRP/patte_haut_avant_gauche02/transform3
+        weight: 1
+      - path: B__lier_GRP/point_faible01
+        weight: 1
+      - path: B__lier_GRP/point_faible01/transform13
+        weight: 1
+      - path: B__lier_GRP/Sabot_arriere_gauche01
+        weight: 1
+      - path: B__lier_GRP/Sabot_arriere_gauche01/transform7
+        weight: 1
+      - path: B__lier_GRP/Sabot_arriere_gauche02
+        weight: 1
+      - path: B__lier_GRP/Sabot_arriere_gauche02/transform6
+        weight: 1
+      - path: B__lier_GRP/Sabot_avant_gauche01
+        weight: 1
+      - path: B__lier_GRP/Sabot_avant_gauche01/transform9
+        weight: 1
+      - path: B__lier_GRP/Sabot_avant_gauche02
+        weight: 1
+      - path: B__lier_GRP/Sabot_avant_gauche02/transform1
+        weight: 1
+      - path: B__lier_GRP/tete01
+        weight: 1
+      - path: B__lier_GRP/tete01/transform19
+        weight: 1
+      - path: B__lier_GRP/vertebre01
+        weight: 1
+      - path: B__lier_GRP/vertebre01/transform16
+        weight: 1
+      - path: Hips_Leg
+        weight: 1
+      - path: Hips_Leg/L_Hip
+        weight: 1
+      - path: Hips_Leg/L_Hip/L_Knee
+        weight: 1
+      - path: Hips_Leg/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Hips_Leg/L_Hip/L_Knee/L_Ankle/L_Foot
+        weight: 1
+      - path: Hips_Leg/R_Hip
+        weight: 1
+      - path: Hips_Leg/R_Hip/R_Knee
+        weight: 1
+      - path: Hips_Leg/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Hips_Leg/R_Hip/R_Knee/R_Ankle/R_Foot
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder/L_Elbow/L_Hand
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder/L_Elbow/L_Hand/L_Fingers
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/Neck
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/Neck/Base_Head
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/Neck/Base_Head/End_Head
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder/R_Elbow/R_Hand
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder/R_Elbow/R_Hand/R_Fingers
+        weight: 1
+      - path: L_Arm_Ik
+        weight: 1
+      - path: L_Leg_Ik
+        weight: 1
+      - path: left
+        weight: 1
+      - path: Main_CTRL
+        weight: 1
+      - path: Main_CTRL/Hips_CTRL
+        weight: 1
+      - path: Main_CTRL/Hips_CTRL/Head_Orient_CTRL
+        weight: 1
+      - path: Main_CTRL/Hips_CTRL/Neck_Orient_CTRL
+        weight: 1
+      - path: Main_CTRL/L_Arm_CTRL
+        weight: 1
+      - path: Main_CTRL/L_Leg_CTRL
+        weight: 1
+      - path: Main_CTRL/R_Arm_CTRL
+        weight: 1
+      - path: Main_CTRL/R_Leg_CTRL
+        weight: 1
+      - path: persp1
+        weight: 1
+      - path: R_Arm_Ik
+        weight: 1
+      - path: R_Leg_Ik
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: "B\xE9lier_Rush_End"
+      takeName: Take 001
+      firstFrame: 20
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: B__lier
+        weight: 1
+      - path: B__lier_GRP
+        weight: 1
+      - path: B__lier_GRP/collerette01
+        weight: 1
+      - path: B__lier_GRP/collerette01/transform15
+        weight: 1
+      - path: B__lier_GRP/corps01
+        weight: 1
+      - path: B__lier_GRP/corps01/transform14
+        weight: 1
+      - path: B__lier_GRP/oeil_droit01
+        weight: 1
+      - path: B__lier_GRP/oeil_droit01/transform17
+        weight: 1
+      - path: B__lier_GRP/oeil_gauche01
+        weight: 1
+      - path: B__lier_GRP/oeil_gauche01/transform18
+        weight: 1
+      - path: B__lier_GRP/patte_bas_arriere_gauche01
+        weight: 1
+      - path: B__lier_GRP/patte_bas_arriere_gauche01/transform8
+        weight: 1
+      - path: B__lier_GRP/patte_bas_arriere_gauche02
+        weight: 1
+      - path: B__lier_GRP/patte_bas_arriere_gauche02/transform5
+        weight: 1
+      - path: B__lier_GRP/patte_bas_avant_gauche01
+        weight: 1
+      - path: B__lier_GRP/patte_bas_avant_gauche01/transform10
+        weight: 1
+      - path: B__lier_GRP/patte_bas_avant_gauche02
+        weight: 1
+      - path: B__lier_GRP/patte_bas_avant_gauche02/transform2
+        weight: 1
+      - path: B__lier_GRP/patte_haut_arriere_gauche01
+        weight: 1
+      - path: B__lier_GRP/patte_haut_arriere_gauche01/transform11
+        weight: 1
+      - path: B__lier_GRP/patte_haut_arriere_gauche02
+        weight: 1
+      - path: B__lier_GRP/patte_haut_arriere_gauche02/transform4
+        weight: 1
+      - path: B__lier_GRP/patte_haut_avant_gauche01
+        weight: 1
+      - path: B__lier_GRP/patte_haut_avant_gauche01/transform12
+        weight: 1
+      - path: B__lier_GRP/patte_haut_avant_gauche02
+        weight: 1
+      - path: B__lier_GRP/patte_haut_avant_gauche02/transform3
+        weight: 1
+      - path: B__lier_GRP/point_faible01
+        weight: 1
+      - path: B__lier_GRP/point_faible01/transform13
+        weight: 1
+      - path: B__lier_GRP/Sabot_arriere_gauche01
+        weight: 1
+      - path: B__lier_GRP/Sabot_arriere_gauche01/transform7
+        weight: 1
+      - path: B__lier_GRP/Sabot_arriere_gauche02
+        weight: 1
+      - path: B__lier_GRP/Sabot_arriere_gauche02/transform6
+        weight: 1
+      - path: B__lier_GRP/Sabot_avant_gauche01
+        weight: 1
+      - path: B__lier_GRP/Sabot_avant_gauche01/transform9
+        weight: 1
+      - path: B__lier_GRP/Sabot_avant_gauche02
+        weight: 1
+      - path: B__lier_GRP/Sabot_avant_gauche02/transform1
+        weight: 1
+      - path: B__lier_GRP/tete01
+        weight: 1
+      - path: B__lier_GRP/tete01/transform19
+        weight: 1
+      - path: B__lier_GRP/vertebre01
+        weight: 1
+      - path: B__lier_GRP/vertebre01/transform16
+        weight: 1
+      - path: Hips_Leg
+        weight: 1
+      - path: Hips_Leg/L_Hip
+        weight: 1
+      - path: Hips_Leg/L_Hip/L_Knee
+        weight: 1
+      - path: Hips_Leg/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Hips_Leg/L_Hip/L_Knee/L_Ankle/L_Foot
+        weight: 1
+      - path: Hips_Leg/R_Hip
+        weight: 1
+      - path: Hips_Leg/R_Hip/R_Knee
+        weight: 1
+      - path: Hips_Leg/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Hips_Leg/R_Hip/R_Knee/R_Ankle/R_Foot
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder/L_Elbow/L_Hand
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder/L_Elbow/L_Hand/L_Fingers
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/Neck
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/Neck/Base_Head
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/Neck/Base_Head/End_Head
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder/R_Elbow/R_Hand
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder/R_Elbow/R_Hand/R_Fingers
+        weight: 1
+      - path: L_Arm_Ik
+        weight: 1
+      - path: L_Leg_Ik
+        weight: 1
+      - path: left
+        weight: 1
+      - path: Main_CTRL
+        weight: 1
+      - path: Main_CTRL/Hips_CTRL
+        weight: 1
+      - path: Main_CTRL/Hips_CTRL/Head_Orient_CTRL
+        weight: 1
+      - path: Main_CTRL/Hips_CTRL/Neck_Orient_CTRL
+        weight: 1
+      - path: Main_CTRL/L_Arm_CTRL
+        weight: 1
+      - path: Main_CTRL/L_Leg_CTRL
+        weight: 1
+      - path: Main_CTRL/R_Arm_CTRL
+        weight: 1
+      - path: Main_CTRL/R_Leg_CTRL
+        weight: 1
+      - path: persp1
+        weight: 1
+      - path: R_Arm_Ik
+        weight: 1
+      - path: R_Leg_Ik
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

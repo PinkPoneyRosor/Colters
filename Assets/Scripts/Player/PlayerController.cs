@@ -23,6 +23,9 @@ public class PlayerController : CommonControls {
 	private float maxSlopeAngleToJump = 35;
 	
 	private Vector3 startPosition;
+	
+	[HideInInspector]
+	public bool dead = false;
 
 
 	// Use this for initialization
@@ -40,21 +43,24 @@ public class PlayerController : CommonControls {
 	// Update is called once per frame
 	void Update () 
 	{
-		//localDeltaTime allows the script to not be influenced by the time scale change.
-		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
-
-		GetAxis ();
-
-		if(Input.GetButtonDown("SwitchMode") && !soulMode)
-			SwitchToSoulMode();
-
-		//Make the controls adapted to the current camera mode.
-		if (!soulMode) 
+		if(!dead)
 		{
-			if (mainCameraScript.resetCameraPosition && !mainCameraScript.justHitAWall) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
-				ResettingCameraControls();
-			else//Else, and if we're in normal camera mode
-				DefaultControls(heightOfJump, localDeltaTime);
+			//localDeltaTime allows the script to not be influenced by the time scale change.
+			localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
+		
+			GetAxis ();
+		
+			if(Input.GetButtonDown("SwitchMode") && !soulMode)
+				SwitchToSoulMode();
+		
+			//Make the controls adapted to the current camera mode.
+			if (!soulMode) 
+			{
+				if (mainCameraScript.resetCameraPosition && !mainCameraScript.justHitAWall) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
+					ResettingCameraControls();
+				else//Else, and if we're in normal camera mode
+					DefaultControls (heightOfJump, localDeltaTime);
+			}
 		}
 	}
 
@@ -62,12 +68,11 @@ public class PlayerController : CommonControls {
 	void SwitchToSoulMode()
 	{
 		//Offset for spawn point based on the player's position.
-		Vector3 soulSpawnOffset = new Vector3(0, .5f, 0);
+		Vector3 soulSpawnOffset = new Vector3(0, 1f, 0);
 		Vector3 soulSpawnPoint = transform.position + soulSpawnOffset;
-
-		Instantiate(Soul, soulSpawnPoint , transform.rotation);
+		GameObject spawnedSoul = Instantiate(Soul, soulSpawnPoint , transform.rotation) as GameObject;
 		soulMode = true;
-		mainCameraScript.SwitchPlayerMode( true );
+		mainCameraScript.SwitchPlayerMode( spawnedSoul, true );
 	}
 	
 	void GetHurt (float damageAmount)
@@ -85,12 +90,27 @@ public class PlayerController : CommonControls {
 	
 	public void Die ()
 	{
+		animator.SetBool ("Dead", true);
+		
+		dead = true;
+		
+		StartCoroutine(RespawnCountDown());
+	}
+	
+	IEnumerator RespawnCountDown()
+	{
+		yield return new WaitForSeconds (3);
+		
+		animator.SetBool ("Dead", false);
+		
 		if (checkPointOn)
 			transform.position = lastCheckpointPosition + Vector3.up; //ayo !
 		else
 			transform.position = startPosition + Vector3.up * 1.5f;
-			
+		
 		currentHealth = maxHealth;
+		
+		dead = false;
 	}
 	
 	void CrushImpulse ()
