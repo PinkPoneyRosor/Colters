@@ -69,7 +69,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	void Start () 
 	{
-		player = GameObject.FindWithTag ("Player");
+		player = GameObject.Find ("Player");
 		camTarget = player.transform;
 
 		currentRotationSmooth = RotationSmooth;
@@ -77,11 +77,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 		CompensateLayer = LayerMask.GetMask("CameraCollider");
 	}
 
-	public void SwitchPlayerMode( bool bSoulMode )
+	public void SwitchPlayerMode( GameObject newTarget, bool bSoulMode )
 	{
 		soulMode = bSoulMode;
-		player = GameObject.FindWithTag( soulMode ? "PlayerSoul" : "Player" );
-		camTarget = player.transform;
+		player = newTarget;
+		camTarget = newTarget.transform;
 	}
 
 	void LateUpdate()

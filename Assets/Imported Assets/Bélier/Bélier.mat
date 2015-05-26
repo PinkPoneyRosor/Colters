@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: "B\xE9lier"
+  m_Shader: {fileID: 4800000, guid: 92fc216b007a3fd46b414a2ac69a2b40, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal
+        second:
+          m_Texture: {fileID: 2800000, guid: dbde42370f4de0243a0ee4a5d604208a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse
+        second:
+          m_Texture: {fileID: 2800000, guid: 87860a9905cab644ea1167ce6a84761c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Specular
+        second:
+          m_Texture: {fileID: 2800000, guid: 8617885c59c7baa4480db105400e88a7, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_2
+        second:
+          m_Texture: {fileID: 2800000, guid: dbde42370f4de0243a0ee4a5d604208a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_4
+        second:
+          m_Texture: {fileID: 2800000, guid: 8617885c59c7baa4480db105400e88a7, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_1145
+        second:
+          m_Texture: {fileID: 2800000, guid: 8617885c59c7baa4480db105400e88a7, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_5
+        second:
+          m_Texture: {fileID: 2800000, guid: 7e355bd04d6e6e546b731b445e5e260e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_1180
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Glossiness
+        second: 4.21428585
+      data:
+        first:
+          name: _Specularity
+        second: 1.57142866
+      data:
+        first:
+          name: _node_1111
+        second: 0
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: .627451003, g: .627451003, b: .627451003, a: 1}

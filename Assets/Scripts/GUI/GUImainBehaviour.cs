@@ -28,12 +28,14 @@ public class GUImainBehaviour : MonoBehaviour {
 	public float soulStartValue;
 	[HideInInspector]
 	public float lifeStartValue;
+	
+	public float rockRefillRate = 0.9f;
 
 	// Use this for initialization
 	void Start () 
 	{
 		soulBar = GameObject.Find ("SoulBar");
-		lifeBarCircular = GameObject.Find ("RadialLife");
+		lifeBarCircular = GameObject.Find ("RadialLifeBar");
 		player = GameObject.Find ("Player");
 		rockBar = GameObject.Find ("RockBar");
 
@@ -65,15 +67,15 @@ public class GUImainBehaviour : MonoBehaviour {
 		#region Life Bar
 		lifeBarImage.fillAmount = Mathf.MoveTowards (lifeBarImage.fillAmount, playerScript.currentHealth / playerScript.maxHealth, Time.deltaTime);
 		
-		if(playerScript.currentHealth <= 0)
+		if(playerScript.currentHealth <= 0 && !playerScript.dead)
 		{
 			player.SendMessage ("Die");
 		}
 		#endregion
 		
 		#region RockBar
-		if (rockBarSlide.value < 1)
-			rockBarSlide.value += 0.1f * Time.deltaTime;
+		if (rockBarSlide.value < 1 && player.GetComponent <CharacterController>().isGrounded)
+			rockBarSlide.value += rockRefillRate * Time.deltaTime;
 		#endregion
 	}
 

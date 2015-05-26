@@ -1,0 +1,229 @@
+fileFormatVersion: 2
+guid: ae3251cbfe1672243ba751f9a9518011
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Base_Head
+    100002: //RootNode
+    100004: End_Head
+    100006: Golem_B__lier
+    100008: Head_Curve_CTRL
+    100010: Hips_CTRL
+    100012: Hips_Leg
+    100014: L_Ankle
+    100016: L_Arm_CTRL
+    100018: L_Arm_IK
+    100020: L_Elbow
+    100022: L_Fingers
+    100024: L_Foot
+    100026: L_Hand
+    100028: L_Hip
+    100030: L_Knee
+    100032: L_Leg_CTRL
+    100034: L_Leg_IK
+    100036: L_Shoulder
+    100038: Main_Curve_CTRL
+    100040: Neck
+    100042: Neck_Curve_CTRL
+    100044: R_Ankle
+    100046: R_Arm_CTRL
+    100048: R_Arm_IK
+    100050: R_Elbow
+    100052: R_Fingers
+    100054: R_Foot
+    100056: R_Hand
+    100058: R_Hip
+    100060: R_Knee
+    100062: R_Leg_CTRL
+    100064: R_Leg_IK
+    100066: R_Shoulder
+    100068: Shoulders_Arm
+    400000: Base_Head
+    400002: //RootNode
+    400004: End_Head
+    400006: Golem_B__lier
+    400008: Head_Curve_CTRL
+    400010: Hips_CTRL
+    400012: Hips_Leg
+    400014: L_Ankle
+    400016: L_Arm_CTRL
+    400018: L_Arm_IK
+    400020: L_Elbow
+    400022: L_Fingers
+    400024: L_Foot
+    400026: L_Hand
+    400028: L_Hip
+    400030: L_Knee
+    400032: L_Leg_CTRL
+    400034: L_Leg_IK
+    400036: L_Shoulder
+    400038: Main_Curve_CTRL
+    400040: Neck
+    400042: Neck_Curve_CTRL
+    400044: R_Ankle
+    400046: R_Arm_CTRL
+    400048: R_Arm_IK
+    400050: R_Elbow
+    400052: R_Fingers
+    400054: R_Foot
+    400056: R_Hand
+    400058: R_Hip
+    400060: R_Knee
+    400062: R_Leg_CTRL
+    400064: R_Leg_IK
+    400066: R_Shoulder
+    400068: Shoulders_Arm
+    4300000: Golem_B__lier
+    7400000: "B\xE9lier_Walk"
+    9500000: //RootNode
+    13700000: Golem_B__lier
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: "B\xE9lier_Walk"
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Golem_B__lier
+        weight: 1
+      - path: Hips_Leg
+        weight: 1
+      - path: Hips_Leg/L_Hip
+        weight: 1
+      - path: Hips_Leg/L_Hip/L_Knee
+        weight: 1
+      - path: Hips_Leg/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Hips_Leg/L_Hip/L_Knee/L_Ankle/L_Foot
+        weight: 1
+      - path: Hips_Leg/R_Hip
+        weight: 1
+      - path: Hips_Leg/R_Hip/R_Knee
+        weight: 1
+      - path: Hips_Leg/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Hips_Leg/R_Hip/R_Knee/R_Ankle/R_Foot
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder/L_Elbow/L_Hand
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/L_Shoulder/L_Elbow/L_Hand/L_Fingers
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/Neck
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/Neck/Base_Head
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/Neck/Base_Head/End_Head
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder/R_Elbow/R_Hand
+        weight: 1
+      - path: Hips_Leg/Shoulders_Arm/R_Shoulder/R_Elbow/R_Hand/R_Fingers
+        weight: 1
+      - path: L_Arm_IK
+        weight: 1
+      - path: L_Leg_IK
+        weight: 1
+      - path: Main_Curve_CTRL
+        weight: 1
+      - path: Main_Curve_CTRL/Head_Curve_CTRL
+        weight: 1
+      - path: Main_Curve_CTRL/Hips_CTRL
+        weight: 1
+      - path: Main_Curve_CTRL/L_Arm_CTRL
+        weight: 1
+      - path: Main_Curve_CTRL/L_Leg_CTRL
+        weight: 1
+      - path: Main_Curve_CTRL/Neck_Curve_CTRL
+        weight: 1
+      - path: Main_Curve_CTRL/R_Arm_CTRL
+        weight: 1
+      - path: Main_Curve_CTRL/R_Leg_CTRL
+        weight: 1
+      - path: R_Arm_IK
+        weight: 1
+      - path: R_Leg_IK
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: Hips_Leg
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

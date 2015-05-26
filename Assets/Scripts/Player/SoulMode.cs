@@ -29,7 +29,7 @@ public class SoulMode : CommonControls {
 		maxSpeed = setMaximumSpeed;
 
 		this.name = "Soul";
-		player = GameObject.FindWithTag ("Player");
+		player = GameObject.Find ("Player");
 		playerScript = player.GetComponent<PlayerController> ();
 
 		soulBar = GameObject.Find ("SoulBar");
@@ -91,7 +91,7 @@ public class SoulMode : CommonControls {
 		Time.timeScale = 1;
 		Time.fixedDeltaTime = .02f;
 		playerScript.soulMode = false;
-		mainCameraScript.SwitchPlayerMode( false );
+		mainCameraScript.SwitchPlayerMode( player.gameObject, false );
 		Destroy (this.gameObject);
 	}
 	
