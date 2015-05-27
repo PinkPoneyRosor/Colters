@@ -17,7 +17,7 @@ public class PassageAvantFinal : MonoBehaviour {
 	{
 		if (c.gameObject.tag == "ThrowableRock")
 		{
-			this.animation.Play("PassageAvantFinal");
+			this.animation.Play("PassageFinal");
 			Debug.Log("Play!");
 		}
 	}

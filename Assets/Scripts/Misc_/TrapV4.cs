@@ -1,10 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class TrapV4 : MonoBehaviour {
 
 
-	public AnimationClip anim;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +21,7 @@ public class TrapV4 : MonoBehaviour {
 	{
 		if (c.gameObject.tag == "ThrowableRock")
 		{
-			this.gameObject.animation.Play("StatueMain1");
+			this.gameObject.animation.Play("RockHands");
 			Debug.Log("Play!");
 		}
 
