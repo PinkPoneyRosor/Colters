@@ -6,7 +6,7 @@ public class EnemySight : MonoBehaviour
 	//This script is heavily inspired of the unity "Stealth" tutorial.
 
 	public float fieldOfViewAngle = 110f;           // Number of degrees, centred on forward, for the enemy see.
-	private bool playerInSight = false;                      // Whether or not the player is currently sighted.
+	private bool playerInSight = false;                      // Whether or not the player is currently in sight.
 	public bool playerRecentlySeen = false;
 	public Vector3 lastKnownPosition = Vector3.zero;
 	
@@ -20,6 +20,9 @@ public class EnemySight : MonoBehaviour
 	[SerializeField]
 	private float timeBeforeLosingTracks = 5;
 	private bool launchTimer = false;
+	
+	[HideInInspector]
+	public bool isInArcherMode = false;
 
 	void Update()
 	{
@@ -53,7 +56,7 @@ public class EnemySight : MonoBehaviour
 		player = GameObject.Find("Player");
 	}
 
-	void OnTriggerStay (Collider other)
+	protected virtual void OnTriggerStay (Collider other)
 	{
 		// If the player has entered the trigger sphere...
 		if(other.gameObject == player)

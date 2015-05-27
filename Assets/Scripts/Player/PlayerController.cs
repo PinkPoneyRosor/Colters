@@ -118,6 +118,6 @@ public class PlayerController : CommonControls {
 		if(!controller.isGrounded)
 			moveDirection.y = heightOfJump;
 		else
-			moveDirection.y = heightOfJump/2;
+			moveDirection.y = heightOfJump;
 	}
 }

@@ -33,15 +33,19 @@ public class BasicEnemy : MonoBehaviour {
 
 	#region Enemy's components
 	NavMeshAgent agent;
-	EnemySight sightScript;
-	CharacterController controller;
-	Transform sightSphere;
+	[HideInInspector]
+	public EnemySight sightScript;
+	[HideInInspector]
+	public CharacterController controller;
+	[HideInInspector]
+	public Transform sightSphere;
 	NavMeshAgent navMeshAgent;
 	#endregion
 
 	#region External scripts and objects
 	GameObject player;
 	public GameObject soul;
+	bool isAnArcher = false;
 	#endregion
 	
 #endregion
@@ -50,12 +54,9 @@ public class BasicEnemy : MonoBehaviour {
 	void Start () 
 	{
 		player = GameObject.Find ("Player");
-		sightSphere = transform.Find ("Sight") as Transform;
 
-		agent = GetComponent<NavMeshAgent>();
-		navMeshAgent = GetComponent<NavMeshAgent>();
-		controller = GetComponent<CharacterController>();
-		sightScript = sightSphere.GetComponent<EnemySight>();
+		agent = GetComponent <NavMeshAgent>();
+		navMeshAgent = GetComponent <NavMeshAgent>();
 
 		newPosition = transform.position + (Random.insideUnitSphere * Random.Range (5,10));
 	}
@@ -67,7 +68,8 @@ public class BasicEnemy : MonoBehaviour {
 		
 		if (canGetHit) 
 		{ //If the ennemy can't get hit, he can't move either.
-			if (!navMeshAgent.enabled) { //Since the enemy can get hit, he can also moves, so we make sure the navAgent is activated.
+			if (!navMeshAgent.enabled) 
+			{ //Since the enemy can get hit, he can also moves, so we make sure the navAgent is activated.
 					navMeshAgent.enabled = true;
 			}
 
@@ -129,8 +131,8 @@ public class BasicEnemy : MonoBehaviour {
 
 		if(!navMeshAgent.enabled)
 			controller.Move(moveDirection * Time.deltaTime);
-			
-		Hit ();
+		
+			Hit ();
 	}
 
 	void LateUpdate()
