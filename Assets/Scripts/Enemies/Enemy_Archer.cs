@@ -23,7 +23,7 @@ public class Enemy_Archer : MonoBehaviour {
 	void Start () 
 	{
 		player = GameObject.Find ("Player");
-		sightScript = this.GetComponentInChildren <Archer_Sight>();
+		sightScript = this.GetComponentInChildren <Archer_Sight> ();
 	}
 	
 	// Update is called once per frame
@@ -31,9 +31,12 @@ public class Enemy_Archer : MonoBehaviour {
 	{
 		if(sightScript.isInArcherMode)
 		{
+			Debug.Log ("Update in work!");
 			RaycastHit rayHit;
 			
 			Physics.Raycast ( transform.position,(player.transform.position + player.transform.up - transform.position).normalized, out rayHit, Mathf.Infinity, sightObstructionLayers );
+			
+			Debug.Log ("RayHit = " + rayHit.collider.name);
 			
 			if (rayHit.collider == player.collider)
 				holdFire = false;
@@ -44,6 +47,7 @@ public class Enemy_Archer : MonoBehaviour {
 			
 			if(myTarget)
 			{
+				Debug.Log ("Got a target");
 					CalculateAimPosition (myTarget.transform.position);
 					transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime * turnSpeed);
 					

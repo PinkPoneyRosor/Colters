@@ -3,10 +3,11 @@ using System.Collections;
 
 public class EnemySight : MonoBehaviour 
 {
-	//This script is heavily inspired of the unity "Stealth" tutorial.
+	//This script is heavily inspired by the unity "Stealth" tutorial.
 
 	public float fieldOfViewAngle = 110f;           // Number of degrees, centred on forward, for the enemy see.
-	private bool playerInSight = false;                      // Whether or not the player is currently in sight.
+	[HideInInspector]
+	public bool playerInSight = false;                      // Whether or not the player is currently in sight.
 	public bool playerRecentlySeen = false;
 	public Vector3 lastKnownPosition = Vector3.zero;
 	
@@ -16,35 +17,36 @@ public class EnemySight : MonoBehaviour
 
 	public LayerMask layer;
 
-	private float trackTimer = 0;
-	[SerializeField]
-	private float timeBeforeLosingTracks = 5;
-	private bool launchTimer = false;
+	[HideInInspector]
+	public float trackTimer = 0;
+	public float timeBeforeLosingTracks = 5;
+	[HideInInspector]
+	public bool launchTimer = false;
 	
 	[HideInInspector]
 	public bool isInArcherMode = false;
 
 	void Update()
 	{
-	if (!playerInSight && playerRecentlySeen) 
-			launchTimer = true;
-		
-	if (launchTimer)
-			Timer ();
-
-	if (trackTimer >= timeBeforeLosingTracks)
-		{
-			ResetTimer ();
-			playerRecentlySeen = false;
-		}
+		if (!playerInSight && playerRecentlySeen) 
+				launchTimer = true;
+			
+		if (launchTimer)
+				Timer ();
+	
+		if (trackTimer >= timeBeforeLosingTracks)
+			{
+				ResetTimer ();
+				playerRecentlySeen = false;
+			}
 	}
 
-	void Timer ()
+	public void Timer ()
 	{
 		trackTimer += Time.deltaTime;
 	}
 
-	void ResetTimer()
+	public void ResetTimer()
 	{
 		launchTimer = false;
 		trackTimer = 0;

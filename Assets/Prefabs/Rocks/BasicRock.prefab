@@ -15,6 +15,8 @@ GameObject:
   - 114: {fileID: 11400000}
   - 33: {fileID: 3300000}
   - 65: {fileID: 6500000}
+  - 82: {fileID: 8200000}
+  - 82: {fileID: 8200002}
   m_Layer: 16
   m_Name: BasicRock
   m_TagString: ThrowableRock
@@ -99,6 +101,152 @@ ConstantForce:
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: cf8121227b8107941bb4aae71f2e59c9, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 1
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .00200000009
+      value: 1
+      inSlope: 0
+      outSlope: -1.00200403
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: .173835278
+      outSlope: .173835278
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &8200002
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 1792989a5a33779428d2dbe9a9430605, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 50
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: .0406185575
+      value: .709677458
+      inSlope: -14.3378897
+      outSlope: -14.3378897
+      tangentMode: 0
+    - time: .0468728505
+      value: .417050689
+      inSlope: -12.504981
+      outSlope: -12.504981
+      tangentMode: 0
+    - time: .0799999982
+      value: .25
+      inSlope: -3.12624526
+      outSlope: -3.12624526
+      tangentMode: 0
+    - time: .159999996
+      value: .125
+      inSlope: -.781561315
+      outSlope: -.781561315
+      tangentMode: 0
+    - time: .319999993
+      value: .0625
+      inSlope: -.195390329
+      outSlope: -.195390329
+      tangentMode: 0
+    - time: .639999986
+      value: .03125
+      inSlope: -.0488475822
+      outSlope: -.0488475822
+      tangentMode: 0
+    - time: 1
+      value: .0199999996
+      inSlope: -.0200079847
+      outSlope: -.0200079847
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: .0171821304
+      value: .815668225
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +275,7 @@ MonoBehaviour:
   DecelerationRate: 15
   maxVelocityWhenDecelerating: 22
   growingRate: .100000001
+  impact: {fileID: 8200002}
   growingMyself: 1
 --- !u!208 &20800000
 NavMeshObstacle:

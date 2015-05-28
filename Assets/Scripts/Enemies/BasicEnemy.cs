@@ -17,7 +17,8 @@ public class BasicEnemy : MonoBehaviour {
 	[HideInInspector]
 	public EnemyMode CurrentMode = EnemyMode.Wandering;
 
-	Vector3 newPosition;
+	[HideInInspector]
+	public Vector3 newPosition;
 	Vector3 newEnGardePosition;
 	Vector3 moveDirection = Vector3.zero;
 	
@@ -32,20 +33,24 @@ public class BasicEnemy : MonoBehaviour {
 	#endregion
 
 	#region Enemy's components
-	NavMeshAgent agent;
+	[HideInInspector]
+	public NavMeshAgent agent;
 	[HideInInspector]
 	public EnemySight sightScript;
 	[HideInInspector]
 	public CharacterController controller;
 	[HideInInspector]
 	public Transform sightSphere;
-	NavMeshAgent navMeshAgent;
+	[HideInInspector]
+	public NavMeshAgent navMeshAgent;
 	#endregion
 
 	#region External scripts and objects
-	GameObject player;
+	[HideInInspector]
+	public GameObject player;
 	public GameObject soul;
-	bool isAnArcher = false;
+	[HideInInspector]
+	public bool isAnArcher = false;
 	#endregion
 	
 #endregion
@@ -53,19 +58,12 @@ public class BasicEnemy : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		player = GameObject.Find ("Player");
-
-		agent = GetComponent <NavMeshAgent>();
-		navMeshAgent = GetComponent <NavMeshAgent>();
-
-		newPosition = transform.position + (Random.insideUnitSphere * Random.Range (5,10));
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-		agent.updateRotation = false;
-		
+		agent.updateRotation = false;	
 		if (canGetHit) 
 		{ //If the ennemy can't get hit, he can't move either.
 			if (!navMeshAgent.enabled) 
@@ -91,8 +89,7 @@ public class BasicEnemy : MonoBehaviour {
 			#region Is the player in sight?
 			if (sightScript.playerRecentlySeen) //If the player's recently been in sight, let's chase him ! Otherwise, let's just continue to wander around.
 			{
-					CurrentMode = EnemyMode.Chasing;
-					
+					CurrentMode = EnemyMode.Chasing;		
 			}
 			else
 			{
@@ -173,7 +170,7 @@ public class BasicEnemy : MonoBehaviour {
 		if(isPushed)
 				moveDirection += player.transform.right * 2;
 
-				justJumped = true;
+		justJumped = true;
 	}
 
 	void OnTriggerEnter(Collider hit)

@@ -31,6 +31,8 @@ public class NewThrowableRock : MonoBehaviour {
 	public float maxVelocityWhenDecelerating = 22;
 	public float growingRate = .5f;
 	
+	public AudioSource impact;
+	
 	private GameObject player;
 	
 	[HideInInspector]
@@ -86,6 +88,33 @@ public class NewThrowableRock : MonoBehaviour {
 	void OnCollisionEnter (Collision collider)
 	{
 		JustHitSomething();
+		
+		Debug.Log ("Velocity = " + Vector3.SqrMagnitude (rigidbody.velocity));
+		
+		if (Vector3.SqrMagnitude (rigidbody.velocity) > 3000)
+		{
+			impact.volume = 1;
+			impact.pitch = 1;
+		}
+		else if (Vector3.SqrMagnitude (rigidbody.velocity) < 3000 && Vector3.SqrMagnitude (rigidbody.velocity) > 2000)
+		{
+			impact.volume = .75f;
+			impact.pitch = .9f;
+		}
+		else if (Vector3.SqrMagnitude (rigidbody.velocity) < 2000 && Vector3.SqrMagnitude (rigidbody.velocity) > 1000)
+		{
+			impact.volume = .5f;
+			impact.pitch = .8f;
+		}
+		else if (Vector3.SqrMagnitude (rigidbody.velocity) < 1000)
+		{
+			impact.volume = .25f;
+			impact.pitch = .7f;
+		}
+		
+		
+		
+		impact.Play ();
 	}
 	
 	void JustHitSomething ()

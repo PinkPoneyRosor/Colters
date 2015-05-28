@@ -8,6 +8,7 @@ public class Archer_Sight : EnemySight {
 	
 	bool playerNear = false;
 	bool inSight = false;
+	bool justGotInSight = true;
 
 	// Use this for initialization
 	void Start () 
@@ -22,17 +23,37 @@ public class Archer_Sight : EnemySight {
 		if (Vector3.SqrMagnitude (this.transform.position - player.transform.position) < 5 * 5 && inSight)
 		{
 			playerNear = true;
+			isInArcherMode = false; 
 			Debug.Log ("Yup");
+			justGotInSight = true;
+			
+			if (!playerInSight && playerRecentlySeen) 
+				launchTimer = true;
+			
+			if (launchTimer)
+				Timer ();
+			
+			if (trackTimer >= timeBeforeLosingTracks)
+			{
+				ResetTimer ();
+				playerRecentlySeen = false;
+			}
 		}
 		else if (inSight)
 		{
+			isInArcherMode = true;
 			playerNear = false;
-			archerScript.nextFireTime = Time.time + (archerScript.reloadTime);
+			
+			if (justGotInSight)
+			{
+				archerScript.nextFireTime = Time.time + (archerScript.reloadTime);
+				justGotInSight = false;
+			}
+			
 			archerScript.myTarget = player.gameObject;
 			Debug.Log ("Nope");
 		}
 	}
-	
 	
 	void OnTriggerEnter(Collider other)
 	{
@@ -45,5 +66,7 @@ public class Archer_Sight : EnemySight {
 	void OnTriggerExit (Collider other)
 	{
 		inSight = false;
+		justGotInSight = true;
+		isInArcherMode = false;
 	}
 }
