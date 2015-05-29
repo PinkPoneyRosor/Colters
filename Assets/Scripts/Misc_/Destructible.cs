@@ -17,7 +17,7 @@ public class Destructible : MonoBehaviour {
 	
 	void	OnCollisionEnter(Collision col)
 	{
-		if ((col.gameObject.tag == "ThrowableRock" || col.gameObject.tag == "FallingRocks")) 
+		if (col.gameObject.tag == "ThrowableRock" || col.gameObject.tag == "ThrowableRock2") 
 		{
 			rigidbody.constraints = RigidbodyConstraints.None;
 		}
