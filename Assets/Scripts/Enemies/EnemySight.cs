@@ -60,33 +60,36 @@ public class EnemySight : MonoBehaviour
 
 	protected virtual void OnTriggerStay (Collider other)
 	{
-		// If the player has entered the trigger sphere...
-		if(other.gameObject == player)
+		if(!isInArcherMode)
 		{
-			// By default the player is not in sight.
-			playerInSight = false;
-			
-			// Create a vector from the enemy to the player and store the angle between it and forward.
-			Vector3 direction = other.transform.position - transform.position;
-			float angle = Vector3.Angle(direction, transform.forward);
-
-			// If the angle between forward and where the player is, is less than half the angle of view...
-			if(angle < fieldOfViewAngle * 0.5f || Vector3.Distance (this.transform.position, player.transform.position) < 5)
+			// If the player has entered the trigger sphere...
+			if(other.gameObject == player)
 			{
-				RaycastHit hit;
+				// By default the player is not in sight.
+				playerInSight = false;
 				
-				// ... and if a raycast towards the player hits something...
-				if(Physics.Raycast(transform.position + transform.up*.5f, direction.normalized, out hit, sightCollider.radius))
+				// Create a vector from the enemy to the player and store the angle between it and forward.
+				Vector3 direction = other.transform.position - transform.position;
+				float angle = Vector3.Angle(direction, transform.forward);
+	
+				// If the angle between forward and where the player is, is less than half the angle of view...
+				if(angle < fieldOfViewAngle * 0.5f || Vector3.Distance (this.transform.position, player.transform.position) < 5)
 				{
-					Debug.DrawRay(transform.position + transform.up*.5f, direction.normalized* sightCollider.radius);
-					// ... and if the raycast hits the player...
-					if(hit.collider.gameObject == player)
+					RaycastHit hit;
+					
+					// ... and if a raycast towards the player hits something...
+					if(Physics.Raycast(transform.position + transform.up*.5f, direction.normalized, out hit, sightCollider.radius))
 					{
-						// ... the player is in sight.
-						ResetTimer(); //Just to make sure the timer is inactive as the player is currently in sight.
-						playerInSight = true;
-						playerRecentlySeen = true;
-						lastKnownPosition = player.transform.position;
+						Debug.DrawRay(transform.position + transform.up*.5f, direction.normalized* sightCollider.radius);
+						// ... and if the raycast hits the player...
+						if(hit.collider.gameObject == player)
+						{
+							// ... the player is in sight.
+							ResetTimer(); //Just to make sure the timer is inactive as the player is currently in sight.
+							playerInSight = true;
+							playerRecentlySeen = true;
+							lastKnownPosition = player.transform.position;
+						}
 					}
 				}
 			}

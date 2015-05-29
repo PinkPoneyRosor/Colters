@@ -15,6 +15,7 @@ public class Archer_Sight : EnemySight {
 	{
 		archerScript = this.GetComponentInParent <Enemy_Archer>();
 		player = GameObject.Find ("Player");
+		isInArcherMode = true;
 	}
 	
 	// Update is called once per frame

@@ -158,12 +158,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fieldOfViewAngle: 110
+  playerInSight: 0
   playerRecentlySeen: 0
   lastKnownPosition: {x: 0, y: 0, z: 0}
   layer:
     serializedVersion: 2
     m_Bits: 4096
+  trackTimer: 0
   timeBeforeLosingTracks: 5
+  launchTimer: 0
   isInArcherMode: 0
 --- !u!114 &11400006
 MonoBehaviour:
@@ -181,12 +184,17 @@ MonoBehaviour:
   gravity: 20
   recoveryTime: 3
   CurrentMode: 0
-  minRockVelocityToGetHurt: 5
+  newPosition: {x: 0, y: 0, z: 0}
+  minRockVelocityToGetHurt: 3
   canGetHit: 1
+  agent: {fileID: 0}
   sightScript: {fileID: 0}
   controller: {fileID: 0}
   sightSphere: {fileID: 0}
+  navMeshAgent: {fileID: 0}
+  player: {fileID: 0}
   soul: {fileID: 0}
+  isAnArcher: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
