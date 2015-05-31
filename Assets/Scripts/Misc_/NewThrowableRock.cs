@@ -30,6 +30,8 @@ public class NewThrowableRock : MonoBehaviour {
 	public float DecelerationRate = 15;
 	public float maxVelocityWhenDecelerating = 22;
 	public float growingRate = .5f;
+
+	public GameObject ImpactPrefab;
 	
 	private GameObject player;
 	
@@ -86,6 +88,35 @@ public class NewThrowableRock : MonoBehaviour {
 	void OnCollisionEnter (Collision collider)
 	{
 		JustHitSomething();
+		
+		Debug.Log ("Velocity = " + Vector3.SqrMagnitude (rigidbody.velocity));
+		
+		GameObject impactGameObject;
+		
+		impactGameObject = Instantiate (ImpactPrefab) as GameObject;
+		
+		AudioSource impactSound = impactGameObject.GetComponent <AudioSource> ();
+		
+		if (Vector3.SqrMagnitude (rigidbody.velocity) >= 50)
+		{
+			impactSound.volume = .5f;
+			impactSound.pitch = 1;
+		}
+		else if (Vector3.SqrMagnitude (rigidbody.velocity) < 50 && Vector3.SqrMagnitude (rigidbody.velocity) >= 30)
+		{
+			impactSound.volume = .4f;
+			impactSound.pitch = .8f;
+		}
+		else if (Vector3.SqrMagnitude (rigidbody.velocity) < 30 && Vector3.SqrMagnitude (rigidbody.velocity) > 10)
+		{
+			impactSound.volume = .3f;
+			impactSound.pitch = .6f;
+		}
+		else if (Vector3.SqrMagnitude (rigidbody.velocity) <= 10)
+		{
+			impactSound.volume = .2f;
+			impactSound.pitch = .5f;
+		}
 	}
 	
 	void JustHitSomething ()

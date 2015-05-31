@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 33: {fileID: 3300000}
   - 65: {fileID: 6500000}
+  - 82: {fileID: 8200000}
   m_Layer: 16
   m_Name: BasicRock
   m_TagString: ThrowableRock
@@ -29,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 61.4580002, y: 25.2049999, z: -305.102997}
+  m_LocalPosition: {x: 57.3300018, y: 44.2200012, z: -306.929993}
   m_LocalScale: {x: .0199999996, y: .0199999996, z: .0199999996}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +76,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -99,6 +100,69 @@ ConstantForce:
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: cf8121227b8107941bb4aae71f2e59c9, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 1
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .00200000009
+      value: 1
+      inSlope: 0
+      outSlope: -1.00200403
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: .173835278
+      outSlope: .173835278
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +191,7 @@ MonoBehaviour:
   DecelerationRate: 15
   maxVelocityWhenDecelerating: 22
   growingRate: .100000001
+  ImpactPrefab: {fileID: 100000, guid: f55f2c30c599caa48a18f4b3766a6029, type: 2}
   growingMyself: 1
 --- !u!208 &20800000
 NavMeshObstacle:

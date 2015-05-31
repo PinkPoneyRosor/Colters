@@ -32,6 +32,7 @@ public class Arrow_Homing : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+	
 		float distFromMaster = Vector3.SqrMagnitude(transform.position - masterTurret.transform.position);
 		if (distFromMaster > 2 * 2)
 		{
@@ -68,7 +69,7 @@ public class Arrow_Homing : MonoBehaviour {
 	
 	void CalculateAimPosition ()
 	{
-		rotationNeeded = Quaternion.LookRotation (target.transform.position - transform.position);
+		rotationNeeded = Quaternion.LookRotation ( (target.transform.position + target.transform.up) - transform.position);
 		transform.rotation = Quaternion.Slerp (transform.rotation, rotationNeeded, Time.deltaTime * turnSpeed);
 	}
 	

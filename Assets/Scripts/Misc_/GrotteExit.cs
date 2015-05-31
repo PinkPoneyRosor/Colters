@@ -19,9 +19,9 @@ public class GrotteExit : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider c)
 	{
-		if (c.gameObject.tag == "ThrowableRock")
+		if (c.gameObject.tag == "Player")
 		{
-			this.animation.Play("GrotteSortie");
+			this.animation.Play("GrotteExit");
 			Debug.Log("Play!");
 		}
 	}

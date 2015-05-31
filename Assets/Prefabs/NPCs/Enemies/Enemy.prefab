@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 23: {fileID: 2300000}
-  - 114: {fileID: 11400000}
   - 195: {fileID: 19500000}
   - 143: {fileID: 14300000}
+  - 114: {fileID: 11400000}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
@@ -128,7 +128,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 63.2599983, y: 25.4799995, z: -303.390015}
+  m_LocalPosition: {x: 49.776001, y: 25.4629993, z: -300.278015}
   m_LocalScale: {x: .5, y: 1, z: .5}
   m_Children:
   - {fileID: 400012}
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86627b02ec8c99142bd48fc459295832, type: 3}
+  m_Script: {fileID: 11500000, guid: 32276463ebc0c7345b8e02aafcd52b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealthPoint: 10
@@ -387,7 +387,9 @@ MonoBehaviour:
   CurrentMode: 0
   minRockVelocityToGetHurt: 5
   canGetHit: 1
-  soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
+  sightScript: {fileID: 0}
+  sightSphere: {fileID: 0}
+  soul: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,6 +408,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   timeBeforeLosingTracks: 5
+  isInArcherMode: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -26,7 +26,8 @@ public class PlayerController : CommonControls {
 	
 	[HideInInspector]
 	public bool dead = false;
-
+	
+	public GameObject footStep;
 
 	// Use this for initialization
 	protected override void Start ()
@@ -118,6 +119,11 @@ public class PlayerController : CommonControls {
 		if(!controller.isGrounded)
 			moveDirection.y = heightOfJump;
 		else
-			moveDirection.y = heightOfJump/2;
+			moveDirection.y = heightOfJump;
+	}
+	
+	void FootStep ()
+	{
+		Instantiate (footStep);
 	}
 }

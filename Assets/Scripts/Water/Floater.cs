@@ -91,8 +91,6 @@ public class Floater : MonoBehaviour
 			waitingToGo = false;
 			transform.parent.SendMessage("DecrementReadyNumber");
 		}
-
-
 	}
 	
 	void OnTriggerEnter(Collider hit)
@@ -112,12 +110,13 @@ public class Floater : MonoBehaviour
 			waitingToGo = true;
 			transform.parent.SendMessage("IncrementReadyNumber");
 		}
-
-	
-
 	}
 	
-
-
-
+	void OnTriggerExit(Collider hit)
+	{
+		if (hit.CompareTag("Water"))
+		{
+			inWater = false;
+		}
+	}
 }
