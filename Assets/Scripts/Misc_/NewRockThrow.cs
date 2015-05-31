@@ -142,7 +142,7 @@ public class NewRockThrow : MonoBehaviour {
 		currentThrowedRockScript = thrownRock.GetComponent <NewThrowableRock> ();
 
 		//Let's throw the rock downward
-		Vector3 throwDirection = -Vector3.up + transform.forward;
+		Vector3 throwDirection = -Vector3.up;
 		
 		//This line is just to make absolutely sure there is no more constraints so that we can throw the rock in a straight line.
 		currentThrowedRockScript.rigidbody.constraints = RigidbodyConstraints.None;

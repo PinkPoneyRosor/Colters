@@ -3,10 +3,11 @@ using System.Collections;
 
 public class EnemySight : MonoBehaviour 
 {
-	//This script is heavily inspired of the unity "Stealth" tutorial.
+	//This script is heavily inspired by the unity "Stealth" tutorial.
 
 	public float fieldOfViewAngle = 110f;           // Number of degrees, centred on forward, for the enemy see.
-	private bool playerInSight = false;                      // Whether or not the player is currently sighted.
+	[HideInInspector]
+	public bool playerInSight = false;                      // Whether or not the player is currently in sight.
 	public bool playerRecentlySeen = false;
 	public Vector3 lastKnownPosition = Vector3.zero;
 	
@@ -16,32 +17,36 @@ public class EnemySight : MonoBehaviour
 
 	public LayerMask layer;
 
-	private float trackTimer = 0;
-	[SerializeField]
-	private float timeBeforeLosingTracks = 5;
-	private bool launchTimer = false;
+	[HideInInspector]
+	public float trackTimer = 0;
+	public float timeBeforeLosingTracks = 5;
+	[HideInInspector]
+	public bool launchTimer = false;
+	
+	[HideInInspector]
+	public bool isInArcherMode = false;
 
 	void Update()
 	{
-	if (!playerInSight && playerRecentlySeen) 
-			launchTimer = true;
-		
-	if (launchTimer)
-			Timer ();
-
-	if (trackTimer >= timeBeforeLosingTracks)
-		{
-			ResetTimer ();
-			playerRecentlySeen = false;
-		}
+		if (!playerInSight && playerRecentlySeen) 
+				launchTimer = true;
+			
+		if (launchTimer)
+				Timer ();
+	
+		if (trackTimer >= timeBeforeLosingTracks)
+			{
+				ResetTimer ();
+				playerRecentlySeen = false;
+			}
 	}
 
-	void Timer ()
+	public void Timer ()
 	{
 		trackTimer += Time.deltaTime;
 	}
 
-	void ResetTimer()
+	public void ResetTimer()
 	{
 		launchTimer = false;
 		trackTimer = 0;
@@ -53,35 +58,38 @@ public class EnemySight : MonoBehaviour
 		player = GameObject.Find("Player");
 	}
 
-	void OnTriggerStay (Collider other)
+	protected virtual void OnTriggerStay (Collider other)
 	{
-		// If the player has entered the trigger sphere...
-		if(other.gameObject == player)
+		if(!isInArcherMode)
 		{
-			// By default the player is not in sight.
-			playerInSight = false;
-			
-			// Create a vector from the enemy to the player and store the angle between it and forward.
-			Vector3 direction = other.transform.position - transform.position;
-			float angle = Vector3.Angle(direction, transform.forward);
-
-			// If the angle between forward and where the player is, is less than half the angle of view...
-			if(angle < fieldOfViewAngle * 0.5f || Vector3.Distance (this.transform.position, player.transform.position) < 5)
+			// If the player has entered the trigger sphere...
+			if(other.gameObject == player)
 			{
-				RaycastHit hit;
+				// By default the player is not in sight.
+				playerInSight = false;
 				
-				// ... and if a raycast towards the player hits something...
-				if(Physics.Raycast(transform.position + transform.up*.5f, direction.normalized, out hit, sightCollider.radius))
+				// Create a vector from the enemy to the player and store the angle between it and forward.
+				Vector3 direction = other.transform.position - transform.position;
+				float angle = Vector3.Angle(direction, transform.forward);
+	
+				// If the angle between forward and where the player is, is less than half the angle of view...
+				if(angle < fieldOfViewAngle * 0.5f || Vector3.Distance (this.transform.position, player.transform.position) < 5)
 				{
-					Debug.DrawRay(transform.position + transform.up*.5f, direction.normalized* sightCollider.radius);
-					// ... and if the raycast hits the player...
-					if(hit.collider.gameObject == player)
+					RaycastHit hit;
+					
+					// ... and if a raycast towards the player hits something...
+					if(Physics.Raycast(transform.position + transform.up*.5f, direction.normalized, out hit, sightCollider.radius))
 					{
-						// ... the player is in sight.
-						ResetTimer(); //Just to make sure the timer is inactive as the player is currently in sight.
-						playerInSight = true;
-						playerRecentlySeen = true;
-						lastKnownPosition = player.transform.position;
+						Debug.DrawRay(transform.position + transform.up*.5f, direction.normalized* sightCollider.radius);
+						// ... and if the raycast hits the player...
+						if(hit.collider.gameObject == player)
+						{
+							// ... the player is in sight.
+							ResetTimer(); //Just to make sure the timer is inactive as the player is currently in sight.
+							playerInSight = true;
+							playerRecentlySeen = true;
+							lastKnownPosition = player.transform.position;
+						}
 					}
 				}
 			}

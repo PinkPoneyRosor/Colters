@@ -228,6 +228,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400024}
+  - 82: {fileID: 8200000}
+  m_Layer: 0
+  m_Name: WaterFallSoundFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &138566
 GameObject:
   m_ObjectHideFlags: 1
@@ -334,6 +350,7 @@ Transform:
   m_LocalPosition: {x: 1.61816406, y: -71.1003571, z: -45.9775085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 400024}
   - {fileID: 400022}
   - {fileID: 400008}
   - {fileID: 400010}
@@ -387,7 +404,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &400010
 Transform:
   m_ObjectHideFlags: 1
@@ -403,7 +420,7 @@ Transform:
   - {fileID: 400002}
   - {fileID: 400012}
   m_Father: {fileID: 400000}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &400012
 Transform:
   m_ObjectHideFlags: 1
@@ -479,6 +496,18 @@ Transform:
   - {fileID: 400020}
   - {fileID: 400014}
   m_Father: {fileID: 400000}
+  m_RootOrder: 1
+--- !u!4 &400024
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100024}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.17999983, y: -3.57999992, z: 16.9899998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400000}
   m_RootOrder: 0
 --- !u!4 &438566
 Transform:
@@ -543,7 +572,7 @@ Transform:
   - {fileID: 438572}
   - {fileID: 438566}
   m_Father: {fileID: 400000}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!23 &2300000
 Renderer:
   m_ObjectHideFlags: 1
@@ -907,9 +936,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &5400002
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -922,9 +951,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &5400004
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -937,9 +966,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &5400006
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -952,9 +981,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &5400008
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -967,9 +996,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &5400010
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -982,9 +1011,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &5400012
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -997,9 +1026,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &5400014
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1012,9 +1041,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &5438566
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1027,9 +1056,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &5438568
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1042,9 +1071,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &5438570
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1057,9 +1086,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &5438572
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1072,9 +1101,9 @@ Rigidbody:
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!64 &6400000
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -1232,6 +1261,69 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100024}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: a33b468ab01763a48b8613f692bf3c75, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .0500000007
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 56.3600006
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: -1.94326901
+      outSlope: -1.94326901
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: -.682647586
+      outSlope: -.682647586
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .96659708
+      value: 1
+      inSlope: -.181186005
+      outSlope: -.181186005
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3459,10 +3551,6 @@ MonoBehaviour:
   waterStreamSpeed: 3
   streamDirection: {x: 0, y: 0, z: -10}
   KillPlayer: 1
-  splashEffect: {fileID: 100002, guid: 65caeadfa09f8244bba3d83012e33e3f, type: 2}
-  cubeSplashEffect: {fileID: 181194, guid: 712091a31260b8247b2b35f346fef5cf, type: 2}
-  splashPoint: {x: 0, y: 0, z: 0}
-  splashRate: .5
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1

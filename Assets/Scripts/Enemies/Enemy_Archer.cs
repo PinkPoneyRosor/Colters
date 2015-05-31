@@ -6,13 +6,11 @@ public class Enemy_Archer : MonoBehaviour {
 	private GameObject player;
 	private bool holdFire = false;
 	private Quaternion desiredRotation;
-
-	private float nextMoveTime;
+	private Archer_Sight sightScript;
 	
 	public LayerMask sightObstructionLayers;
 	public float turnSpeed = 5f;
 	public float reloadTime = 1f;
-	public float firePauseTime = .25f;
 	public GameObject myProjectile;
 	public float errorAmount = .001f;
 	
@@ -25,31 +23,38 @@ public class Enemy_Archer : MonoBehaviour {
 	void Start () 
 	{
 		player = GameObject.Find ("Player");
+		sightScript = this.GetComponentInChildren <Archer_Sight> ();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		RaycastHit rayHit;
-		
-		Physics.Raycast ( transform.position,(player.transform.position - transform.position).normalized, out rayHit, Mathf.Infinity, sightObstructionLayers );
-		
-		if (rayHit.collider == player.collider)
-			holdFire = false;
-		else
-			holdFire = true;
-		
-		if(myTarget)
+		if(sightScript.isInArcherMode)
 		{
-			if(Time.time >= nextMoveTime)
+			Debug.Log ("Update in work!");
+			RaycastHit rayHit;
+			
+			Physics.Raycast ( transform.position,(player.transform.position + player.transform.up - transform.position).normalized, out rayHit, Mathf.Infinity, sightObstructionLayers );
+			
+			Debug.Log ("RayHit = " + rayHit.collider.name);
+			
+			if (rayHit.collider == player.collider)
+				holdFire = false;
+			else
 			{
-				CalculateAimPosition(myTarget.transform.position);
-				transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime * turnSpeed);
-				
+				holdFire = true;
 			}
-			if (Time.time >= nextFireTime && !holdFire)
+			
+			if(myTarget)
 			{
-				FireProjectile();
+				Debug.Log ("Got a target");
+					CalculateAimPosition (myTarget.transform.position);
+					transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime * turnSpeed);
+					
+				if (Time.time >= nextFireTime && !holdFire)
+				{
+					FireProjectile ();
+				}
 			}
 		}
 	}
@@ -63,7 +68,6 @@ public class Enemy_Archer : MonoBehaviour {
 	void FireProjectile()
 	{
 		nextFireTime = Time.time + reloadTime;
-		nextMoveTime = Time.time + firePauseTime;
 		
 		GameObject spawnedArrow;
 		spawnedArrow = Instantiate (myProjectile, transform.position, transform.rotation) as GameObject;
