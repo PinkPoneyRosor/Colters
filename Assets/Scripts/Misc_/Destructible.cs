@@ -6,8 +6,7 @@ public class Destructible : MonoBehaviour {
 	public bool mustBeExplosive;
 
 	// Use this for initialization
-	void Start () 
-	{
+	void Start () {
 		rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 	}
 	
@@ -18,7 +17,7 @@ public class Destructible : MonoBehaviour {
 	
 	void	OnCollisionEnter(Collision col)
 	{
-		if ((col.gameObject.CompareTag  ("ThrowableRock") || col.gameObject.tag == "FallingRocks")) 
+		if (col.gameObject.tag == "ThrowableRock" || col.gameObject.tag == "ThrowableRock2") 
 		{
 			rigidbody.constraints = RigidbodyConstraints.None;
 		}
