@@ -212,7 +212,7 @@ public class BasicEnemy : MonoBehaviour {
 		canGetHit = false; //This prevents the ennemy to get hurt twice with a single attack and deactivate all of its NavMesh agent's behaviours.
 		Jump (true);
 
-		yield return new WaitForSeconds(recoveryTime);
+		yield return new WaitForSeconds (recoveryTime);
 
 		canGetHit = true;
 		gameObject.layer = 10;

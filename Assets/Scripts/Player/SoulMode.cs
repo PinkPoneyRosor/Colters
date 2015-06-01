@@ -36,10 +36,6 @@ public class SoulMode : CommonControls {
 
 		soulBar = GameObject.Find ("SoulBar");
 		soulBarSlide = soulBar.GetComponent<Slider> ();
-
-
-
-
 	}
 
 	// Update is called once per frame
