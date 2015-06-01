@@ -89,8 +89,6 @@ public class NewThrowableRock : MonoBehaviour {
 	{
 		JustHitSomething();
 		
-		Debug.Log ("Velocity = " + Vector3.SqrMagnitude (rigidbody.velocity));
-		
 		GameObject impactGameObject;
 		
 		impactGameObject = Instantiate (ImpactPrefab) as GameObject;

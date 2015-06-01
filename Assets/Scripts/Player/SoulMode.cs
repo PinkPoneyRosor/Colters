@@ -21,10 +21,8 @@ public class SoulMode : CommonControls {
 	private GameObject currentClimbingRock;
 	private NewThrowableRock currentClimbRockScript;
 	private float gravitySave;
-
-
-
-
+	
+	public GameObject footStep;
 
 	// Use this for initialization
 	protected override void Start () 
@@ -124,5 +122,10 @@ public class SoulMode : CommonControls {
 				gravitySave = gravity;
 			}
 		}
+	}
+	
+	void FootStep ()
+	{
+		Instantiate (footStep);
 	}
 }
