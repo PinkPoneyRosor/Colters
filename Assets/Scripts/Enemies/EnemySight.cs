@@ -13,7 +13,8 @@ public class EnemySight : MonoBehaviour
 	
 
 	private SphereCollider sightCollider;
-	private GameObject player;                      // Reference to the player.
+	[HideInInspector]
+	public GameObject player;                      // Reference to the player.
 
 	public LayerMask layer;
 

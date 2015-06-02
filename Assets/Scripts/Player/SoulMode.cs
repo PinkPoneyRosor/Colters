@@ -21,10 +21,8 @@ public class SoulMode : CommonControls {
 	private GameObject currentClimbingRock;
 	private NewThrowableRock currentClimbRockScript;
 	private float gravitySave;
-
-
-
-
+	
+	public GameObject footStep;
 
 	// Use this for initialization
 	protected override void Start () 
@@ -38,10 +36,6 @@ public class SoulMode : CommonControls {
 
 		soulBar = GameObject.Find ("SoulBar");
 		soulBarSlide = soulBar.GetComponent<Slider> ();
-
-
-
-
 	}
 
 	// Update is called once per frame
@@ -124,5 +118,10 @@ public class SoulMode : CommonControls {
 				gravitySave = gravity;
 			}
 		}
+	}
+	
+	void FootStep ()
+	{
+		Instantiate (footStep);
 	}
 }

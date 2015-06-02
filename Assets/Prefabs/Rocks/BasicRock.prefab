@@ -16,6 +16,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 65: {fileID: 6500000}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11400002}
   m_Layer: 16
   m_Name: BasicRock
   m_TagString: ThrowableRock
@@ -193,6 +194,21 @@ MonoBehaviour:
   growingRate: .100000001
   ImpactPrefab: {fileID: 100000, guid: f55f2c30c599caa48a18f4b3766a6029, type: 2}
   growingMyself: 1
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fed1b7bc8b661478f881125287660c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  skinWidth: .100000001
 --- !u!208 &20800000
 NavMeshObstacle:
   m_ObjectHideFlags: 1

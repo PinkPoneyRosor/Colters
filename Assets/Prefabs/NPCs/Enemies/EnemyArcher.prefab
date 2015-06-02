@@ -46,7 +46,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -.999412417, z: 0, w: .0342763327}
-  m_LocalPosition: {x: 59.5999985, y: 24.6800003, z: -322.600006}
+  m_LocalPosition: {x: 58.7400017, y: 25.6000004, z: -309.369995}
   m_LocalScale: {x: 1, y: 1.01472521, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -161,6 +161,7 @@ MonoBehaviour:
   playerInSight: 0
   playerRecentlySeen: 0
   lastKnownPosition: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
   layer:
     serializedVersion: 2
     m_Bits: 4096
@@ -195,6 +196,7 @@ MonoBehaviour:
   player: {fileID: 0}
   soul: {fileID: 0}
   isAnArcher: 0
+  archerChasing: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -205,7 +207,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 18
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &14300000
 CharacterController:

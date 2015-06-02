@@ -51,6 +51,7 @@ public class BasicEnemy : MonoBehaviour {
 	public GameObject soul;
 	[HideInInspector]
 	public bool isAnArcher = false;
+	public bool archerChasing = false;
 	#endregion
 	
 #endregion
@@ -63,7 +64,9 @@ public class BasicEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		agent.updateRotation = false;	
+		agent.updateRotation = false;
+		
+				
 		if (canGetHit) 
 		{ //If the ennemy can't get hit, he can't move either.
 			if (!navMeshAgent.enabled) 
@@ -110,7 +113,7 @@ public class BasicEnemy : MonoBehaviour {
 				transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, Time.deltaTime * 15);
 			}
 
-			if (CurrentMode == EnemyMode.Wandering) //Movement when the player's not in sight.
+			if (CurrentMode == EnemyMode.Wandering && !isAnArcher) //Movement when the player's not in sight.
 			{
 				agent.SetDestination (new Vector3 (newPosition.x, transform.position.y, newPosition.z));
 			}
@@ -212,7 +215,7 @@ public class BasicEnemy : MonoBehaviour {
 		canGetHit = false; //This prevents the ennemy to get hurt twice with a single attack and deactivate all of its NavMesh agent's behaviours.
 		Jump (true);
 
-		yield return new WaitForSeconds(recoveryTime);
+		yield return new WaitForSeconds (recoveryTime);
 
 		canGetHit = true;
 		gameObject.layer = 10;
