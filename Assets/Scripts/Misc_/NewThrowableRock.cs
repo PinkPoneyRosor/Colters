@@ -30,6 +30,8 @@ public class NewThrowableRock : MonoBehaviour {
 	public float DecelerationRate = 15;
 	public float maxVelocityWhenDecelerating = 22;
 	public float growingRate = .5f;
+	
+	public bool Melee = false;
 
 	public GameObject ImpactPrefab;
 	
@@ -114,6 +116,11 @@ public class NewThrowableRock : MonoBehaviour {
 		{
 			impactSound.volume = .2f;
 			impactSound.pitch = .5f;
+		}
+		
+		if (Melee)
+		{
+			//DO MELEE STUFF (SHOCKWAVE)
 		}
 	}
 	

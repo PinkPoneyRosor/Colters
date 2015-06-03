@@ -14,7 +14,7 @@ public class SoulMode : CommonControls {
 	GameObject player;
 	PlayerController playerScript;
 	GameObject soulBar;
-	Slider soulBarSlide;
+	Image soulBarImage;
 	#endregion
 	
 	private bool climbRock = false;
@@ -35,7 +35,7 @@ public class SoulMode : CommonControls {
 		playerScript = player.GetComponent<PlayerController> ();
 
 		soulBar = GameObject.Find ("SoulBar");
-		soulBarSlide = soulBar.GetComponent<Slider> ();
+		soulBarImage = soulBar.GetComponent<Image> ();
 	}
 
 	// Update is called once per frame
@@ -65,7 +65,7 @@ public class SoulMode : CommonControls {
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
 		//Resetting back to body mode when pushing swith button or Soul Bar depleted.
-		if (Input.GetButtonDown ("SwitchMode") || soulBarSlide.value <= 0)
+		if (Input.GetButtonDown ("SwitchMode") || soulBarImage.fillAmount <= 0)
 			revertBack(true);
 		else if (Input.GetButtonDown ("SoulToBody"))
 			revertBack (false);

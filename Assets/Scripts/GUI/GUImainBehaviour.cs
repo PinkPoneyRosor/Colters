@@ -7,7 +7,7 @@ public class GUImainBehaviour : MonoBehaviour {
 	//External scripts, objects, files,...
 
 	GameObject soulBar;
-	GameObject lifeBarCircular;
+	GameObject lifeBar;
 	GameObject rockBar;
 	
 	GameObject player;
@@ -15,11 +15,17 @@ public class GUImainBehaviour : MonoBehaviour {
 	PlayerController playerScript;
 	
 	[HideInInspector]
-	public Slider soulBarSlide;
-	[HideInInspector]
-	public Slider rockBarSlide;
+	public Image soulBarImage;
+
+	public GameObject[] rockLights;
+	public GameObject ShieldExplosive;
+	public GameObject blueLifeBar;
+	public GameObject soulSkull;
 	
+	Image explosivePic;
 	Image lifeBarImage;
+	Image blueLifeBarPic;
+	Image blueSkull;
 
 	float localDeltaTime;
 
@@ -28,6 +34,10 @@ public class GUImainBehaviour : MonoBehaviour {
 	public float soulStartValue;
 	[HideInInspector]
 	public float lifeStartValue;
+	[HideInInspector]
+	public float rockPercent = 1;
+	[HideInInspector]
+	public bool NextRockExplosive = false;
 	
 	public float rockRefillRate = 0.9f;
 
@@ -35,37 +45,43 @@ public class GUImainBehaviour : MonoBehaviour {
 	void Start () 
 	{
 		soulBar = GameObject.Find ("SoulBar");
-		lifeBarCircular = GameObject.Find ("RadialLifeBar");
+		lifeBar = GameObject.Find ("LifeBar");
 		player = GameObject.Find ("Player");
-		rockBar = GameObject.Find ("RockBar");
+		rockBar = GameObject.Find ("Shield");
 
-		soulBarSlide = soulBar.GetComponent<Slider> ();
-		lifeBarImage = lifeBarCircular.GetComponent <Image> ();
+		soulBarImage = soulBar.GetComponent<Image> ();
+		lifeBarImage = lifeBar.GetComponent <Image> ();
 		playerScript = player.GetComponent<PlayerController> ();
+		explosivePic = ShieldExplosive.GetComponent<Image> ();
+		blueLifeBarPic = blueLifeBar.GetComponent <Image> ();
+		blueSkull = soulSkull.GetComponent <Image> ();
 		
-		soulStartValue = soulBarSlide.value;
-		rockBarSlide = rockBar.GetComponent <Slider> ();
+		soulStartValue = soulBarImage.fillAmount;
 	}
 	
 	// Update is called once per frame
 	void Update () 
-	{
+	{	
+		if(rockPercent > 1)
+			rockPercent = 1;
+	
 		//localDeltaTime allows the script to not be influenced by the time scale change.
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
 		#region Soul Bar
  		if(playerScript.soulMode)
 		{
-			soulBarSlide.value -= SoulBarSpeedRate * localDeltaTime;
+			soulBarImage.fillAmount -= SoulBarSpeedRate * localDeltaTime;
 		}
-		else if (soulBarSlide.value < 1)
+		else if (soulBarImage.fillAmount < 1)
 		{
-			soulBarSlide.value += SoulBarSpeedRate * localDeltaTime;
+			soulBarImage.fillAmount += SoulBarSpeedRate * localDeltaTime;
 		}
 		#endregion
 		
 		#region Life Bar
 		lifeBarImage.fillAmount = Mathf.MoveTowards (lifeBarImage.fillAmount, playerScript.currentHealth / playerScript.maxHealth, Time.deltaTime);
+		blueLifeBarPic.fillAmount = Mathf.MoveTowards (lifeBarImage.fillAmount, playerScript.currentHealth / playerScript.maxHealth, Time.deltaTime);
 		
 		if(playerScript.currentHealth <= 0 && !playerScript.dead)
 		{
@@ -74,14 +90,60 @@ public class GUImainBehaviour : MonoBehaviour {
 		#endregion
 		
 		#region RockBar
-		if (rockBarSlide.value < 1 && player.GetComponent <CharacterController>().isGrounded)
-			rockBarSlide.value += rockRefillRate * Time.deltaTime;
+		if (rockPercent < 1 && player.GetComponent <CharacterController>().isGrounded)
+			rockPercent += rockRefillRate * Time.deltaTime;
+			
+		if (rockPercent < 1)
+			rockLights[0].GetComponent <Image> ().CrossFadeAlpha (0, .5f, true);
+		else
+			rockLights[0].GetComponent <Image> ().CrossFadeAlpha (1, .5f, true);
+			
+		if (rockPercent < .75f)
+			rockLights[1].GetComponent <Image> ().CrossFadeAlpha (0, .5f, true);
+		else
+			rockLights[1].GetComponent <Image> ().CrossFadeAlpha (1, .5f, true);
+			
+		if (rockPercent < .5f)
+			rockLights[2].GetComponent <Image> ().CrossFadeAlpha (0, .5f, true);
+		else
+			rockLights[2].GetComponent <Image> ().CrossFadeAlpha (1, .5f, true);
+			
+		if (rockPercent < .25f)
+			rockLights[3].GetComponent <Image> ().CrossFadeAlpha (0, .5f, true);
+		else
+			rockLights[3].GetComponent <Image> ().CrossFadeAlpha (1, .5f, true);
+		
+		Debug.Log (explosivePic.transform.name);
+		
+		if (NextRockExplosive)
+		{
+			explosivePic.CrossFadeAlpha (1 , .25f, true);
+			Debug.Log ("EEYUP");
+		}
+		else
+		{
+			explosivePic.CrossFadeAlpha (0 , .25f, true);
+			Debug.Log ("EENOPE");
+		}
+		#endregion
+		
+		#region soul mode
+		if (playerScript.soulMode)
+		{
+			blueLifeBarPic.CrossFadeAlpha (1, .5f, true);
+			blueSkull.CrossFadeAlpha (1, .5f, true);
+		}
+		else
+		{
+			blueLifeBarPic.CrossFadeAlpha (0, .5f, true);
+			blueSkull.CrossFadeAlpha (0, .5f, true);
+		}
 		#endregion
 	}
 
 	void MaxRockBar ()
 	{
-		rockBarSlide.value = 1;
+		rockPercent = 1;
 	}
 
 }
