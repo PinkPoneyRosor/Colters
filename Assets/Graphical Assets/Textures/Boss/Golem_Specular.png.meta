@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: edef41b8800ca904b9b67fd13c67badf
+=======
+guid: 53f116b9f0a241841823d3e7755ab2fd
+>>>>>>> Quentin-WIP
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2

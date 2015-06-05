@@ -1188,7 +1188,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 549b9fd7269cd2d438ce42179ecb8c5d, type: 2}
+  - {fileID: 2100000, guid: 1de096839aab06b4b8d8492676c0b493, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1208,7 +1208,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 549b9fd7269cd2d438ce42179ecb8c5d, type: 2}
+  - {fileID: 2100000, guid: 1de096839aab06b4b8d8492676c0b493, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1228,7 +1228,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 549b9fd7269cd2d438ce42179ecb8c5d, type: 2}
+  - {fileID: 2100000, guid: 1de096839aab06b4b8d8492676c0b493, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1619,7 +1619,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.53999996, y: 3.52999997, z: 1.63}
+  m_Size: {x: 2.4000001, y: 2.36999989, z: 3.1500001}
   m_Center: {x: -9.30000019, y: -8.84000015, z: 17.7800007}
 --- !u!65 &6500002
 BoxCollider:

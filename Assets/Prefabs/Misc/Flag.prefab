@@ -26,8 +26,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 400002}
   - 33: {fileID: 3300000}
-  - 136: {fileID: 13600000}
   - 23: {fileID: 2300000}
+  - 136: {fileID: 13600000}
   m_Layer: 0
   m_Name: Flag
   m_TagString: Untagged
@@ -41,9 +41,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: -.707106829, w: .707106829}
-  m_LocalPosition: {x: -.0296422914, y: -.685656071, z: -14.869113}
-  m_LocalScale: {x: -.0590065643, y: -1.97723877, z: -2.96585774}
+  m_LocalRotation: {x: .706561267, y: -.706561267, z: .0277711842, w: -.0277711842}
+  m_LocalPosition: {x: .329957128, y: 2.55431271, z: -1.96504962}
+  m_LocalScale: {x: .236985907, y: .263848335, z: .395772368}
   m_Children: []
   m_Father: {fileID: 400002}
   m_RootOrder: 0
@@ -53,9 +53,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.6300011, y: 31.2530003, z: -290.640015}
-  m_LocalScale: {x: -.101151161, y: -3.38945365, z: -.101151176}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 30.5900002, y: 39.8499985, z: -295.049988}
+  m_LocalScale: {x: .612199724, y: .681592822, z: .612199783}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 0}
@@ -72,7 +72,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 4d3a2557de1acdf4abd25feb6b77b87b, type: 2}
+  - {fileID: 2100000, guid: 6a586624e272da7429e4a0a35980d48d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -86,7 +86,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 6654c2ff357104845b22d7aa0fe4c1c1, type: 3}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -96,10 +96,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
+  m_Radius: .119999997
+  m_Height: 9.29878616
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: .150000006, y: 0, z: 0}
 --- !u!160 &16000000
 InteractiveCloth:
   m_ObjectHideFlags: 1
