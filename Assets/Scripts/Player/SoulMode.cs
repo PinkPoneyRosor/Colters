@@ -14,17 +14,18 @@ public class SoulMode : CommonControls {
 	GameObject player;
 	PlayerController playerScript;
 	GameObject soulBar;
-	Slider soulBarSlide;
+	Image soulBarImage;
 	#endregion
 	
 	private bool climbRock = false;
 	private GameObject currentClimbingRock;
 	private NewThrowableRock currentClimbRockScript;
 	private float gravitySave;
-
-
-
-
+	
+	public GameObject footStep;
+	
+	GameObject HUD;
+	GUImainBehaviour HUDScript;
 
 	// Use this for initialization
 	protected override void Start () 
@@ -37,18 +38,18 @@ public class SoulMode : CommonControls {
 		playerScript = player.GetComponent<PlayerController> ();
 
 		soulBar = GameObject.Find ("SoulBar");
-		soulBarSlide = soulBar.GetComponent<Slider> ();
-
-
-
-
+		soulBarImage = soulBar.GetComponent<Image> ();
+		
+		HUD = GameObject.Find ("GameHUD");
+		HUDScript = HUD.GetComponent <GUImainBehaviour>();
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
-	
-		Time.timeScale = 0.1f;
+		if( !HUDScript.paused )
+			Time.timeScale = 0.1f;
+			
 		Time.fixedDeltaTime = 0.1f * 0.02f; //Make sure the physics simulation is still fluid.
 		
 		if (climbRock)
@@ -71,7 +72,7 @@ public class SoulMode : CommonControls {
 		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 
 		//Resetting back to body mode when pushing swith button or Soul Bar depleted.
-		if (Input.GetButtonDown ("SwitchMode") || soulBarSlide.value <= 0)
+		if (Input.GetButtonDown ("SwitchMode") || soulBarImage.fillAmount <= 0)
 			revertBack(true);
 		else if (Input.GetButtonDown ("SoulToBody"))
 			revertBack (false);
@@ -124,5 +125,10 @@ public class SoulMode : CommonControls {
 				gravitySave = gravity;
 			}
 		}
+	}
+	
+	void FootStep ()
+	{
+		Instantiate (footStep);
 	}
 }

@@ -38,7 +38,7 @@ Material:
       data:
         first:
           name: _RimPower
-        second: 1.26785719
+        second: 1
       data:
         first:
           name: _EmissionLM
@@ -51,8 +51,8 @@ Material:
       data:
         first:
           name: _ColorTint
-        second: {r: 0, g: .503448486, b: 1, a: 0}
+        second: {r: 0, g: .503448486, b: 1, a: 1}
       data:
         first:
           name: _RimColor
-        second: {r: 1, g: 1, b: 1, a: 0}
+        second: {r: 1, g: 1, b: 1, a: 1}

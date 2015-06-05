@@ -22,7 +22,7 @@ public class Collectible_Soul : MonoBehaviour {
 	{
 		if (hit.collider.CompareTag ("Player"))
 		{
-			GUIScript.soulBarSlide.value = GUIScript.soulStartValue;
+			GUIScript.soulBarImage.fillAmount = GUIScript.soulStartValue;
 			Destroy (this.gameObject);
 		}
 	}

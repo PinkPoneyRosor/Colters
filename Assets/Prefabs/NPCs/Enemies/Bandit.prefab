@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.4700012, y: 27.3600006, z: -310.23999}
+  m_LocalPosition: {x: 58.136097, y: 23.9158401, z: -306.984772}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -153,7 +153,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: a0038e0715550d24b8899b34439d7c14, type: 2}
+  - {fileID: 2100000, guid: 5cc7abe2dbcfa1e4f96ee956794eb9f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -210,12 +210,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fieldOfViewAngle: 110
+  playerInSight: 0
   playerRecentlySeen: 0
   lastKnownPosition: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
   layer:
     serializedVersion: 2
     m_Bits: 4096
+  trackTimer: 0
   timeBeforeLosingTracks: 5
+  launchTimer: 0
+  isInArcherMode: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,9 +237,19 @@ MonoBehaviour:
   gravity: 20
   recoveryTime: 3
   CurrentMode: 0
+  newPosition: {x: 0, y: 0, z: 0}
   minRockVelocityToGetHurt: 5
   canGetHit: 1
+  agent: {fileID: 0}
+  sightScript: {fileID: 0}
+  controller: {fileID: 0}
+  sightSphere: {fileID: 0}
+  navMeshAgent: {fileID: 0}
+  player: {fileID: 0}
   soul: {fileID: 100000, guid: 8d7c2650b4ebbda429254a48b18dfd5a, type: 2}
+  isAnArcher: 0
+  archerChasing: 0
+  ragdoll: {fileID: 0}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

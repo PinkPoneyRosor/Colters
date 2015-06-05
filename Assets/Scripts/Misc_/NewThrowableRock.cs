@@ -30,6 +30,10 @@ public class NewThrowableRock : MonoBehaviour {
 	public float DecelerationRate = 15;
 	public float maxVelocityWhenDecelerating = 22;
 	public float growingRate = .5f;
+	
+	public GameObject EarthQuakeParticles;
+	
+	public bool Melee = false;
 
 	public GameObject ImpactPrefab;
 	
@@ -38,15 +42,24 @@ public class NewThrowableRock : MonoBehaviour {
 	[HideInInspector]
 	public bool growingMyself = true;
 	
+	bool meleeAlreadyHit = false;
+	
+	Vector3 startScale;
+	
 	// Use this for initialization
 	void Start () 
 	{
 		player = GameObject.Find ("Player");
+		startScale = this.transform.localScale;
+		transform.localScale = Vector3.zero;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		transform.localScale = Vector3.Lerp (transform.localScale, startScale, Time.deltaTime * 10);
+	
+	
 		#region track distance travelled
 		if (Vector3.SqrMagnitude(transform.position - posAtLaunch) > maxTravelDistance * maxTravelDistance && !isSelected && isThrowed)
 		{
@@ -89,8 +102,6 @@ public class NewThrowableRock : MonoBehaviour {
 	{
 		JustHitSomething();
 		
-		Debug.Log ("Velocity = " + Vector3.SqrMagnitude (rigidbody.velocity));
-		
 		GameObject impactGameObject;
 		
 		impactGameObject = Instantiate (ImpactPrefab) as GameObject;
@@ -116,6 +127,13 @@ public class NewThrowableRock : MonoBehaviour {
 		{
 			impactSound.volume = .2f;
 			impactSound.pitch = .5f;
+		}
+		
+		if (Melee && !meleeAlreadyHit)
+		{
+			GameObject EarthQuakeParticlesInstance;
+			EarthQuakeParticlesInstance = Instantiate(EarthQuakeParticles, transform.position , Quaternion.Euler(90,0,0) ) as GameObject;
+			meleeAlreadyHit = true;
 		}
 	}
 	

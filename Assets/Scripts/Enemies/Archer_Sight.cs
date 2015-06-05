@@ -4,7 +4,7 @@ using System.Collections;
 public class Archer_Sight : EnemySight {
 
 	Enemy_Archer archerScript;
-	GameObject player;
+	Archer_Base_Behaviour archerBaseScript;
 	
 	bool playerNear = false;
 	bool inSight = false;
@@ -16,16 +16,16 @@ public class Archer_Sight : EnemySight {
 		archerScript = this.GetComponentInParent <Enemy_Archer>();
 		player = GameObject.Find ("Player");
 		isInArcherMode = true;
+		archerBaseScript = this.GetComponentInParent <Archer_Base_Behaviour>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Vector3.SqrMagnitude (this.transform.position - player.transform.position) < 5 * 5 && inSight)
+		if (Vector3.SqrMagnitude (this.transform.position - player.transform.position) < 3 * 3 && inSight)
 		{
 			playerNear = true;
 			isInArcherMode = false; 
-			Debug.Log ("Yup");
 			justGotInSight = true;
 			
 			if (!playerInSight && playerRecentlySeen) 
@@ -34,13 +34,13 @@ public class Archer_Sight : EnemySight {
 			if (launchTimer)
 				Timer ();
 			
-			if (trackTimer >= timeBeforeLosingTracks)
+			/*if (trackTimer >= timeBeforeLosingTracks)
 			{
 				ResetTimer ();
 				playerRecentlySeen = false;
-			}
+			}*/
 		}
-		else if (inSight)
+		else if (inSight && Vector3.SqrMagnitude (this.transform.position - player.transform.position) > 3 * 3)
 		{
 			isInArcherMode = true;
 			playerNear = false;
@@ -49,10 +49,12 @@ public class Archer_Sight : EnemySight {
 			{
 				archerScript.nextFireTime = Time.time + (archerScript.reloadTime);
 				justGotInSight = false;
+				archerBaseScript.archerChasing = true;
 			}
 			
+			playerRecentlySeen = false;
+			
 			archerScript.myTarget = player.gameObject;
-			Debug.Log ("Nope");
 		}
 	}
 	
@@ -69,5 +71,6 @@ public class Archer_Sight : EnemySight {
 		inSight = false;
 		justGotInSight = true;
 		isInArcherMode = false;
+		archerBaseScript.archerChasing = false;
 	}
 }

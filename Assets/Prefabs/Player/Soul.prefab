@@ -2881,10 +2881,12 @@ MonoBehaviour:
   checkPointOn: 0
   justJumped: 0
   lastCheckpointPosition: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
   maxSpeed: 10
   gravity: 20
   setMaximumSpeed: 6
   heightOfJump: 9
+  footStep: {fileID: 100000, guid: 7d48e39852e4755408a9f9dac6487745, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

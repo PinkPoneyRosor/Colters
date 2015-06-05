@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: 5cacd48f212ed244ab8140276430f8dd
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: group7_pCylinder57
+    100002: group7_pCylinder58
+    100004: group7_pCylinder59
+    100006: group7_pCylinder64
+    100008: group7_pSphere11
+    100010: group7_pTorus10
+    100012: group7_pTorus11
+    100014: group7_pTorus2
+    100016: group7_pTorus3
+    100018: group7_pTorus4
+    100020: group7_pTorus5
+    100022: group7_pTorus6
+    100024: group7_pTorus7
+    100026: group7_pTorus8
+    100028: group7_pTorus9
+    100030: pCylinder56_group7
+    100032: //RootNode
+    100034: pCylinder56
+    400000: group7_pCylinder57
+    400002: group7_pCylinder58
+    400004: group7_pCylinder59
+    400006: group7_pCylinder64
+    400008: group7_pSphere11
+    400010: group7_pTorus10
+    400012: group7_pTorus11
+    400014: group7_pTorus2
+    400016: group7_pTorus3
+    400018: group7_pTorus4
+    400020: group7_pTorus5
+    400022: group7_pTorus6
+    400024: group7_pTorus7
+    400026: group7_pTorus8
+    400028: group7_pTorus9
+    400030: pCylinder56_group7
+    400032: //RootNode
+    400034: pCylinder56
+    2300000: group7_pCylinder57
+    2300002: group7_pCylinder58
+    2300004: group7_pCylinder59
+    2300006: group7_pCylinder64
+    2300008: group7_pSphere11
+    2300010: group7_pTorus10
+    2300012: group7_pTorus11
+    2300014: group7_pTorus2
+    2300016: group7_pTorus3
+    2300018: group7_pTorus4
+    2300020: group7_pTorus5
+    2300022: group7_pTorus6
+    2300024: group7_pTorus7
+    2300026: group7_pTorus8
+    2300028: group7_pTorus9
+    2300030: pCylinder56_group7
+    2300032: pCylinder56
+    3300000: group7_pCylinder57
+    3300002: group7_pCylinder58
+    3300004: group7_pCylinder59
+    3300006: group7_pCylinder64
+    3300008: group7_pSphere11
+    3300010: group7_pTorus10
+    3300012: group7_pTorus11
+    3300014: group7_pTorus2
+    3300016: group7_pTorus3
+    3300018: group7_pTorus4
+    3300020: group7_pTorus5
+    3300022: group7_pTorus6
+    3300024: group7_pTorus7
+    3300026: group7_pTorus8
+    3300028: group7_pTorus9
+    3300030: pCylinder56_group7
+    3300032: pCylinder56
+    4300000: group7_pCylinder57
+    4300002: group7_pCylinder58
+    4300004: group7_pCylinder59
+    4300006: group7_pCylinder64
+    4300008: group7_pSphere11
+    4300010: group7_pTorus10
+    4300012: group7_pTorus11
+    4300014: group7_pTorus2
+    4300016: group7_pTorus3
+    4300018: group7_pTorus4
+    4300020: group7_pTorus5
+    4300022: group7_pTorus6
+    4300024: group7_pTorus7
+    4300026: group7_pTorus8
+    4300028: group7_pTorus9
+    4300030: pCylinder56_group7
+    4300032: pCylinder56
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

@@ -30,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -77.2313995, y: 25.3606682, z: -17.0234241}
+  m_LocalPosition: {x: 58.75, y: 32.1100006, z: -313.040009}
   m_LocalScale: {x: .0199999996, y: .0199999996, z: .0199999996}
   m_Children: []
   m_Father: {fileID: 0}
@@ -122,12 +122,13 @@ MonoBehaviour:
   throwedRockNumber: 0
   isThrowed: 0
   throwForce: 2000
-  canExplode: 0
+  canExplode: 1
   posAtLaunch: {x: 0, y: 0, z: 0}
   maxTravelDistance: 15
   DecelerationRate: 15
   maxVelocityWhenDecelerating: 22
   growingRate: .100000001
+  ImpactPrefab: {fileID: 100000, guid: f55f2c30c599caa48a18f4b3766a6029, type: 2}
   growingMyself: 1
 --- !u!114 &11400002
 MonoBehaviour:
@@ -141,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 400000, guid: 8e02e06584f51ab42986fd44c73d976e, type: 2}
-  velocityNeededForExplosion: 1
+  velocityNeededForExplosion: .5
 --- !u!208 &20800000
 NavMeshObstacle:
   m_ObjectHideFlags: 1

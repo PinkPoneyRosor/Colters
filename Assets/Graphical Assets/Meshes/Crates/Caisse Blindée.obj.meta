@@ -1,0 +1,297 @@
+fileFormatVersion: 2
+guid: da9219b65cf3f3c41a21dd5fa2f88214
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: group9_group4 pCube10
+    100004: group9_group4 pCube11
+    100006: group9_group4 pCube12
+    100008: group9_group4 pCube13
+    100010: group9_group4 pCube14
+    100012: group9_group4 pCube15
+    100014: group9_group4 pCube16
+    100016: group9_group4 pCube17
+    100018: group9_group4 pCube18
+    100020: group9_group4 pCube19
+    100022: group9_group4 pCube20
+    100024: group9_group4 pCube9
+    100026: group9_group4 polySurface1
+    100028: group9_group4 polySurface10
+    100030: group9_group4 polySurface11
+    100032: group9_group4 polySurface12
+    100034: group9_group4 polySurface2
+    100036: group9_group4 polySurface3
+    100038: group9_group4 polySurface4
+    100040: group9_group4 polySurface5
+    100042: group9_group4 polySurface6
+    100044: group9_group4 polySurface7
+    100046: group9_group4 polySurface8
+    100048: group9_group4 polySurface9
+    100050: group9_group4 pPlane10
+    100052: group9_group4 pPlane11
+    100054: group9_group4 pPlane12
+    100056: group9_group4 pPlane13
+    100058: group9_group4 pPlane14
+    100060: group9_group4 pPlane15
+    100062: group9_group4 pPlane16
+    100064: group9_group4 pPlane17
+    100066: group9_group4 pPlane18
+    100068: group9_group4 pPlane19
+    100070: group9_group4 pPlane20
+    100072: group9_group4 pPlane21
+    100074: group9_group4 pPlane22
+    100076: group9_group4 pPlane27
+    100078: group9_group4 pPlane3
+    100080: group9_group4 pPlane4
+    100082: group9_group4 pPlane5
+    100084: group9_group4 pPlane6
+    100086: group9_group4 pPlane7
+    100088: group9_group4 pPlane8
+    100090: group9_group4 pPlane9
+    100092: pCube8_group9 group4
+    100094: pCube8
+    400000: //RootNode
+    400002: group9_group4 pCube10
+    400004: group9_group4 pCube11
+    400006: group9_group4 pCube12
+    400008: group9_group4 pCube13
+    400010: group9_group4 pCube14
+    400012: group9_group4 pCube15
+    400014: group9_group4 pCube16
+    400016: group9_group4 pCube17
+    400018: group9_group4 pCube18
+    400020: group9_group4 pCube19
+    400022: group9_group4 pCube20
+    400024: group9_group4 pCube9
+    400026: group9_group4 polySurface1
+    400028: group9_group4 polySurface10
+    400030: group9_group4 polySurface11
+    400032: group9_group4 polySurface12
+    400034: group9_group4 polySurface2
+    400036: group9_group4 polySurface3
+    400038: group9_group4 polySurface4
+    400040: group9_group4 polySurface5
+    400042: group9_group4 polySurface6
+    400044: group9_group4 polySurface7
+    400046: group9_group4 polySurface8
+    400048: group9_group4 polySurface9
+    400050: group9_group4 pPlane10
+    400052: group9_group4 pPlane11
+    400054: group9_group4 pPlane12
+    400056: group9_group4 pPlane13
+    400058: group9_group4 pPlane14
+    400060: group9_group4 pPlane15
+    400062: group9_group4 pPlane16
+    400064: group9_group4 pPlane17
+    400066: group9_group4 pPlane18
+    400068: group9_group4 pPlane19
+    400070: group9_group4 pPlane20
+    400072: group9_group4 pPlane21
+    400074: group9_group4 pPlane22
+    400076: group9_group4 pPlane27
+    400078: group9_group4 pPlane3
+    400080: group9_group4 pPlane4
+    400082: group9_group4 pPlane5
+    400084: group9_group4 pPlane6
+    400086: group9_group4 pPlane7
+    400088: group9_group4 pPlane8
+    400090: group9_group4 pPlane9
+    400092: pCube8_group9 group4
+    400094: pCube8
+    2300000: group9_group4 pCube10
+    2300002: group9_group4 pCube11
+    2300004: group9_group4 pCube12
+    2300006: group9_group4 pCube13
+    2300008: group9_group4 pCube14
+    2300010: group9_group4 pCube15
+    2300012: group9_group4 pCube16
+    2300014: group9_group4 pCube17
+    2300016: group9_group4 pCube18
+    2300018: group9_group4 pCube19
+    2300020: group9_group4 pCube20
+    2300022: group9_group4 pCube9
+    2300024: group9_group4 polySurface1
+    2300026: group9_group4 polySurface10
+    2300028: group9_group4 polySurface11
+    2300030: group9_group4 polySurface12
+    2300032: group9_group4 polySurface2
+    2300034: group9_group4 polySurface3
+    2300036: group9_group4 polySurface4
+    2300038: group9_group4 polySurface5
+    2300040: group9_group4 polySurface6
+    2300042: group9_group4 polySurface7
+    2300044: group9_group4 polySurface8
+    2300046: group9_group4 polySurface9
+    2300048: group9_group4 pPlane10
+    2300050: group9_group4 pPlane11
+    2300052: group9_group4 pPlane12
+    2300054: group9_group4 pPlane13
+    2300056: group9_group4 pPlane14
+    2300058: group9_group4 pPlane15
+    2300060: group9_group4 pPlane16
+    2300062: group9_group4 pPlane17
+    2300064: group9_group4 pPlane18
+    2300066: group9_group4 pPlane19
+    2300068: group9_group4 pPlane20
+    2300070: group9_group4 pPlane21
+    2300072: group9_group4 pPlane22
+    2300074: group9_group4 pPlane27
+    2300076: group9_group4 pPlane3
+    2300078: group9_group4 pPlane4
+    2300080: group9_group4 pPlane5
+    2300082: group9_group4 pPlane6
+    2300084: group9_group4 pPlane7
+    2300086: group9_group4 pPlane8
+    2300088: group9_group4 pPlane9
+    2300090: pCube8_group9 group4
+    2300092: pCube8
+    3300000: group9_group4 pCube10
+    3300002: group9_group4 pCube11
+    3300004: group9_group4 pCube12
+    3300006: group9_group4 pCube13
+    3300008: group9_group4 pCube14
+    3300010: group9_group4 pCube15
+    3300012: group9_group4 pCube16
+    3300014: group9_group4 pCube17
+    3300016: group9_group4 pCube18
+    3300018: group9_group4 pCube19
+    3300020: group9_group4 pCube20
+    3300022: group9_group4 pCube9
+    3300024: group9_group4 polySurface1
+    3300026: group9_group4 polySurface10
+    3300028: group9_group4 polySurface11
+    3300030: group9_group4 polySurface12
+    3300032: group9_group4 polySurface2
+    3300034: group9_group4 polySurface3
+    3300036: group9_group4 polySurface4
+    3300038: group9_group4 polySurface5
+    3300040: group9_group4 polySurface6
+    3300042: group9_group4 polySurface7
+    3300044: group9_group4 polySurface8
+    3300046: group9_group4 polySurface9
+    3300048: group9_group4 pPlane10
+    3300050: group9_group4 pPlane11
+    3300052: group9_group4 pPlane12
+    3300054: group9_group4 pPlane13
+    3300056: group9_group4 pPlane14
+    3300058: group9_group4 pPlane15
+    3300060: group9_group4 pPlane16
+    3300062: group9_group4 pPlane17
+    3300064: group9_group4 pPlane18
+    3300066: group9_group4 pPlane19
+    3300068: group9_group4 pPlane20
+    3300070: group9_group4 pPlane21
+    3300072: group9_group4 pPlane22
+    3300074: group9_group4 pPlane27
+    3300076: group9_group4 pPlane3
+    3300078: group9_group4 pPlane4
+    3300080: group9_group4 pPlane5
+    3300082: group9_group4 pPlane6
+    3300084: group9_group4 pPlane7
+    3300086: group9_group4 pPlane8
+    3300088: group9_group4 pPlane9
+    3300090: pCube8_group9 group4
+    3300092: pCube8
+    4300000: group9_group4 pCube10
+    4300002: group9_group4 pCube11
+    4300004: group9_group4 pCube12
+    4300006: group9_group4 pCube13
+    4300008: group9_group4 pCube14
+    4300010: group9_group4 pCube15
+    4300012: group9_group4 pCube16
+    4300014: group9_group4 pCube17
+    4300016: group9_group4 pCube18
+    4300018: group9_group4 pCube19
+    4300020: group9_group4 pCube20
+    4300022: group9_group4 pCube9
+    4300024: group9_group4 polySurface1
+    4300026: group9_group4 polySurface10
+    4300028: group9_group4 polySurface11
+    4300030: group9_group4 polySurface12
+    4300032: group9_group4 polySurface2
+    4300034: group9_group4 polySurface3
+    4300036: group9_group4 polySurface4
+    4300038: group9_group4 polySurface5
+    4300040: group9_group4 polySurface6
+    4300042: group9_group4 polySurface7
+    4300044: group9_group4 polySurface8
+    4300046: group9_group4 polySurface9
+    4300048: group9_group4 pPlane10
+    4300050: group9_group4 pPlane11
+    4300052: group9_group4 pPlane12
+    4300054: group9_group4 pPlane13
+    4300056: group9_group4 pPlane14
+    4300058: group9_group4 pPlane15
+    4300060: group9_group4 pPlane16
+    4300062: group9_group4 pPlane17
+    4300064: group9_group4 pPlane18
+    4300066: group9_group4 pPlane19
+    4300068: group9_group4 pPlane20
+    4300070: group9_group4 pPlane21
+    4300072: group9_group4 pPlane22
+    4300074: group9_group4 pPlane27
+    4300076: group9_group4 pPlane3
+    4300078: group9_group4 pPlane4
+    4300080: group9_group4 pPlane5
+    4300082: group9_group4 pPlane6
+    4300084: group9_group4 pPlane7
+    4300086: group9_group4 pPlane8
+    4300088: group9_group4 pPlane9
+    4300090: pCube8_group9 group4
+    4300092: pCube8
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
