@@ -28,6 +28,9 @@ public class PlayerController : CommonControls {
 	public bool dead = false;
 	
 	public GameObject footStep;
+	
+	GameObject HUD;
+	GUImainBehaviour HUDScript;
 
 	// Use this for initialization
 	protected override void Start ()
@@ -39,28 +42,34 @@ public class PlayerController : CommonControls {
 		startPosition = transform.position;
 		
 		currentHealth = maxHealth;
+		
+		HUD = GameObject.Find ("GameHUD");
+		HUDScript = HUD.GetComponent <GUImainBehaviour>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(!dead)
+		if (!HUDScript.paused)
 		{
-			//localDeltaTime allows the script to not be influenced by the time scale change.
-			localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
-		
-			GetAxis ();
-		
-			if(Input.GetButtonDown("SwitchMode") && !soulMode)
-				SwitchToSoulMode();
-		
-			//Make the controls adapted to the current camera mode.
-			if (!soulMode) 
+			if(!dead)
 			{
-				if (mainCameraScript.resetCameraPosition && !mainCameraScript.justHitAWall) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
-					ResettingCameraControls();
-				else//Else, and if we're in normal camera mode
-					DefaultControls (heightOfJump, localDeltaTime);
+				//localDeltaTime allows the script to not be influenced by the time scale change.
+				localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
+			
+				GetAxis ();
+			
+				if(Input.GetButtonDown("SwitchMode") && !soulMode)
+					SwitchToSoulMode();
+			
+				//Make the controls adapted to the current camera mode.
+				if (!soulMode) 
+				{
+					if (mainCameraScript.resetCameraPosition && !mainCameraScript.justHitAWall) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
+						ResettingCameraControls();
+					else//Else, and if we're in normal camera mode
+						DefaultControls (heightOfJump, localDeltaTime);
+				}
 			}
 		}
 	}

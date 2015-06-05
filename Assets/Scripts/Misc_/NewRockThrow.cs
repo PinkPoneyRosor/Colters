@@ -66,36 +66,39 @@ public class NewRockThrow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		//Setting this object's local delta time...
-		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
-		
-		if (HudScript.rockBarSlide.value < 1)
-			canThrow = false;
-		else
-			canThrow = true;
-	
-		if(canThrow)
+		if (!HudScript.paused)
 		{
-			if (Input.GetAxisRaw("RockThrow") != 0)
-				HoldingThrowButton();
-			else if (Input.GetButton ("Melee Attack") || loopCrush || Input.GetKey ("e"))
-			    ShortRangeAttack();
-			  
-			#region Gonna throw a rock
-			if (Input.GetAxisRaw("RockThrow") == 0 && justHitThrowButton)
+			//Setting this object's local delta time...
+			localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
+			
+			if (HudScript.rockPercent <= .20f)
+				canThrow = false;
+			else
+				canThrow = true;
+		
+			if(canThrow)
 			{
-				explosiveLoadParticles.Stop ();
-				startFinishedLoadparticle = true;
-			
-				holdDownThrowTime = 0;
-				justHitThrowButton = false;
-			
-				if (nextRockWillBeExplosive)
-					ThrowRock(true);
-				else
-					ThrowRock(false);
+				if (Input.GetAxisRaw("RockThrow") != 0)
+					HoldingThrowButton();
+				else if (Input.GetButtonDown ("Melee Attack") || loopCrush || Input.GetKeyDown ("e"))
+				    ShortRangeAttack();
+				  
+				#region Gonna throw a rock
+				if (Input.GetAxisRaw("RockThrow") == 0 && justHitThrowButton)
+				{
+					explosiveLoadParticles.Stop ();
+					startFinishedLoadparticle = true;
+				
+					holdDownThrowTime = 0;
+					justHitThrowButton = false;
+				
+					if (nextRockWillBeExplosive && HudScript.rockPercent == 1)
+						ThrowRock (true);
+					else
+						ThrowRock (false);
+				}
+				#endregion
 			}
-			#endregion
 		}
 	}
 	
@@ -119,9 +122,10 @@ public class NewRockThrow : MonoBehaviour {
 		{
 			nextRockWillBeExplosive = true;
 			
-			if (startFinishedLoadparticle)
+			if (startFinishedLoadparticle && HudScript.rockPercent == 1)
 			{
 				GameObject particlesLoadEnd;
+				HudScript.NextRockExplosive = true;
 				particlesLoadEnd = Instantiate(explosiveFinishLoadParticles, transform.position + transform.up, Quaternion.identity) as GameObject;
 				particlesLoadEnd.transform.SetParent (this.transform);
 				startFinishedLoadparticle = false;
@@ -137,9 +141,11 @@ public class NewRockThrow : MonoBehaviour {
 	{
 		Vector3 startPos = (transform.position + transform.up * 2) + transform.forward * 1.5f;
 		GameObject thrownRock = Instantiate (RockPrefab, startPos, Quaternion.identity) as GameObject;
+		
 		NewThrowableRock currentThrowedRockScript;
 		
 		currentThrowedRockScript = thrownRock.GetComponent <NewThrowableRock> ();
+		currentThrowedRockScript.Melee = true;
 
 		//Let's throw the rock downward
 		Vector3 throwDirection = -Vector3.up;
@@ -155,7 +161,10 @@ public class NewRockThrow : MonoBehaviour {
 		
 		launchCount ++;
 		
-		HudScript.rockBarSlide.value = 0;
+		if(playerScript.controller.isGrounded)
+		HudScript.rockPercent -= .25f;
+		else
+		HudScript.rockPercent = 0;
 		
 		if(launchCount > 4)
 		{
@@ -188,6 +197,8 @@ public class NewRockThrow : MonoBehaviour {
 			thrownRock = Instantiate (RockPrefab, startPos, Quaternion.identity) as GameObject;
 		else
 			thrownRock = Instantiate (ExplosivePrefab, startPos, Quaternion.identity) as GameObject;
+			
+		HudScript.NextRockExplosive = false;
 		
 		RaycastHit HitObject;
 		NewThrowableRock currentThrowedRockScript;
@@ -219,7 +230,10 @@ public class NewRockThrow : MonoBehaviour {
 		
 		launchCount ++;
 		
-		HudScript.rockBarSlide.value = 0;
+		if(!explosive)
+		HudScript.rockPercent -= .25f;
+		else
+		HudScript.rockPercent = 0;
 		
 		if(launchCount > 4)
 		{

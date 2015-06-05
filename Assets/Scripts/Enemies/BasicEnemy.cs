@@ -51,6 +51,7 @@ public class BasicEnemy : MonoBehaviour {
 	public GameObject soul;
 	[HideInInspector]
 	public bool isAnArcher = false;
+	public bool archerChasing = false;
 	#endregion
 	
 #endregion
@@ -63,14 +64,13 @@ public class BasicEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		agent.updateRotation = false;	
+		agent.updateRotation = false;
+		
+				
 		if (canGetHit) 
 		{ //If the ennemy can't get hit, he can't move either.
-			if (!navMeshAgent.enabled) 
-			{ //Since the enemy can get hit, he can also moves, so we make sure the navAgent is activated.
-					navMeshAgent.enabled = true;
-			}
-
+			navMeshAgent.updatePosition = true;
+			
 			#region Changing target positions according to the random timer
 			randomizeTimer += 1 * Time.deltaTime; //Let's increment our random Timer, it'll be usefull to make the enemy's randomly wander in some of its behaviour.
 
@@ -110,14 +110,14 @@ public class BasicEnemy : MonoBehaviour {
 				transform.rotation = Quaternion.Slerp (transform.rotation, selfRotation, Time.deltaTime * 15);
 			}
 
-			if (CurrentMode == EnemyMode.Wandering) //Movement when the player's not in sight.
+			if (CurrentMode == EnemyMode.Wandering && !isAnArcher) //Movement when the player's not in sight.
 			{
 				agent.SetDestination (new Vector3 (newPosition.x, transform.position.y, newPosition.z));
 			}
 			#endregion
 
 		} else
-			navMeshAgent.enabled = false;
+			navMeshAgent.updatePosition = false;
 
 		if (currentHealthPoint <= 0) 
 			Die();
@@ -175,9 +175,10 @@ public class BasicEnemy : MonoBehaviour {
 
 	void OnTriggerEnter(Collider hit)
 	{
-		if (hit.CompareTag ("PlayerSoul") && canGetHit) //As this is in the OnTrigger Method, it'll be triggered only if the player is dashing in body mode.
+		if (hit.CompareTag ("EarthQuake") && canGetHit) //As this is in the OnTrigger Method, it'll be triggered only if the player is dashing in body mode.
 		{
-			Debug.Log ("Enemy hit player");
+			gotHit (1);
+			Debug.Log ("EARTHQUAKE");
 		}
 	}
 
@@ -210,7 +211,7 @@ public class BasicEnemy : MonoBehaviour {
 	{
 		gameObject.layer = 17;
 		canGetHit = false; //This prevents the ennemy to get hurt twice with a single attack and deactivate all of its NavMesh agent's behaviours.
-		Jump (true);
+		//Jump (true);
 
 		yield return new WaitForSeconds (recoveryTime);
 

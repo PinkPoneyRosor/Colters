@@ -92,7 +92,7 @@ public class DetonatorTest : MonoBehaviour
                     SpawnExplosion();
                 }
             }
-            Time.timeScale = timeScale;
+            //Time.timeScale = timeScale;
         }
     }
 

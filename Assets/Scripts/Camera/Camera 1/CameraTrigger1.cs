@@ -20,7 +20,7 @@ public class CameraTrigger1 : MonoBehaviour {
 	{
 		if (c.gameObject.tag == "Player" || c.gameObject.tag == "PlayerSoul")
 		{
-			mainGameCamera.animation.Play("Camera1");
+			//mainGameCamera.animation.Play("Camera1");
 			Debug.Log("Play Cam!");
 		}
 	}
