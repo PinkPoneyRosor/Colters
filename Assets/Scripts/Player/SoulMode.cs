@@ -48,44 +48,46 @@ public class SoulMode : CommonControls {
 	void Update () 
 	{
 		if( !HUDScript.paused )
-			Time.timeScale = 0.1f;
+		{
+			Time.timeScale = Mathf.MoveTowards (Time.timeScale, 0.1f, 1);
+				
+			Time.fixedDeltaTime = 0.1f * 0.02f; //Make sure the physics simulation is still fluid.
 			
-		Time.fixedDeltaTime = 0.1f * 0.02f; //Make sure the physics simulation is still fluid.
-		
-		if (climbRock)
-			if(currentClimbRockScript.beingThrowned)
-			{
-				Vector3 rockClimbOffset = new Vector3 (0, 1, 0);
-				transform.position = Vector3.MoveTowards(transform.position, currentClimbingRock.transform.position + rockClimbOffset, localDeltaTime * 5);
-				gravity = 0;
-			}
+			if (climbRock)
+				if(currentClimbRockScript.beingThrowned)
+				{
+					Vector3 rockClimbOffset = new Vector3 (0, 1, 0);
+					transform.position = Vector3.MoveTowards(transform.position, currentClimbingRock.transform.position + rockClimbOffset, localDeltaTime * 5);
+					gravity = 0;
+				}
+				else
+				{
+					climbRock = false;
+					controller.enabled = true;
+					gravity = gravitySave;
+				}
+	
+			GetAxis ();
+	
+			//localDeltaTime allows the script to not be influenced by the time scale change.
+			localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
+	
+			//Resetting back to body mode when pushing swith button or Soul Bar depleted.
+			if (Input.GetButtonDown ("SwitchMode") || soulBarImage.fillAmount <= 0)
+				revertBack(true);
+			else if (Input.GetButtonDown ("SoulToBody"))
+				revertBack (false);
+	
+			#region Controls according to situation
+			if ((Input.GetButtonDown ("AutoCam") || continueResetControls)) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
+				ResettingCameraControls();
 			else
 			{
-				climbRock = false;
-				controller.enabled = true;
-				gravity = gravitySave;
+				DefaultControls(heightOfJump, localDeltaTime);
+				mainCameraScript.dashingSoul = false;
 			}
-
-		GetAxis ();
-
-		//localDeltaTime allows the script to not be influenced by the time scale change.
-		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
-
-		//Resetting back to body mode when pushing swith button or Soul Bar depleted.
-		if (Input.GetButtonDown ("SwitchMode") || soulBarImage.fillAmount <= 0)
-			revertBack(true);
-		else if (Input.GetButtonDown ("SoulToBody"))
-			revertBack (false);
-
-		#region Controls according to situation
-		if ((Input.GetButtonDown ("AutoCam") || continueResetControls)) //If the camera is resetting, the stick will only have control on the player's speed, not its direction
-			ResettingCameraControls();
-		else
-		{
-			DefaultControls(heightOfJump, localDeltaTime);
-			mainCameraScript.dashingSoul = false;
+			#endregion
 		}
-		#endregion
 	}
 
 	void revertBack (bool bodyToSoul) //Revert Back to normal mode.

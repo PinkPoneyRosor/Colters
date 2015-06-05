@@ -40,9 +40,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195428}
+<<<<<<< HEAD
+  m_LocalRotation: {x: .766722977, y: -.527836978, z: -.365397811, w: -.00292976899}
+  m_LocalPosition: {x: -197.5, y: 246.199997, z: -132}
+  m_LocalScale: {x: 2.45285773, y: 2.45285678, z: 2.4528563}
+=======
   m_LocalRotation: {x: .750142634, y: -.524358571, z: -.401637465, w: .0319620743}
   m_LocalPosition: {x: -74.5758514, y: 159.37883, z: -121.586678}
   m_LocalScale: {x: 2.57549453, y: 2.57549453, z: 2.575495}
+>>>>>>> Quentin-WIP
   m_Children:
   - {fileID: 495428}
   m_Father: {fileID: 0}
@@ -96,7 +102,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< HEAD
+  m_Size: {x: 25.8999996, y: 20.1000004, z: 18.3999996}
+=======
   m_Size: {x: 20.0400009, y: 15.1000004, z: 10.1999998}
+>>>>>>> Quentin-WIP
   m_Center: {x: 13.6647949, y: -1.06389153, z: -52.7221451}
 --- !u!95 &9595428
 Animator:

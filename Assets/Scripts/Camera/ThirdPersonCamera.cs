@@ -66,6 +66,9 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public bool justHitAWall = false;
 	#endregion
 	#endregion
+	
+	GameObject HUD;
+	GUImainBehaviour HUDScript;
 
 	void Start () 
 	{
@@ -75,6 +78,9 @@ public class ThirdPersonCamera : MonoBehaviour {
 		currentRotationSmooth = RotationSmooth;
 		currentTranslationSmooth = TranslationSmooth;
 		CompensateLayer = LayerMask.GetMask("CameraCollider");
+		
+		HUD = GameObject.Find ("GameHUD");
+		HUDScript = HUD.GetComponent <GUImainBehaviour>();
 	}
 
 	public void SwitchPlayerMode( GameObject newTarget, bool bSoulMode )
@@ -86,12 +92,14 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	void LateUpdate()
 	{
+		if(!HUDScript.paused)
+		{
+			//Setting this object's local delta time...
+			localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
 	
-		//Setting this object's local delta time...
-		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
-
-		if (camTarget != null) 
-			DefaultCamera ();
+			if (camTarget != null) 
+				DefaultCamera ();
+		}
 	}
 	
 	IEnumerator transitionBackToNormalMode()

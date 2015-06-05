@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 02de2a08fd425ca4cba21810c9680e9b
+=======
 guid: 5eefaa36345ad624d8e477de59801b64
+>>>>>>> Quentin-WIP
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:

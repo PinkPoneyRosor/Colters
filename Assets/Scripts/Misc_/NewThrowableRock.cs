@@ -61,7 +61,7 @@ public class NewThrowableRock : MonoBehaviour {
 	
 	
 		#region track distance travelled
-		if (Vector3.SqrMagnitude(transform.position - posAtLaunch) > maxTravelDistance * maxTravelDistance && !isSelected && isThrowed)
+		/*if (Vector3.SqrMagnitude(transform.position - posAtLaunch) > maxTravelDistance * maxTravelDistance && !isSelected && isThrowed)
 		{
 			rigidbody.useGravity = true;
 			constantForce.force = Vector3.zero;
@@ -74,7 +74,7 @@ public class NewThrowableRock : MonoBehaviour {
 				rigidbody.drag = 0;
 			
 			homingAttackBool = false;
-		}
+		}*/
 		#endregion
 		
 		if (homingAttackBool)
@@ -84,6 +84,7 @@ public class NewThrowableRock : MonoBehaviour {
 	//With this method, we make sure that if the player throwed the rock toward an enemy, he can be almost sure he will hit it.
 	void homingAttack ()
 	{
+		Debug.Log ("Homing");
 		if (aimHoming.GetComponent <BasicEnemy> ().canGetHit) 
 		{	
 			Vector3 throwDir = aimHoming.position - this.transform.position;
@@ -100,6 +101,7 @@ public class NewThrowableRock : MonoBehaviour {
 	//To avoid the rock to be difficult to aim, we reactivate gravity only after the first hit, when it's not selected anymore.
 	void OnCollisionEnter (Collision collider)
 	{
+		Debug.Log (collider.transform.name);
 		JustHitSomething();
 		
 		GameObject impactGameObject;
@@ -142,6 +144,7 @@ public class NewThrowableRock : MonoBehaviour {
 		if (!isSelected) 
 		{
 			rigidbody.useGravity = true;
+			Debug.Log ("Gravity on");
 			constantForce.force = Vector3.zero;
 			homingAttackBool = false;
 			beingThrowned = false;

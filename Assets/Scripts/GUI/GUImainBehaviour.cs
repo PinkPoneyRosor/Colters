@@ -64,20 +64,22 @@ public class GUImainBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{	
-	
-		if (Input.GetButtonDown ("PauseMenu") && Time.timeScale >= .1f)
+		
+		if (Input.GetButtonDown ("PauseMenu") && Time.timeScale < .1f)
 		{
-			Time.timeScale = 0.1f;
+			Time.timeScale = 1;
+			Debug.Log ("Unpause");
+			paused = false;
+		}
+		else if (Input.GetButtonDown ("PauseMenu") && Time.timeScale >= .1f)
+		{
+			Time.timeScale = 0.00001f;
 			Debug.Log ("Paused");
 			paused = true;
 		}
-		if (Input.GetButtonDown ("PauseMenu") && Time.timeScale == 0)
-		{
-			Time.timeScale = 1;
-			paused = false;
-		}
+
 		
-		Debug.Log (Time.timeScale);
+		Debug.Log ("TimeScale = " + Time.timeScale);
 			
 	
 		if(rockPercent > 1)
