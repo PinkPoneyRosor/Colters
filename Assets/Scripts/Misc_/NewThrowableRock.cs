@@ -31,6 +31,8 @@ public class NewThrowableRock : MonoBehaviour {
 	public float maxVelocityWhenDecelerating = 22;
 	public float growingRate = .5f;
 	
+	public GameObject EarthQuakeParticles;
+	
 	public bool Melee = false;
 
 	public GameObject ImpactPrefab;
@@ -40,17 +42,26 @@ public class NewThrowableRock : MonoBehaviour {
 	[HideInInspector]
 	public bool growingMyself = true;
 	
+	bool meleeAlreadyHit = false;
+	
+	Vector3 startScale;
+	
 	// Use this for initialization
 	void Start () 
 	{
 		player = GameObject.Find ("Player");
+		startScale = this.transform.localScale;
+		transform.localScale = Vector3.zero;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		transform.localScale = Vector3.Lerp (transform.localScale, startScale, Time.deltaTime * 10);
+	
+	
 		#region track distance travelled
-		if (Vector3.SqrMagnitude(transform.position - posAtLaunch) > maxTravelDistance * maxTravelDistance && !isSelected && isThrowed)
+		/*if (Vector3.SqrMagnitude(transform.position - posAtLaunch) > maxTravelDistance * maxTravelDistance && !isSelected && isThrowed)
 		{
 			rigidbody.useGravity = true;
 			constantForce.force = Vector3.zero;
@@ -63,7 +74,7 @@ public class NewThrowableRock : MonoBehaviour {
 				rigidbody.drag = 0;
 			
 			homingAttackBool = false;
-		}
+		}*/
 		#endregion
 		
 		if (homingAttackBool)
@@ -73,6 +84,7 @@ public class NewThrowableRock : MonoBehaviour {
 	//With this method, we make sure that if the player throwed the rock toward an enemy, he can be almost sure he will hit it.
 	void homingAttack ()
 	{
+		Debug.Log ("Homing");
 		if (aimHoming.GetComponent <BasicEnemy> ().canGetHit) 
 		{	
 			Vector3 throwDir = aimHoming.position - this.transform.position;
@@ -89,6 +101,7 @@ public class NewThrowableRock : MonoBehaviour {
 	//To avoid the rock to be difficult to aim, we reactivate gravity only after the first hit, when it's not selected anymore.
 	void OnCollisionEnter (Collision collider)
 	{
+		Debug.Log (collider.transform.name);
 		JustHitSomething();
 		
 		GameObject impactGameObject;
@@ -118,9 +131,11 @@ public class NewThrowableRock : MonoBehaviour {
 			impactSound.pitch = .5f;
 		}
 		
-		if (Melee)
+		if (Melee && !meleeAlreadyHit)
 		{
-			//DO MELEE STUFF (SHOCKWAVE)
+			GameObject EarthQuakeParticlesInstance;
+			EarthQuakeParticlesInstance = Instantiate(EarthQuakeParticles, transform.position , Quaternion.Euler(90,0,0) ) as GameObject;
+			meleeAlreadyHit = true;
 		}
 	}
 	
@@ -129,6 +144,7 @@ public class NewThrowableRock : MonoBehaviour {
 		if (!isSelected) 
 		{
 			rigidbody.useGravity = true;
+			Debug.Log ("Gravity on");
 			constantForce.force = Vector3.zero;
 			homingAttackBool = false;
 			beingThrowned = false;

@@ -26,7 +26,6 @@ public class Archer_Sight : EnemySight {
 		{
 			playerNear = true;
 			isInArcherMode = false; 
-			Debug.Log ("Yup");
 			justGotInSight = true;
 			
 			if (!playerInSight && playerRecentlySeen) 
@@ -56,7 +55,6 @@ public class Archer_Sight : EnemySight {
 			playerRecentlySeen = false;
 			
 			archerScript.myTarget = player.gameObject;
-			Debug.Log ("Nope");
 		}
 	}
 	

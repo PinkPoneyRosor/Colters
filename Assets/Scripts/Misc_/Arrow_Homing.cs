@@ -32,11 +32,17 @@ public class Arrow_Homing : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-	
-		float distFromMaster = Vector3.SqrMagnitude(transform.position - masterTurret.transform.position);
-		if (distFromMaster > 2 * 2)
+		if (masterTurret != null)
 		{
-			collider.enabled = true;
+			float distFromMaster = Vector3.SqrMagnitude(transform.position - masterTurret.transform.position);
+			if (distFromMaster > 2 * 2)
+			{
+				collider.enabled = true;
+			}
+		}
+		else
+		{
+			Destroy (this.gameObject);
 		}
 	
 		if(!hitSomething)

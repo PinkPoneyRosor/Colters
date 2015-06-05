@@ -23,6 +23,9 @@ public class SoulMode : CommonControls {
 	private float gravitySave;
 	
 	public GameObject footStep;
+	
+	GameObject HUD;
+	GUImainBehaviour HUDScript;
 
 	// Use this for initialization
 	protected override void Start () 
@@ -36,13 +39,17 @@ public class SoulMode : CommonControls {
 
 		soulBar = GameObject.Find ("SoulBar");
 		soulBarImage = soulBar.GetComponent<Image> ();
+		
+		HUD = GameObject.Find ("GameHUD");
+		HUDScript = HUD.GetComponent <GUImainBehaviour>();
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
-	
-		Time.timeScale = 0.1f;
+		if( !HUDScript.paused )
+			Time.timeScale = Mathf.MoveTowards (Time.timeScale, 0.1f, 1);
+			
 		Time.fixedDeltaTime = 0.1f * 0.02f; //Make sure the physics simulation is still fluid.
 		
 		if (climbRock)

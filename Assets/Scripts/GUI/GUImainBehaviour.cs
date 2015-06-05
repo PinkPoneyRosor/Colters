@@ -40,6 +40,8 @@ public class GUImainBehaviour : MonoBehaviour {
 	public bool NextRockExplosive = false;
 	
 	public float rockRefillRate = 0.9f;
+	
+	public bool paused = false;
 
 	// Use this for initialization
 	void Start () 
@@ -62,6 +64,22 @@ public class GUImainBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{	
+	
+		if (Input.GetButtonDown ("PauseMenu") && Time.timeScale >= .1f)
+		{
+			Time.timeScale = 0.1f;
+			Debug.Log ("Paused");
+			paused = true;
+		}
+		if (Input.GetButtonDown ("PauseMenu") && Time.timeScale == 0)
+		{
+			Time.timeScale = 1;
+			paused = false;
+		}
+		
+		Debug.Log (Time.timeScale);
+			
+	
 		if(rockPercent > 1)
 			rockPercent = 1;
 	
@@ -113,17 +131,13 @@ public class GUImainBehaviour : MonoBehaviour {
 		else
 			rockLights[3].GetComponent <Image> ().CrossFadeAlpha (1, .5f, true);
 		
-		Debug.Log (explosivePic.transform.name);
-		
 		if (NextRockExplosive)
 		{
 			explosivePic.CrossFadeAlpha (1 , .25f, true);
-			Debug.Log ("EEYUP");
 		}
 		else
 		{
 			explosivePic.CrossFadeAlpha (0 , .25f, true);
-			Debug.Log ("EENOPE");
 		}
 		#endregion
 		

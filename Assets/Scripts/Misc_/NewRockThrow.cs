@@ -78,7 +78,7 @@ public class NewRockThrow : MonoBehaviour {
 		{
 			if (Input.GetAxisRaw("RockThrow") != 0)
 				HoldingThrowButton();
-			else if (Input.GetButton ("Melee Attack") || loopCrush || Input.GetKey ("e"))
+			else if (Input.GetButtonDown ("Melee Attack") || loopCrush || Input.GetKeyDown ("e"))
 			    ShortRangeAttack();
 			  
 			#region Gonna throw a rock
@@ -91,9 +91,9 @@ public class NewRockThrow : MonoBehaviour {
 				justHitThrowButton = false;
 			
 				if (nextRockWillBeExplosive && HudScript.rockPercent == 1)
-					ThrowRock(true);
+					ThrowRock (true);
 				else
-					ThrowRock(false);
+					ThrowRock (false);
 			}
 			#endregion
 		}
@@ -158,6 +158,9 @@ public class NewRockThrow : MonoBehaviour {
 		
 		launchCount ++;
 		
+		if(playerScript.controller.isGrounded)
+		HudScript.rockPercent -= .25f;
+		else
 		HudScript.rockPercent = 0;
 		
 		if(launchCount > 4)

@@ -44,7 +44,6 @@ public class Enemy_Archer : MonoBehaviour {
 			
 			if(myTarget)
 			{
-				Debug.Log ("Got a target");
 					CalculateAimPosition (myTarget.transform.position);
 					transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime * turnSpeed);
 					
