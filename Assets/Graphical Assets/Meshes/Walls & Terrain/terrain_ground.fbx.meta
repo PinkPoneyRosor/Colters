@@ -8,10 +8,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: terrain_ground:Mesh
-<<<<<<< HEAD
-=======
     4300002: le_sol:sol_pb_Cube_175314
->>>>>>> Quentin-WIP
     6400000: //RootNode
     9500000: //RootNode
   materials:

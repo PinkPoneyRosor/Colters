@@ -1,4 +1,4 @@
-﻿/* using UnityEngine;
+﻿/*using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
@@ -37,6 +37,8 @@ public class ReplaceGameObjects : ScriptableWizard
 			
 			DestroyImmediate(go);
 		}
-	}
-	
-} */
+    }
+
+foreach (GameObject go in Selection.gameObjects)
+{
+	Undo.DestroyObjectImmediate(go);*/

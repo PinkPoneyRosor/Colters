@@ -7,11 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Cave_elements
-<<<<<<< HEAD
-  m_Shader: {fileID: 33, guid: 0000000000000000f000000000000000, type: 0}
-=======
   m_Shader: {fileID: 4800000, guid: fd5e1c7416d3eaa4db0e419f7b76697e, type: 3}
->>>>>>> Quentin-WIP
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -26,29 +22,58 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-<<<<<<< HEAD
-          name: _BumpMap
+          name: _diffuse
+        second:
+          m_Texture: {fileID: 2800000, guid: 60b1e4f192f8b2b4daca2a7d7fc772c3, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_2
+        second:
+          m_Texture: {fileID: 2800000, guid: 60b1e4f192f8b2b4daca2a7d7fc772c3, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_3
         second:
           m_Texture: {fileID: 2800000, guid: b8f3b4d5a250c794d8b7b1cc69079801, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _DecalTex
+          name: _normal
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: b8f3b4d5a250c794d8b7b1cc69079801, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _emission
+        second:
+          m_Texture: {fileID: 2800000, guid: bf5707b0e48c6584a9d232094754c01e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_4
+        second:
+          m_Texture: {fileID: 2800000, guid: bf5707b0e48c6584a9d232094754c01e, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _diff
         second:
-          m_Texture: {fileID: 0}
-=======
-          name: _diff
-        second:
           m_Texture: {fileID: 2800000, guid: 60b1e4f192f8b2b4daca2a7d7fc772c3, type: 3}
->>>>>>> Quentin-WIP
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _eminence
+        second:
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -56,22 +81,8 @@ Material:
         first:
           name: _Cutoff
         second: .5
-<<<<<<< HEAD
-      data:
-        first:
-          name: _Shininess
-        second: .078125
-=======
->>>>>>> Quentin-WIP
     m_Colors:
       data:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
-<<<<<<< HEAD
-      data:
-        first:
-          name: _SpecColor
-        second: {r: .5, g: .5, b: .5, a: 1}
-=======
->>>>>>> Quentin-WIP
