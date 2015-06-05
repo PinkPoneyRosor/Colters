@@ -66,36 +66,39 @@ public class NewRockThrow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		//Setting this object's local delta time...
-		localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
-		
-		if (HudScript.rockPercent <= .20f)
-			canThrow = false;
-		else
-			canThrow = true;
-	
-		if(canThrow)
+		if (!HudScript.paused)
 		{
-			if (Input.GetAxisRaw("RockThrow") != 0)
-				HoldingThrowButton();
-			else if (Input.GetButtonDown ("Melee Attack") || loopCrush || Input.GetKeyDown ("e"))
-			    ShortRangeAttack();
-			  
-			#region Gonna throw a rock
-			if (Input.GetAxisRaw("RockThrow") == 0 && justHitThrowButton)
+			//Setting this object's local delta time...
+			localDeltaTime = (Time.timeScale == 0) ? 1 : Time.deltaTime / Time.timeScale;
+			
+			if (HudScript.rockPercent <= .20f)
+				canThrow = false;
+			else
+				canThrow = true;
+		
+			if(canThrow)
 			{
-				explosiveLoadParticles.Stop ();
-				startFinishedLoadparticle = true;
-			
-				holdDownThrowTime = 0;
-				justHitThrowButton = false;
-			
-				if (nextRockWillBeExplosive && HudScript.rockPercent == 1)
-					ThrowRock (true);
-				else
-					ThrowRock (false);
+				if (Input.GetAxisRaw("RockThrow") != 0)
+					HoldingThrowButton();
+				else if (Input.GetButtonDown ("Melee Attack") || loopCrush || Input.GetKeyDown ("e"))
+				    ShortRangeAttack();
+				  
+				#region Gonna throw a rock
+				if (Input.GetAxisRaw("RockThrow") == 0 && justHitThrowButton)
+				{
+					explosiveLoadParticles.Stop ();
+					startFinishedLoadparticle = true;
+				
+					holdDownThrowTime = 0;
+					justHitThrowButton = false;
+				
+					if (nextRockWillBeExplosive && HudScript.rockPercent == 1)
+						ThrowRock (true);
+					else
+						ThrowRock (false);
+				}
+				#endregion
 			}
-			#endregion
 		}
 	}
 	
