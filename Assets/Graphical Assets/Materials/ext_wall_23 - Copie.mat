@@ -165,42 +165,42 @@ Material:
           name: _TA_diffuse
         second:
           m_Texture: {fileID: 2800000, guid: 14e8f3e906607764e94eefdb762ebd8e, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 5, y: 5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _TA_normal
         second:
           m_Texture: {fileID: 2800000, guid: d22e4617b92dfc94392b9b92077f601f, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 5, y: 5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _TB_diffuse
         second:
           m_Texture: {fileID: 2800000, guid: dfb96725e2dfff14c8c6d8d008686d51, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 5, y: 5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _TB_normal
         second:
           m_Texture: {fileID: 2800000, guid: ba5f811e8f8f91a4f8629565f70251af, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 5, y: 5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _TC_diffuse
         second:
           m_Texture: {fileID: 2800000, guid: 95d93f9715cdb564b9884232ccb93135, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 5, y: 5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _TC_normal
         second:
           m_Texture: {fileID: 2800000, guid: e7388d825890d8e4080157e0a1bf6427, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 5, y: 5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
