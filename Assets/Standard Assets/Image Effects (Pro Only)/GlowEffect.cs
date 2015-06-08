@@ -149,7 +149,7 @@ public class GlowEffect : MonoBehaviour
 		// Clamp parameters to sane values
 		glowIntensity = Mathf.Clamp( glowIntensity, 0.0f, 10.0f );
 		blurIterations = Mathf.Clamp( blurIterations, 0, 30 );
-		blurSpread = Mathf.Clamp( blurSpread, 0.5f, 1.0f );
+		blurSpread = Mathf.Clamp( blurSpread, 0.0f, 1.0f );
 		
 		int rtW = source.width/4;
 		int rtH = source.height/4;

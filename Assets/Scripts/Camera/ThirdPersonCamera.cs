@@ -64,6 +64,10 @@ public class ThirdPersonCamera : MonoBehaviour {
 	private float currentYReset = 0;
 	[HideInInspector]
 	public bool justHitAWall = false;
+	
+	public DepthOfFieldScatter DOF;
+	public Vignetting vignette;
+	public ColorCorrectionCurves CCC;
 	#endregion
 	#endregion
 	
@@ -81,6 +85,10 @@ public class ThirdPersonCamera : MonoBehaviour {
 		
 		HUD = GameObject.Find ("GameHUD");
 		HUDScript = HUD.GetComponent <GUImainBehaviour>();
+		
+		DOF = this.GetComponent <DepthOfFieldScatter> ();
+		vignette = this.GetComponent <Vignetting> ();
+		CCC = this.GetComponent <ColorCorrectionCurves> ();
 	}
 
 	public void SwitchPlayerMode( GameObject newTarget, bool bSoulMode )
@@ -99,6 +107,19 @@ public class ThirdPersonCamera : MonoBehaviour {
 	
 			if (camTarget != null) 
 				DefaultCamera ();
+		}
+		
+		if (soulMode)
+		{
+			DOF.enabled = true;
+			vignette.enabled = true;
+			CCC.enabled = true;
+		}
+		else
+		{
+			DOF.enabled = false;
+			vignette.enabled = false;
+			CCC.enabled = false;
 		}
 	}
 	
