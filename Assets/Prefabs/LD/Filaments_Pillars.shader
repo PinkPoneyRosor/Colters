@@ -1,9 +1,9 @@
 // Shader created with Shader Forge Beta 0.30 
 // Shader Forge (c) Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:0.30;sub:START;pass:START;ps:flbk:,lico:1,lgpr:1,nrmq:1,limd:1,uamb:True,mssp:True,lmpd:False,lprd:False,enco:False,frtr:True,vitr:True,dbil:True,rmgx:True,hqsc:True,hqlp:False,blpr:1,bsrc:3,bdst:7,culm:2,dpts:2,wrdp:False,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,ofsf:0,ofsu:0,f2p0:False;n:type:ShaderForge.SFN_Final,id:1,x:31951,y:32660|diff-2-RGB,spec-718-RGB,alpha-2-A;n:type:ShaderForge.SFN_Tex2d,id:2,x:32321,y:32561,ptlb:diff,ptin:_diff,ntxv:0,isnm:False;n:type:ShaderForge.SFN_LightColor,id:718,x:32419,y:32740;proporder:2;pass:END;sub:END;*/
+/*SF_DATA;ver:0.30;sub:START;pass:START;ps:flbk:,lico:1,lgpr:1,nrmq:1,limd:1,uamb:True,mssp:True,lmpd:False,lprd:False,enco:False,frtr:True,vitr:True,dbil:True,rmgx:True,hqsc:True,hqlp:False,blpr:1,bsrc:3,bdst:7,culm:0,dpts:2,wrdp:True,ufog:True,aust:False,igpj:True,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,ofsf:0,ofsu:0,f2p0:False;n:type:ShaderForge.SFN_Final,id:1,x:31951,y:32660|diff-2-RGB,spec-718-RGB,alpha-2-A;n:type:ShaderForge.SFN_Tex2d,id:2,x:32321,y:32561,ptlb:diff,ptin:_diff,ntxv:0,isnm:False;n:type:ShaderForge.SFN_LightColor,id:718,x:32419,y:32740;proporder:2;pass:END;sub:END;*/
 
-Shader "Custom/Filaments" {
+Shader "Custom/Filaments_Pillars" {
     Properties {
         _diff ("diff", 2D) = "white" {}
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
@@ -11,8 +11,7 @@ Shader "Custom/Filaments" {
     SubShader {
         Tags {
             "IgnoreProjector"="True"
-            "Queue"="Transparent"
-            "RenderType"="Transparent"
+            "RenderType"="Opaque"
         }
         LOD 200
         Pass {
@@ -21,8 +20,7 @@ Shader "Custom/Filaments" {
                 "LightMode"="ForwardBase"
             }
             Blend SrcAlpha OneMinusSrcAlpha
-            Cull Off
-            ZWrite Off
+            
             
             CGPROGRAM
             #pragma vertex vert
@@ -58,11 +56,6 @@ Shader "Custom/Filaments" {
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
 /////// Normals:
                 float3 normalDirection =  i.normalDir;
-                
-                float nSign = sign( dot( viewDirection, i.normalDir ) ); // Reverse normal if this is a backface
-                i.normalDir *= nSign;
-                normalDirection *= nSign;
-                
                 float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
                 float3 halfDirection = normalize(viewDirection+lightDirection);
 ////// Lighting:
@@ -79,8 +72,8 @@ Shader "Custom/Filaments" {
                 float3 specular = (floor(attenuation) * _LightColor0.xyz) * pow(max(0,dot(halfDirection,normalDirection)),gloss) * specularColor;
                 float3 finalColor = 0;
                 float3 diffuseLight = diffuse;
-                float2 node_737 = i.uv0;
-                float4 node_2 = tex2D(_diff,TRANSFORM_TEX(node_737.rg, _diff));
+                float2 node_757 = i.uv0;
+                float4 node_2 = tex2D(_diff,TRANSFORM_TEX(node_757.rg, _diff));
                 finalColor += diffuseLight * node_2.rgb;
                 finalColor += specular;
 /// Final Color:
@@ -94,8 +87,7 @@ Shader "Custom/Filaments" {
                 "LightMode"="ForwardAdd"
             }
             Blend One One
-            Cull Off
-            ZWrite Off
+            
             
             Fog { Color (0,0,0,0) }
             CGPROGRAM
@@ -135,11 +127,6 @@ Shader "Custom/Filaments" {
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
 /////// Normals:
                 float3 normalDirection =  i.normalDir;
-                
-                float nSign = sign( dot( viewDirection, i.normalDir ) ); // Reverse normal if this is a backface
-                i.normalDir *= nSign;
-                normalDirection *= nSign;
-                
                 float3 lightDirection = normalize(lerp(_WorldSpaceLightPos0.xyz, _WorldSpaceLightPos0.xyz - i.posWorld.xyz,_WorldSpaceLightPos0.w));
                 float3 halfDirection = normalize(viewDirection+lightDirection);
 ////// Lighting:
@@ -156,8 +143,8 @@ Shader "Custom/Filaments" {
                 float3 specular = attenColor * pow(max(0,dot(halfDirection,normalDirection)),gloss) * specularColor;
                 float3 finalColor = 0;
                 float3 diffuseLight = diffuse;
-                float2 node_738 = i.uv0;
-                float4 node_2 = tex2D(_diff,TRANSFORM_TEX(node_738.rg, _diff));
+                float2 node_758 = i.uv0;
+                float4 node_2 = tex2D(_diff,TRANSFORM_TEX(node_758.rg, _diff));
                 finalColor += diffuseLight * node_2.rgb;
                 finalColor += specular;
 /// Final Color:
