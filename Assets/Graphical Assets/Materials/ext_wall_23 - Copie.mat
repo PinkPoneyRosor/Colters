@@ -29,9 +29,44 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _node_5
+        second:
+          m_Texture: {fileID: 2800000, guid: d4c8378420b1b104387b042901376ecd, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_6
+        second:
+          m_Texture: {fileID: 2800000, guid: c2b94cfd84139a24e8fbd91d8083f715, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_11
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _texture1
         second:
           m_Texture: {fileID: 2800000, guid: 95d93f9715cdb564b9884232ccb93135, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _texture2
+        second:
+          m_Texture: {fileID: 2800000, guid: dfb96725e2dfff14c8c6d8d008686d51, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _texture_mask
+        second:
+          m_Texture: {fileID: 2800000, guid: af8fd2599ba943e4d88944bd2bc5031a, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -43,7 +78,14 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _mask2
+          name: _texture_mask_copy
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _texture4
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -57,13 +99,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _normal3
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _normal2
         second:
           m_Texture: {fileID: 2800000, guid: b751a4c42eb0d0544a65dd8e48c5f175, type: 3}
@@ -71,9 +106,51 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _texture2
+          name: _normal_mask
         second:
-          m_Texture: {fileID: 2800000, guid: dfb96725e2dfff14c8c6d8d008686d51, type: 3}
+          m_Texture: {fileID: 2800000, guid: af8fd2599ba943e4d88944bd2bc5031a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _normal3
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _normal_mask2
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _texture_mask2
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _normal_mask1
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _texture_mask1
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _mask2
+        second:
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -134,93 +211,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _MASK2
-        second:
-          m_Texture: {fileID: 2800000, guid: 3fcb1b738423ef34f9dbf02d64e80f8d, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _node_5
-        second:
-          m_Texture: {fileID: 2800000, guid: d4c8378420b1b104387b042901376ecd, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _node_6
-        second:
-          m_Texture: {fileID: 2800000, guid: c2b94cfd84139a24e8fbd91d8083f715, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _node_11
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _texture_mask
-        second:
-          m_Texture: {fileID: 2800000, guid: af8fd2599ba943e4d88944bd2bc5031a, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _texture_mask_copy
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _texture4
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _normal_mask
-        second:
-          m_Texture: {fileID: 2800000, guid: af8fd2599ba943e4d88944bd2bc5031a, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _normal_mask2
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _texture_mask2
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _normal_mask1
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _texture_mask1
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _MASK10
         second:
           m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MASK2
+        second:
+          m_Texture: {fileID: 2800000, guid: 3fcb1b738423ef34f9dbf02d64e80f8d, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
