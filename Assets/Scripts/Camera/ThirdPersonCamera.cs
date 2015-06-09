@@ -335,6 +335,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public void FinishedAnim()
 	{
 		HUDScript.paused = false;
-		HUD.GetComponent<Canvas>().enabled = true;
+		HUD.GetComponent <Canvas>().enabled = true;
 	}
 }

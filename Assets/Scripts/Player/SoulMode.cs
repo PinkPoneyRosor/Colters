@@ -24,6 +24,9 @@ public class SoulMode : CommonControls {
 	
 	public GameObject footStep;
 	
+	public GameObject particleAtSpawn;
+	public GameObject endSoulModeParticles;
+	
 	GameObject HUD;
 	GUImainBehaviour HUDScript;
 
@@ -42,6 +45,8 @@ public class SoulMode : CommonControls {
 		
 		HUD = GameObject.Find ("GameHUD");
 		HUDScript = HUD.GetComponent <GUImainBehaviour>();
+		
+		Instantiate (particleAtSpawn, transform.position, Quaternion.identity);
 	}
 
 	// Update is called once per frame
@@ -103,6 +108,7 @@ public class SoulMode : CommonControls {
 		Time.fixedDeltaTime = .02f;
 		playerScript.soulMode = false;
 		mainCameraScript.SwitchPlayerMode( player.gameObject, false );
+		Instantiate (endSoulModeParticles, transform.position, Quaternion.identity);
 		Destroy (this.gameObject);
 	}
 	

@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ShaderForgeInternal
-  m_Shader: {fileID: 4800000, guid: 263aad3c939352f43ac776395bf64f74, type: 3}
+  m_Name: HighlightTest
+  m_Shader: {fileID: 4800000, guid: 31c37506cc751c74bb9c11a5c0b2f926, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -15,21 +15,21 @@ Material:
     m_TexEnvs:
       data:
         first:
-          name: _diffuse
+          name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 8c660b33218a8af46937dbdbe85b759a, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _spec
+          name: _Bumpmap
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: f2836c7b295aabb408b1404a538171eb, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _nrml
+          name: _Illum
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -37,14 +37,22 @@ Material:
     m_Floats:
       data:
         first:
-          name: _node_45
-        second: .954887211
+          name: _RimPower
+        second: 10
       data:
         first:
-          name: _node_46
+          name: _EmissionLM
         second: 0
     m_Colors:
       data:
         first:
-          name: _node_47
-        second: {r: .5, g: .5, b: 1, a: 1}
+          name: _Color
+        second: {r: 0, g: .213793039, b: 1, a: 1}
+      data:
+        first:
+          name: _ColorTint
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _RimColor
+        second: {r: 1, g: 0, b: 0, a: 0}

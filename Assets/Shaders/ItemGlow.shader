@@ -5,13 +5,13 @@
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_Bumpmap ("Normal Map", 2D)= "bump"{}
 		_RimColor ("Rim Color", Color)=(1,1,1,1)
-		_RimPower ("Rim Power", Range(1.0, 6.0)) = 3.0
+		_RimPower ("Rim Power", Range(0.0, 10.0)) = 3.0
 		
 	}
 	
 	SubShader 
 	{
-		Tags { "RenderType"="Opaque" }
+		Tags { "RenderType"="Transparent" }
 	
 		
 		CGPROGRAM

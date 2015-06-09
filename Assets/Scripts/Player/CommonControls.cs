@@ -122,7 +122,7 @@ public class CommonControls : MonoBehaviour {
 				Vector3 groundSlopeDir = Vector3.Cross(temp, hit.normal);
 				
 				canJump = false;
-				controller.Move(groundSlopeDir * maxSpeed * (angle * .025f) * localDeltaTime);
+				controller.Move(groundSlopeDir * maxSpeed * /*(angle * .025f) */ localDeltaTime);
 			}
 			else
 			{

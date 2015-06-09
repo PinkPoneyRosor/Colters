@@ -63,6 +63,10 @@ Material:
         second: .692307711
       data:
         first:
+          name: _Focus
+        second: -100
+      data:
+        first:
           name: _WaveScale
         second: .0728113204
       data:
@@ -85,10 +89,6 @@ Material:
         first:
           name: _FresnelPower
         second: 1
-      data:
-        first:
-          name: _Focus
-        second: -100
       data:
         first:
           name: _Distortion

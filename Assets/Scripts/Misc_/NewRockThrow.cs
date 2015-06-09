@@ -51,6 +51,13 @@ public class NewRockThrow : MonoBehaviour {
 	private ParticleSystem explosiveLoadParticles;
 	private bool startFinishedLoadparticle = true;
 	
+	public GameObject armLoadingParticles;
+	public GameObject armSpawnRockParticles;
+	
+	GameObject spawnedArmLoading;
+	
+	Animator animator;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -61,6 +68,8 @@ public class NewRockThrow : MonoBehaviour {
 		HudScript = HudObject.GetComponent <GUImainBehaviour>();
 		
 		explosiveLoadParticles = this.GetComponent <ParticleSystem>();
+		
+		animator = gameObject.GetComponent <Animator>();
 	}
 	
 	// Update is called once per frame
@@ -82,6 +91,13 @@ public class NewRockThrow : MonoBehaviour {
 					HoldingThrowButton();
 				else if (Input.GetButtonDown ("Melee Attack") || loopCrush || Input.GetKeyDown ("e"))
 				    ShortRangeAttack();
+				    
+				if (Input.GetAxisRaw("RockThrow") == 0)
+				{
+					animator.SetBool ("HoldThrow", false);
+					if (spawnedArmLoading != null)
+						Destroy (spawnedArmLoading);
+				}
 				  
 				#region Gonna throw a rock
 				if (Input.GetAxisRaw("RockThrow") == 0 && justHitThrowButton)
@@ -105,6 +121,15 @@ public class NewRockThrow : MonoBehaviour {
 	void HoldingThrowButton ()
 	{
 		holdDownThrowTime += localDeltaTime;
+		
+		animator.SetBool ("HoldThrow", true);
+		
+		if (spawnedArmLoading == null)
+		{
+		spawnedArmLoading = Instantiate(armLoadingParticles, transform.position, Quaternion.identity) as GameObject;
+		spawnedArmLoading.transform.SetParent(this.transform);
+		}
+		
 		
 		justHitThrowButton = true;
 		
@@ -166,6 +191,8 @@ public class NewRockThrow : MonoBehaviour {
 		else
 		HudScript.rockPercent = 0;
 		
+		animator.SetTrigger ("RockPunch");
+		
 		if(launchCount > 4)
 		{
 			ShiftRockArray (thrownRock);
@@ -226,6 +253,10 @@ public class NewRockThrow : MonoBehaviour {
 			currentThrowedRockScript.rigidbody.constraints = RigidbodyConstraints.None;
 			
 			thrownRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
+			
+			Instantiate (armSpawnRockParticles, transform.position, Quaternion.identity);
+			
+			animator.SetTrigger("ThrowRock");
 		}
 		
 		launchCount ++;

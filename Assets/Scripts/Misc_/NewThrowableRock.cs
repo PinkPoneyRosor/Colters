@@ -34,7 +34,8 @@ public class NewThrowableRock : MonoBehaviour {
 	public GameObject EarthQuakeParticles;
 	
 	public bool Melee = false;
-
+	
+	public GameObject ImpactParticles;
 	public GameObject ImpactPrefab;
 	
 	private GameObject player;
@@ -137,6 +138,8 @@ public class NewThrowableRock : MonoBehaviour {
 			EarthQuakeParticlesInstance = Instantiate(EarthQuakeParticles, transform.position , Quaternion.Euler(90,0,0) ) as GameObject;
 			meleeAlreadyHit = true;
 		}
+		
+		Instantiate (ImpactParticles, transform.position, Quaternion.identity);
 	}
 	
 	void JustHitSomething ()
