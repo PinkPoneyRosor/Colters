@@ -668,6 +668,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
+<<<<<<< HEAD
       transformMask:
       - path: 
         weight: 1
@@ -823,6 +824,9 @@ ModelImporter:
         weight: 1
       - path: Reference/Hips/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandThumb1/RightHandThumb2/RightHandThumb3
         weight: 1
+=======
+      transformMask: []
+>>>>>>> Quentin-WIP
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
