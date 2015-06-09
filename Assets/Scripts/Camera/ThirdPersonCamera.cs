@@ -100,6 +100,8 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	void LateUpdate()
 	{
+		Debug.Log ("Izy izy");
+	
 		if(!HUDScript.paused)
 		{
 			//Setting this object's local delta time...

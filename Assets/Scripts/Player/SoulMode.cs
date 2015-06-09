@@ -46,6 +46,7 @@ public class SoulMode : CommonControls {
 		HUD = GameObject.Find ("GameHUD");
 		HUDScript = HUD.GetComponent <GUImainBehaviour>();
 		
+		if (particleAtSpawn != null)
 		Instantiate (particleAtSpawn, transform.position, Quaternion.identity);
 	}
 
@@ -108,7 +109,10 @@ public class SoulMode : CommonControls {
 		Time.fixedDeltaTime = .02f;
 		playerScript.soulMode = false;
 		mainCameraScript.SwitchPlayerMode( player.gameObject, false );
-		Instantiate (endSoulModeParticles, transform.position, Quaternion.identity);
+		
+		if (endSoulModeParticles != null)
+			Instantiate (endSoulModeParticles, transform.position, Quaternion.identity);
+		
 		Destroy (this.gameObject);
 	}
 	

@@ -104,7 +104,7 @@ public class GUImainBehaviour : MonoBehaviour {
 			soulBarImage.fillAmount += SoulBarSpeedRate * localDeltaTime;
 		}
 		
-		if (soulBarImage.fillAmount == 1 && previousFrameSoulAmount < soulBarImage.fillAmount)
+		if (soulBarImage.fillAmount == 1 && previousFrameSoulAmount < soulBarImage.fillAmount && FullyChargedSoulParticles != null)
 		{
 			Instantiate (FullyChargedSoulParticles, player.transform.position, Quaternion.identity);
 		}
@@ -146,7 +146,7 @@ public class GUImainBehaviour : MonoBehaviour {
 		else
 			rockLights[3].GetComponent <Image> ().CrossFadeAlpha (1, .5f, true);
 			
-		if (rockPercent == 1 && previousFrameRockpercent < rockPercent)
+		if (rockPercent == 1 && previousFrameRockpercent < rockPercent && FullyChargedRocksParticles != null)
 			Instantiate (FullyChargedRocksParticles, player.transform.position, Quaternion.identity);
 			
 		previousFrameRockpercent = rockPercent;
