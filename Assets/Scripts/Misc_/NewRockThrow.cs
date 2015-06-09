@@ -124,7 +124,7 @@ public class NewRockThrow : MonoBehaviour {
 		
 		animator.SetBool ("HoldThrow", true);
 		
-		if (spawnedArmLoading == null)
+		if (spawnedArmLoading == null && armLoadingParticles != null)
 		{
 		spawnedArmLoading = Instantiate(armLoadingParticles, transform.position, Quaternion.identity) as GameObject;
 		spawnedArmLoading.transform.SetParent(this.transform);
@@ -254,6 +254,7 @@ public class NewRockThrow : MonoBehaviour {
 			
 			thrownRock.rigidbody.constantForce.force = throwDirection * currentThrowedRockScript.throwForce;
 			
+			if (armSpawnRockParticles != null)
 			Instantiate (armSpawnRockParticles, transform.position, Quaternion.identity);
 			
 			animator.SetTrigger("ThrowRock");

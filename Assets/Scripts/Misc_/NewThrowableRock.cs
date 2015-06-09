@@ -139,6 +139,7 @@ public class NewThrowableRock : MonoBehaviour {
 			meleeAlreadyHit = true;
 		}
 		
+		if (ImpactParticles != null)
 		Instantiate (ImpactParticles, transform.position, Quaternion.identity);
 	}
 	
