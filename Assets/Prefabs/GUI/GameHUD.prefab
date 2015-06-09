@@ -267,7 +267,6 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
@@ -299,6 +298,9 @@ MonoBehaviour:
   rockPercent: 1
   NextRockExplosive: 0
   rockRefillRate: .25
+  paused: 0
+  FullyChargedRocksParticles: {fileID: 0}
+  FullyChargedSoulParticles: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -943,7 +945,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: .200000003, y: -.600000024}
+  m_AnchoredPosition: {x: .200000003, y: 0}
   m_SizeDelta: {x: 259, y: 29}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22400028
