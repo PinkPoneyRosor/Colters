@@ -330,4 +330,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 		else
 			justHitAWall = false;
 	}
+	
+	
+	public void FinishedAnim()
+	{
+		HUDScript.paused = false;
+		HUD.GetComponent <Canvas>().enabled = true;
+	}
 }

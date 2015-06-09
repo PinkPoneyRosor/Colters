@@ -34,18 +34,7 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _node_43
-        second:
-          m_Texture: {fileID: 8900000, guid: a596436b21c6d484bb9b3b6385e3e666, type: 2}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
-      data:
-        first:
-          name: _Outline_Width
-        second: .00999999978
       data:
         first:
           name: _node_45
@@ -57,5 +46,5 @@ Material:
     m_Colors:
       data:
         first:
-          name: _Outline_Color_copy
-        second: {r: 0, g: 0, b: 1, a: 0}
+          name: _node_47
+        second: {r: .5, g: .5, b: 1, a: 1}

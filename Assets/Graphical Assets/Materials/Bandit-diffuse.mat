@@ -58,16 +58,16 @@ Material:
     m_Floats:
       data:
         first:
-          name: _Outline_Width
-        second: .00999999978
-      data:
-        first:
           name: _node_45
-        second: 1
+        second: 5
       data:
         first:
           name: _node_46
-        second: 0
+        second: .357142866
+      data:
+        first:
+          name: _Outline_Width
+        second: .00999999978
     m_Colors:
       data:
         first:
@@ -85,3 +85,7 @@ Material:
         first:
           name: _Outline_Color_copy
         second: {r: 0, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _node_47
+        second: {r: .720588207, g: .0264921952, b: .0264921952, a: 1}
