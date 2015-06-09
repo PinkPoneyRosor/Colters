@@ -42,6 +42,12 @@ public class GUImainBehaviour : MonoBehaviour {
 	public float rockRefillRate = 0.9f;
 	
 	public bool paused = false;
+	
+	public GameObject FullyChargedRocksParticles;
+	public GameObject FullyChargedSoulParticles;
+	
+	private float previousFrameRockpercent = 0;
+	private float previousFrameSoulAmount = 0;
 
 	// Use this for initialization
 	void Start () 
@@ -97,6 +103,13 @@ public class GUImainBehaviour : MonoBehaviour {
 		{
 			soulBarImage.fillAmount += SoulBarSpeedRate * localDeltaTime;
 		}
+		
+		if (soulBarImage.fillAmount == 1 && previousFrameSoulAmount < soulBarImage.fillAmount)
+		{
+			Instantiate (FullyChargedSoulParticles, player.transform.position, Quaternion.identity);
+		}
+		
+		previousFrameSoulAmount = soulBarImage.fillAmount;
 		#endregion
 		
 		#region Life Bar
@@ -132,6 +145,11 @@ public class GUImainBehaviour : MonoBehaviour {
 			rockLights[3].GetComponent <Image> ().CrossFadeAlpha (0, .5f, true);
 		else
 			rockLights[3].GetComponent <Image> ().CrossFadeAlpha (1, .5f, true);
+			
+		if (rockPercent == 1 && previousFrameRockpercent < rockPercent)
+			Instantiate (FullyChargedRocksParticles, player.transform.position, Quaternion.identity);
+			
+		previousFrameRockpercent = rockPercent;
 		
 		if (NextRockExplosive)
 		{

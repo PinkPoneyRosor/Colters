@@ -2464,7 +2464,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100142}
   m_LocalRotation: {x: .016370371, y: .959035039, z: .00604710355, w: -.282749534}
-  m_LocalPosition: {x: 58.9580002, y: 24.3269997, z: -305.160004}
+  m_LocalPosition: {x: 35.2459984, y: 9.26799965, z: -418.121002}
   m_LocalScale: {x: 1.22414219, y: 1.22414255, z: 1.22414243}
   m_Children:
   - {fileID: 400146}
@@ -2881,6 +2881,8 @@ MonoBehaviour:
   fourthOffset: {x: 0, y: 0, z: 0}
   explosiveFinishLoadParticles: {fileID: 100000, guid: 5c249571b55d7784cadef2aba6066b69,
     type: 2}
+  armLoadingParticles: {fileID: 0}
+  armSpawnRockParticles: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2923,7 +2925,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   soulMode: 0
-  maxSlopeAngleToJump: 35
+  maxSlopeAngleToJump: 55
   dead: 0
   footStep: {fileID: 100000, guid: 7d48e39852e4755408a9f9dac6487745, type: 2}
 --- !u!137 &13700000
