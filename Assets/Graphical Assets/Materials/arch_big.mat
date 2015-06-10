@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: arch_big
-  m_Shader: {fileID: 4800000, guid: 263aad3c939352f43ac776395bf64f74, type: 3}
+  m_Shader: {fileID: 4, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -53,6 +53,14 @@ Material:
         first:
           name: _Shininess
         second: .078125
+      data:
+        first:
+          name: _node_45
+        second: .954887211
+      data:
+        first:
+          name: _node_46
+        second: 0
     m_Colors:
       data:
         first:
@@ -62,3 +70,7 @@ Material:
         first:
           name: _SpecColor
         second: {r: .5, g: .5, b: .5, a: 1}
+      data:
+        first:
+          name: _node_47
+        second: {r: .5, g: .5, b: 1, a: 1}
