@@ -199,7 +199,30 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .0133841243
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .478011101
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {fileID: 100142, guid: d97fda8f2fefc7240a9069c959be9535,
+          type: 2}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .978968263
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {fileID: 100142, guid: d97fda8f2fefc7240a9069c959be9535,
+          type: 2}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

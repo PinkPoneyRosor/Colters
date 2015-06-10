@@ -22,10 +22,11 @@ public class SoulMode : CommonControls {
 	private NewThrowableRock currentClimbRockScript;
 	private float gravitySave;
 	
-	public GameObject footStep;
-	
 	public GameObject particleAtSpawn;
 	public GameObject endSoulModeParticles;
+	
+	public GameObject EnterSound;
+	public GameObject ExitSound;
 	
 	GameObject HUD;
 	GUImainBehaviour HUDScript;
@@ -35,6 +36,8 @@ public class SoulMode : CommonControls {
 	{
 		base.Start ();
 		maxSpeed = setMaximumSpeed;
+
+		Instantiate (EnterSound, transform.position, Quaternion.identity);
 
 		this.name = "Soul";
 		player = GameObject.Find ("Player");
@@ -47,7 +50,7 @@ public class SoulMode : CommonControls {
 		HUDScript = HUD.GetComponent <GUImainBehaviour>();
 		
 		if (particleAtSpawn != null)
-		Instantiate (particleAtSpawn, transform.position, Quaternion.identity);
+			Instantiate (particleAtSpawn, transform.position, Quaternion.identity);
 	}
 
 	// Update is called once per frame
@@ -112,6 +115,8 @@ public class SoulMode : CommonControls {
 		
 		if (endSoulModeParticles != null)
 			Instantiate (endSoulModeParticles, transform.position, Quaternion.identity);
+			
+		Instantiate (ExitSound, transform.position, Quaternion.identity);
 		
 		Destroy (this.gameObject);
 	}
@@ -137,10 +142,5 @@ public class SoulMode : CommonControls {
 				gravitySave = gravity;
 			}
 		}
-	}
-	
-	void FootStep ()
-	{
-		Instantiate (footStep);
 	}
 }

@@ -292,7 +292,7 @@ MonoBehaviour:
   ShieldExplosive: {fileID: 100002}
   blueLifeBar: {fileID: 100026}
   soulSkull: {fileID: 100028}
-  SoulBarSpeedRate: .100000001
+  SoulBarSpeedRate: .075000003
   soulStartValue: 0
   lifeStartValue: 0
   rockPercent: 1

@@ -46,8 +46,11 @@ public class GUImainBehaviour : MonoBehaviour {
 	public GameObject FullyChargedRocksParticles;
 	public GameObject FullyChargedSoulParticles;
 	
+	public AudioSource soulHum;
+	
 	private float previousFrameRockpercent = 0;
 	private float previousFrameSoulAmount = 0;
+	bool justEnteredSoul = true;
 
 	// Use this for initialization
 	void Start () 
@@ -166,11 +169,20 @@ public class GUImainBehaviour : MonoBehaviour {
 		{
 			blueLifeBarPic.CrossFadeAlpha (1, .5f, true);
 			blueSkull.CrossFadeAlpha (1, .5f, true);
+			
+			if(justEnteredSoul)
+			{
+				soulHum.Play();
+				justEnteredSoul = false;
+			}
 		}
 		else
 		{
 			blueLifeBarPic.CrossFadeAlpha (0, .5f, true);
 			blueSkull.CrossFadeAlpha (0, .5f, true);
+			soulHum.Stop();
+			
+			justEnteredSoul = true;
 		}
 		#endregion
 	}

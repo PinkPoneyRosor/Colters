@@ -102,33 +102,33 @@ public class NewThrowableRock : MonoBehaviour {
 	//To avoid the rock to be difficult to aim, we reactivate gravity only after the first hit, when it's not selected anymore.
 	void OnCollisionEnter (Collision collider)
 	{
-		Debug.Log (collider.transform.name);
+		Debug.Log ("Rock Hit");
 		JustHitSomething();
 		
 		GameObject impactGameObject;
 		
-		impactGameObject = Instantiate (ImpactPrefab) as GameObject;
+		impactGameObject = Instantiate (ImpactPrefab, transform.position, Quaternion.identity) as GameObject;
 		
 		AudioSource impactSound = impactGameObject.GetComponent <AudioSource> ();
 		
 		if (Vector3.SqrMagnitude (rigidbody.velocity) >= 50)
 		{
-			impactSound.volume = .5f;
+			//impactSound.volume = .5f;
 			impactSound.pitch = 1;
 		}
 		else if (Vector3.SqrMagnitude (rigidbody.velocity) < 50 && Vector3.SqrMagnitude (rigidbody.velocity) >= 30)
 		{
-			impactSound.volume = .4f;
+			//impactSound.volume = .4f;
 			impactSound.pitch = .8f;
 		}
 		else if (Vector3.SqrMagnitude (rigidbody.velocity) < 30 && Vector3.SqrMagnitude (rigidbody.velocity) > 10)
 		{
-			impactSound.volume = .3f;
+			//impactSound.volume = .3f;
 			impactSound.pitch = .6f;
 		}
 		else if (Vector3.SqrMagnitude (rigidbody.velocity) <= 10)
 		{
-			impactSound.volume = .2f;
+			//impactSound.volume = .2f;
 			impactSound.pitch = .5f;
 		}
 		

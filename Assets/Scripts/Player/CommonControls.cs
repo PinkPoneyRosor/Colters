@@ -60,6 +60,9 @@ public class CommonControls : MonoBehaviour {
 	
 	[HideInInspector]
 	static public bool characterAngleOkForAim = false;
+	
+	public GameObject footStep;
+	public GameObject landing;
 
 	// Use this for initialization
 	protected virtual void Start () 
@@ -134,6 +137,7 @@ public class CommonControls : MonoBehaviour {
 		if (justJumped && controller.isGrounded)
 		{
 			justJumped = false;
+			Instantiate (landing, transform.position, Quaternion.identity);
 		}
 		
 		if (Input.GetButtonDown ("Jump") && controller.isGrounded && canJump)
@@ -193,7 +197,9 @@ public class CommonControls : MonoBehaviour {
 		if (controller.isGrounded)
 			animator.SetBool ("isGrounded", true);
 		else
-			animator.SetBool ("isGrounded", false);	
+			animator.SetBool ("isGrounded", false);
+			
+		
 		#endregion
 	}
 
@@ -264,5 +270,11 @@ public class CommonControls : MonoBehaviour {
 	public void CheckPointActivated ()
 	{
 		checkPointOn = true;
+	}
+	
+	
+	public void FootStep ()
+	{
+		Instantiate (footStep, transform.position, Quaternion.identity);
 	}
 }

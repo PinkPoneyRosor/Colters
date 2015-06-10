@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GrotteExit : MonoBehaviour {
 	
-
+	public AudioSource grind;
 	
 	// Use this for initialization
 	void Start () {
@@ -23,6 +23,7 @@ public class GrotteExit : MonoBehaviour {
 		{
 			this.animation.Play("GrotteSortie");
 			Debug.Log("Play!");
+			grind.Play();
 		}
 	}
 }
