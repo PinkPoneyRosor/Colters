@@ -37,14 +37,14 @@ Material:
     m_Floats:
       data:
         first:
-          name: _node_45
-        second: .954887211
+          name: _Highlight_Width
+        second: 1.25563896
       data:
         first:
-          name: _node_46
+          name: _Highlight_Intensity
         second: 0
     m_Colors:
       data:
         first:
-          name: _node_47
+          name: _Highlight_Color
         second: {r: .5, g: .5, b: 1, a: 1}

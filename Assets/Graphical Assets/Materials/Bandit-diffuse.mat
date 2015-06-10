@@ -68,6 +68,14 @@ Material:
         first:
           name: _Outline_Width
         second: .00999999978
+      data:
+        first:
+          name: _Highlight_Width
+        second: .806196749
+      data:
+        first:
+          name: _Highlight_Intensity
+        second: 1
     m_Colors:
       data:
         first:
@@ -89,3 +97,7 @@ Material:
         first:
           name: _node_47
         second: {r: .720588207, g: .0264921952, b: .0264921952, a: 1}
+      data:
+        first:
+          name: _Highlight_Color
+        second: {r: 1, g: 0, b: 0, a: 1}
