@@ -98,6 +98,21 @@ public class SoulMode : CommonControls {
 			#endregion
 		}
 	}
+	
+	/*void OnControllerColliderHit (ControllerColliderHit hit)
+	{
+		Debug.Log ("Soul in collision with " + hit.gameObject.name);
+		if (hit.collider.CompareTag("ThrowableRock"))
+		{
+			NewThrowableRock hitScript = hit.transform.GetComponent <NewThrowableRock>();
+			if (hitScript.beingThrowned)
+			{
+				Physics.IgnoreCollision (this.collider, hit.collider);
+				climbRock = true;
+				currentClimbingRock = hit.gameObject;
+			}
+		}
+	}*/
 
 	void revertBack (bool bodyToSoul) //Revert Back to normal mode.
 	{
@@ -134,6 +149,7 @@ public class SoulMode : CommonControls {
 			
 			if (hitScript.beingThrowned)
 			{
+				Debug.Log ("And the rock is being throwned");
 				Physics.IgnoreCollision (this.collider, hit.collider);
 				controller.enabled = false;
 				climbRock = true;

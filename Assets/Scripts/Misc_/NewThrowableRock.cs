@@ -102,7 +102,6 @@ public class NewThrowableRock : MonoBehaviour {
 	//To avoid the rock to be difficult to aim, we reactivate gravity only after the first hit, when it's not selected anymore.
 	void OnCollisionEnter (Collision collider)
 	{
-		Debug.Log ("Rock Hit");
 		JustHitSomething();
 		
 		GameObject impactGameObject;
@@ -148,7 +147,6 @@ public class NewThrowableRock : MonoBehaviour {
 		if (!isSelected) 
 		{
 			rigidbody.useGravity = true;
-			Debug.Log ("Gravity on");
 			constantForce.force = Vector3.zero;
 			homingAttackBool = false;
 			beingThrowned = false;

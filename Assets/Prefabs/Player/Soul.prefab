@@ -2915,7 +2915,7 @@ MonoBehaviour:
   maxSpeed: 10
   gravity: 20
   footStep: {fileID: 100000, guid: 7d48e39852e4755408a9f9dac6487745, type: 2}
-  landing: {fileID: 0}
+  landing: {fileID: 103550, guid: 3581e2f807eb6db47b3265e65b3b423b, type: 2}
   setMaximumSpeed: 6
   heightOfJump: 9
   particleAtSpawn: {fileID: 0}

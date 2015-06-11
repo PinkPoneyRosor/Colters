@@ -85,11 +85,7 @@ public class GUImainBehaviour : MonoBehaviour {
 			Time.timeScale = 0.00001f;
 			Debug.Log ("Paused");
 			paused = true;
-		}
-
-		
-		Debug.Log ("TimeScale = " + Time.timeScale);
-			
+		}			
 	
 		if(rockPercent > 1)
 			rockPercent = 1;

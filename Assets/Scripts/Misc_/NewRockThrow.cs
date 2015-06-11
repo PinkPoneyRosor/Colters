@@ -96,7 +96,6 @@ public class NewRockThrow : MonoBehaviour {
 				    
 				if (Input.GetAxisRaw("RockThrow") == 0)
 				{
-					animator.SetBool ("HoldThrow", false);
 					if (spawnedArmLoading != null)
 						Destroy (spawnedArmLoading);
 				}
@@ -123,8 +122,6 @@ public class NewRockThrow : MonoBehaviour {
 	void HoldingThrowButton ()
 	{
 		holdDownThrowTime += localDeltaTime;
-		
-		animator.SetBool ("HoldThrow", true);
 		
 		if (spawnedArmLoading == null && armLoadingParticles != null)
 		{

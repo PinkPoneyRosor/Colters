@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: player_soul
-  m_Shader: {fileID: 4800000, guid: 31c37506cc751c74bb9c11a5c0b2f926, type: 3}
+  m_Shader: {fileID: 4800000, guid: cc156a79f3b13f84c9de3cae4825a8b7, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,7 +17,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: e5a03758ef6a4c34ba7941aa9416d28f, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -37,6 +37,10 @@ Material:
     m_Floats:
       data:
         first:
+          name: _InvFade
+        second: 1.505
+      data:
+        first:
           name: _RimPower
         second: 1
       data:
@@ -48,6 +52,10 @@ Material:
         first:
           name: _Color
         second: {r: 0, g: .213793039, b: 1, a: 1}
+      data:
+        first:
+          name: _TintColor
+        second: {r: .241379261, g: 0, b: 1, a: .501960814}
       data:
         first:
           name: _ColorTint

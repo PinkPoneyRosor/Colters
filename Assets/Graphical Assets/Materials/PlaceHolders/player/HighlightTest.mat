@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: HighlightTest
-  m_Shader: {fileID: 4800000, guid: 31c37506cc751c74bb9c11a5c0b2f926, type: 3}
+  m_Shader: {fileID: 4800000, guid: 263aad3c939352f43ac776395bf64f74, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -18,6 +18,27 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 2800000, guid: 8c660b33218a8af46937dbdbe85b759a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _diffuse
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _spec
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _nrml
+        second:
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -37,6 +58,14 @@ Material:
     m_Floats:
       data:
         first:
+          name: _Highlight_Width
+        second: 1.25563896
+      data:
+        first:
+          name: _Highlight_Intensity
+        second: 0
+      data:
+        first:
           name: _RimPower
         second: 10
       data:
@@ -48,6 +77,10 @@ Material:
         first:
           name: _Color
         second: {r: 0, g: .213793039, b: 1, a: 1}
+      data:
+        first:
+          name: _Highlight_Color
+        second: {r: .5, g: .5, b: 1, a: 1}
       data:
         first:
           name: _ColorTint
