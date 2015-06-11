@@ -59,14 +59,14 @@ Material:
         first:
           name: _MASK
         second:
-          m_Texture: {fileID: 2800000, guid: 041970e2b19cb9f45a16040cd466b98d, type: 3}
+          m_Texture: {fileID: 2800000, guid: 3fcb1b738423ef34f9dbf02d64e80f8d, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _MASK0
         second:
-          m_Texture: {fileID: 2800000, guid: 041970e2b19cb9f45a16040cd466b98d, type: 3}
+          m_Texture: {fileID: 2800000, guid: 3fcb1b738423ef34f9dbf02d64e80f8d, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats: {}

@@ -27,7 +27,11 @@ Material:
           m_Texture: {fileID: 2800000, guid: 5d8821c1c4e635a40b657a5bc6e2496f, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-    m_Floats: {}
+    m_Floats:
+      data:
+        first:
+          name: _Cutoff
+        second: .5
     m_Colors:
       data:
         first:

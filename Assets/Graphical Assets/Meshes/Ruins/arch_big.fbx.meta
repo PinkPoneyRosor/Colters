@@ -22,6 +22,7 @@ ModelImporter:
     100032: transform6
     100034: transform7
     100036: transform8
+    100038: pCube67
     400000: //RootNode
     400002: pCube103
     400004: group18
@@ -41,12 +42,16 @@ ModelImporter:
     400032: transform6
     400034: transform7
     400036: transform8
+    400038: pCube67
     2300000: pCube103
     2300002: polySurface1
+    2300004: pCube67
     3300000: pCube103
     3300002: polySurface1
+    3300004: pCube67
     4300000: pCube103
     4300002: polySurface1
+    4300004: pCube67
     9500000: //RootNode
   materials:
     importMaterials: 1
