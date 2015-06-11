@@ -27,7 +27,7 @@ public class PlayerController : CommonControls {
 	[HideInInspector]
 	public bool dead = false;
 	
-	public GameObject footStep;
+	public GameObject DieSound;
 	
 	GameObject HUD;
 	GUImainBehaviour HUDScript;
@@ -102,6 +102,8 @@ public class PlayerController : CommonControls {
 	{
 		animator.SetBool ("Dead", true);
 		
+		Instantiate (DieSound, transform.position, Quaternion.identity);
+		
 		dead = true;
 		
 		StartCoroutine(RespawnCountDown());
@@ -129,10 +131,5 @@ public class PlayerController : CommonControls {
 			moveDirection.y = heightOfJump;
 		else
 			moveDirection.y = heightOfJump;
-	}
-	
-	void FootStep ()
-	{
-		Instantiate (footStep);
 	}
 }

@@ -54,6 +54,8 @@ public class NewRockThrow : MonoBehaviour {
 	public GameObject armLoadingParticles;
 	public GameObject armSpawnRockParticles;
 	
+	public GameObject swoosh;
+	
 	GameObject spawnedArmLoading;
 	
 	Animator animator;
@@ -192,6 +194,8 @@ public class NewRockThrow : MonoBehaviour {
 		HudScript.rockPercent = 0;
 		
 		animator.SetTrigger ("RockPunch");
+		
+		Instantiate (swoosh, transform.position, Quaternion.identity);
 		
 		if(launchCount > 4)
 		{

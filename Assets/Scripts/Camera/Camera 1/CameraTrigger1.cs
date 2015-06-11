@@ -7,6 +7,9 @@ public class CameraTrigger1 : MonoBehaviour {
 	private GameObject HUD;
 	private GUImainBehaviour HUDScript;
 	
+	private GameObject player;
+	private PlayerController playerScript; 
+	private GameObject soul;
 
 	// Use this for initialization
 	void Start () 
@@ -14,6 +17,9 @@ public class CameraTrigger1 : MonoBehaviour {
 		mainGameCamera = Camera.main.gameObject;
 		HUD = GameObject.Find("GameHUD") as GameObject;
 		HUDScript = HUD.GetComponent <GUImainBehaviour>();
+		
+		player = GameObject.Find ("Player");
+		playerScript = player.GetComponent <PlayerController>();
 	}
 	
 	// Update is called once per frame
@@ -29,6 +35,12 @@ public class CameraTrigger1 : MonoBehaviour {
 			Debug.Log("Play Cam!");
 			HUDScript.paused = true;
 			HUD.GetComponent <Canvas>().enabled = false;
+			
+			if (playerScript.soulMode)
+			{
+				soul = GameObject.Find ("Soul");
+				soul.SendMessage ("revertBack", true);
+			}
 		}
 	}
 }

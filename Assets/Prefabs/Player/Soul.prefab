@@ -2914,9 +2914,14 @@ MonoBehaviour:
   animator: {fileID: 0}
   maxSpeed: 10
   gravity: 20
+  footStep: {fileID: 100000, guid: 7d48e39852e4755408a9f9dac6487745, type: 2}
+  landing: {fileID: 0}
   setMaximumSpeed: 6
   heightOfJump: 9
-  footStep: {fileID: 100000, guid: 7d48e39852e4755408a9f9dac6487745, type: 2}
+  particleAtSpawn: {fileID: 0}
+  endSoulModeParticles: {fileID: 0}
+  EnterSound: {fileID: 152836, guid: a9317f849d3dd7644a3122787889966f, type: 2}
+  ExitSound: {fileID: 183146, guid: d54468c60f84cb14e8bc8ad8f9e739cd, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
