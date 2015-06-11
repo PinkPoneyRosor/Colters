@@ -22,16 +22,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ReflectionTex
+          name: _WaterTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 0c86fdd60e7cfa449bc1dfa85643bc42, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _WaterTex
+          name: _ReflectionTex
         second:
-          m_Texture: {fileID: 2800000, guid: 0c86fdd60e7cfa449bc1dfa85643bc42, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -63,10 +63,6 @@ Material:
         second: .692307711
       data:
         first:
-          name: _Focus
-        second: -100
-      data:
-        first:
           name: _WaveScale
         second: .0728113204
       data:
@@ -79,12 +75,16 @@ Material:
         second: 0
       data:
         first:
-          name: _FresnelBias
-        second: 0
-      data:
-        first:
           name: _FresnelScale
         second: 1
+      data:
+        first:
+          name: _Focus
+        second: -100
+      data:
+        first:
+          name: _FresnelBias
+        second: 0
       data:
         first:
           name: _FresnelPower
@@ -100,28 +100,28 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _Color1
-        second: {r: 0, g: .125613183, b: .216417909, a: 0}
+          name: _Specular
+        second: {r: .574626863, g: .574626863, b: .574626863, a: 0}
       data:
         first:
           name: _Color0
         second: {r: .574626863, g: .946456552, b: 1, a: 1}
       data:
         first:
-          name: _Specular
-        second: {r: .574626863, g: .574626863, b: .574626863, a: 0}
+          name: _Color1
+        second: {r: 0, g: .125613183, b: .216417909, a: 0}
       data:
         first:
           name: _InvRanges
         second: {r: .529999971, g: .159999996, b: .469999999, a: 0}
       data:
         first:
-          name: _WaveSpeed
-        second: {r: 9, g: 5, b: -8, a: -4}
-      data:
-        first:
           name: _InvFadeParemeter
         second: {r: .230000004, g: .129999995, b: .899999976, a: 1}
+      data:
+        first:
+          name: _WaveSpeed
+        second: {r: 9, g: 5, b: -8, a: -4}
       data:
         first:
           name: _Ranges
