@@ -48,56 +48,9 @@ Material:
           m_Texture: {fileID: 2800000, guid: 2e4daed5532da7e4dbcba7860156c439, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _node_43
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats:
-      data:
-        first:
-          name: _node_45
-        second: 5
-      data:
-        first:
-          name: _node_46
-        second: .357142866
-      data:
-        first:
-          name: _Outline_Width
-        second: .00999999978
-      data:
-        first:
-          name: _Highlight_Width
-        second: 0
-      data:
-        first:
-          name: _Highlight_Intensity
-        second: 1
+    m_Floats: {}
     m_Colors:
       data:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _Outline_Color
-        second: {r: 1, g: 0, b: 0, a: 1}
-      data:
-        first:
-          name: _node_14
-        second: {r: 1, g: 0, b: 0, a: 1}
-      data:
-        first:
-          name: _Outline_Color_copy
-        second: {r: 0, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _node_47
-        second: {r: .720588207, g: .0264921952, b: .0264921952, a: 1}
-      data:
-        first:
-          name: _Highlight_Color
-        second: {r: 1, g: 0, b: 0, a: 1}

@@ -5,11 +5,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: pCylinder11
+    100004: default
     400000: //RootNode
     400002: pCylinder11
+    400004: default
     2300000: pCylinder11
+    2300002: default
     3300000: pCylinder11
+    3300002: default
     4300000: pCylinder11
+    4300002: default
     9500000: //RootNode
   materials:
     importMaterials: 1
