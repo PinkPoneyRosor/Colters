@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 492526}
-  - 95: {fileID: 9592526}
+  - 65: {fileID: 6543026}
   m_Layer: 0
   m_Name: chest_minerals
   m_TagString: Untagged
@@ -39,8 +39,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192526}
-  m_LocalRotation: {x: 0, y: .143329278, z: 0, w: .989675105}
-  m_LocalPosition: {x: -11.2799997, y: 8.61499977, z: 14.4300003}
+  m_LocalRotation: {x: .0211901534, y: .951939702, z: -.0166779812, w: .305096239}
+  m_LocalPosition: {x: 51.4650002, y: -.527999997, z: -6.63700008}
   m_LocalScale: {x: 1.26999998, y: 1.27000022, z: 1.27000022}
   m_Children:
   - {fileID: 492528}
@@ -85,21 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192528}
   m_Mesh: {fileID: 4300026, guid: b022d821dd2cbe149972da6857089ed3, type: 3}
---- !u!95 &9592526
-Animator:
-  serializedVersion: 3
+--- !u!65 &6543026
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192526}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b022d821dd2cbe149972da6857089ed3, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: .569999993, z: .589999974}
+  m_Center: {x: 0, y: .200000003, z: .0199999996}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

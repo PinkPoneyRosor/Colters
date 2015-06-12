@@ -17,6 +17,8 @@ public class PlankCollisionDetect : MonoBehaviour
 	
 	
 	void	OnTriggerEnter (Collider col){
+
+		Debug.Log ("Triggered");
 		if (col.gameObject.tag == "ThrowableRock" || col.gameObject.tag == "ThrowableRock2") 
 		{
 			transform.parent.rigidbody.constraints = RigidbodyConstraints.None;

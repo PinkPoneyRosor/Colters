@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/20_04_15.unity
   - enabled: 0
     path: Assets/Scenes/Game/20_04_15 - Dressed.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game/20_04_15-DressedByMarion.unity
