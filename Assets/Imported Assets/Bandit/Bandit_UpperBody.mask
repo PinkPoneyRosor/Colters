@@ -1,0 +1,244 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1011 &101100000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Bandit_UpperBody
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Bandito
+    m_Weight: 1
+  - m_Path: bottom
+    m_Weight: 1
+  - m_Path: Hip
+    m_Weight: 1
+  - m_Path: Hip/L_Leg
+    m_Weight: 1
+  - m_Path: Hip/L_Leg/L_Knee
+    m_Weight: 1
+  - m_Path: Hip/L_Leg/L_Knee/L_Ankle
+    m_Weight: 1
+  - m_Path: Hip/L_Leg/L_Knee/L_Ankle/L_Foot
+    m_Weight: 1
+  - m_Path: Hip/R_Reg
+    m_Weight: 1
+  - m_Path: Hip/R_Reg/R_Knee
+    m_Weight: 1
+  - m_Path: Hip/R_Reg/R_Knee/R_Ankle
+    m_Weight: 1
+  - m_Path: Hip/R_Reg/R_Knee/R_Ankle/R_Foot
+    m_Weight: 1
+  - m_Path: Hip/Spine1
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_ForeFinger_1_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_ForeFinger_1_4/L_ForeFinger_2_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_ForeFinger_1_4/L_ForeFinger_2_4/L_ForeFinger_3_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_ForeFinger_1_4/L_ForeFinger_2_4/L_ForeFinger_3_4/L_ForeFinger_4_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_MiddleFinger_1_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_MiddleFinger_1_4/L_MiddleFinger_2_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_MiddleFinger_1_4/L_MiddleFinger_2_4/L_MiddleFinger_3_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_MiddleFinger_1_4/L_MiddleFinger_2_4/L_MiddleFinger_3_4/L_MiddleFinger_4_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_Pinky_1_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_Pinky_1_4/L_Pinky_2_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_Pinky_1_4/L_Pinky_2_4/L_Pinky_3_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_Pinky_1_4/L_Pinky_2_4/L_Pinky_3_4/L_Pinky_4_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_RingFinger_1_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_RingFinger_1_4/L_RingFinger_2_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_RingFinger_1_4/L_RingFinger_2_4/L_RingFinger_3_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_RingFinger_1_4/L_RingFinger_2_4/L_RingFinger_3_4/L_RingFinger_4_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_Toe_1_3
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_Toe_1_3/L_Toe_2_3
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand/L_Toe_1_3/L_Toe_2_3/L_Toe_3_3
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/Neck
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/Neck/Head
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/Neck/Head/Head_Top
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_ForeFinger_1_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_ForeFinger_1_4/R_ForeFinger_2_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_ForeFinger_1_4/R_ForeFinger_2_4/R_ForeFinger_3_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_ForeFinger_1_4/R_ForeFinger_2_4/R_ForeFinger_3_4/R_ForeFinger_4_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_MiddleFinger_1_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_MiddleFinger_1_4/R_MiddleFinger_2_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_MiddleFinger_1_4/R_MiddleFinger_2_4/R_MiddleFinger_3_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_MiddleFinger_1_4/R_MiddleFinger_2_4/R_MiddleFinger_3_4/R_MiddleFinger_4_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_Pinky_1_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_Pinky_1_4/R_Pinky_2_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_Pinky_1_4/R_Pinky_2_4/R_Pinky_3_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_Pinky_1_4/R_Pinky_2_4/R_Pinky_3_4/R_Pinky_4_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_RingFinger_1_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_RingFinger_1_4/R_RingFinger_2_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_RingFinger_1_4/R_RingFinger_2_4/R_RingFinger_3_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_RingFinger_1_4/R_RingFinger_2_4/R_RingFinger_3_4/R_RingFinger_4_4
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_Toe_1_3
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_Toe_1_3/R_Toe_2_3
+    m_Weight: 1
+  - m_Path: Hip/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand/R_Toe_1_3/R_Toe_2_3/R_Toe_3_3
+    m_Weight: 1
+  - m_Path: L_Arm_Ik
+    m_Weight: 1
+  - m_Path: L_Leg_IK
+    m_Weight: 1
+  - m_Path: Main_CTRL
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_ForeFinger_CTRL_1_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_ForeFinger_CTRL_1_3/L_ForeFinger_CTRL_2_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_ForeFinger_CTRL_1_3/L_ForeFinger_CTRL_2_3/L_ForeFinger_CTRL_3_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_MiddleFinger_CTRL_1_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_MiddleFinger_CTRL_1_3/L_MiddleFinger_CTRL_2_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_MiddleFinger_CTRL_1_3/L_MiddleFinger_CTRL_2_3/L_MiddleFinger_CTRL_3_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_Pinky_CTRL_1_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_Pinky_CTRL_1_3/L_Pinky_CTRL_2_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_Pinky_CTRL_1_3/L_Pinky_CTRL_2_3/L_Pinky_CTRL_3_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_RingFinger_CTRL_1_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_RingFinger_CTRL_1_3/L_RingFinger_CTRL_2_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_RingFinger_CTRL_1_3/L_RingFinger_CTRL_2_3/L_RingFinger_CTRL_3_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_Thumb_CTRL_1_2
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/L_Arm_CTRL/L_Fingers/L_Thumb_CTRL_1_2/L_Thumb_CTRl_2_2
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/Neck_CTRL
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/Neck_CTRL/Head_CTRL
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_ForeFinger_CTRL_1_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_ForeFinger_CTRL_1_3/R_ForeFinger_CTRL_2_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_ForeFinger_CTRL_1_3/R_ForeFinger_CTRL_2_3/R_ForeFinger_CTRL_3_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_MiddleFinger_CTRL_1_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_MiddleFinger_CTRL_1_3/R_MiddleFinger_CTRL_2_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_MiddleFinger_CTRL_1_3/R_MiddleFinger_CTRL_2_3/R_MiddleFinger_CTRL_3_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_Pinky_CTRL_1_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_Pinky_CTRL_1_3/R_Pinky_CTRL_2_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_Pinky_CTRL_1_3/R_Pinky_CTRL_2_3/R_Pinky_CTRL_3_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_RingFinger_CTRL_1_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_RingFinger_CTRL_1_3/R_RingFinger_CTRL_2_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_RingFinger_CTRL_1_3/R_RingFinger_CTRL_2_3/R_RingFinger_CTRL_3_3
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_Thumb_CTRL_1_2
+    m_Weight: 1
+  - m_Path: Main_CTRL/Hips_CTRL/R_Arm_CTRL/R_Fingers/R_Thumb_CTRL_1_2/R_Thumb_CTRl_2_2
+    m_Weight: 1
+  - m_Path: Main_CTRL/L_Arm_CTRL_GRP
+    m_Weight: 1
+  - m_Path: Main_CTRL/L_Arm_CTRL_GRP/L_Arm_CTRL 1
+    m_Weight: 1
+  - m_Path: Main_CTRL/L_Leg_CTRL
+    m_Weight: 1
+  - m_Path: Main_CTRL/L_Leg_CTRL_GRP
+    m_Weight: 1
+  - m_Path: Main_CTRL/L_Leg_CTRL_GRP/L_Leg_CTRL 1
+    m_Weight: 1
+  - m_Path: Main_CTRL/R_Arm_CTRL_GRP
+    m_Weight: 1
+  - m_Path: Main_CTRL/R_Arm_CTRL_GRP/R_Arm_CTRL 1
+    m_Weight: 1
+  - m_Path: Main_CTRL/R_Leg_CTRL
+    m_Weight: 1
+  - m_Path: Main_CTRL/R_Leg_CTRL_GRP
+    m_Weight: 1
+  - m_Path: Main_CTRL/R_Leg_CTRL_GRP/R_Leg_CTRL 1
+    m_Weight: 1
+  - m_Path: Main_CTRL/Spine_1
+    m_Weight: 1
+  - m_Path: Main_CTRL/Spine_1/Spine_2
+    m_Weight: 1
+  - m_Path: Main_CTRL/Spine_1/Spine_2/Spine_3
+    m_Weight: 1
+  - m_Path: R_Arm_Ik
+    m_Weight: 1
+  - m_Path: R_Leg_Ik
+    m_Weight: 1

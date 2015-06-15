@@ -52,7 +52,7 @@ Material:
       data:
         first:
           name: _Highlight_Width
-        second: .214284778
+        second: 0
       data:
         first:
           name: _Highlight_Intensity
