@@ -56,6 +56,12 @@ public class BasicEnemy : MonoBehaviour {
 
 	public GameObject ragdoll;
 	
+	public Animator animator;
+	
+	private float setSpeed;
+	bool newEnGarde = false;
+	bool wasAfar = true;
+	
 #endregion
 
 	// Use this for initialization
@@ -68,6 +74,9 @@ public class BasicEnemy : MonoBehaviour {
 	{
 		agent.updateRotation = false;
 		
+		animator.SetFloat ("Speed", setSpeed);
+		
+		setSpeed = 0;
 				
 		if (canGetHit) 
 		{ //If the ennemy can't get hit, he can't move either.
@@ -82,9 +91,10 @@ public class BasicEnemy : MonoBehaviour {
 					newPosition = transform.position + (Random.insideUnitSphere * Random.Range (5, 10));
 			}
 
-			if (randomizeTimer > 1) 
+			if (newEnGarde) 
 			{
 					newEnGardePosition = player.transform.position + (Random.insideUnitSphere * Random.Range (4, 7));
+					newEnGarde = false;
 			}
 			#endregion
 
@@ -102,10 +112,29 @@ public class BasicEnemy : MonoBehaviour {
 			#region setting target position according to current behaviour
 			if (CurrentMode == EnemyMode.Chasing) //Movement when the player is in sight, or was in sight recently.
 			{
+				
+			
 				if (Vector3.Distance (this.transform.position, player.transform.position) > 5)
 						agent.SetDestination (sightScript.lastKnownPosition);
+				else if (!canHit && wasAfar)
+				{
+					newEnGarde = true;
+				}
 				else if (!canHit)
-						agent.SetDestination (newEnGardePosition);
+				{
+					agent.SetDestination (newEnGardePosition);
+				}
+				
+				if (Vector3.Distance (this.transform.position, player.transform.position) > 5)
+				{
+					wasAfar = true;
+				}
+				else
+				{
+					wasAfar = false;
+				}
+						
+				setSpeed = Vector3.SqrMagnitude (agent.velocity.normalized);	
 						
 				Quaternion selfRotation = Quaternion.LookRotation (new Vector3 (player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position);
 				
@@ -115,6 +144,8 @@ public class BasicEnemy : MonoBehaviour {
 			if (CurrentMode == EnemyMode.Wandering && !isAnArcher) //Movement when the player's not in sight.
 			{
 				agent.SetDestination (new Vector3 (newPosition.x, transform.position.y, newPosition.z));
+				
+				setSpeed = Vector3.SqrMagnitude (agent.velocity.normalized);	
 			}
 			#endregion
 
@@ -150,11 +181,16 @@ public class BasicEnemy : MonoBehaviour {
 		if (CurrentMode == EnemyMode.Chasing && Vector3.Distance (this.transform.position, player.transform.position) < 2 && canHit)
 		{
 			player.SendMessage ("GetHurt", 1 , SendMessageOptions.RequireReceiver);
+			
+			animator.SetTrigger ("Hit");
+			
 			StartCoroutine (HitCoolDown());
 		}
 		else if (CurrentMode == EnemyMode.Chasing && canHit) //If the enemy is not near enough to the player...
 		{
 			agent.SetDestination (player.transform.position + (Random.insideUnitSphere * Random.Range (1,2)));
+			
+			setSpeed = Vector3.SqrMagnitude (agent.velocity.normalized);
 		}
 	}
 	
@@ -198,7 +234,6 @@ public class BasicEnemy : MonoBehaviour {
 		if (canGetHit) 
 		{
 			currentHealthPoint -= damageAmount;
-			renderer.material.color = Color.white;
 
 			StartCoroutine (temporaryIntangible ());
 		}

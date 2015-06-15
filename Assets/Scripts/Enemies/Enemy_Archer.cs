@@ -19,6 +19,8 @@ public class Enemy_Archer : MonoBehaviour {
 	[HideInInspector]
 	public float nextFireTime;
 	
+	public Animator animator;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -67,6 +69,8 @@ public class Enemy_Archer : MonoBehaviour {
 		
 		GameObject spawnedArrow;
 		spawnedArrow = Instantiate (myProjectile, transform.position, transform.rotation) as GameObject;
+		
+		animator.SetTrigger ("Arrow");
 		
 		if (spawnedArrow.CompareTag ("HomingProjectile"))
 		{
