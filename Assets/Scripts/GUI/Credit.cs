@@ -4,7 +4,7 @@ using System.Collections;
 public class Credit : MonoBehaviour {
 	
 	public GameObject image;
-	private float maxY = 70f;
+	public float maxY = 70f;
 	private Vector3 startPos;
 	private bool creditRoll = false;
 
@@ -19,14 +19,16 @@ public class Credit : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		Debug.Log (Screen.height);
+
 		Vector3 pos = image.transform.position;
 		
 		if (pos.y < maxY && creditRoll) 
 		{
-			pos.y += 5f * Time.deltaTime;
+			pos.y += .5f * Screen.height * Time.deltaTime;
 			image.transform.position = pos;
 		} 
-		else if (creditRoll && pos.y > maxY)
+		else if (creditRoll && pos.y > Screen.height)
 		{
 			Application.LoadLevel(0);
 			creditRoll = false;
