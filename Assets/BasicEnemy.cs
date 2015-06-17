@@ -6,8 +6,6 @@ public class BasicEnemy : MonoBehaviour {
 
 	#region In Inspector Variables
 	public float currentHealthPoint = 10f;
-	public float heightOfJump = 8;
-	public float gravity = 20;
 	public float recoveryTime = 3;
 	#endregion
 
@@ -61,8 +59,7 @@ public class BasicEnemy : MonoBehaviour {
 	private float setSpeed;
 	bool newEnGarde = false;
 	bool wasAfar = true;
-	
-#endregion
+	#endregion
 
 	// Use this for initialization
 	void Start () 
@@ -156,8 +153,6 @@ public class BasicEnemy : MonoBehaviour {
 			Die();
 
 		//Those last lines controls some of the enemy's movements
-		if (!controller.isGrounded)
-			moveDirection.y -= gravity * Time.deltaTime;
 
 		if(!navMeshAgent.enabled)
 			controller.Move(moveDirection * Time.deltaTime);
@@ -203,8 +198,6 @@ public class BasicEnemy : MonoBehaviour {
 
 	void Jump (bool isPushed) //Jump func. 'Nuff said.
 	{
-		moveDirection.y = this.heightOfJump;
-
 		if(isPushed)
 				moveDirection += player.transform.right * 2;
 
